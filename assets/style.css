@@ -46,6 +46,10 @@ h1, h2, h3, h4 {
     font-size: 1.2rem;
 }
 
+.navbar-logo {
+    height: 40px;
+}
+
 @media (min-width:575px) {
     .nav-item {
         width: 31.5vw;
@@ -91,4 +95,37 @@ footer a {
     margin-left: -12px;
     display: inline;
     text-align: start;
+}
+
+/* -------------------------------------------------------------- index.html */
+/* ---------------------------------------- Introduction */
+
+#introduction {
+    padding: 35px 10px 10px 40px;
+}
+
+#introduction p {
+    padding: 25px 0 0 10px;
+    font-size: 1.3rem;
+    font-family: 'Special Elite', cursive;
+}
+
+.logo {
+    height: 80px;
+    float: left;
+    margin-right: 10px;
+}
+
+.recipe-selector-button-container {
+    text-align: center;
+    font-family: 'Special Elite', cursive;
+}
+
+.recipe-selector-button {
+    width: 100%;
+    max-width: 250px;
+    margin: 15px auto;
+    font-size: 1.6rem;
+    background: #c4c4c4;
+    box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%), 0 12px 40px 0 rgb(0 0 0 / 19%);
 }
