@@ -7,6 +7,15 @@ h1, h2, h3, h4 {
     font-family: 'Special Elite', cursive;
 }
 
+.background-image {
+    height: 100%;
+    background-image: url("images/choppingboard-background-2.png");
+    background-color: #c4c4c4;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+}
+
 /* ---------------------------------------- Navbar */
 .navbar {
     padding: 0.5rem 1.5rem;
@@ -36,3 +45,4 @@ h1, h2, h3, h4 {
     }
     
 }
+

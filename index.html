@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="assets/style.css">
     <title>Find My Meal</title>
 </head>
-<body>
+<body class="background-image">
     <!--Navbar taken from Bootstrap 5 example code and heavily modified-->
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
         <a class="navbar-brand d-sm-none" href="index.html">Logo</a>
@@ -27,7 +27,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Recipe Finders
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <div class="nav-item dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="lucky-dip.html">Lucky Dip</a>
                         <a class="dropdown-item" href="zero-waste.html">Zero-Waste</a>
                         <a class="dropdown-item" href="specific-needs.html">Specific Needs</a>
@@ -39,6 +39,12 @@
             </ul>
         </div>
     </nav>
+
+    <section class="container-fluid">
+        <div class="row">
+            <div class="col background-image"></div>
+        </div>
+    </section>
     
     <script src="assets/js/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
