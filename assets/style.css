@@ -46,8 +46,14 @@ h1, h2, h3, h4 {
     font-size: 1.2rem;
 }
 
+.navbar-brand {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+
 .navbar-logo {
-    height: 40px;
+    height: 55px;
 }
 
 @media (min-width:575px) {
@@ -101,17 +107,18 @@ footer a {
 /* ---------------------------------------- Introduction */
 
 #introduction {
-    padding: 35px 10px 10px 40px;
+    padding: 20px 15px 10px 20px;
 }
 
 #introduction p {
-    padding: 25px 0 0 10px;
+    padding: 15px 0 0;
     font-size: 1.3rem;
     font-family: 'Special Elite', cursive;
+    text-align: right;
 }
 
 .logo {
-    height: 120px;
+    height: 180px;
     float: left;
     margin-right: 10px;
 }
