@@ -13,7 +13,7 @@ h1, h2, h3, h4 {
     background-color: #fafafa;
     background-repeat: no-repeat;
     background-position: top;
-    background-size: cover;
+    background-size: contain;
 }
 
 /* ---------------------------------------- Navbar */
@@ -111,7 +111,7 @@ footer a {
 }
 
 .logo {
-    height: 80px;
+    height: 120px;
     float: left;
     margin-right: 10px;
 }
