@@ -8,7 +8,7 @@ h1, h2, h3, h4 {
 }
 
 .background-image {
-    height: 100%;
+    width: 100%;
     background-image: url("images/choppingboard-background.png");
     background-color: #fafafa;
     background-repeat: no-repeat;
