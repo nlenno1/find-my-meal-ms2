@@ -1,7 +1,38 @@
 body {
     font-family: 'Open Sans', sans-serif;
+    color: #000;
 }
 
 h1, h2, h3, h4 {
     font-family: 'Special Elite', cursive;
+}
+
+/* ---------------------------------------- Navbar */
+.navbar {
+    padding: 0.5rem 1.5rem;
+    background-color: rgba(256, 256, 256, 0.6);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(0,0,0,1);
+}
+
+.navbar-modal-button {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.dropdown-item, .dropdown-toggle, .nav-link {
+    text-align: center;
+}
+
+.nav-link {
+    margin: 0 auto;
+}
+
+@media (min-width:575px) {
+    .nav-link, .dropdown-menu {
+        width: 31.5vw;
+    }
+    
 }
