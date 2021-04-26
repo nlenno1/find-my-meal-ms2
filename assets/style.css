@@ -37,12 +37,22 @@ h1, h2, h3, h4 {
 
 .nav-link {
     margin: 0 auto;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    font-weight: 900;
+}
+
+.dropdown-item {
+    font-size: 1.2rem;
 }
 
 @media (min-width:575px) {
-    .nav-link, .dropdown-menu {
+    .nav-item {
         width: 31.5vw;
     }
-    
+    .dropdown-menu {
+        width: 20vw;
+        margin: 7px 0 0 5.75vw;   
+    }
 }
 
