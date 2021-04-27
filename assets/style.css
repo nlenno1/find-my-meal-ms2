@@ -13,7 +13,7 @@ nav, footer {
     background-color: #fafafa;
     background-repeat: no-repeat;
     background-position: top;
-    background-size: contain;
+    background-size: cover;
 }
 
 /* ---------------------------------------- Navbar */
@@ -68,7 +68,8 @@ nav, footer {
 
 /* ---------------------------------------- Footer */
 
-footer {
+.footer-background {
+    position: relative;
     height: 55px;
     background-image: url("images/choppingboard-footer-background.png");
     background-color: #c4c4c4;
@@ -77,7 +78,7 @@ footer {
     background-size: cover;
     text-align: center;
     font-weight: 600;
-    margin-top: 60px;
+    margin-top: 40px;
 }
 
 .copyright-info, .powered-by-info {
@@ -150,4 +151,20 @@ footer a {
     line-height: inherit;
     border-radius: 2px;
     transition: ease-in 0.2s;
+}
+
+@media(min-width:575px) {
+    .logo {
+    height: 200px;
+    margin-left: 7vw;
+    }
+
+    .intro-text {
+        padding: 10px 15px 0 0;
+    }
+
+    #introduction p:first-of-type{
+        text-align: left;
+        margin-right: 120px
+    }
 }
