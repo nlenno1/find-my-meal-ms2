@@ -69,8 +69,8 @@ nav, footer {
 
 .footer-background {
     position: relative;
-    z-index: 2;
-    height: 55px;
+    z-index: 0;
+    height: 60px;
     background-image: url("images/choppingboard-footer-background.png");
     background-color: #c4c4c4;
     background-repeat: no-repeat;
@@ -87,7 +87,7 @@ nav, footer {
     background-color: #fff;
     transform: skewY(4deg) translate(0px, 98px);
     position: relative;
-    z-index: 1;
+    z-index: -1;
 }
 
 .footer-mask-2 {
@@ -96,7 +96,7 @@ nav, footer {
     background-color: #fff;
     position: relative;
     transform: skewY(2deg) translate(0px, 70px);
-    z-index: 0;
+    z-index: -2;
 }
 
 .copyright-info, .powered-by-info {
@@ -131,18 +131,23 @@ footer a {
 /* -------------------------------------------------------------- index.html */
 /* ---------------------------------------- Introduction */
 
+.main-body {
+    margin-bottom: -150px;
+    min-height: 75vh;
+}
+
 #introduction {
-    padding: 20px 15px 10px 20px;
+    padding: 20px 30px 20px 20px;
 }
 
 #introduction p {
     padding: 15px 0 0;
     font-size: 1.3rem;
-    text-align: right;
+    text-align: center;
 }
 
 .logo {
-    height: 180px;
+    height: 135px;
     float: left;
     margin-right: 10px;
 }
@@ -173,7 +178,7 @@ footer a {
 
 @media(min-width:575px) {
     .logo {
-    height: 200px;
+    height: 180px;
     margin-left: 7vw;
     }
 
@@ -184,5 +189,11 @@ footer a {
     #introduction p:first-of-type{
         text-align: left;
         margin-right: 120px
+    }
+}
+
+@media(min-width:992px) {
+    #recipe-selector-buttons-container {
+    margin-top: 5vw;
     }
 }
