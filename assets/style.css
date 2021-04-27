@@ -193,21 +193,29 @@ footer a {
 }
 
 @media(min-width:992px) {
-    #recipe-selector-buttons-container {
-    margin-top: 5vw;
-    }
-
     .logo {
     height: 250px;
     margin-left: 0;
     }
 
     #introduction {
-    padding: 5vw 16vw 5vw 10vw;
+        padding: ;
     }
 
+    .intro-text {
+        padding: 2vw 0 0;
+    }
+
+    #introduction p:first-of-type{
+        margin-right: 0;
+    }
+    
     #introduction p {
-    text-align: left;
-    margin-right: 0;
-    padding-top: 30px;
+        text-align: left;
+        padding-top: 30px;
+    }
+
+    #recipe-selector-buttons-container {
+    padding: 1vw 8vw; 
+    }
 }
