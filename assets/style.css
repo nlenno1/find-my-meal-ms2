@@ -196,4 +196,18 @@ footer a {
     #recipe-selector-buttons-container {
     margin-top: 5vw;
     }
+
+    .logo {
+    height: 250px;
+    margin-left: 0;
+    }
+
+    #introduction {
+    padding: 5vw 16vw 5vw 10vw;
+    }
+
+    #introduction p {
+    text-align: left;
+    margin-right: 0;
+    padding-top: 30px;
 }
