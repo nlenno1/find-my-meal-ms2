@@ -51,7 +51,6 @@ nav, footer {
     padding-bottom: 0;
 }
 
-
 .navbar-logo {
     height: 55px;
 }
@@ -70,6 +69,7 @@ nav, footer {
 
 .footer-background {
     position: relative;
+    z-index: 2;
     height: 55px;
     background-image: url("images/choppingboard-footer-background.png");
     background-color: #c4c4c4;
@@ -79,6 +79,24 @@ nav, footer {
     text-align: center;
     font-weight: 600;
     margin-top: 40px;
+}
+
+.footer-mask {
+    height: 58px;
+    width: 100vw;
+    background-color: #fff;
+    transform: skewY(4deg) translate(0px, 98px);
+    position: relative;
+    z-index: 1;
+}
+
+.footer-mask-2 {
+    height: 90px;
+    width: 100vw;
+    background-color: #fff;
+    position: relative;
+    transform: skewY(2deg) translate(0px, 70px);
+    z-index: 0;
 }
 
 .copyright-info, .powered-by-info {
