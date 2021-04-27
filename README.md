@@ -1,7 +1,7 @@
 # Find My Meal
 ![Live Project](URL)
 
-[Link to Live Project](URL)
+[Link to Live Project](https://nlenno1.github.io/find-my-meal-ms2/)
 #
 ## Contents
 1. [Introduction](#introduction)
