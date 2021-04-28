@@ -83,19 +83,21 @@ nav, footer {
 
 .footer-mask {
     height: 58px;
-    width: 100vw;
-    background-color: #fff;
-    transform: skewY(4deg) translate(0px, 98px);
+    width: 100%;
+    background: #fff;
+    margin-bottom: -25px;
+    transform: skewY(4deg);
     position: relative;
     z-index: -1;
 }
 
 .footer-mask-2 {
     height: 90px;
-    width: 100vw;
+    width: 100%;
     background-color: #fff;
     position: relative;
-    transform: skewY(2deg) translate(0px, 70px);
+    margin-bottom: -70px;
+    transform: skewY(2deg);
     z-index: -2;
 }
 
@@ -162,7 +164,7 @@ footer a {
 /* ---------------------------------------- Introduction */
 
 .main-body {
-    margin-bottom: -150px;
+    margin-bottom: -50px;
     min-height: 75vh;
 }
 
@@ -217,8 +219,7 @@ footer a {
     }
 
     #introduction p:first-of-type{
-        text-align: left;
-        margin-right: 120px
+        margin-right: 45px
     }
 }
 
