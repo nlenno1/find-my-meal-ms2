@@ -194,16 +194,16 @@ footer a {
 
 @media(min-width:992px) {
     .logo {
-    height: 250px;
+    height: 260px;
     margin-left: 0;
     }
 
     #introduction {
-        padding: ;
+        padding: 6vw 18vw 3vw 10vw;
     }
 
     .intro-text {
-        padding: 2vw 0 0;
+        padding: 1vw 0 0;
     }
 
     #introduction p:first-of-type{
