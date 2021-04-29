@@ -156,6 +156,96 @@ footer a {
     }
 }
 
+/* ---------------------------------------- Modals/My Supplies Modal */
+
+.modal-header {
+    padding: 1rem 2rem;
+}
+
+.enter-ingredients {
+    text-align: center;
+    padding-top: 0.5rem;
+}
+
+.enter-ingredients input{
+    width: 90%;
+    height: 45px;
+    max-width: 400px;
+    padding: 0 10px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+.enter-ingredients button{
+    width: 80px;
+    height: 45px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color:#1EC820;
+}
+
+.my-supplies-display-container {
+    height: 100%;
+}
+
+.my-supplies-display {
+    height:100%;
+    min-height: 100px;
+    max-height: 300px;
+    overflow: auto;
+    background-color: #c4c4c4;
+    border-radius: 5px;
+    margin: 20px auto 0;
+    padding-top: 10px;
+}
+
+.ingredient-added {
+    width: 96%;
+    margin: 0 2%;
+    border-radius: 5px;
+    line-height: 26px;
+    background-color: #fafafa;
+    padding: 8px 16px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.ingredient-added p {
+    margin:0;
+    float: left;
+}
+
+.ingredient-added button {
+    margin:0;
+    float: right;
+    border:1px solid #fafafa;
+    transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+}
+
+.ingredient-added button:hover {
+   border:1px solid #c4c4c4;
+}
+
+
+@media (min-width: 575px) {
+    .modal-dialog {
+    max-width: 900px;
+    }
+    .ingredient-added {
+    width: 46.7%;
+    margin: 0;
+    }
+    .my-supplies-display {
+    padding: 10px;
+    }
+    .enter-ingredients button{
+    margin-top: 0;
+    }
+}
+
 /* -------------------------------------------------------------- index.html */
 /* ---------------------------------------- Introduction */
 
