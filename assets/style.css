@@ -203,7 +203,16 @@ footer a {
     font-family: inherit;
     line-height: inherit;
     border-radius: 2px;
-    transition: ease-in 0.2s;
+    transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+}
+
+.recipe-selector-button:hover {
+    color: #000;
+    transform: scale(1.15, 1.15);
+    box-shadow: 0 12px 24px 0 rgb(0 0 0 / 60%), 0 18px 60px 0 rgb(0 0 0 / 50%);
 }
 
 @media(min-width:575px) {
@@ -242,6 +251,7 @@ footer a {
     #introduction p {
         text-align: left;
         padding-top: 30px;
+        font-size: 1.6rem;
     }
 
     #recipe-selector-buttons-container {
