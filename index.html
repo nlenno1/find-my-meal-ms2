@@ -15,68 +15,71 @@
     <title>Find My Meal</title>
 </head>
 
-<body class="background-image">
-    <!--Navbar taken from Bootstrap 5 example code and heavily modified-->
-    <nav class="navbar navbar-expand-sm navbar-light d-sm-sticky-top">
-        <a class="navbar-brand d-sm-none" href="index.html"><img class="navbar-logo"
-                src="assets/images/find-my-meal-logo.png" alt="Find My Meal Logo"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<body>
+    <div class="background-image">
+        <!--Navbar taken from Bootstrap 5 example code and heavily modified-->
+        <nav class="navbar navbar-expand-sm navbar-light d-sm-sticky-top">
+            <a class="navbar-brand d-sm-none" href="index.html"><img class="navbar-logo"
+                    src="assets/images/find-my-meal-logo.png" alt="Find My Meal Logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbar">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <button type="button" class="nav-link navbar-modal-button" data-toggle="modal"
-                        data-target="#about-modal">About</button>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Recipe Finders
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <button type="button" class="nav-link navbar-modal-button" data-toggle="modal"
+                            data-target="#about-modal">About</button>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Recipe Finders
+                        </a>
+                        <div class="nav-item dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="lucky-dip.html">Lucky Dip</a>
+                            <a class="dropdown-item" href="zero-waste.html">Zero-Waste</a>
+                            <a class="dropdown-item" href="specific-needs.html">Specific Needs</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="nav-link navbar-modal-button" data-toggle="modal"
+                            data-target="#my-supplies-modal">My Supplies</button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <section class="container-fluid main-body">
+            <div class="row">
+                <div class="col-12" id="introduction">
+                    <a href="index.html">
+                        <img class="logo" src="assets/images/find-my-meal-logo.png" alt="Find My Meal Logo">
                     </a>
-                    <div class="nav-item dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="lucky-dip.html">Lucky Dip</a>
-                        <a class="dropdown-item" href="zero-waste.html">Zero-Waste</a>
-                        <a class="dropdown-item" href="specific-needs.html">Specific Needs</a>
+                    <div class="intro-text">
+                        <p>Looking for new recipes, you have come to the right place!!</p>
+                        <p>Choose one of the options from below and get started on journey of recipe discovery</p>
                     </div>
-                </li>
-                <li class="nav-item">
-                    <button type="button" class="nav-link navbar-modal-button" data-toggle="modal"
-                        data-target="#my-supplies-modal">My Supplies</button>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <section class="container-fluid main-body">
-        <div class="row">
-            <div class="col-12" id="introduction">
-                <a href="index.html">
-                    <img class="logo" src="assets/images/find-my-meal-logo.png" alt="Find My Meal Logo">
-                </a>
-                <div class="intro-text">
-                    <p>Looking for new recipes, you have come to the right place!!</p>
-                    <p>Choose one of the options from below and get started on journey of recipe discovery</p>
                 </div>
             </div>
-        </div>
 
-        <div class="row" id="recipe-selector-buttons-container">
-            <div class="col-12 col-lg-4 recipe-selector-button-container">
-                <a href="lucky-dip.html" class="recipe-selector-button">Lucky Dip</a>
-                <p>Picks random recipes. Best for inspiration</p>
+            <div class="row" id="recipe-selector-buttons-container">
+                <div class="col-12 col-lg-4 recipe-selector-button-container">
+                    <a href="lucky-dip.html" class="recipe-selector-button">Lucky Dip</a>
+                    <p>Picks random recipes. Best for inspiration</p>
+                </div>
+                <div class="col-12 col-lg-4 recipe-selector-button-container">
+                    <a href="lucky-dip.html" class="recipe-selector-button">Zero-Waste</a>
+                    <p>Use what you have! Best for the enviroment</p>
+                </div>
+                <div class="col-12 col-lg-4 recipe-selector-button-container">
+                    <a href="specific-needs.html" class="recipe-selector-button">Specific Needs</a>
+                    <p>Say what you need! Tailored for you.</p>
+                </div>
             </div>
-            <div class="col-12 col-lg-4 recipe-selector-button-container">
-                <a href="lucky-dip.html" class="recipe-selector-button">Zero-Waste</a>
-                <p>Use what you have! Best for the enviroment</p>
-            </div>
-            <div class="col-12 col-lg-4 recipe-selector-button-container">
-                <a href="specific-needs.html" class="recipe-selector-button">Specific Needs</a>
-                <p>Say what you need! Tailored for you.</p>
-            </div>
-        </div>
-    </section>
+        </section>    
+    </div>
+    
 
     <footer>
         <div class="footer-mask"></div>
