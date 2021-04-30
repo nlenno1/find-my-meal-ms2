@@ -10,7 +10,6 @@ nav, footer {
 
 .background-image {
     background-image: url("images/choppingboard-background.png");
-    background-color: #fafafa;
     background-repeat: no-repeat;
     background-position: top;
     background-size: 100% auto;
@@ -399,8 +398,16 @@ h1 {
     background-color:#1EC820;
 }
 
+.recipe-search-results {
+    padding: 30px 15px;
+    position: relative;
+    z-index: 1;
+}
+
 @media(min-width:575px) {
     .selection-options-container {
         width: 85%;
     }
 }
+
+/* ---------------------------------------- Zero-Waste Recipe Card */
