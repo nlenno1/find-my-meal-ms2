@@ -442,9 +442,19 @@ h1 {
     width: 48%;
     }
 
-.zero-waste-recipe-card .recipe-image {
+    .zero-waste-recipe-card .recipe-image {
     width: 45%;
     padding-top: 45%;
+    margin: 0;
+    margin-right: 15px;
+    float: left;
+    }
+}
+
+@media (min-width:997px) {
+    .zero-waste-recipe-card .recipe-image {
+    width: 25%;
+    padding-top: 25%;
     margin: 0;
     margin-right: 15px;
     float: left;
