@@ -96,10 +96,10 @@ nav, footer {
 }
 
 .footer-mask {
-    height: 58px;
+    height: 70px;
     width: 100%;
     background: #fff;
-    margin-bottom: -25px;
+    margin-bottom: -32px;
     transform: skewY(4deg);
 }
 
