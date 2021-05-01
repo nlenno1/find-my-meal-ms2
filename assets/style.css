@@ -17,7 +17,7 @@ nav, footer {
 
 /* ---------------------------------------- Navbar */
 .navbar {
-    padding: 0.5rem 1.5rem;
+    padding: 0.5rem 0rem;
     background-color: rgba(256, 256, 256, 0.8);
 }
 
@@ -56,11 +56,17 @@ nav, footer {
 
 @media (min-width:575px) {
     .nav-item {
-        width: 31.5vw;
+        width: 19.8vw;
+    }
+    .navbar-expand-sm .navbar-collapse {
+    justify-content: space-evenly;
     }
     .dropdown-menu {
-        width: 20vw;
-        margin: 7px 0 0 5.75vw;   
+        width: 19.8vw;
+        margin: 7px 0 0 0;   
+    }
+    .navbar-collapse{
+        display: space-evenly;
     }
 }
 
