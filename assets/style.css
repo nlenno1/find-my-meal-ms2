@@ -65,7 +65,7 @@ nav, footer {
     justify-content: space-evenly;
     }
     .dropdown-menu {
-        width: 19.8vw;
+        width: 32.8vw;
         margin: 7px 0 0 0;   
     }
     .navbar-collapse{
@@ -76,6 +76,10 @@ nav, footer {
 @media (min-width:997px) {
     .nav-item {
         width: 19.8vw;
+    }
+    .dropdown-menu {
+        width: 19.8vw;
+        margin: 7px 0 0 0;   
     }
 }
 
@@ -170,7 +174,7 @@ footer a {
     }
 }
 
-/* ---------------------------------------- Modals/My Supplies Modal */
+/* ---------------------------------------- About Modal/My Supplies Modal */
 
 .modal-header {
     padding: 1rem 2rem;
@@ -373,15 +377,14 @@ footer a {
 /* -------------------------------------------------------------- zero-waste.html */
 
 h1 {
-    max-width: 250px;
+    width: 300px;
     margin: 20px auto;
     margin-top: 40px;
-    padding-top: 6px;
+    padding: 12px 0 6px;
     background: #c4c4c4;
     border: 1px solid #000;
     box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%), 0 12px 40px 0 rgb(0 0 0 / 19%);
     border-radius: 2px;
-    text-align: center;
 }
 
 .selection-options-container {
