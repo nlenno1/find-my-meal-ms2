@@ -97,7 +97,7 @@
                                 <input type="text" id="ingredient-name" placeholder="Ingredient">
                             </div>
                             <div class="col-12 col-sm-4">
-                                <button type="submit">Add</button>
+                                <button type="submit" class="add-button">Add</button>
                             </div>
                         </div>
                         <div class="row g-0">
@@ -137,22 +137,38 @@
                         <p class="text-center">Please select which options apply to you from the dropbown options below</p>
                         <div class="row g-0 specific-needs-dropdown-menus">
                             <div class="col-12">
-                                <select name="diet-requirements" id="diet-requirements-select" placeholder="Dietary Requirements">
-                                    <option value="volvo">Volvo</option>
-                                    <option value="saab">Saab</option>
+                                <select name="diet-requirements" id="diet-requirements-select" class="specific-needs-select">
+                                    <option value="none" disabled selected hidden>Dietary Requirements</option>
+                                    <option value="gluten-free">Gluten Free</option>
+                                    <option value="ketogenic">Ketogenic</option>
+                                    <option value="vegetarian">Vegetarian</option>
+                                    <option value="lacto-vegetarian">Lacto-Vegetarian</option>
+                                    <option value="ovo-vegetarian">Ovo-Vegetarian</option>
+                                    <option value="vegan">Vegan</option>
+                                    <option value="pescetarian">Pescetarian</option>
+                                    <option value="paleo">Paleo</option>
+                                    <option value="primal">Primal</option>
+                                    <option value="whole30">Whole30</option>
                                 </select>
                             </div>
                             <div class="col-12">
-                                <select name="intolerances" id="intolerances-select" placeholder="Intolerances">
-                                    <option value="volvo">Volvo</option>
-                                    <option value="saab">Saab</option>
+                                <select name="intolerances" id="intolerances-select" class="specific-needs-select">
+                                    <option value="dairy">Dairy</option>
+                                    <option value="egg">Egg</option>
+                                    <option value="gluten">Gluten</option>
+                                    <option value="grain">Grain</option>
+                                    <option value="peanut">Peanut</option>
+                                    <option value="seafood">Seafood</option>
+                                    <option value="sesame">Sesame</option>
+                                    <option value="shellfish">Shellfish</option>
+                                    <option value="soy">Soy</option>
+                                    <option value="sulfite">Sulfite</option>
+                                    <option value="tree-nut">Tree Nut</option>
+                                    <option value="wheat">Wheat</option>
                                 </select>
                             </div>
                             <div class="col-12">
-                                <select name="allergies" id="allergies-select" placeholder="Allergies">
-                                    <option value="volvo">Volvo</option>
-                                    <option value="saab">Saab</option>
-                                </select>
+                                <button class="add-button">Add</button>
                             </div>
                         </div>
                         <div class="row g-0">
