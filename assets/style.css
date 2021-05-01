@@ -379,7 +379,8 @@ footer a {
 /* -------------------------------------------------------------- zero-waste.html */
 
 h1 {
-    width: 300px;
+    width: 100%;
+    max-width: 350px;
     margin: 20px auto;
     margin-top: 40px;
     padding: 12px 0 6px;
