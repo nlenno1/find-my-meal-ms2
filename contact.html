@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="An online recipe search application allowing you to customise results by adding your diet, allergies or even what ingredients you have.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Special+Elite&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Find My Meal</title>
+</head>
+
+<body>
+    <div class="background-image">
+        <!--Navbar taken from Bootstrap 5 example code and heavily modified-->
+        <nav class="navbar navbar-expand-sm navbar-light d-sm-sticky-top">
+            <a class="navbar-brand d-sm-none" href="index.html"><img class="navbar-logo"
+                    src="assets/images/find-my-meal-logo.png" alt="Find My Meal Logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+                aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav justify-content-center">
+                    <li class="nav-item d-sm-none d-lg-block">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="nav-link navbar-modal-button" data-bs-toggle="modal"
+                            data-bs-target="#about-modal">About</button>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <button type="button" class="nav-link navbar-modal-button dropdown-toggle" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Recipe Finders
+                    </button>
+                        <div class="nav-item dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="lucky-dip.html">Lucky Dip</a>
+                            <a class="dropdown-item" href="zero-waste.html">Zero-Waste</a>
+                            <a class="dropdown-item" href="specific-needs.html">Specific Needs</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="nav-link navbar-modal-button" data-bs-toggle="modal"
+                            data-bs-target="#my-supplies-modal">My Supplies</button>
+                    </li>
+                    <li class="nav-item d-sm-none d-lg-block">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- About Modal -->
+        <div class="modal fade" id="about-modal" tabindex="-1" aria-labelledby="about-modal-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="about-modal-label">About</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        This is the About Modal. <br>
+                        <hr> This will have lots of lovely information in it about how to use this and what its goals
+                        are but... <br> NOT YET...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- My Supplies Modal -->
+        <div class="modal fade" id="my-supplies-modal" tabindex="-1" aria-labelledby="my-supplies-modal-label"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="my-supplies-modal-label">My Supplies</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-0">
+                            <div class="col text-center">
+                                <p>This is where you can add the ingredients you already have to save them for searches
+                                    later on.<br>To add an ingredient, type the name in the box and click add!
+                                    <hr>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row g-0 enter-ingredients">
+                            <div class="col-12 col-sm-8">
+                                <input type="text" id="ingredient-name" placeholder="Ingredient">
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <button type="submit" class="add-button">Add</button>
+                            </div>
+                        </div>
+                        <div class="row g-0">
+                            <div class="col my-supplies-display-container">
+                                <div class="my-supplies-display">
+                                    <div class="ingredient-added">
+                                        <p>Tomatoes</p>
+                                        <button type="button" class="btn-close" aria-label="Remove Item"></button>
+                                    </div>
+                                    <div class="ingredient-added">
+                                        <p>Tomatoes</p>
+                                        <button type="button" class="btn-close" aria-label="Remove Item"></button>
+                                    </div>
+                                    <div class="ingredient-added">
+                                        <p>Tomatoes</p>
+                                        <button type="button" class="btn-close" aria-label="Remove Item"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="container-fluid main-body">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <a href="index.html" class="d-none d-sm-block">
+                        <img class="recipe-search-pages-logo" src="assets/images/find-my-meal-logo.png" alt="Find My Meal Logo">
+                    </a>
+                    <h1>Contact</h1>
+                    <div class="selection-options-container">
+                        <p class="text-center">If you want to get in touch then please fill out the form below and we will get back to you ASAP. <br> We welcome all feedback and ideas including any new feature ideas you may have thought of or any diets or intolerances we might have missed.</p>
+                        <div class="row">
+                            <div class="col-12">
+                                <form id="message-form" action="" method="POST">
+                                    <input type="text" id="name" name="name" placeholder="Full Name" required>
+                                    <input type="email" id="email" name="email" placeholder="Email Address" required>
+                                    <textarea id="message" name="message" placeholder="Please enter your message here"></textarea>
+                                    <input type="submit" for="message-form" id="find-my-meal-button" value="Send Message">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </div>
+    <!--/Background Image-->
+
+    <div class="footer-mask"></div>
+    <div class="footer-mask-2"></div>
+
+    <footer>
+        <div class="footer-mask"></div>
+        <div class="footer-mask-2"></div>
+        <div class="row g-0 footer-background sticky-bottom">
+            <div class="col-3 col-sm-4"></div>
+            <div class="col-5 col-sm-4 copyright-info">
+                <a href="mailto:nick.lennon@hotmail.co.uk?subject=Email%20from%20Find%20My%20Meal%20Website">Email
+                    Me</a>
+                <p>© Nicholas Lennon</p>
+            </div>
+            <div class="col-4 powered-by-info">
+                <p class="logo-label">Powered by</p>
+                <a href="https://spoonacular.com/food-api" target="_blank"><img class="spoonacular-logo"
+                        src="assets/images/spoonacular-logo.svg" alt="Spoonacular's Logo"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

@@ -507,3 +507,21 @@ h1 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 900;
 }
+
+/* -------------------------------------------------------------- contact.html */
+
+#message-form input, #message {
+    width: 95%;
+    margin-top: 15px;
+    padding: 8px 15px;
+}
+
+#message {
+    height: 320px;
+}
+
+@media (min-width: 997px) {
+    #message {
+    height: 250px;
+    }
+}
