@@ -17,7 +17,7 @@ nav, footer {
 
 /* ---------------------------------------- Navbar */
 .navbar {
-    padding: 0.5rem 0rem;
+    padding: 0.5rem 1.5rem;
     background-color: rgba(256, 256, 256, 0.8);
 }
 
@@ -55,8 +55,11 @@ nav, footer {
 }
 
 @media (min-width:575px) {
+    .navbar {
+    padding: 0.5rem 0rem;
+    }
     .nav-item {
-        width: 19.8vw;
+        width: 32.8vw;
     }
     .navbar-expand-sm .navbar-collapse {
     justify-content: space-evenly;
@@ -67,6 +70,12 @@ nav, footer {
     }
     .navbar-collapse{
         display: space-evenly;
+    }
+}
+
+@media (min-width:997px) {
+    .nav-item {
+        width: 19.8vw;
     }
 }
 
