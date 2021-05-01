@@ -405,10 +405,24 @@ h1 {
     text-align: left;
 }
 
+.recipe-search-pages-logo {
+    margin-left: 8vw;
+    margin-top: 20px;
+    height: 100px;
+    float: left;
+}
+
 @media(min-width:575px) {
     .selection-options-container {
         width: 85%;
     }
+}
+
+@media(min-width:1200px) {
+    .recipe-search-pages-logo {
+    height: 140px;
+    margin-left: 6vw;
+}
 }
 
 /* ---------------------------------------- Zero-Waste Recipe Card */
