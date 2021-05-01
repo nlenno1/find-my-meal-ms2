@@ -525,3 +525,61 @@ h1 {
     height: 250px;
     }
 }
+
+/* -------------------------------------------------------------- Recipe Display */
+
+.recipe-display {
+    margin-top: 40px;
+}
+
+.recipe-display .row {
+    margin-top: 30px;
+}
+
+.recipe-image, .recipe-general-info, .ingredients {
+    margin-top: 30px;
+    width: 100%;
+}
+
+.recipe-image, .recipe-general-info, .ingredients, .instructions, .credits {
+    background-color:  #c4c4c4;
+    border: 2px solid #000;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.recipe-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.recipe-image {
+    height: 100%;
+    min-height: 220px;
+}
+
+.credits p {
+    float: left;
+    margin: 15px;
+}
+
+.credits a {
+    float: right;
+    text-decoration: none;
+    color: #000;
+    margin: 15px;
+}
+
+@media(min-width: 575px) {
+    .recipe-image, .recipe-general-info, .ingredients {
+    width: 48.5%;
+    }
+}
+
+@media (min-width: 997px) {
+    .recipe-image, .recipe-general-info, .ingredients {
+    margin-top: 30px;
+    width: 32%;
+    }
+}
