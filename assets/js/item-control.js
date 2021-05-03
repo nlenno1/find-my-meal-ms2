@@ -3,10 +3,13 @@
 const mySupplesArray = [];
 
 // Add item button functionality //
-$(".add-button").click(function() {
+$("#supplies-add-button").click(function() {
     //store input value as variable in the correct format //
     let ingredient = ($("#ingredient-name").val().toLowerCase())
-    console.log (ingredient)
+
+    // clear input value for next ingredient and keep focus on input box //
+    $("#ingredient-name").val("");
+    $("#ingredient-name").focus();
     
     // control conditional to avoid adding a empty value //
     if (ingredient.length == 0) {
@@ -16,34 +19,41 @@ $(".add-button").click(function() {
         // duplicate value user feedback //
         alert(capitalizeFirstLetter(ingredient) + " has already been added");
     } else {
-        // user feedback //
-        alert(capitalizeFirstLetter(ingredient) + " added to Your Supplies");
         // add user input to supplies array //
         mySupplesArray.push(ingredient);
-        // display full array on console //
-        console.log(mySupplesArray);
         
         // add new element to designated display area //
         $(".my-supplies-display").append(
-            `<div class="ingredient-added" id="${ingredient}-supplies-item"> 
+            `<div class="ingredient-added" id="${ingredient}-supplies-item" value="${ingredient}"> 
                 <p> ${capitalizeFirstLetter(ingredient)} </p>
-                <button type="button" class="btn-close item-remove" aria-label="Remove Item"></button>
+                <button type="button" id="${ingredient}-remove-button" class="btn-close" aria-label="Remove Item"></button>
             </div>`
         );
 
-        // clear input value for next ingredient //
-        $("#ingredient-name").val("");
+        // console display to show completion //
+        console.log (ingredient + " added")
+        console.log(mySupplesArray);
+
+        // remove item functionality //
+        $("#" + ingredient + "-remove-button").click(function() {
+            item = $(this).parent();
+            removeItemFromArray(mySupplesArray, item.attr("value"))
+            console.log(item.attr("value") + ' removed from "My Supplies"')
+            console.log(mySupplesArray)
+            item.remove();
+        });
     }
 });
 
-// remove item functionality //
-$(".item-remove").click(function() {
-    item = $(this).parent();
-    console.log(item)
-    item.remove();
-    console.log(mySupplesArray)
-});
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function removeItemFromArray(array, item) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] == item) {
+            array.splice(item, 1)
+        }
+    }
 }

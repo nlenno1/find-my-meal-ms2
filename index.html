@@ -87,19 +87,15 @@
                     </div>
                     <div class="row g-0 enter-ingredients">
                         <div class="col-12 col-sm-8">
-                            <input type="text" id="ingredient-name" placeholder="Ingredient">
+                            <input type="text" id="ingredient-name" pattern="[A-Za-z]" placeholder="Ingredient" >
                         </div>
                         <div class="col-12 col-sm-4">
-                            <button type="submit" class="add-button">Add</button>
+                            <button type="submit" class="add-button" id="supplies-add-button">Add</button>
                         </div>
                     </div>
                     <div class="row g-0">
                         <div class="col my-supplies-display-container">
                             <div class="my-supplies-display">
-                                <div class="ingredient-added" id="cheese-supplies-item"> 
-                                    <p>Cheese</p>
-                                    <button type="button" class="btn-close item-remove" aria-label="Remove Item"></button>
-                                </div>
                             </div>
                         </div>
                     </div>
