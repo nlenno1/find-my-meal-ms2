@@ -1,12 +1,12 @@
 // My Supplies Modal Control //
 
 const mySupplesArray = [];
+const regex = new RegExp(/^[a-zA-Z]+$/);
 
 // Add item button functionality //
 $("#supplies-add-button").click(function() {
     //store input value as variable in the correct format //
     let ingredient = ($("#ingredient-name").val().toLowerCase())
-
     // clear input value for next ingredient and keep focus on input box //
     $("#ingredient-name").val("");
     $("#ingredient-name").focus();
@@ -15,6 +15,8 @@ $("#supplies-add-button").click(function() {
     if (ingredient.length == 0) {
         // empty value user feedback //
         alert("Please enter an ingredient name");
+    } else if (!regex.test(ingredient)) {
+        alert("Please only use letters in the ingredient name");
     } else if (mySupplesArray.includes(ingredient)) {
         // duplicate value user feedback //
         alert(capitalizeFirstLetter(ingredient) + " has already been added");
