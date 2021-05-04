@@ -1,56 +1,63 @@
-// My Supplies Modal Control //
+// My Supplies Modal Control 
 
 const mySupplesArray = [];
 const regex = new RegExp(/^[a-zA-Z]+$/);
 
-// add button click event //
+// initial modal open focus event 
+$("#my-supplies-modal").on('shown', function() {
+    alert("modal open")
+    $("#ingredient-name").focus();
+});
+
+// add button click event 
 $("#supplies-add-button").click(function() {
     addItemToDisplay();
 });
 
-// enter key event //
+// enter key event 
 $("#ingredient-name").keypress(function(event) {
     let key = event.keyCode;
-    console.log(key);
     if (key == "13") {
         addItemToDisplay ();
     }
 });
 
-// Add item button functionality //
+// Add item button functionality 
 function addItemToDisplay () {
-    //store input value as variable in the correct format //
+    //store input value as variable in the correct format 
     let ingredient = ($("#ingredient-name").val().toLowerCase())
-    // clear input value for next ingredient and keep focus on input box //
+    // clear input value for next ingredient and keep focus on input box 
     $("#ingredient-name").val("");
     $("#ingredient-name").focus();
     
-    // control conditional to avoid adding a empty value //
+    // control conditional to avoid adding a empty value 
     if (ingredient.length == 0) {
-        // empty value user feedback //
+        // empty value user feedback 
         alert("Please enter an ingredient name");
     } else if (!regex.test(ingredient)) {
         alert("Please only use letters in the ingredient name");
     } else if (mySupplesArray.includes(ingredient)) {
-        // duplicate value user feedback //
+        // duplicate value user feedback 
         alert(capitalizeFirstLetter(ingredient) + " has already been added");
     } else {
-        // add user input to supplies array //
+        // add user input to supplies array 
         mySupplesArray.push(ingredient);
         
-        // add new element to designated display area //
+        // add new element to designated display area 
         $(".my-supplies-display").append(
             `<div class="ingredient-added" id="${ingredient}-supplies-item" value="${ingredient}"> 
                 <p> ${capitalizeFirstLetter(ingredient)} </p>
                 <button type="button" id="${ingredient}-remove-button" class="btn-close" aria-label="Remove Item"></button>
             </div>`
         );
+        $("#" + ingredient + "-supplies-item").hide();
+        $("#" + ingredient + "-supplies-item").slideDown();
 
-        // console display to show completion //
+        // console display to show completion 
         console.log (ingredient + " added")
         console.log(mySupplesArray);
 
-        // remove item functionality //
+        // remove item functionality 
         $("#" + ingredient + "-remove-button").click(function() {
             item = $(this).parent();
             removeItemFromArray(mySupplesArray, item.attr("value"))
