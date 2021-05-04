@@ -3,8 +3,22 @@
 const mySupplesArray = [];
 const regex = new RegExp(/^[a-zA-Z]+$/);
 
-// Add item button functionality //
+// add button click event //
 $("#supplies-add-button").click(function() {
+    addItemToDisplay();
+});
+
+// enter key event //
+$("#ingredient-name").keypress(function(event) {
+    let key = event.keyCode;
+    console.log(key);
+    if (key == "13") {
+        addItemToDisplay ();
+    }
+});
+
+// Add item button functionality //
+function addItemToDisplay () {
     //store input value as variable in the correct format //
     let ingredient = ($("#ingredient-name").val().toLowerCase())
     // clear input value for next ingredient and keep focus on input box //
@@ -45,7 +59,7 @@ $("#supplies-add-button").click(function() {
             item.remove();
         });
     }
-});
+};
 
 
 function capitalizeFirstLetter(string) {
