@@ -63,7 +63,10 @@ function addItemToDisplay () {
             removeItemFromArray(mySupplesArray, item.attr("value"))
             console.log(item.attr("value") + ' removed from "My Supplies"')
             console.log(mySupplesArray)
-            item.remove();
+            $("#ingredient-name").focus();
+            item.fadeOut(function() {
+                item.remove();
+            });
         });
     }
 };
