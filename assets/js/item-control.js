@@ -1,19 +1,14 @@
 // My Supplies Modal Control 
 
-let mySupplesArray = JSON.parse(localStorage.getItem("mySuppliesIngredientList"));
+// defining all global variables 
+const regex = new RegExp(/^[a-zA-Z]+$/);
 
+// open array saved in local storage
+let mySupplesArray = JSON.parse(localStorage.getItem("mySuppliesIngredientList"));
+// turn item in the array into objects
 for (item of mySupplesArray) {
     createIngredientObject (item)
 } 
-
-
-const regex = new RegExp(/^[a-zA-Z]+$/);
-
-// initial modal open focus event 
-$("#my-supplies-modal").on('shown', function() {
-    alert("modal open")
-    $("#ingredient-name").focus();
-});
 
 // add button click event 
 $("#supplies-add-button").click(function() {
@@ -47,7 +42,6 @@ function createIngredientObject (ingredient) {
         console.log(item.attr("value") + ' removed from "My Supplies"')
         console.log(mySupplesArray)
         saveSuppliesToLocalDrive()
-        $("#ingredient-name").focus();
         item.fadeOut(function() {
             item.remove();
         });
