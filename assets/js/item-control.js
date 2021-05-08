@@ -1,6 +1,12 @@
 // My Supplies Modal Control 
 
-const mySupplesArray = [];
+let mySupplesArray = JSON.parse(localStorage.getItem("mySuppliesIngredientList"));
+
+for (item of mySupplesArray) {
+    createIngredientObject (item)
+} 
+
+
 const regex = new RegExp(/^[a-zA-Z]+$/);
 
 // initial modal open focus event 
@@ -22,10 +28,36 @@ $("#ingredient-name").keypress(function(event) {
     }
 });
 
+function createIngredientObject (ingredient) {
+    // add new element to designated display area 
+    $(".my-supplies-display").append(
+        `<div class="ingredient-added" id="${ingredient}-supplies-item" value="${ingredient}"> 
+            <p> ${capitalizeFirstLetter(ingredient)} </p>
+            <button type="button" id="${ingredient}-remove-button" class="btn-close" aria-label="Remove Item"></button>
+        </div>`
+    );
+    // object animations
+    $("#" + ingredient + "-supplies-item").hide();
+    $("#" + ingredient + "-supplies-item").slideDown();
+
+    // remove item functionality 
+    $("#" + ingredient + "-remove-button").click(function() {
+        item = $(this).parent();
+        removeItemFromArray(mySupplesArray, item.attr("value"))
+        console.log(item.attr("value") + ' removed from "My Supplies"')
+        console.log(mySupplesArray)
+        saveSuppliesToLocalDrive()
+        $("#ingredient-name").focus();
+        item.fadeOut(function() {
+            item.remove();
+        });
+    });
+};
+
 // Add item button functionality 
 function addItemToDisplay () {
     //store input value as variable in the correct format 
-    let ingredient = ($("#ingredient-name").val().toLowerCase())
+    let ingredient = $("#ingredient-name").val().toLowerCase()
     // clear input value for next ingredient and keep focus on input box 
     $("#ingredient-name").val("");
     $("#ingredient-name").focus();
@@ -42,35 +74,19 @@ function addItemToDisplay () {
     } else {
         // add user input to supplies array 
         mySupplesArray.push(ingredient);
-        
-        // add new element to designated display area 
-        $(".my-supplies-display").append(
-            `<div class="ingredient-added" id="${ingredient}-supplies-item" value="${ingredient}"> 
-                <p> ${capitalizeFirstLetter(ingredient)} </p>
-                <button type="button" id="${ingredient}-remove-button" class="btn-close" aria-label="Remove Item"></button>
-            </div>`
-        );
-        $("#" + ingredient + "-supplies-item").hide();
-        $("#" + ingredient + "-supplies-item").slideDown();
-
-        // console display to show completion 
-        console.log (ingredient + " added")
-        console.log(mySupplesArray);
-
-        // remove item functionality 
-        $("#" + ingredient + "-remove-button").click(function() {
-            item = $(this).parent();
-            removeItemFromArray(mySupplesArray, item.attr("value"))
-            console.log(item.attr("value") + ' removed from "My Supplies"')
-            console.log(mySupplesArray)
-            $("#ingredient-name").focus();
-            item.fadeOut(function() {
-                item.remove();
-            });
-        });
+        saveSuppliesToLocalDrive();
+        // create Ingredient Object
+        createIngredientObject (ingredient)
+        // show completion of task on log
+        console.log(ingredient + ' added to "My Supplies"')
+        console.log("My Supplies Array : " + mySupplesArray);
     }
 };
 
+
+function saveSuppliesToLocalDrive() {
+    localStorage.setItem("mySuppliesIngredientList", JSON.stringify(mySupplesArray));
+}
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
