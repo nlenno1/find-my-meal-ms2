@@ -3,14 +3,17 @@
 // defining all global variables 
 const regex = new RegExp(/^[a-zA-Z]+$/);
 
-// open array saved in local storage
+// open array saved in local storage and display on console
 let mySupplesArray = JSON.parse(localStorage.getItem("mySuppliesIngredientList"));
+console.log((mySupplesArray == undefined ? "No instance of Supplies Array Exists" : "Supplies Array Exists"))
+console.log("My Supplies Array opened from Local Storage : " + (mySupplesArray == "" ? "No items to load!" : mySupplesArray));
 // turn item in the array into objects
 for (item of mySupplesArray) {
-    createIngredientObject (item)
+    createIngredientObject (item, $("#my-supplies-display"))
 } 
 
-// add button click event 
+// add button click events
+// my supplies input add button 
 $("#supplies-add-button").click(function() {
     addItemToDisplay();
 });
@@ -23,7 +26,7 @@ $("#ingredient-name").keypress(function(event) {
     }
 });
 
-function createIngredientObject (ingredient) {
+function createIngredientObject (ingredient, area) {
     // add new element to designated display area 
     $(".my-supplies-display").append(
         `<div class="ingredient-added" id="${ingredient}-supplies-item" value="${ingredient}"> 
