@@ -122,13 +122,17 @@ function focusAndClear(targetInput) {
 };
 
 function clearLocalStorge() {
-    for (name of mySuppliesArray) {
-        item = $(`#${name}-in-mySuppliesArray`)
-        console.log(name + " removed from mySuppliesArray")
-        item.fadeOut(function () {
-            item.remove();
-        });
+    if (mySuppliesArray = " ") {
+        alert("My Supplies List is already empty")
+    } else {
+        for (name of mySuppliesArray) {
+            item = $(`#${name}-in-mySuppliesArray`)
+            item.fadeOut(function () {
+                item.remove();
+            });
+        }
     }
+    
     localStorage.setItem("mySuppliesSavedList", JSON.stringify([]));
     console.log("Local Storage array cleared")
 }
