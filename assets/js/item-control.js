@@ -68,7 +68,9 @@ function addItemToDisplay (ingredient, targetArea, inputArea, arrayToAction, arr
     } else {
         // add user input to supplies array 
         arrayToAction.push(ingredient);
-        arrayToAction == "mySuppliesArray"? saveSuppliesToLocalDrive():
+        if (arrayToAction == mySuppliesArray) {
+            saveSuppliesToLocalDrive();
+        } 
         // create Ingredient Object
         createIngredientObject (ingredient, targetArea, arrayName, compArrayName)
         // remove item functionality 
@@ -100,7 +102,9 @@ function removeObjectMethod(ingredient, targetArea, inputArea, arrayToAction, ar
         removeItemFromArray(arrayToAction, item.attr("value"));
         console.log(item.attr("value") + ' removed from ' + arrayName);
         console.log(arrayToAction);
-        arrayToAction == "mySuppliesArray"? saveSuppliesToLocalDrive():
+        if (arrayToAction == mySuppliesArray) {
+            saveSuppliesToLocalDrive();
+        } 
         item.fadeOut(function () {
             item.remove();
         });
@@ -124,9 +128,9 @@ function clearLocalStorge() {
     console.log("Local Storage array cleared")
 }
 
-
 function saveSuppliesToLocalDrive() {
     localStorage.setItem("mySuppliesSavedList", JSON.stringify(mySuppliesArray));
+    console.log("Saved to Local Storage")
 }
 
 function capitalizeFirstLetter(string) {
