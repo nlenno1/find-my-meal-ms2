@@ -1,7 +1,7 @@
 // My Supplies Modal Control 
 
 // defining all global variables 
-const regex = new RegExp(/^[a-zA-Z]+$/);
+const regex = new RegExp(/^[a-zA-Z ]+$/);
 let zeroWasteIngredientsArray = []
 
 // open array saved in local storage and display on console
@@ -13,9 +13,9 @@ mySuppliesArray = (mySuppliesArray == null)? []: mySuppliesArray;
 
 // turn item in the array into objects
 for (item of mySuppliesArray) {
+    item = item.replace("-"," ");
     createIngredientObject (item, $("#my-supplies-display"));
 };
-
 
 // ADD BUTTON AND ENTER KEY EVENTS
 // my supplies input add button 
@@ -66,15 +66,17 @@ function addItemToDisplay (ingredient, targetArea, inputArea, arrayToAction, arr
         focusAndClear(inputArea);
         alert(capitalizeFirstLetter(ingredient) + " has already been added to " + arrayName);
     } else {
+         // create Ingredient Object
+        createIngredientObject (ingredient, targetArea, arrayName, compArrayName);
+        // remove item functionality 
+        removeObjectMethod(ingredient, targetArea, inputArea, arrayToAction, arrayName, compArrayName);
+        ingredient = ingredient.replace(" ","-");
         // add user input to supplies array 
         arrayToAction.push(ingredient);
+        // save mySupplies to local storage for access later
         if (arrayToAction == mySuppliesArray) {
-            saveSuppliesToLocalDrive();
+            saveSuppliesToLocalStorage();
         } 
-        // create Ingredient Object
-        createIngredientObject (ingredient, targetArea, arrayName, compArrayName)
-        // remove item functionality 
-        removeObjectMethod(ingredient, targetArea, inputArea, arrayToAction, arrayName, compArrayName)
         // show completion of task on log
         console.log(ingredient + ' added to ' + arrayName)
         console.log(arrayName + " : " + arrayToAction);
@@ -103,7 +105,7 @@ function removeObjectMethod(ingredient, targetArea, inputArea, arrayToAction, ar
         console.log(item.attr("value") + ' removed from ' + arrayName);
         console.log(arrayToAction);
         if (arrayToAction == mySuppliesArray) {
-            saveSuppliesToLocalDrive();
+            saveSuppliesToLocalStorage();
         } 
         item.fadeOut(function () {
             item.remove();
@@ -128,7 +130,7 @@ function clearLocalStorge() {
     console.log("Local Storage array cleared")
 }
 
-function saveSuppliesToLocalDrive() {
+function saveSuppliesToLocalStorage() {
     localStorage.setItem("mySuppliesSavedList", JSON.stringify(mySuppliesArray));
     console.log("Saved to Local Storage")
 }
