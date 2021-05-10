@@ -153,3 +153,35 @@ function removeItemFromArray(array, item) {
         };
     };
 };
+
+
+const apiResultsList
+// API CALLS
+$("#zero-waste-find-my-meal-button").click(function() {
+    alert("requested api call")
+    if ($('input[type=checkbox]'). prop('checked')) {
+        console.log("box checked")
+        mySuppliesArray == "" ? "My Supplies list is empty" : makeApiCall (compileApiRequirements (mySuppliesArray, "zero-waste")); 
+    } else {
+        console.log("box un-checked")
+        makeApiCall (compileApiRequirements (zeroWasteIngredientsArray, "zero-waste")); 
+    }
+    //makeApiCall ();
+    //displayResults ("zero-waste");
+});
+
+
+
+function compileApiRequirements (ingredientList, searchType) {
+    if (searchType === "zero-waste") {
+        let baseUrl = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=c4a7c11521de4bae8f06ba9fd8e9ac17&ingredients="
+        console.log (baseUrl)
+        let compiledList = `${ingredientList[0]}`
+        for (i = 1; i<ingredientList.length; i++) {
+            compiledList = `${compiledList},${ingredientList[i]}`
+        }
+        url = `${baseUrl}${compiledList}&number=2&limitLicense=true&ranking=1&ignorePantry=true`
+        console.log (url)
+        return(url)
+    }
+}

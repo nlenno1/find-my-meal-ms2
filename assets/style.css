@@ -407,7 +407,7 @@ h1 {
     padding-top: 17px;
 }
 
-#find-my-meal-button{
+.find-my-meal-button{
     width: 80%;
     height: 45px;
     max-width: 400px;
