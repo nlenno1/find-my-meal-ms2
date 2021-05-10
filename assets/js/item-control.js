@@ -13,8 +13,9 @@ mySuppliesArray = (mySuppliesArray == null)? []: mySuppliesArray;
 
 // turn item in the array into objects
 for (item of mySuppliesArray) {
-    item = item.replace("-"," ");
-    createIngredientObject (item, $("#my-supplies-display"));
+    console.log(item)
+    createIngredientObject (item, $("#my-supplies-display"), "My Supplies", "mySuppliesArray");
+    removeObjectMethod(item, $("#my-supplies-display"), mySuppliesArray, "My Supplies", "mySuppliesArray");
 };
 
 // ADD BUTTON AND ENTER KEY EVENTS
@@ -49,11 +50,10 @@ $("#clear-my-supplies-button").click(function() {
     clearLocalStorge();
 });
 
-// Add item functionality 
+// BIG CUSTOM FUNCTIONS
 function addItemToDisplay (ingredient, targetArea, inputArea, arrayToAction, arrayName, compArrayName) {
     // clear input value for next ingredient and keep focus on input box 
     focusAndClear(inputArea);
-    
     // control conditional to avoid adding a empty value 
     if (ingredient.length == 0) {
         // empty value user feedback 
@@ -66,10 +66,13 @@ function addItemToDisplay (ingredient, targetArea, inputArea, arrayToAction, arr
         focusAndClear(inputArea);
         alert(capitalizeFirstLetter(ingredient) + " has already been added to " + arrayName);
     } else {
+        if (ingredient.includes(" ")) {
+        ingredient = ingredient.replace(" ", "-");
+        };
          // create Ingredient Object
         createIngredientObject (ingredient, targetArea, arrayName, compArrayName);
         // remove item functionality 
-        removeObjectMethod(ingredient, targetArea, inputArea, arrayToAction, arrayName, compArrayName);
+        removeObjectMethod(ingredient, targetArea, arrayToAction, arrayName, compArrayName);
         ingredient = ingredient.replace(" ","-");
         // add user input to supplies array 
         arrayToAction.push(ingredient);
@@ -84,26 +87,25 @@ function addItemToDisplay (ingredient, targetArea, inputArea, arrayToAction, arr
 };
 
 function createIngredientObject (ingredient, targetArea, arrayName, compArrayName) {
+    ingredientScreenName = ingredient.replace("-", " ")
     // add new element to designated display area 
     $(targetArea).append(
         `<div class="ingredient-added" id="${ingredient}-in-${compArrayName}" value="${ingredient}"> 
-            <p> ${capitalizeFirstLetter(ingredient)} </p>
+            <p> ${capitalizeFirstLetter(ingredientScreenName)} </p>
             <button type="button" id="${ingredient}-in-${compArrayName}-remove-button" class="btn-close" aria-label="Remove Item"></button>
         </div>`
     );
     // object animations
-    $("#" + ingredient + "-supplies-item").hide();
-    $("#" + ingredient + "-supplies-item").slideDown();
-
-    
+    $(`#${ingredient}-in-${compArrayName}`).hide();
+    $(`#${ingredient}-in-${compArrayName}`).slideDown();
 };
 
-function removeObjectMethod(ingredient, targetArea, inputArea, arrayToAction, arrayName, compArrayName) {
+function removeObjectMethod(ingredient, targetArea, arrayToAction, arrayName, compArrayName) {
     $(`#${ingredient}-in-${compArrayName}-remove-button`).click(function () {
         item = $(this).parent();
         removeItemFromArray(arrayToAction, item.attr("value"));
         console.log(item.attr("value") + ' removed from ' + arrayName);
-        console.log(arrayToAction);
+        console.log(arrayName + " : " + arrayToAction);
         if (arrayToAction == mySuppliesArray) {
             saveSuppliesToLocalStorage();
         } 
@@ -113,6 +115,7 @@ function removeObjectMethod(ingredient, targetArea, inputArea, arrayToAction, ar
     });
 }
 
+// SMALL CUSTOM FUNCTIONS
 function focusAndClear(targetInput) {
     $(targetInput).val("");
     $(targetInput).focus();
@@ -142,7 +145,7 @@ function capitalizeFirstLetter(string) {
 function removeItemFromArray(array, item) {
     for (let i = 0; i < array.length; i++) {
         if (array[i] == item) {
-            array.splice(item, 1)
-        }
-    }
-}
+            array.splice(i, 1);
+        };
+    };
+};
