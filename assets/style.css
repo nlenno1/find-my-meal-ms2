@@ -419,6 +419,10 @@ h1 {
     background-color:#1EC820;
 }
 
+#result-cards-header {
+    padding: 0 8vw;
+}
+
 .recipe-search-results {
     padding: 30px 15px;
     position: relative;
@@ -443,7 +447,7 @@ h1 {
     .recipe-search-pages-logo {
     height: 140px;
     margin-left: 6vw;
-}
+    }
 }
 
 /* ---------------------------------------- Zero-Waste Recipe Card */
@@ -454,17 +458,31 @@ h1 {
     background-color: #c4c4c4;
     border: 1px solid #000;
     border-radius: 5px;
-    box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%), 0 12px 40px 0 rgb(0 0 0 / 19%);
     padding: 15px;
     margin-top: 30px;
 }
 
-.recipe-card .recipe-image {
-    width: 75%;
-    padding-top: 75%;
+.recipe-image {
+    padding: 0;
+    height: 180px;
+    width: 100%;
+    border: 1px solid #000;
+    border-radius: 5px;
+    object-fit: cover;
     margin: 0 auto;
     margin-bottom: 15px;
     background-color: #fafafa;
+}
+
+.view-recipe-button {
+    width: 80%;
+    height: 35px;
+    max-width: 400px;
+    margin: 10px 0;
+    border: 1px solid #000;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%), 0 12px 40px 0 rgb(0 0 0 / 19%);
+    background-color: #1EC820;
 }
 
 @media (min-width:575px) {
@@ -473,26 +491,22 @@ h1 {
     justify-content: space-evenly;
     flex-wrap: wrap
     }
+
     .recipe-card {
     width: 48%;
-    }
-
-    .recipe-card .recipe-image {
-    width: 45%;
-    padding-top: 45%;
-    margin: 0;
-    margin-right: 15px;
-    float: left;
     }
 }
 
 @media (min-width:997px) {
     .recipe-card .recipe-image {
-    width: 25%;
-    padding-top: 25%;
+    width: 30%;
     margin: 0;
     margin-right: 15px;
     float: left;
+    }
+
+    .view-recipe-button {
+    width: 60%;
     }
 }
 
@@ -528,7 +542,7 @@ h1 {
 
 /* -------------------------------------------------------------- Recipe Display */
 
-.recipe-display {
+/* .recipe-display {
     margin-top: 40px;
 }
 
@@ -582,4 +596,4 @@ h1 {
     margin-top: 30px;
     width: 32%;
     }
-}
+} */
