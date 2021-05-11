@@ -180,7 +180,7 @@ function compileApiRequirements (ingredientList, searchType) {
         for (i = 1; i<ingredientList.length; i++) {
             compiledList = `${compiledList},${ingredientList[i]}`
         }
-        url = `${baseUrl}${compiledList}&number=2&limitLicense=true&ranking=1&ignorePantry=true`
+        url = `${baseUrl}${compiledList}&number=4&limitLicense=true&ranking=1&ignorePantry=true`
         console.log (url)
         return(url)
     }
@@ -195,34 +195,50 @@ function makeApiCall (searchUrl) {
     $.ajax(settings).done(function (response) {
         console.log(response);
         let searchResults = response
-        // clear display space
-        $("#zero-waste-results-cards-display").html();
-        let usedIngredientsList
-        let missedIngredientsList
-
-        /* for (i = 0; i < searchResults.length; i++) {
-            if (searchResults[i].missedIngredients.length > 0) {
-                for (j = 0; j < searchResults[i].missedIngredients[j].length; j++) {
-                    missedIngredientsList.push(searchResults[i].missedIngredients[j])
-                }
-            }
-        };
-        for (i = 0; i < searchResults.length; i++) {
-            for (i = 0; i < searchResults.usedIngredients.length; i++) {
-                missedIngredientsList.push(searchResults.usedIngredients[i])
-            }
-        };
-        console.log(usedIngredientsList);
-        console.log(missedIngredientsList); */
+        // clear display space and display header
+        $("#result-cards-header").html("Recipies Found:");
+        $("#zero-waste-results-cards-display").html("");
 
         for (i = 0; i < searchResults.length; i++) {
+            let missedIngredientsList = " "
+            try {
+                missedIngredientsList = capitalizeFirstLetter(searchResults[i].missedIngredients[0].name); 
+            } catch (err) {
+                console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
+                missedIngredientsList = "&nbsp;"
+            }
+
+            let usedIngredientsList = " "
+            try {
+                usedIngredientsList = capitalizeFirstLetter(searchResults[i].usedIngredients[0].name);
+            } catch (err) {
+                console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
+                usedIngredientsList = "&nbsp;"
+            }
+            
+            for (let j = 1; j < searchResults[i].missedIngredients.length; j++){
+                missedIngredientsList = missedIngredientsList + ", " + capitalizeFirstLetter(searchResults[i].missedIngredients[j].name);
+            };
+            console.log("Missing: " + missedIngredientsList)
+            
+            for (let j = 1; j < searchResults[i].usedIngredients.length; j++){
+                console.log(capitalizeFirstLetter(searchResults[i].usedIngredients[j].name))
+                usedIngredientsList = usedIngredientsList + ", " + capitalizeFirstLetter(searchResults[i].usedIngredients[j].name);
+            };
+            console.log("Used: " + usedIngredientsList)
+
             $("#zero-waste-results-cards-display").append(
                 `<div class="recipe-card">
                     <h3 class="text-center">${searchResults[i].title}</h3>
-                    <img class="recipe-image" src=${searchResults[i].image}>
-                    <p class="likes">Likes: ${searchResults[i].likes}</p>
-                    <p class="ingredients-used">Ingredients Used: ${searchResults[i].usedIngredientCount}</p>
-                    <p class="ingredients-needed">Ingredients Needed: ${searchResults[i].missedIngredientCount}</p>
+                    <img class="recipe-image" src=${searchResults[i].image} alt="image of ${searchResults[i].title}>
+                    <p class="ingredients-used">Ingredients Used :    ${searchResults[i].usedIngredientCount}</p>
+                    <p> ${usedIngredientsList}</p>
+                    <p class="ingredients-needed">Ingredients Needed :    ${searchResults[i].missedIngredientCount}</p>
+                    <p> ${missedIngredientsList}</p>
+                    <p class="likes">Likes :   ${searchResults[i].likes}</p>
+                    <div class="button-container text-center">
+                        <button class="view-recipe-button" id=${searchResults[i].id}">View Recipe</button>
+                    </div>
                 </div>`
             )
         }
