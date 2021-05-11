@@ -258,9 +258,9 @@ footer a:hover{
    border:1px solid #c4c4c4;
 }
 
-
 @media (min-width: 575px) {
     .modal-dialog {
+    width: 98vw;
     max-width: 900px;
     }
     .ingredient-added {
