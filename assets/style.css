@@ -505,12 +505,9 @@ h1 {
     }
 }
 
-@media (min-width:997px) {
-    .recipe-card .recipe-image {
-    width: 30%;
-    margin: 0;
-    margin-right: 15px;
-    float: left;
+@media (min-width:997px) { 
+    .recipe-image {
+    width: 95%;
     }
 
     .view-recipe-button {

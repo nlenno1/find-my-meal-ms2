@@ -230,12 +230,18 @@ function makeApiCall (searchUrl) {
             $("#zero-waste-results-cards-display").append(
                 `<div class="recipe-card">
                     <h3 class="text-center">${searchResults[i].title}</h3>
-                    <img class="recipe-image" src=${searchResults[i].image} alt="image of ${searchResults[i].title}>
-                    <p class="ingredients-used">Ingredients Used :    ${searchResults[i].usedIngredientCount}</p>
-                    <p> ${usedIngredientsList}</p>
-                    <p class="ingredients-needed">Ingredients Needed :    ${searchResults[i].missedIngredientCount}</p>
-                    <p> ${missedIngredientsList}</p>
-                    <p class="likes">Likes :   ${searchResults[i].likes}</p>
+                    <div class="row g-0">
+                        <div class="col-12 col-lg-5">
+                            <img class="recipe-image" src=${searchResults[i].image} alt="Image of ${searchResults[i].title}">
+                        </div>
+                        <div class="col-12 col-lg-7">
+                            <p class="ingredients-used">Ingredients Used :    ${searchResults[i].usedIngredientCount}</p>
+                            <p>${usedIngredientsList}</p>
+                            <p class="ingredients-needed">Ingredients Needed :    ${searchResults[i].missedIngredientCount}</p>
+                            <p>${missedIngredientsList}</p>
+                            <p class="likes">Likes :   ${searchResults[i].likes}</p>
+                        </div>
+                    </div>
                     <div class="button-container text-center">
                         <button class="view-recipe-button" id=${searchResults[i].id}">View Recipe</button>
                     </div>
