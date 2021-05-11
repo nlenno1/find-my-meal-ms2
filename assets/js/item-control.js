@@ -6,15 +6,16 @@ let zeroWasteIngredientsArray = []
 
 // open array saved in local storage and display on console
 let mySuppliesArray = JSON.parse(localStorage.getItem("mySuppliesSavedList"));
-console.log((mySuppliesArray == undefined || null ? "No instance of My Supplies Array Exists" : "My Supplies Array Exists"))
+console.log(mySuppliesArray == undefined || null ? "No instance of My Supplies Array Exists" : "My Supplies Array Exists")
 console.log("My Supplies Array opened from Local Storage : " + (mySuppliesArray == "" ? "No items to load!" : mySuppliesArray));
 // avoid error with null value
 mySuppliesArray = (mySuppliesArray == null)? []: mySuppliesArray;
+console.log(mySuppliesArray)
 
 // turn item in the array into objects
 for (item of mySuppliesArray) {
     console.log(item)
-    createIngredientObject (item, $("#my-supplies-display"), "My Supplies", "mySuppliesArray");
+    createIngredientObject (item, $("#my-supplies-display"), "mySuppliesArray", "mySuppliesArray");
     removeObjectMethod(item, $("#my-supplies-display"), mySuppliesArray, "My Supplies", "mySuppliesArray");
 };
 
@@ -122,7 +123,7 @@ function focusAndClear(targetInput) {
 };
 
 function clearLocalStorge() {
-    if (mySuppliesArray = " ") {
+    if (mySuppliesArray.length == 0 ) {
         alert("My Supplies List is already empty")
     } else {
         for (name of mySuppliesArray) {
@@ -131,10 +132,9 @@ function clearLocalStorge() {
                 item.remove();
             });
         }
-    }
-    
     localStorage.setItem("mySuppliesSavedList", JSON.stringify([]));
     console.log("Local Storage array cleared")
+    }
 }
 
 function saveSuppliesToLocalStorage() {
