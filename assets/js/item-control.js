@@ -155,7 +155,7 @@ function removeItemFromArray(array, item) {
 };
 
 
-const apiResultsList
+let apiResultsList
 // API CALLS
 $("#zero-waste-find-my-meal-button").click(function() {
     alert("requested api call")
@@ -175,7 +175,7 @@ $("#zero-waste-find-my-meal-button").click(function() {
 function compileApiRequirements (ingredientList, searchType) {
     if (searchType === "zero-waste") {
         let baseUrl = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=c4a7c11521de4bae8f06ba9fd8e9ac17&ingredients="
-        console.log (baseUrl)
+        console.log ("baseURL : " + baseUrl)
         let compiledList = `${ingredientList[0]}`
         for (i = 1; i<ingredientList.length; i++) {
             compiledList = `${compiledList},${ingredientList[i]}`
@@ -184,4 +184,47 @@ function compileApiRequirements (ingredientList, searchType) {
         console.log (url)
         return(url)
     }
+}
+
+function makeApiCall (searchUrl) {
+    let settings = {
+        "url": searchUrl,
+        "method": "GET",
+        "timeout": 0,
+    };
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        let searchResults = response
+        // clear display space
+        $("#zero-waste-results-cards-display").html();
+        let usedIngredientsList
+        let missedIngredientsList
+
+        /* for (i = 0; i < searchResults.length; i++) {
+            if (searchResults[i].missedIngredients.length > 0) {
+                for (j = 0; j < searchResults[i].missedIngredients[j].length; j++) {
+                    missedIngredientsList.push(searchResults[i].missedIngredients[j])
+                }
+            }
+        };
+        for (i = 0; i < searchResults.length; i++) {
+            for (i = 0; i < searchResults.usedIngredients.length; i++) {
+                missedIngredientsList.push(searchResults.usedIngredients[i])
+            }
+        };
+        console.log(usedIngredientsList);
+        console.log(missedIngredientsList); */
+
+        for (i = 0; i < searchResults.length; i++) {
+            $("#zero-waste-results-cards-display").append(
+                `<div class="recipe-card">
+                    <h3 class="text-center">${searchResults[i].title}</h3>
+                    <img class="recipe-image" src=${searchResults[i].image}>
+                    <p class="likes">Likes: ${searchResults[i].likes}</p>
+                    <p class="ingredients-used">Ingredients Used: ${searchResults[i].usedIngredientCount}</p>
+                    <p class="ingredients-needed">Ingredients Needed: ${searchResults[i].missedIngredientCount}</p>
+                </div>`
+            )
+        }
+    });
 }
