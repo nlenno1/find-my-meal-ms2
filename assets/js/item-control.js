@@ -155,19 +155,27 @@ function removeItemFromArray(array, item) {
 };
 
 
-let apiResultsList
+
 // API CALLS
+// Zero-Waste recipe search call
 $("#zero-waste-find-my-meal-button").click(function() {
+     // developer feedback
     alert("requested api call")
+    // check if user wants to use My Supplies list
     if ($('input[type=checkbox]'). prop('checked')) {
-        console.log("box checked")
-        mySuppliesArray == "" ? "My Supplies list is empty" : makeApiCall (compileApiRequirements (mySuppliesArray, "zero-waste")); 
+        // try block to remove chance of error if no instance of mySuppliesArray exists in local storage
+        try {
+            // inline conditional to check if list exists but is empty. If not API is called using list
+            mySuppliesArray == "" ? alert("My Supplies list is empty. Please add some ingredients and try again") : makeApiCall (compileApiRequirements (mySuppliesArray, "zero-waste")); 
+        } catch (err) {
+            // User error feedback with instructions on how to fix 
+            alert('You need to add some ingredients to "My Supplies"')
+            // developer feedback
+            console.log(err.message)
+        }
     } else {
-        console.log("box un-checked")
-        makeApiCall (compileApiRequirements (zeroWasteIngredientsArray, "zero-waste")); 
+        zeroWasteIngredientsArray == "" ? alert("Zero Waste Ingredients List is empty. Please add some ingredients and try again") : makeApiCall (compileApiRequirements (zeroWasteIngredientsArray, "zero-waste"));
     }
-    //makeApiCall ();
-    //displayResults ("zero-waste");
 });
 
 
