@@ -221,7 +221,15 @@
                                     <input type="text" id="name" name="name" placeholder="Full Name" required>
                                     <input type="email" id="email" name="email" placeholder="Email Address" required>
                                     <textarea id="message" name="message" placeholder="Please enter your message here" required></textarea>
-                                    <input type="submit" id="find-my-meal-button" value="Send Message" class="find-my-meal-button">
+                                    <div class="row g-0">
+                                        <div class="col-1 col-md-2 submit-button-bumper"></div>
+                                        <div class="col-10 col-md-8">
+                                            <input type="submit" id="find-my-meal-button" value="Send Message" class="find-my-meal-button">
+                                        </div>
+                                        <div class="col-1 col-md-2 submit-button-bumper" id="loading"></div>
+                                    </div>
+                                    
+                                    
                                 </form>
                             </div>
                         </div>
