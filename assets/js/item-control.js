@@ -46,6 +46,11 @@ $("#zero-waste-ingredient-name").keypress(function(event) {
     }
 });
 
+// zero-waste input add button 
+$("#specific-needs-add-button").click(function() {
+    addItemToDisplay($("#zero-waste-ingredient-name").val().toLowerCase(), "#zero-waste-ingredients-display", "#zero-waste-ingredient-name", zeroWasteIngredientsArray, "Zero-Waste Ingredients", "zeroWasteIngredientsArray");
+});
+
 // clear My Supplies click event
 $("#clear-my-supplies-button").click(function() {
     clearLocalStorge();

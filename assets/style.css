@@ -526,14 +526,22 @@ h1 {
 
 /* -------------------------------------------------------------- specific-needs.html */
 
+
+
 .specific-needs-select, .intolerances-select {
-    min-width: 210px;
-    width: 75%;
+    max-width: 550px;
+    width: 90%;
     height: 40px;
     margin-top: 15px;
     padding-left: 10px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 900;
+}
+
+@media(min-width: 575px) {
+    #diet-add-button, #intolerances-add-button {
+    float: left;
+    }
 }
 
 /* -------------------------------------------------------------- contact.html */
