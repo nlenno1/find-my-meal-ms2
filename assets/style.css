@@ -548,6 +548,11 @@ h1 {
     height: 320px;
 }
 
+.loading-gif {
+    margin-top: 20px;
+    float: left;
+}
+
 @media (min-width: 997px) {
     #message {
     height: 250px;
