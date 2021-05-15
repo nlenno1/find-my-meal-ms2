@@ -3,6 +3,7 @@
 // defining all global variables 
 const regex = new RegExp(/^[a-zA-Z ]+$/);
 let zeroWasteIngredientsArray = []
+let dietAndIntolerancesArray = []
 
 // open array saved in local storage and display on console
 let mySuppliesArray = JSON.parse(localStorage.getItem("mySuppliesSavedList"));
@@ -48,7 +49,7 @@ $("#zero-waste-ingredient-name").keypress(function(event) {
 
 // diet add button 
 $("#diet-add-button").click(function() {
-    addItemToDisplay($("#diet-requirements-select").val().toLowerCase(), "#specific-needs-items-display", "#diet-requirements-select", dietAndIntolerancesArray, "Diet/Intolerances", "dietAndIntolerancesArray");
+    addSelectItemToDisplay($("#diet-requirements-select").val().toLowerCase(), "#specific-needs-items-display", "#diet-requirements-select", dietAndIntolerancesArray, "Diet/Intolerances", "dietAndIntolerancesArray");
 });
 
 // clear My Supplies click event
@@ -57,6 +58,23 @@ $("#clear-my-supplies-button").click(function() {
 });
 
 // BIG CUSTOM FUNCTIONS
+function addSelectItemToDisplay(item, targetArea, inputArea, arrayToAction, arrayName, compArrayName) {
+    if (arrayToAction.includes(item)) {
+        // duplicate value user feedback 
+        alert(capitalizeFirstLetter(item) + " has already been added to " + arrayName);
+    } else {
+        // create Ingredient Object
+        createIngredientObject (item, targetArea, arrayName, compArrayName);
+        // remove item functionality 
+        removeObjectMethod(item, targetArea, arrayToAction, arrayName, compArrayName);
+        // add user input to supplies array 
+        arrayToAction.push(item);
+        // show completion of task on log
+        console.log(item + ' added to ' + arrayName)
+        console.log(arrayName + " : " + arrayToAction); 
+    }
+    
+}
 function addItemToDisplay (ingredient, targetArea, inputArea, arrayToAction, arrayName, compArrayName) {
     // clear input value for next ingredient and keep focus on input box 
     focusAndClear(inputArea);
@@ -72,10 +90,8 @@ function addItemToDisplay (ingredient, targetArea, inputArea, arrayToAction, arr
         focusAndClear(inputArea);
         alert(capitalizeFirstLetter(ingredient) + " has already been added to " + arrayName);
     } else {
-        if (ingredient.includes(" ")) {
-        ingredient = ingredient.replace(" ", "-");
-        };
-         // create Ingredient Object
+        ingredient = addHyphens(ingredient);
+        // create Ingredient Object
         createIngredientObject (ingredient, targetArea, arrayName, compArrayName);
         // remove item functionality 
         removeObjectMethod(ingredient, targetArea, arrayToAction, arrayName, compArrayName);
@@ -92,8 +108,19 @@ function addItemToDisplay (ingredient, targetArea, inputArea, arrayToAction, arr
     }
 };
 
+function addHyphens(ingredient) {
+    if (ingredient.includes(" ")) {
+        ingredient = ingredient.replace(" ", "-");
+    };
+    return ingredient;
+}
+
 function createIngredientObject (ingredient, targetArea, arrayName, compArrayName) {
-    ingredientScreenName = ingredient.replace("-", " ")
+    if (compArrayName !== "dietAndIntolerancesArray") {
+        ingredientScreenName = ingredient.replace("-", " ")
+    } else {
+        ingredientScreenName = ingredient
+    }
     // add new element to designated display area 
     $(targetArea).append(
         `<div class="ingredient-added" id="${ingredient}-in-${compArrayName}" value="${ingredient}"> 
