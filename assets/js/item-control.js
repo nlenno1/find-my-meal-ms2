@@ -46,9 +46,9 @@ $("#zero-waste-ingredient-name").keypress(function(event) {
     }
 });
 
-// zero-waste input add button 
-$("#specific-needs-add-button").click(function() {
-    addItemToDisplay($("#zero-waste-ingredient-name").val().toLowerCase(), "#zero-waste-ingredients-display", "#zero-waste-ingredient-name", zeroWasteIngredientsArray, "Zero-Waste Ingredients", "zeroWasteIngredientsArray");
+// diet add button 
+$("#diet-add-button").click(function() {
+    addItemToDisplay($("#diet-requirements-select").val().toLowerCase(), "#specific-needs-items-display", "#diet-requirements-select", dietAndIntolerancesArray, "Diet/Intolerances", "dietAndIntolerancesArray");
 });
 
 // clear My Supplies click event
