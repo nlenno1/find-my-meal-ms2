@@ -214,23 +214,48 @@ $("#zero-waste-find-my-meal-button").click(function() {
             console.log(err.message)
         }
     } else {
+        // check if zeroWasteIngredientsArrayis empty and if not run compiler and make API call
         zeroWasteIngredientsArray == "" ? alert("Zero Waste Ingredients List is empty. Please add some ingredients and try again") : makeApiCall (compileApiRequirements (zeroWasteIngredientsArray, "zero-waste"));
     }
 });
 
+// Specific Needs recipe search call
+$("#specific-needs-find-my-meal-button").click(function() {
+     // developer feedback
+    alert("requested api call");
+    // check if user wants to use My Supplies list
+    if (intolerancesArray == "" && dietArray == "") {
+        alert("Please choose come Dietary Requirements or Intolerances from the drop down menus to search for recipes!")
+    } else {
+        compileApiRequirements (dietArray, "specific-needs", intolerancesArray)
+    }
+    
+});
 
-
-function compileApiRequirements (ingredientList, searchType) {
+function compileApiRequirements (firstList, searchType, secondList) {
     if (searchType === "zero-waste") {
         let baseUrl = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=c4a7c11521de4bae8f06ba9fd8e9ac17&ingredients="
-        console.log ("baseURL : " + baseUrl)
-        let compiledList = `${ingredientList[0]}`
-        for (i = 1; i<ingredientList.length; i++) {
-            compiledList = `${compiledList},${ingredientList[i]}`
+        console.log ("baseURL : " + baseUrl);
+        let compiledList = `${firstList[0]}`
+        for (i = 1; i<firstList.length; i++) {
+            compiledList = `${compiledList},${firstList[i]}`
         }
         url = `${baseUrl}${compiledList}&number=4&limitLicense=true&ranking=1&ignorePantry=true`
         console.log (url)
         return(url)
+    } else if (searchType === "specific-needs") {
+        let baseUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=c4a7c11521de4bae8f06ba9fd8e9ac17"
+        console.log ("baseURL : " + baseUrl);
+        let compiledDietList = `${firstList[0]}`
+        for (i = 1; i<firstList.length; i++) {
+            compiledDietList = `${compiledDietList},${firstList[i]}`
+        }
+        let compiledIntoleranceList = `${secondList[0]}`
+        for (i = 1; i<secondList.length; i++) {
+            compiledIntoleranceList = `${compiledIntoleranceList},${secondList[i]}`
+        }
+        url = `${baseUrl}&diet=${compiledDietList}&intolerances=${compiledIntoleranceList}&number=4&limitLicense=true&ranking=1&ignorePantry=true`
+        return (url)
     }
 }
 
