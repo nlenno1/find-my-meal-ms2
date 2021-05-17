@@ -68,13 +68,16 @@ function addSelectItemToDisplay(itemCompName, itemScreenName, targetArea, inputA
     if (arrayToAction.includes(itemCompName)) {
         // duplicate value user feedback 
         alert(capitalizeFirstLetter(itemScreenName) + " has already been added to " + arrayName);
+    } else if (itemCompName == null) {
+        alert("Please select an option from the dropdown menus")
     } else {
         // create Ingredient Object
-        createIngredientObject (itemScreenName, itemCompName, targetArea, arrayName, compArrayName);
+        createIngredientObject (itemScreenName, itemCompName, targetArea, compArrayName);
         // remove item functionality 
         removeObjectMethod(itemCompName, targetArea, arrayToAction, arrayName, compArrayName);
         // add user input to supplies array 
         arrayToAction.push(itemCompName);
+        $(inputArea).val($(inputArea + " option:first").val());
         // show completion of task on log
         console.log(itemCompName + ' added to ' + arrayName)
         console.log(arrayName + " : " + arrayToAction); 
@@ -98,7 +101,7 @@ function addItemToDisplay (ingredient, targetArea, inputArea, arrayToAction, arr
     } else {
         ingredientCompName = addHyphens(ingredient);
         // create Ingredient Object
-        createIngredientObject (ingredient, ingredientCompName, targetArea, arrayName, compArrayName);
+        createIngredientObject (ingredient, ingredientCompName, targetArea, compArrayName);
         // remove item functionality 
         removeObjectMethod(ingredientCompName, targetArea, arrayToAction, arrayName, compArrayName);
         // add user input to supplies array 
@@ -120,7 +123,7 @@ function addHyphens(ingredient) {
     return ingredient;
 }
 
-function createIngredientObject (ingredient, ingredientCompName, targetArea, arrayName, compArrayName) {
+function createIngredientObject (ingredient, ingredientCompName, targetArea, compArrayName) {
     // add new element to designated display area 
     $(targetArea).append(
         `<div class="ingredient-added" id="${ingredientCompName}-in-${compArrayName}" value="${ingredientCompName}"> 
@@ -128,6 +131,11 @@ function createIngredientObject (ingredient, ingredientCompName, targetArea, arr
             <button type="button" id="${ingredientCompName}-in-${compArrayName}-remove-button" class="btn-close" aria-label="Remove Item"></button>
         </div>`
     );
+    if (compArrayName == "intolerancesArray") {
+        $(`#${ingredientCompName}-in-${compArrayName}`).css("background-color", "rgba(3, 144, 252, 0.4)");
+    } else if (compArrayName == "dietArray") {
+        $(`#${ingredientCompName}-in-${compArrayName}`).css("background-color", "rgba(252, 227, 3, 0.5)");
+    }
     // object animations
     $(`#${ingredientCompName}-in-${compArrayName}`).hide();
     $(`#${ingredientCompName}-in-${compArrayName}`).slideDown();

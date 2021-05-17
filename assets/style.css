@@ -538,6 +538,14 @@ h1 {
     font-weight: 900;
 }
 
+#diet-requirements-select {
+    background-color: rgba(252, 227, 3, 0.5);
+}
+
+#intolerances-select {
+        background-color: rgba(3, 144, 252, 0.4);
+}
+
 @media(min-width: 575px) {
     #diet-add-button, #intolerances-add-button {
     float: left;
