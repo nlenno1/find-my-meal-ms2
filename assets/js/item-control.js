@@ -5,6 +5,7 @@ const regex = new RegExp(/^[a-zA-Z ]+$/);
 let zeroWasteIngredientsArray = []
 let dietArray = []
 let intolerancesArray = []
+let searchResults = []
 
 // open array saved in local storage and display on console
 let mySuppliesArray = JSON.parse(localStorage.getItem("mySuppliesSavedList"));
@@ -206,7 +207,7 @@ $("#zero-waste-find-my-meal-button").click(function() {
         // try block to remove chance of error if no instance of mySuppliesArray exists in local storage
         try {
             // inline conditional to check if list exists but is empty. If not API is called using list
-            mySuppliesArray == "" ? alert("My Supplies list is empty. Please add some ingredients and try again") : makeApiCall (compileApiRequirements (mySuppliesArray, "zero-waste")); 
+            mySuppliesArray == "" ? alert("My Supplies list is empty. Please add some ingredients and try again") : makeApiCall (compileApiRequirements (mySuppliesArray, "zero-waste"), "zero-waste"); 
         } catch (err) {
             // User error feedback with instructions on how to fix 
             alert('You need to add some ingredients to "My Supplies"')
@@ -215,7 +216,7 @@ $("#zero-waste-find-my-meal-button").click(function() {
         }
     } else {
         // check if zeroWasteIngredientsArrayis empty and if not run compiler and make API call
-        zeroWasteIngredientsArray == "" ? alert("Zero Waste Ingredients List is empty. Please add some ingredients and try again") : makeApiCall (compileApiRequirements (zeroWasteIngredientsArray, "zero-waste"));
+        zeroWasteIngredientsArray == "" ? alert("Zero Waste Ingredients List is empty. Please add some ingredients and try again") : makeApiCall (compileApiRequirements (zeroWasteIngredientsArray, "zero-waste"), "zero-waste");
     }
 });
 
@@ -227,7 +228,7 @@ $("#specific-needs-find-my-meal-button").click(function() {
     if (intolerancesArray == "" && dietArray == "") {
         alert("Please choose come Dietary Requirements or Intolerances from the drop down menus to search for recipes!")
     } else {
-        compileApiRequirements (dietArray, "specific-needs", intolerancesArray)
+        makeApiCall (compileApiRequirements (dietArray, "specific-needs", intolerancesArray), "specific-needs")
     }
     
 });
@@ -244,7 +245,7 @@ function compileApiRequirements (firstList, searchType, secondList) {
         console.log (url)
         return(url)
     } else if (searchType === "specific-needs") {
-        let baseUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=c4a7c11521de4bae8f06ba9fd8e9ac17"
+        let baseUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=c4a7c11521de4bae8f06ba9fd8e9ac17&addRecipeInformation=true"
         console.log ("baseURL : " + baseUrl);
         let compiledDietList = `${firstList[0]}`
         for (i = 1; i<firstList.length; i++) {
@@ -259,7 +260,7 @@ function compileApiRequirements (firstList, searchType, secondList) {
     }
 }
 
-function makeApiCall (searchUrl) {
+function makeApiCall (searchUrl, searchType) {
     let settings = {
         "url": searchUrl,
         "method": "GET",
@@ -268,38 +269,17 @@ function makeApiCall (searchUrl) {
     $.ajax(settings).done(function (response) {
         console.log(response);
         let searchResults = response
-        // clear display space and display header
+        displaySearchResults(searchResults, searchType);
+    });
+}
+
+function displaySearchResults(searchResults, searchType) {
+    if (searchType === "zero-waste") {
         $("#result-cards-header").html("Recipies Found:");
         $("#zero-waste-results-cards-display").html("");
-
         for (i = 0; i < searchResults.length; i++) {
-            let missedIngredientsList = " "
-            try {
-                missedIngredientsList = capitalizeFirstLetter(searchResults[i].missedIngredients[0].name); 
-            } catch (err) {
-                console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
-                missedIngredientsList = "&nbsp;"
-            }
-
-            let usedIngredientsList = " "
-            try {
-                usedIngredientsList = capitalizeFirstLetter(searchResults[i].usedIngredients[0].name);
-            } catch (err) {
-                console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
-                usedIngredientsList = "&nbsp;"
-            }
-            
-            for (let j = 1; j < searchResults[i].missedIngredients.length; j++){
-                missedIngredientsList = missedIngredientsList + ", " + capitalizeFirstLetter(searchResults[i].missedIngredients[j].name);
-            };
-            console.log("Missing: " + missedIngredientsList)
-            
-            for (let j = 1; j < searchResults[i].usedIngredients.length; j++){
-                console.log(capitalizeFirstLetter(searchResults[i].usedIngredients[j].name))
-                usedIngredientsList = usedIngredientsList + ", " + capitalizeFirstLetter(searchResults[i].usedIngredients[j].name);
-            };
-            console.log("Used: " + usedIngredientsList)
-
+            let missedIngredientsList = convertResponseArrayItemNamesToList(searchResults[i].missedIngredients);
+            let usedIngredientsList = convertResponseArrayItemNamesToList(searchResults[i].usedIngredients);
             $("#zero-waste-results-cards-display").append(
                 `<div class="recipe-card">
                     <h3 class="text-center">${searchResults[i].title}</h3>
@@ -319,7 +299,70 @@ function makeApiCall (searchUrl) {
                         <button class="view-recipe-button" id=${searchResults[i].id}">View Recipe</button>
                     </div>
                 </div>`
-            )
-        }
-    });
+            );
+        }  
+    } else if (searchType === "specific-needs") {
+        $("#result-cards-header").html("Recipies Found:");
+        $("#specific-needs-results-cards-display").html("");
+        searchResults = searchResults.results;
+        for (let i = 0; i < searchResults.length; i++) {
+            let dishTypes = convertResponseArrayToList(searchResults[i].dishTypes);
+            let diets = convertResponseArrayToList(searchResults[i].diets);
+            $("#specific-needs-results-cards-display").append(
+                `<div class="recipe-card">
+                    <h3 class="text-center">${searchResults[i].title}</h3>
+                    <div class="row g-0">
+                        <div class="col-12 col-lg-5">
+                            <img class="recipe-image" src=${searchResults[i].image} alt="Image of ${searchResults[i].title}">
+                        </div>
+                        <div class="col-12 col-lg-7">
+                            <p>Type of Dish: ${dishTypes}</p>
+                            <p>Ready in: ${searchResults[i].readyInMinutes} mins</p>
+                            <p>Servings: ${searchResults[i].servings}</p>
+                            <p>Health Score: ${searchResults[i].healthScore}</p>
+                            <p>Diets: ${diets}</p>
+                        </div>
+                    </div>
+                    <div class="button-container text-center">
+                        <button class="view-recipe-button" id=${searchResults[i].id}">View Recipe</button>
+                    </div>
+                </div>`
+            );
+        }  
+    }
 }
+function convertResponseArrayToList(resultArray) {
+    let newString = "";
+    try {
+        newString = capitalizeFirstLetter(resultArray[0]);
+    }
+    catch (err) {
+        console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
+        newString = "&nbsp;";
+    }
+    for (let j = 1; j < resultArray.length; j++) {
+        if (!newString.includes(capitalizeFirstLetter(resultArray[j]))) {
+            newString = newString + ", " + capitalizeFirstLetter(resultArray[j]);
+        }
+    }
+    return newString
+}
+
+function convertResponseArrayItemNamesToList(resultArray) {
+    let newString = "";
+    try {
+        newString = capitalizeFirstLetter(resultArray[0].name);
+    }
+    catch (err) {
+        console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
+        newString = "&nbsp;";
+    }
+    for (let j = 1; j < resultArray.length; j++) {
+        if (!newString.includes(capitalizeFirstLetter(resultArray[j].name))) {
+            newString = newString + ", " + capitalizeFirstLetter(resultArray[j].name);
+        }
+    }
+    return newString
+}
+
+
