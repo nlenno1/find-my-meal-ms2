@@ -3,7 +3,8 @@
 // defining all global variables 
 const regex = new RegExp(/^[a-zA-Z ]+$/);
 let zeroWasteIngredientsArray = []
-let dietAndIntolerancesArray = []
+let dietArray = []
+let intolerancesArray = []
 
 // open array saved in local storage and display on console
 let mySuppliesArray = JSON.parse(localStorage.getItem("mySuppliesSavedList"));
@@ -49,7 +50,12 @@ $("#zero-waste-ingredient-name").keypress(function(event) {
 
 // diet add button 
 $("#diet-add-button").click(function() {
-    addSelectItemToDisplay($("#diet-requirements-select").val(), $("#diet-requirements-select option:selected").text(), "#specific-needs-items-display", "#diet-requirements-select", dietAndIntolerancesArray, "Diet Array", "dietAndIntolerancesArray");
+    addSelectItemToDisplay($("#diet-requirements-select").val(), $("#diet-requirements-select option:selected").text(), "#specific-needs-items-display", "#diet-requirements-select", dietArray, "Diet Array", "dietArray");
+});
+
+// intolerances add button 
+$("#intolerances-add-button").click(function() {
+    addSelectItemToDisplay($("#intolerances-select").val(), $("#intolerances-select option:selected").text(), "#specific-needs-items-display", "#intolerances-select", intolerancesArray, "intolerances Array", "intolerancesArray");
 });
 
 // clear My Supplies click event
