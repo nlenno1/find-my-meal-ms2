@@ -49,7 +49,7 @@ $("#zero-waste-ingredient-name").keypress(function(event) {
 
 // diet add button 
 $("#diet-add-button").click(function() {
-    addSelectItemToDisplay($("#diet-requirements-select").val().toLowerCase(), "#specific-needs-items-display", "#diet-requirements-select", dietAndIntolerancesArray, "Diet/Intolerances", "dietAndIntolerancesArray");
+    addSelectItemToDisplay($("#diet-requirements-select").val(), $("#diet-requirements-select option:selected").text(), "#specific-needs-items-display", "#diet-requirements-select", dietAndIntolerancesArray, "Diet Array", "dietAndIntolerancesArray");
 });
 
 // clear My Supplies click event
@@ -58,19 +58,19 @@ $("#clear-my-supplies-button").click(function() {
 });
 
 // BIG CUSTOM FUNCTIONS
-function addSelectItemToDisplay(item, targetArea, inputArea, arrayToAction, arrayName, compArrayName) {
-    if (arrayToAction.includes(item)) {
+function addSelectItemToDisplay(itemCompName, itemScreenName, targetArea, inputArea, arrayToAction, arrayName, compArrayName) {
+    if (arrayToAction.includes(itemCompName)) {
         // duplicate value user feedback 
-        alert(capitalizeFirstLetter(item) + " has already been added to " + arrayName);
+        alert(capitalizeFirstLetter(itemScreenName) + " has already been added to " + arrayName);
     } else {
         // create Ingredient Object
-        createIngredientObject (item, targetArea, arrayName, compArrayName);
+        createIngredientObject (itemScreenName, itemCompName, targetArea, arrayName, compArrayName);
         // remove item functionality 
-        removeObjectMethod(item, targetArea, arrayToAction, arrayName, compArrayName);
+        removeObjectMethod(itemCompName, targetArea, arrayToAction, arrayName, compArrayName);
         // add user input to supplies array 
-        arrayToAction.push(item);
+        arrayToAction.push(itemCompName);
         // show completion of task on log
-        console.log(item + ' added to ' + arrayName)
+        console.log(itemCompName + ' added to ' + arrayName)
         console.log(arrayName + " : " + arrayToAction); 
     }
     
@@ -90,14 +90,13 @@ function addItemToDisplay (ingredient, targetArea, inputArea, arrayToAction, arr
         focusAndClear(inputArea);
         alert(capitalizeFirstLetter(ingredient) + " has already been added to " + arrayName);
     } else {
-        ingredient = addHyphens(ingredient);
+        ingredientCompName = addHyphens(ingredient);
         // create Ingredient Object
-        createIngredientObject (ingredient, targetArea, arrayName, compArrayName);
+        createIngredientObject (ingredient, ingredientCompName, targetArea, arrayName, compArrayName);
         // remove item functionality 
-        removeObjectMethod(ingredient, targetArea, arrayToAction, arrayName, compArrayName);
-        ingredient = ingredient.replace(" ","-");
+        removeObjectMethod(ingredientCompName, targetArea, arrayToAction, arrayName, compArrayName);
         // add user input to supplies array 
-        arrayToAction.push(ingredient);
+        arrayToAction.push(ingredientCompName);
         // save mySupplies to local storage for access later
         if (arrayToAction == mySuppliesArray) {
             saveSuppliesToLocalStorage();
@@ -115,26 +114,21 @@ function addHyphens(ingredient) {
     return ingredient;
 }
 
-function createIngredientObject (ingredient, targetArea, arrayName, compArrayName) {
-    if (compArrayName !== "dietAndIntolerancesArray") {
-        ingredientScreenName = ingredient.replace("-", " ")
-    } else {
-        ingredientScreenName = ingredient
-    }
+function createIngredientObject (ingredient, ingredientCompName, targetArea, arrayName, compArrayName) {
     // add new element to designated display area 
     $(targetArea).append(
-        `<div class="ingredient-added" id="${ingredient}-in-${compArrayName}" value="${ingredient}"> 
-            <p> ${capitalizeFirstLetter(ingredientScreenName)} </p>
-            <button type="button" id="${ingredient}-in-${compArrayName}-remove-button" class="btn-close" aria-label="Remove Item"></button>
+        `<div class="ingredient-added" id="${ingredientCompName}-in-${compArrayName}" value="${ingredientCompName}"> 
+            <p> ${capitalizeFirstLetter(ingredient)} </p>
+            <button type="button" id="${ingredientCompName}-in-${compArrayName}-remove-button" class="btn-close" aria-label="Remove Item"></button>
         </div>`
     );
     // object animations
-    $(`#${ingredient}-in-${compArrayName}`).hide();
-    $(`#${ingredient}-in-${compArrayName}`).slideDown();
+    $(`#${ingredientCompName}-in-${compArrayName}`).hide();
+    $(`#${ingredientCompName}-in-${compArrayName}`).slideDown();
 };
 
-function removeObjectMethod(ingredient, targetArea, arrayToAction, arrayName, compArrayName) {
-    $(`#${ingredient}-in-${compArrayName}-remove-button`).click(function () {
+function removeObjectMethod(ingredientCompName, targetArea, arrayToAction, arrayName, compArrayName) {
+    $(`#${ingredientCompName}-in-${compArrayName}-remove-button`).click(function () {
         item = $(this).parent();
         removeItemFromArray(arrayToAction, item.attr("value"));
         console.log(item.attr("value") + ' removed from ' + arrayName);
