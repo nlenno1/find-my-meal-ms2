@@ -331,9 +331,9 @@ function displaySearchResults(searchResults, searchType) {
                     </div>
                     <div class="button-container text-center">
                         <button class="view-recipe-button" id=${searchResults[i].id}">View Recipe</button>
-                    </div>d
+                    </div>
                 </div>`
-            );d
+            );
         }  
     } else if (searchType === "single-recipe-to-display") {
         searchResult = searchResults.recipes[0]
@@ -456,4 +456,23 @@ function convertAnalyzedInstructionsToOrderedList(resultArray) {
     }
     newString = `${newString}</ol>`
     return newString
+}
+
+
+// VIEW RECIPE BUTTON
+$(".view-recipe-button").click(function(event) {
+    console.log("button clicked")
+    console.log(this.id)
+    saveIdToLocalStorage(this.id)
+    window.location.href = "../../index.html"
+});
+
+function saveIdToLocalStorage(id) {
+    localStorage.setItem("idToLoad", JSON.stringify(id));
+    console.log("id number: " + id + " saved to Local Storage")
+}
+
+function getIdfromLocalStorage() {
+    id = JSON.parse(localStorage.getItem("idToLoad"));
+    console.log("id number: " + id + " loaded")
 }
