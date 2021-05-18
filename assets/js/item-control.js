@@ -184,7 +184,13 @@ function saveSuppliesToLocalStorage() {
 }
 
 function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+    try {
+       return string.charAt(0).toUpperCase() + string.slice(1); 
+    } catch (err) {
+        console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
+        return string
+    }
+  
 }
 
 function removeItemFromArray(array, item) {
@@ -364,7 +370,7 @@ function displaySearchResults(searchResults, searchType) {
         )
         $(".recipe-display-instructions").html(
             `<h3 class="text-center">Instructions</h3>
-            <p>${searchResult.instructions}</p>`
+            <p>${convertAnalyzedInstructionsToOrderedList(searchResult.analyzedInstructions[0].steps)}</p>`
         )
         $(".credits").html(
             `<p>Recipe credit: ${searchResult.sourceName}</p>
@@ -410,16 +416,14 @@ function convertExtendedIngredientsToOrderedList(resultArray) {
     let newString = "";
     try {
         newString =`<ol> 
-                        <li>${resultArray[0].amount} ${resultArray[0].unit} of ${capitalizeFirstLetter(resultArray[0].name)}</li>` 
+                        <li>${capitalizeFirstLetter(resultArray[0].originalString)}</li>` 
     }
     catch (err) {
         console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
         newString = "&nbsp;";
     }
     for (let j = 1; j < resultArray.length; j++) {
-        if (!newString.includes(capitalizeFirstLetter(resultArray[j].name))) {
-            newString = `${newString}<li>${resultArray[j].amount} ${resultArray[j].unit} of ${capitalizeFirstLetter(resultArray[j].name)}</li>`
-        }
+        newString = `${newString}<li>${capitalizeFirstLetter(resultArray[j].originalString)}</li>`
     }
     newString = `${newString}</ol>`
     return newString
@@ -437,4 +441,19 @@ function titleToCompName (title) {
     return newString
 }
 
-
+function convertAnalyzedInstructionsToOrderedList(resultArray) {
+    let newString = "";
+    try {
+        newString =`<ol> 
+                        <li>${resultArray[0].step}</li>` 
+    }
+    catch (err) {
+        console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
+        newString = "&nbsp;";
+    }
+    for (let j = 1; j < resultArray.length; j++) {
+        newString = `${newString}<li>${resultArray[j].step}</li>`
+    }
+    newString = `${newString}</ol>`
+    return newString
+}
