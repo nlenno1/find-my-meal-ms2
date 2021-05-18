@@ -329,6 +329,9 @@ function displaySearchResults(searchResults, searchType) {
                 </div>`
             );
         }  
+    } else if (searchType === "single-recipe-to-display") {
+        searchResults = searchResults.recipes
+        
     }
 }
 function convertResponseArrayToList(resultArray) {
