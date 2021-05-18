@@ -77,7 +77,7 @@ nav, footer, .modal-body {
     }
 }
 
-@media (min-width:997px) {
+@media (min-width:992px) {
     .nav-item {
         width: 19.8vw;
     }
@@ -177,7 +177,7 @@ footer a:hover{
     }
 }
 
-@media(min-width:997px) {
+@media(min-width:992px) {
     .spoonacular-logo {
         margin-right: 5vw;
     }
@@ -514,7 +514,7 @@ h1 {
     }
 }
 
-@media (min-width:997px) { 
+@media (min-width:992px) { 
     .recipe-image {
     width: 95%;
     }
@@ -569,7 +569,7 @@ h1 {
     float: left;
 }
 
-@media (min-width: 997px) {
+@media (min-width: 992px) {
     #message {
     height: 250px;
     }
@@ -577,34 +577,35 @@ h1 {
 
 /* -------------------------------------------------------------- Recipe Display */
 
-/* .recipe-display {
+.recipe-display {
     margin-top: 40px;
+    margin: 0 auto;
 }
 
 .recipe-display .row {
     margin-top: 30px;
 }
 
-.recipe-image, .recipe-general-info, .ingredients {
+.recipe-display-image, .recipe-general-info, .recipe-display-ingredients {
     margin-top: 30px;
     width: 100%;
 }
 
-.recipe-image, .recipe-general-info, .ingredients, .instructions, .credits {
+.recipe-display-image, .recipe-general-info, .recipe-display-ingredients, .recipe-display-instructions, .credits {
     background-color:  #c4c4c4;
     border: 2px solid #000;
     border-radius: 5px;
     padding: 15px;
+    
 }
-
 .recipe-info {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
-    align-items: flex-start;
 }
 
-.recipe-image {
-    height: 100%;
+.recipe-display-image {
     min-height: 220px;
 }
 
@@ -621,14 +622,20 @@ h1 {
 }
 
 @media(min-width: 575px) {
-    .recipe-image, .recipe-general-info, .ingredients {
+    .recipe-general-info, .recipe-display-ingredients {
     width: 48.5%;
+    }
+    .recipe-display {
+        max-width: 750px;
     }
 }
 
-@media (min-width: 997px) {
-    .recipe-image, .recipe-general-info, .ingredients {
+@media (min-width: 992px) {
+    .recipe-display-image, .recipe-general-info, .recipe-display-ingredients {
     margin-top: 30px;
     width: 32%;
     }
-} */
+    .recipe-display {
+        max-width: 1000px;
+    }
+}
