@@ -320,18 +320,56 @@ function displaySearchResults(searchResults, searchType) {
                             <p>Ready in: ${searchResults[i].readyInMinutes} mins</p>
                             <p>Servings: ${searchResults[i].servings}</p>
                             <p>Health Score: ${searchResults[i].healthScore}</p>
-                            <p>Diets: ${diets}</p>
+                            <p>Diets: ${diets}</p>d
                         </div>
                     </div>
                     <div class="button-container text-center">
                         <button class="view-recipe-button" id=${searchResults[i].id}">View Recipe</button>
-                    </div>
+                    </div>d
                 </div>`
-            );
+            );d
         }  
     } else if (searchType === "single-recipe-to-display") {
-        searchResults = searchResults.recipes
-        
+        searchResult = searchResults.recipes[0]
+        console.log(searchResult)
+        $(".recipe-display>h1").html(
+            `${searchResult.title}`
+        )
+        $(".recipe-display-image-summary-container").html(
+            `<div class="row g-0">
+                <div class="col-12 col-md-4">
+                    <img class="recipe-display-image" src=${searchResult.image} alt="Image of ${searchResult.title}">
+                </div>
+                <div class="d-none d-sm-block col-sm-12 col-md-8">
+                    <p>${searchResult.summary}</p>
+                </div>
+            </div>`
+        )
+        $(".recipe-display-ingredients").html(
+            `<h3 class="text-center">Ingredients</h3>
+            <p>${convertExtendedIngredientsToOrderedList(searchResult.extendedIngredients)}</p>`
+        )
+        $(".recipe-general-info").html(
+            `<h3 class="text-center">General Information</h3>
+            <ul>
+                <li>Servings: ${searchResult.servings}</li>
+                <li>Ready in: ${searchResult.readyInMinutes} mins</li>
+                <li>Dish type: ${convertResponseArrayToList(searchResult.dishTypes)}</li>
+                <li>Suitable for: ${convertResponseArrayToList(searchResult.diets)}</li>
+                <li>Cuisines: ${convertResponseArrayToList(searchResult.cuisines)}</li>
+                <li>Health Score: ${searchResult.healthScore}</li>
+                <li>Price Per Serving: ${searchResult.pricePerServing}</li>
+                <li>Spoonacular Score: ${searchResult.spoonacularScore}</li>
+            </ul>`
+        )
+        $(".recipe-display-instructions").html(
+            `<h3 class="text-center">Instructions</h3>
+            <p>${searchResult.instructions}</p>`
+        )
+        $(".credits").html(
+            `<p>Recipe credit: ${searchResult.sourceName}</p>
+            <a href="${searchResult.sourceUrl}" target="_blank">Link to Original Recipe</a>`
+        )
     }
 }
 function convertResponseArrayToList(resultArray) {
@@ -363,6 +401,37 @@ function convertResponseArrayItemNamesToList(resultArray) {
     for (let j = 1; j < resultArray.length; j++) {
         if (!newString.includes(capitalizeFirstLetter(resultArray[j].name))) {
             newString = newString + ", " + capitalizeFirstLetter(resultArray[j].name);
+        }
+    }
+    return newString
+}
+
+function convertExtendedIngredientsToOrderedList(resultArray) {
+    let newString = "";
+    try {
+        newString =`<ol> 
+                        <li>${resultArray[0].amount} ${resultArray[0].unit} of ${capitalizeFirstLetter(resultArray[0].name)}</li>` 
+    }
+    catch (err) {
+        console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
+        newString = "&nbsp;";
+    }
+    for (let j = 1; j < resultArray.length; j++) {
+        if (!newString.includes(capitalizeFirstLetter(resultArray[j].name))) {
+            newString = `${newString}<li>${resultArray[j].amount} ${resultArray[j].unit} of ${capitalizeFirstLetter(resultArray[j].name)}</li>`
+        }
+    }
+    newString = `${newString}</ol>`
+    return newString
+}
+
+function titleToCompName (title) {
+    let newString = ""
+    for (item of title) {
+        if (item == " ") {
+            newString = newString + "-"
+        } else {
+            newString = newString + item.toLowerCase()
         }
     }
     return newString
