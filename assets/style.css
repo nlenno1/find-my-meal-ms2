@@ -21,11 +21,11 @@ nav, footer, .modal-body {
     background-color: rgba(256, 256, 256, 0.8);
 }
 
-.navbar-light .navbar-nav .nav-link {
+.navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .nav-link:focus {
     color: rgba(0,0,0,1);
 }
 
-.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+.navbar-light .navbar-nav .nav-link:hover {
     color: rgba(30, 200, 32, 1)
 }
 
