@@ -336,7 +336,13 @@ function displaySearchResults(searchResults, searchType) {
             );
         }  
     } else if (searchType === "single-recipe-to-display") {
-        searchResult = searchResults.recipes[0]
+        try {
+            searchResult = searchResults.recipes[0]
+        } catch (err) {
+            console.log("This is only 1 recipe being loaded")
+            searchResult = searchResults
+        }
+        
         console.log(searchResult)
         $(".recipe-display>h1").html(
             `${searchResult.title}`
@@ -464,7 +470,7 @@ $(".view-recipe-button").click(function(event) {
     console.log("button clicked")
     console.log(this.id)
     saveIdToLocalStorage(this.id)
-    window.location.href = "../../index.html"
+    window.location.href = "../../recipe-display.html"
 });
 
 function saveIdToLocalStorage(id) {
@@ -474,5 +480,5 @@ function saveIdToLocalStorage(id) {
 
 function getIdfromLocalStorage() {
     id = JSON.parse(localStorage.getItem("idToLoad"));
-    console.log("id number: " + id + " loaded")
+    return id
 }
