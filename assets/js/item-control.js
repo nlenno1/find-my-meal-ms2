@@ -274,6 +274,10 @@ function makeApiCall (searchUrl, searchType) {
     };
     $.ajax(settings).done(function (response) {
         console.log(response);
+        if (searchType !== "single-recipe-to-display") {
+            saveToLocalStorage(response, searchType)
+            console.log("Response saved to local storage under tag : " + searchType)
+        }
         let searchResults = response
         displaySearchResults(searchResults, searchType);
     });
@@ -481,4 +485,13 @@ function saveIdToLocalStorage(id) {
 function getIdfromLocalStorage() {
     id = JSON.parse(localStorage.getItem("idToLoad"));
     return id
+}
+
+function saveToLocalStorage (itemToSave, tagName) {
+    localStorage.setItem(tagName, JSON.stringify(itemToSave));
+}
+
+function loadFromLocalStorage (tagName) {
+    loadedItem = JSON.parse(localStorage.getItem(tagName));
+    return loadedItem
 }
