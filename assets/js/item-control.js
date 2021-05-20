@@ -315,11 +315,13 @@ function displaySearchResults(searchResults, searchType) {
                         </div>
                     </div>
                     <div class="button-container text-center">
-                        <button class="view-recipe-button" id=${searchResults[i].id}">View Recipe</button>
+                        <button class="view-recipe-button" id=${searchResults[i].id}>View Recipe</button>
                     </div>
                 </div>`
             );
-        }  
+        } 
+        // VIEW RECIPE BUTTON
+        createViewRecipeButtons();
     } else if (searchType === "specific-needs") {
         $("#result-cards-header").html("Recipies Found:");
         $("#specific-needs-results-cards-display").html("");
@@ -339,15 +341,17 @@ function displaySearchResults(searchResults, searchType) {
                             <p>Ready in: ${searchResults[i].readyInMinutes} mins</p>
                             <p>Servings: ${searchResults[i].servings}</p>
                             <p>Health Score: ${searchResults[i].healthScore}</p>
-                            <p>Diets: ${diets}</p>d
+                            <p>Diets: ${diets}</p>
                         </div>
                     </div>
                     <div class="button-container text-center">
-                        <button class="view-recipe-button" id=${searchResults[i].id}">View Recipe</button>
+                        <button class="view-recipe-button" id=${searchResults[i].id}>View Recipe</button>
                     </div>
                 </div>`
             );
-        }  
+        } 
+        // VIEW RECIPE BUTTON
+        createViewRecipeButtons();
     } else if (searchType === "single-recipe-to-display") {
         try {
             searchResult = searchResults.recipes[0]
@@ -387,9 +391,16 @@ function displaySearchResults(searchResults, searchType) {
                 <li>Spoonacular Score: ${searchResult.spoonacularScore}</li>
             </ul>`
         )
+        if (searchResult.analyzedInstructions == "" && searchResult.analyzedInstructions == "") {
+            recipeInstructionsForDisplay = "There are no instructions provided"
+        } else if (searchResult.analyzedInstructions == "") {
+            recipeInstructionsForDisplay = `<p>${searchResult.instructions}</p>`
+        } else {
+            recipeInstructionsForDisplay = convertAnalyzedInstructionsToOrderedList(searchResult.analyzedInstructions[0].steps)
+        }
         $(".recipe-display-instructions").html(
             `<h3 class="text-center">Instructions</h3>
-            <p>${convertAnalyzedInstructionsToOrderedList(searchResult.analyzedInstructions[0].steps)}</p>`
+            ${recipeInstructionsForDisplay}`
         )
         $(".credits").html(
             `<p>Recipe credit: ${searchResult.sourceName}</p>
@@ -397,6 +408,7 @@ function displaySearchResults(searchResults, searchType) {
         )
     }
 }
+
 function convertResponseArrayToList(resultArray) {
     let newString = "";
     try {
@@ -478,13 +490,14 @@ function convertAnalyzedInstructionsToOrderedList(resultArray) {
 }
 
 
-// VIEW RECIPE BUTTON
-$(".view-recipe-button").click(function(event) {
-    console.log("button clicked")
-    console.log(this.id)
-    saveIdToLocalStorage(this.id)
-    window.location.href = "../../recipe-display.html"
-});
+function createViewRecipeButtons() {
+    $(".view-recipe-button").click(function (event) {
+        console.log("button clicked");
+        console.log(this.id);
+        saveIdToLocalStorage(this.id);
+        window.location.href = "../../recipe-display.html"
+    });
+}
 
 function saveIdToLocalStorage(id) {
     localStorage.setItem("idToLoad", JSON.stringify(id));
