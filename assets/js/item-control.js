@@ -13,12 +13,13 @@ console.log(mySuppliesArray == undefined || null ? "No instance of My Supplies A
 console.log("My Supplies Array opened from Local Storage : " + (mySuppliesArray == "" ? "No items to load!" : mySuppliesArray));
 // avoid error with null value
 mySuppliesArray = (mySuppliesArray == null)? []: mySuppliesArray;
-console.log(mySuppliesArray)
+console.log("My Supplies : " + mySuppliesArray)
 
-// turn item in the array into objects
+// turn item in the array into html elements
 for (item of mySuppliesArray) {
     console.log(item)
-    createIngredientObject (item, $("#my-supplies-display"), "mySuppliesArray", "mySuppliesArray");
+    let screenName = removeHyphens(item)
+    createIngredientObject (screenName, item, $("#my-supplies-display"), "mySuppliesArray");
     removeObjectMethod(item, $("#my-supplies-display"), mySuppliesArray, "My Supplies", "mySuppliesArray");
 };
 
@@ -120,6 +121,13 @@ function addItemToDisplay (ingredient, targetArea, inputArea, arrayToAction, arr
 function addHyphens(ingredient) {
     if (ingredient.includes(" ")) {
         ingredient = ingredient.replace(" ", "-");
+    };
+    return ingredient;
+}
+
+function removeHyphens(ingredient) {
+    if (ingredient.includes("-")) {
+        ingredient = ingredient.replace("-", " ");
     };
     return ingredient;
 }
