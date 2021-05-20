@@ -173,8 +173,9 @@ function clearLocalStorge() {
                 item.remove();
             });
         }
-    localStorage.setItem("mySuppliesSavedList", JSON.stringify([]));
-    console.log("Local Storage array cleared")
+        localStorage.setItem("mySuppliesSavedList", JSON.stringify([]));
+        mySuppliesArray = []
+        console.log("Local Storage array cleared", "My Supplies : " + mySuppliesArray) 
     }
 }
 
