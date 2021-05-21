@@ -2,6 +2,7 @@ $(window).ready (function() {
     makePageNavbar();
     makePageModals();
     makePageFooter();
+    console.log("Page elements created")
 });
 
 function makePageNavbar() {
@@ -43,7 +44,6 @@ function makePageNavbar() {
                 </ul>
             </div>`
     )
-    console.log("Navbar created")
 }
 
 function makePageModals() {
@@ -189,7 +189,6 @@ function makePageModals() {
             </div>
         </div>`
     )
-    console.log("Modals created")
 }
 
 function makePageFooter () {
@@ -209,5 +208,4 @@ function makePageFooter () {
             </div>
         </div>`
     )
-    console.log("Footer created")
 }

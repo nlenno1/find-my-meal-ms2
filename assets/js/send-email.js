@@ -1,4 +1,7 @@
-console.log("emailJS linked")
+$(window).ready (function() {
+    disableLoadStoredResults();
+    console.log("emailJS linked")
+});
 
 function sendMail(contactForm) {
     console.log("Sending Email")

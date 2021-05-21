@@ -65,6 +65,14 @@ $("#clear-my-supplies-button").click(function() {
     clearLocalStorge();
 });
 
+$(".back-to-results-button").click(function() {
+    if (loadFromLocalStorage ("backToResultsPageToLoad") == "zero-waste") {
+        window.location.href = "../../zero-waste.html"
+    } else if (loadFromLocalStorage ("backToResultsPageToLoad") == "specific-needs") {
+        window.location.href = "../../specific-needs.html"
+    }
+});
+
 // BIG CUSTOM FUNCTIONS
 function addSelectItemToDisplay(itemCompName, itemScreenName, targetArea, inputArea, arrayToAction, arrayName, compArrayName) {
     if (arrayToAction.includes(itemCompName)) {
@@ -284,8 +292,8 @@ function makeApiCall (searchUrl, searchType) {
     $.ajax(settings).done(function (response) {
         console.log(response);
         if (searchType !== "single-recipe-to-display") {
-            saveToLocalStorage(response, searchType)
-            console.log("Response saved to local storage under tag : " + searchType)
+            saveToLocalStorage(response, "latestSearchResults")
+            console.log("Response saved to local storage under tag latestSearchResults")
         }
         let searchResults = response
         displaySearchResults(searchResults, searchType);
@@ -315,13 +323,14 @@ function displaySearchResults(searchResults, searchType) {
                         </div>
                     </div>
                     <div class="button-container text-center">
-                        <button class="view-recipe-button" id=${searchResults[i].id}>View Recipe</button>
+                        <button class="view-recipe-button zero-waste-display-recipe-button" id=${searchResults[i].id}>View Recipe</button>
                     </div>
                 </div>`
             );
+
         } 
         // VIEW RECIPE BUTTON
-        createViewRecipeButtons();
+        createViewRecipeButtons(searchType);
     } else if (searchType === "specific-needs") {
         $("#result-cards-header").html("Recipies Found:");
         $("#specific-needs-results-cards-display").html("");
@@ -351,7 +360,7 @@ function displaySearchResults(searchResults, searchType) {
             );
         } 
         // VIEW RECIPE BUTTON
-        createViewRecipeButtons();
+        createViewRecipeButtons(searchType);
     } else if (searchType === "single-recipe-to-display") {
         try {
             searchResult = searchResults.recipes[0]
@@ -406,6 +415,7 @@ function displaySearchResults(searchResults, searchType) {
             `<p>Recipe credit: ${searchResult.sourceName}</p>
             <a href="${searchResult.sourceUrl}" target="_blank">Link to Original Recipe</a>`
         )
+        createBackToResultsButton ()
     }
 }
 
@@ -490,24 +500,49 @@ function convertAnalyzedInstructionsToOrderedList(resultArray) {
 }
 
 
-function createViewRecipeButtons() {
+function createViewRecipeButtons(searchType) {
     $(".view-recipe-button").click(function (event) {
         console.log("button clicked");
         console.log(this.id);
-        saveIdToLocalStorage(this.id);
+        saveToLocalStorage(this.id, "idToLoad");
+        if (searchType == "zero-waste") {
+            saveToLocalStorage("zero-waste", "backToResultsPageToLoad")
+        } else if (searchType == "specific-needs") {
+            saveToLocalStorage("specific needs", "backToResultsPageToLoad")
+        }
         window.location.href = "../../recipe-display.html"
     });
 }
 
-function saveIdToLocalStorage(id) {
-    localStorage.setItem("idToLoad", JSON.stringify(id));
-    console.log("id number: " + id + " saved to Local Storage")
+function createBackToResultsButton () {
+    $("#back-to-results-button").click(function () {
+        if (loadFromLocalStorage ("backToResultsPageToLoad") == "zero-waste") {
+            window.location.href = "../../zero-waste.html"
+        } else if (loadFromLocalStorage ("backToResultsPageToLoad") == "specific-needs") {
+            window.location.href = "specific-needs.html"
+        }
+        saveToLocalStorage (true, "reloadResults")
+    });
+}
+    
+function loadStoredResults() {
+    if (loadFromLocalStorage("reloadResults") == true) {
+        console.log("Reloading results");
+        searchResults = loadFromLocalStorage("latestSearchResults");
+        console.log(searchResults);
+        displaySearchResults(searchResults, loadFromLocalStorage("backToResultsPageToLoad"));
+        saveToLocalStorage("", "backToResultsPageToLoad");
+        disableLoadStoredResults();
+    } else {
+        console.log("No previous results to load")
+    }
 }
 
-function getIdfromLocalStorage() {
-    id = JSON.parse(localStorage.getItem("idToLoad"));
-    return id
+function disableLoadStoredResults () {
+    saveToLocalStorage(false, "reloadResults");
+    console.log("loadStoredResults() disabled")
 }
+
 
 function saveToLocalStorage (itemToSave, tagName) {
     localStorage.setItem(tagName, JSON.stringify(itemToSave));

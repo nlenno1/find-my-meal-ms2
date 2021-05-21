@@ -1,5 +1,6 @@
 $(window).ready (function() {
     luckyDipApiCall();
+    disableLoadStoredResults();
 });
 
 $("#lucky-dip-button").click(function() {
