@@ -1,7 +1,50 @@
 $(window).ready (function() {
+    makePageNavbar();
     makePageModals();
-    console.log("Modals Created!!!")
+    makePageFooter();
 });
+
+function makePageNavbar() {
+    $("nav").html(
+        `<a class="navbar-brand d-sm-none" href="index.html"><img class="navbar-logo"
+                    src="assets/images/find-my-meal-logo.png" alt="Find My Meal Logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav justify-content-center">
+                    <li class="nav-item d-sm-none d-lg-block">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="nav-link navbar-modal-button" data-bs-toggle="modal"
+                            data-bs-target="#about-modal">About</button>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <button type="button" class="nav-link navbar-modal-button dropdown-toggle" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Recipe Finders
+                    </button>
+                        <div class="nav-item dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="lucky-dip.html">Lucky Dip</a>
+                            <a class="dropdown-item" href="zero-waste.html">Zero-Waste</a>
+                            <a class="dropdown-item" href="specific-needs.html">Specific Needs</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="nav-link navbar-modal-button" data-bs-toggle="modal"
+                            data-bs-target="#my-supplies-modal">My Supplies</button>
+                    </li>
+                    <li class="nav-item d-sm-none d-lg-block">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>`
+    )
+    console.log("Navbar created")
+}
 
 function makePageModals() {
     $("#modals-container").html(
@@ -146,4 +189,25 @@ function makePageModals() {
             </div>
         </div>`
     )
+    console.log("Modals created")
+}
+
+function makePageFooter () {
+    $("footer").html(
+        `<div class="footer-mask"></div>
+        <div class="footer-mask-2"></div>
+        <div class="row g-0 footer-background sticky-bottom">
+            <div class="col-3 col-sm-4"></div>
+            <div class="col-5 col-sm-4 copyright-info">
+                <a href="contact.html">Contact the developer</a>
+                <p>© Nicholas Lennon</p>
+            </div>
+            <div class="col-4 powered-by-info">
+                <p class="logo-label">Powered by</p>
+                <a href="https://spoonacular.com/food-api" target="_blank"><img class="spoonacular-logo"
+                        src="assets/images/spoonacular-logo.svg" alt="Spoonacular's Logo"></a>
+            </div>
+        </div>`
+    )
+    console.log("Footer created")
 }
