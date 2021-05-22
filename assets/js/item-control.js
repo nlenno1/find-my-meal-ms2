@@ -284,6 +284,8 @@ function compileApiRequirements (firstList, searchType, secondList) {
 }
 
 function makeApiCall (searchUrl, searchType) {
+    $("#find-my-meal-button").val("Searching For Recipes ...");
+    $("#loading").html('<img class="loading-gif" src="assets/images/loading.gif">')
     let settings = {
         "url": searchUrl,
         "method": "GET",
@@ -297,6 +299,8 @@ function makeApiCall (searchUrl, searchType) {
         }
         let searchResults = response
         displaySearchResults(searchResults, searchType);
+        $("#loading").html('')
+        $("#find-my-meal-button").val("Find My Meal");
     });
 }
 
