@@ -327,8 +327,8 @@ function displaySearchResults(searchResults, searchType) {
                     </div>
                 </div>`
             );
-
         } 
+        window.scrollTo(0, 680);
         // VIEW RECIPE BUTTON
         createViewRecipeButtons(searchType);
     } else if (searchType === "specific-needs") {
@@ -359,6 +359,7 @@ function displaySearchResults(searchResults, searchType) {
                 </div>`
             );
         } 
+        window.scrollTo(0, 680);
         // VIEW RECIPE BUTTON
         createViewRecipeButtons(searchType);
     } else if (searchType === "single-recipe-to-display") {
@@ -508,7 +509,7 @@ function createViewRecipeButtons(searchType) {
         if (searchType == "zero-waste") {
             saveToLocalStorage("zero-waste", "backToResultsPageToLoad")
         } else if (searchType == "specific-needs") {
-            saveToLocalStorage("specific needs", "backToResultsPageToLoad")
+            saveToLocalStorage("specific-needs", "backToResultsPageToLoad")
         }
         window.location.href = "../../recipe-display.html"
     });
