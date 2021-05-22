@@ -5,11 +5,3 @@ $(window).ready (function() {
     console.log(url)
     makeApiCall(url, "single-recipe-to-display");
 });
-
-$(".back-to-results-button").click(function() {
-    if (loadFromLocalStorage ("backToResultsPageToLoad") == "zero-waste") {
-        window.location.href = "../../zero-waste.html"
-    } else if (loadFromLocalStorage ("backToResultsPageToLoad") == "specific-needs") {
-        window.location.href = "../../specific-needs.html"
-    }
-});
