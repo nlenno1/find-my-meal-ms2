@@ -35,40 +35,9 @@ $("#ingredient-name").keypress(function(event) {
     }
 });
 
-// zero-waste input add button 
-$("#zero-waste-add-button").click(function() {
-    addItemToDisplay($("#zero-waste-ingredient-name").val().toLowerCase(), "#zero-waste-ingredients-display", "#zero-waste-ingredient-name", zeroWasteIngredientsArray, "Zero-Waste Ingredients", "zeroWasteIngredientsArray");
-});
-
-// zero-waste input enter key event 
-$("#zero-waste-ingredient-name").keypress(function(event) {
-    let key = event.keyCode;
-    if (key == "13") {
-        addItemToDisplay ($("#zero-waste-ingredient-name").val().toLowerCase(), "#zero-waste-ingredients-display", "#zero-waste-ingredient-name", zeroWasteIngredientsArray, "Zero-Waste Ingredients", "zeroWasteIngredientsArray");
-    }
-});
-
-// diet add button 
-$("#diet-add-button").click(function() {
-    addSelectItemToDisplay($("#diet-requirements-select").val(), $("#diet-requirements-select option:selected").text(), "#specific-needs-items-display", "#diet-requirements-select", dietArray, "Diet Array", "dietArray");
-});
-
-// intolerances add button 
-$("#intolerances-add-button").click(function() {
-    addSelectItemToDisplay($("#intolerances-select").val(), $("#intolerances-select option:selected").text(), "#specific-needs-items-display", "#intolerances-select", intolerancesArray, "intolerances Array", "intolerancesArray");
-});
-
 // clear My Supplies click event
 $("#clear-my-supplies-button").click(function() {
     clearLocalStorge();
-});
-
-$(".back-to-results-button").click(function() {
-    if (loadFromLocalStorage ("backToResultsPageToLoad") == "zero-waste") {
-        window.location.href = "../../zero-waste.html"
-    } else if (loadFromLocalStorage ("backToResultsPageToLoad") == "specific-needs") {
-        window.location.href = "../../specific-needs.html"
-    }
 });
 
 // BIG CUSTOM FUNCTIONS
