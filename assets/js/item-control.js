@@ -8,33 +8,39 @@ let intolerancesArray = []
 let searchResults = []
 
 // open array saved in local storage and display on console
-let mySuppliesArray = JSON.parse(localStorage.getItem("mySuppliesSavedList"));
-console.log(mySuppliesArray == undefined || null ? "No instance of My Supplies Array Exists" : "My Supplies Array Exists")
-console.log("My Supplies Array opened from Local Storage : " + (mySuppliesArray == "" ? "No items to load!" : mySuppliesArray));
-// avoid error with null value
-mySuppliesArray = (mySuppliesArray == null)? []: mySuppliesArray;
-console.log("My Supplies : " + mySuppliesArray)
+    mySuppliesArray = JSON.parse(localStorage.getItem("mySuppliesSavedList"));
+    console.log(mySuppliesArray == undefined || null ? "No instance of My Supplies Array Exists" : "My Supplies Array Exists")
+    console.log("My Supplies Array opened from Local Storage : " + (mySuppliesArray == "" ? "No items to load!" : mySuppliesArray));
+    // avoid error with null value
+    mySuppliesArray = (mySuppliesArray == null)? []: mySuppliesArray;
+    console.log("My Supplies : " + mySuppliesArray)
 
-// turn item in the array into html elements
-for (item of mySuppliesArray) {
-    console.log(item)
-    let screenName = removeHyphens(item)
-    createIngredientObject (screenName, item, $("#my-supplies-display"), "mySuppliesArray");
-    removeObjectMethod(item, $("#my-supplies-display"), mySuppliesArray, "My Supplies", "mySuppliesArray");
-};
+$(window).ready (function() {
+    // turn item in the array into html elements
+    for (item of mySuppliesArray) {
+        let screenName = removeHyphens(item)
+        createIngredientObject (screenName, item, $("#my-supplies-display"), "mySuppliesArray");
+        removeObjectMethod(item, $("#my-supplies-display"), mySuppliesArray, "My Supplies", "mySuppliesArray");
+    };
+    
+    // ADD BUTTON AND ENTER KEY EVENTS
+    // my supplies input add button 
+    $("#supplies-add-button").click(function() {
+        addItemToDisplay($("#ingredient-name").val().toLowerCase(), "#my-supplies-display", "#ingredient-name", mySuppliesArray, "My Supplies", "mySuppliesArray");
+    });
 
-// ADD BUTTON AND ENTER KEY EVENTS
-// my supplies input add button 
-$("#supplies-add-button").click(function() {
-    addItemToDisplay($("#ingredient-name").val().toLowerCase(), "#my-supplies-display", "#ingredient-name", mySuppliesArray, "My Supplies", "mySuppliesArray");
-});
+    // my supplies input enter key event 
+    $("#ingredient-name").keypress(function(event) {
+        let key = event.keyCode;
+        if (key == "13") {
+            addItemToDisplay ($("#ingredient-name").val().toLowerCase(), "#my-supplies-display", "#ingredient-name", mySuppliesArray, "My Supplies", "mySuppliesArray");
+        }
+    });
 
-// my supplies input enter key event 
-$("#ingredient-name").keypress(function(event) {
-    let key = event.keyCode;
-    if (key == "13") {
-        addItemToDisplay ($("#ingredient-name").val().toLowerCase(), "#my-supplies-display", "#ingredient-name", mySuppliesArray, "My Supplies", "mySuppliesArray");
-    }
+    // clear My Supplies click event
+    $("#clear-my-supplies-button").click(function() {
+        clearLocalStorge();
+    });
 });
 
 // zero-waste input add button 
@@ -58,11 +64,6 @@ $("#diet-add-button").click(function() {
 // intolerances add button 
 $("#intolerances-add-button").click(function() {
     addSelectItemToDisplay($("#intolerances-select").val(), $("#intolerances-select option:selected").text(), "#specific-needs-items-display", "#intolerances-select", intolerancesArray, "intolerances Array", "intolerancesArray");
-});
-
-// clear My Supplies click event
-$("#clear-my-supplies-button").click(function() {
-    clearLocalStorge();
 });
 
 $(".back-to-results-button").click(function() {
@@ -92,8 +93,8 @@ function addSelectItemToDisplay(itemCompName, itemScreenName, targetArea, inputA
         console.log(itemCompName + ' added to ' + arrayName)
         console.log(arrayName + " : " + arrayToAction); 
     }
-    
 }
+
 function addItemToDisplay (ingredient, targetArea, inputArea, arrayToAction, arrayName, compArrayName) {
     // clear input value for next ingredient and keep focus on input box 
     focusAndClear(inputArea);
