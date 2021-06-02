@@ -224,8 +224,6 @@ function removeItemFromArray(array, item) {
 // API CALLS
 // Zero-Waste recipe search call
 $("#zero-waste-find-my-meal-button").click(function() {
-     // developer feedback
-    alert("requested api call")
     // check if user wants to use My Supplies list
     if ($('input[type=checkbox]'). prop('checked')) {
         // try block to remove chance of error if no instance of mySuppliesArray exists in local storage
