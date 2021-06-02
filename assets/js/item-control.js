@@ -314,17 +314,17 @@ function displaySearchResults(searchResults, searchType) {
             let usedIngredientsList = convertResponseArrayItemNamesToList(searchResults[i].usedIngredients);
             $("#zero-waste-results-cards-display").append(
                 `<div class="recipe-card">
-                    <h3 class="text-center">${searchResults[i].title}</h3>
+                    <h3 class="text-center">${checkIfHasValue(searchResults[i].title)}</h3>
                     <div class="row g-0">
                         <div class="col-12 col-lg-5">
-                            <img class="recipe-image" src=${searchResults[i].image} alt="Image of ${searchResults[i].title}">
+                            <img class="recipe-image" src=${searchResults[i].image} alt="Image of ${checkIfHasValue(searchResults[i].title)}">
                         </div>
                         <div class="col-12 col-lg-7">
-                            <p class="ingredients-used">Ingredients Used :    ${searchResults[i].usedIngredientCount}</p>
-                            <p>${usedIngredientsList}</p>
-                            <p class="ingredients-needed">Ingredients Needed :    ${searchResults[i].missedIngredientCount}</p>
-                            <p>${missedIngredientsList}</p>
-                            <p class="likes">Likes :   ${searchResults[i].likes}</p>
+                            <p class="ingredients-used">Ingredients Used : ${checkIfHasValue(searchResults[i].usedIngredientCount)}</p>
+                            <p>${checkIfHasValue(usedIngredientsList)}</p>
+                            <p class="ingredients-needed">Ingredients Needed : ${checkIfHasValue(searchResults[i].missedIngredientCount)}</p>
+                            <p>${checkIfHasValue(missedIngredientsList)}</p>
+                            <p class="likes">Likes : ${checkIfHasValue(searchResults[i].likes)}</p>
                         </div>
                     </div>
                     <div class="button-container text-center">
@@ -345,17 +345,17 @@ function displaySearchResults(searchResults, searchType) {
             let diets = convertResponseArrayToList(searchResults[i].diets);
             $("#specific-needs-results-cards-display").append(
                 `<div class="recipe-card">
-                    <h3 class="text-center">${searchResults[i].title}</h3>
+                    <h3 class="text-center">${checkIfHasValue(searchResults[i].title)}</h3>
                     <div class="row g-0">
                         <div class="col-12 col-lg-5">
-                            <img class="recipe-image" src=${searchResults[i].image} alt="Image of ${searchResults[i].title}">
+                            <img class="recipe-image" src=${searchResults[i].image} alt="Image of ${checkIfHasValue(searchResults[i].title)}">
                         </div>
                         <div class="col-12 col-lg-7">
-                            <p>Type of Dish: ${dishTypes}</p>
-                            <p>Ready in: ${searchResults[i].readyInMinutes} mins</p>
-                            <p>Servings: ${searchResults[i].servings}</p>
-                            <p>Health Score: ${searchResults[i].healthScore}</p>
-                            <p>Diets: ${diets}</p>
+                            <p>Type of Dish: ${checkIfHasValue(dishTypes)}</p>
+                            <p>Ready in: ${checkIfHasValue(searchResults[i].readyInMinutes)} mins</p>
+                            <p>Servings: ${checkIfHasValue(searchResults[i].servings)}</p>
+                            <p>Health Score: ${checkIfHasValue(searchResults[i].healthScore)}</p>
+                            <p>Diets: ${checkIfHasValue(diets)}</p>
                         </div>
                     </div>
                     <div class="button-container text-center">
@@ -376,7 +376,7 @@ function displaySearchResults(searchResults, searchType) {
         }
         
         console.log(searchResult)
-        $(".recipe-display>h1").html(
+        $(".recipe-display h1").html(
             `${searchResult.title}`
         )
         $(".recipe-display-image-summary-container").html(
@@ -396,14 +396,14 @@ function displaySearchResults(searchResults, searchType) {
         $(".recipe-general-info").html(
             `<h3 class="text-center">General Information</h3>
             <ul>
-                <li>Servings: ${searchResult.servings}</li>
-                <li>Ready in: ${searchResult.readyInMinutes} mins</li>
-                <li>Dish type: ${convertResponseArrayToList(searchResult.dishTypes)}</li>
-                <li>Suitable for: ${convertResponseArrayToList(searchResult.diets)}</li>
-                <li>Cuisines: ${convertResponseArrayToList(searchResult.cuisines)}</li>
-                <li>Health Score: ${searchResult.healthScore}</li>
-                <li>Price Per Serving: ${searchResult.pricePerServing}</li>
-                <li>Spoonacular Score: ${searchResult.spoonacularScore}</li>
+                <li>Servings: ${checkIfHasValue(searchResult.servings)}</li>
+                <li>Ready in: ${checkIfHasValue(searchResult.readyInMinutes)} mins</li>
+                <li>Dish type: ${checkIfHasValue(convertResponseArrayToList(searchResult.dishTypes))}</li>
+                <li>Suitable for: ${checkIfHasValue(convertResponseArrayToList(searchResult.diets))}</li>
+                <li>Cuisines: ${checkIfHasValue(convertResponseArrayToList(searchResult.cuisines))}</li>
+                <li>Health Score: ${checkIfHasValue(searchResult.healthScore)}</li>
+                <li>Price Per Serving: ${checkIfHasValue(searchResult.pricePerServing)}</li>
+                <li>Spoonacular Score: ${checkIfHasValue(searchResult.spoonacularScore)}</li>
             </ul>`
         )
         if (searchResult.analyzedInstructions == "" && searchResult.analyzedInstructions == "") {
@@ -418,8 +418,8 @@ function displaySearchResults(searchResults, searchType) {
             ${recipeInstructionsForDisplay}`
         )
         $(".credits").html(
-            `<p>Recipe credit: ${searchResult.sourceName}</p>
-            <a href="${searchResult.sourceUrl}" target="_blank">Link to Original Recipe</a>`
+            `<p>Recipe credit: ${checkIfHasValue(searchResult.sourceName)}</p>
+            <a href="${checkIfHasValue(searchResult.sourceUrl)}" target="_blank">Link to Original Recipe</a>`
         )
         createBackToResultsButton ()
     }
@@ -557,4 +557,11 @@ function saveToLocalStorage (itemToSave, tagName) {
 function loadFromLocalStorage (tagName) {
     loadedItem = JSON.parse(localStorage.getItem(tagName));
     return loadedItem
+}
+
+function checkIfHasValue(value){
+    if (value == ""){
+        value = "Unknown"
+    }
+    return value
 }
