@@ -76,7 +76,7 @@ nav, footer, .modal-body {
     padding: 0.5rem 0rem;
     }
     .nav-item {
-        width: 32.8vw;
+        width: 32vw;
     }
     .navbar-expand-sm .navbar-collapse {
     justify-content: space-evenly;
@@ -92,7 +92,7 @@ nav, footer, .modal-body {
 
 @media (min-width:992px) {
     .nav-item {
-        width: 19.8vw;
+        width: 18vw;
     }
     .dropdown-menu {
         width: 19.8vw;
