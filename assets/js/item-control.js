@@ -556,7 +556,7 @@ function loadFromLocalStorage (tagName) {
 }
 
 function checkIfHasValue(value){
-    if (value == "" || value == "undefined" || value == null){
+    if (value == "" || value == undefined || value == null){
         value = "Unknown"
     }
     return value
