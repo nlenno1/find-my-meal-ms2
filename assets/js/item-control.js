@@ -7,15 +7,16 @@ let dietArray = []
 let intolerancesArray = []
 let searchResults = []
 
-// open array saved in local storage and display on console
+$(window).ready (function() {
+    // open array saved in local storage and display messages on console
     mySuppliesArray = JSON.parse(localStorage.getItem("mySuppliesSavedList"));
     console.log(mySuppliesArray == undefined || null ? "No instance of My Supplies Array Exists" : "My Supplies Array Exists")
     console.log("My Supplies Array opened from Local Storage : " + (mySuppliesArray == "" ? "No items to load!" : mySuppliesArray));
     // avoid error with null value
     mySuppliesArray = (mySuppliesArray == null)? []: mySuppliesArray;
+    //developer feedback
     console.log("My Supplies : " + mySuppliesArray)
 
-$(window).ready (function() {
     // turn item in the array into html elements
     for (item of mySuppliesArray) {
         let screenName = removeHyphens(item)
@@ -75,11 +76,13 @@ $(".back-to-results-button").click(function() {
 });
 
 // BIG CUSTOM FUNCTIONS
+//Create Item From A Add Button click event on a select menu
 function addSelectItemToDisplay(itemCompName, itemScreenName, targetArea, inputArea, arrayToAction, arrayName, compArrayName) {
     if (arrayToAction.includes(itemCompName)) {
         // duplicate value user feedback 
         alert(capitalizeFirstLetter(itemScreenName) + " has already been added to " + arrayName);
     } else if (itemCompName == null) {
+        // conditional for no selection made - original values given item value of null
         alert("Please select an option from the dropdown menus")
     } else {
         // create Ingredient Object
@@ -149,25 +152,31 @@ function createIngredientObject (ingredient, ingredientCompName, targetArea, com
             <button type="button" id="${ingredientCompName}-in-${compArrayName}-remove-button" class="btn-close" aria-label="Remove Item"></button>
         </div>`
     );
+    //color change intolerance element backgrounds depending on what array they are in
     if (compArrayName == "intolerancesArray") {
         $(`#${ingredientCompName}-in-${compArrayName}`).css("background-color", "rgba(3, 144, 252, 0.4)");
     } else if (compArrayName == "dietArray") {
         $(`#${ingredientCompName}-in-${compArrayName}`).css("background-color", "rgba(252, 227, 3, 0.5)");
     }
-    // object animations
+    // object animations when created
     $(`#${ingredientCompName}-in-${compArrayName}`).hide();
     $(`#${ingredientCompName}-in-${compArrayName}`).slideDown();
 };
-
+//create click event listener for the remove button
 function removeObjectMethod(ingredientCompName, targetArea, arrayToAction, arrayName, compArrayName) {
     $(`#${ingredientCompName}-in-${compArrayName}-remove-button`).click(function () {
+        //store parent of clicked element as variable
         item = $(this).parent();
+        // call function to remove the item from the array it is in
         removeItemFromArray(arrayToAction, item.attr("value"));
+        //developer feedback
         console.log(item.attr("value") + ' removed from ' + arrayName);
         console.log(arrayName + " : " + arrayToAction);
+        //save mySupplies array to local storage if changed
         if (arrayToAction == mySuppliesArray) {
             saveSuppliesToLocalStorage();
         } 
+        //remove element from html with animation
         item.fadeOut(function () {
             item.remove();
         });
@@ -175,6 +184,7 @@ function removeObjectMethod(ingredientCompName, targetArea, arrayToAction, array
 }
 
 // SMALL CUSTOM FUNCTIONS
+//focus on selected area and clear the input box
 function focusAndClear(targetInput) {
     $(targetInput).val("");
     $(targetInput).focus();
@@ -208,7 +218,6 @@ function capitalizeFirstLetter(string) {
         console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
         return string
     }
-  
 }
 
 function removeItemFromArray(array, item) {

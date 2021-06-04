@@ -1,19 +1,25 @@
+// Window ready function to load sections of the page
 $(window).ready (function() {
+    //function calls to build page
     makePageNavbar();
     makePageModals();
     makePageFooter();
+    //developer feedback
     console.log("Page elements created")
 });
 
 function makePageNavbar() {
+    //change <nav> html
     $("nav").html(
-        `<a class="navbar-brand d-sm-none" href="index.html"><img class="navbar-logo"
+        `<!-- Find my meal logo (not displayed at phone breakpoint) - index.html link -->
+        <a class="navbar-brand d-sm-none" href="index.html"><img class="navbar-logo"
                     src="assets/images/find-my-meal-logo.png" alt="Find My Meal Logo"></a>
+            <!-- navbar toggler button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
+            <!-- nav items either displayed as dropdown when collapsed or in navbar -->
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav justify-content-center">
                     <li class="nav-item d-sm-none d-lg-block">
@@ -23,11 +29,13 @@ function makePageNavbar() {
                         <button type="button" class="nav-link navbar-modal-button" data-bs-toggle="modal"
                             data-bs-target="#about-modal">About</button>
                     </li>
+                    <!-- Dropdown button for Recipe finder selector -->
                     <li class="nav-item dropdown">
                         <button type="button" class="nav-link navbar-modal-button dropdown-toggle" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Recipe Finders
                     </button>
+                        <!-- Dropdown list -->
                         <div class="nav-item dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="lucky-dip.html">Lucky Dip</a>
                             <a class="dropdown-item" href="zero-waste.html">Zero-Waste</a>
@@ -47,6 +55,7 @@ function makePageNavbar() {
 }
 
 function makePageModals() {
+    //create both modals
     $("#modals-container").html(
         `<!-- About Modal -->
         <div class="modal fade" id="about-modal" tabindex="-1" aria-labelledby="about-modal-label" aria-hidden="true">
@@ -192,15 +201,21 @@ function makePageModals() {
 }
 
 function makePageFooter () {
+    //change <footer> html
     $("footer").html(
-        `<div class="footer-mask"></div>
+        `<!--Background angled masks-->
+        <div class="footer-mask"></div>
         <div class="footer-mask-2"></div>
+        <!--footer creator with background-->
         <div class="row g-0 footer-background sticky-bottom">
+            <!--spacer column-->
             <div class="col-3 col-sm-4"></div>
+            <!--center column with copyright and contact-->
             <div class="col-5 col-sm-4 copyright-info">
                 <a href="contact.html">Contact the developer</a>
                 <p>© Nicholas Lennon</p>
             </div>
+            <!--column with credit link to the API provider-->
             <div class="col-4 powered-by-info">
                 <p class="logo-label">Powered by</p>
                 <a href="https://spoonacular.com/food-api" target="_blank"><img class="spoonacular-logo"
