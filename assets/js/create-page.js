@@ -50,7 +50,7 @@ function makePageModals() {
     $("#modals-container").html(
         `<!-- About Modal -->
         <div class="modal fade" id="about-modal" tabindex="-1" aria-labelledby="about-modal-label" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="about-modal-label">About</h5>
@@ -71,7 +71,7 @@ function makePageModals() {
                     <div class="accordion-item text-start">
                         <h2 class="accordion-header" id="flush-headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            <strong>My Supplies</strong>
+                            <strong>How to us "My Supplies"</strong>
                         </button>
                         </h2>
                         <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
@@ -81,7 +81,7 @@ function makePageModals() {
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            <strong>Diets</strong>
+                            <strong>Supported Diet List</strong>
                         </button>
                         </h2>
                         <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
@@ -124,7 +124,7 @@ function makePageModals() {
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingThree">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                            <strong>Intolerances</strong>
+                            <strong>Supported Intolerance List</strong>
                         </button>
                         </h2>
                         <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
