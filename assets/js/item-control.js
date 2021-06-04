@@ -244,8 +244,6 @@ $("#zero-waste-find-my-meal-button").click(function() {
 
 // Specific Needs recipe search call
 $("#specific-needs-find-my-meal-button").click(function() {
-     // developer feedback
-    alert("requested api call");
     // check if user wants to use My Supplies list
     if (intolerancesArray == "" && dietArray == "") {
         alert("Please choose come Dietary Requirements or Intolerances from the drop down menus to search for recipes!")
@@ -558,7 +556,7 @@ function loadFromLocalStorage (tagName) {
 }
 
 function checkIfHasValue(value){
-    if (value == ""){
+    if (value == "" || value == "undefined" || value == null){
         value = "Unknown"
     }
     return value
