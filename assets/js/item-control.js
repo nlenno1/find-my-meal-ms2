@@ -341,7 +341,7 @@ function displaySearchResults(searchResults, searchType) {
         window.scrollTo(0, 680);
         // VIEW RECIPE BUTTON
         createViewRecipeButtons(searchType);
-    } else if (searchType === "specific-needs" && searchResults[0].title !== "") {
+    } else if (searchType === "specific-needs" && searchResults.results[0].title !== "") {
         $("#result-cards-header").html("Recipies Found:");
         $("#specific-needs-results-cards-display").html("");
         searchResults = searchResults.results;
@@ -427,8 +427,8 @@ function displaySearchResults(searchResults, searchType) {
             <a href="${checkIfHasValue(searchResult.sourceUrl)}" target="_blank">Link to Original Recipe</a>`
         )
         createBackToResultsButton ()
-    } else if (searchType === "specific-needs" || searchType === "zero-waste" && searchResults[0].title !== "") {
-        $("#result-cards-header").html('<i class="fas fa-exclamation-circle"></i> Unfortunatly No Recipies Were Found! <i class="fas fa-exclamation-circle"></i>');
+    } else {
+        $("#result-cards-header").html('<i class="fas fa-exclamation-circle"></i> Unfortunatly Something Went Wron and No Recipies Were Found! <i class="fas fa-exclamation-circle"></i>');
     }
 }
 
