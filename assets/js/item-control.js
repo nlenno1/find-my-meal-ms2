@@ -122,7 +122,7 @@ function addItemToDisplay (ingredient, targetArea, inputArea, arrayToAction, arr
         arrayToAction.push(ingredientCompName);
         // save mySupplies to local storage for access later
         if (arrayToAction == mySuppliesArray) {
-            saveSuppliesToLocalStorage();
+            saveToLocalStorage (mySuppliesArray, "mySuppliesSavedList")
         } 
         // show completion of task on log
         console.log(ingredient + ' added to ' + arrayName)
@@ -174,7 +174,7 @@ function removeObjectMethod(ingredientCompName, targetArea, arrayToAction, array
         console.log(arrayName + " : " + arrayToAction);
         //save mySupplies array to local storage if changed
         if (arrayToAction == mySuppliesArray) {
-            saveSuppliesToLocalStorage();
+            saveToLocalStorage (mySuppliesArray, "mySuppliesSavedList")
         } 
         //remove element from html with animation
         item.fadeOut(function () {
@@ -206,11 +206,6 @@ function clearLocalStorge() {
     }
 }
 
-function saveSuppliesToLocalStorage() {
-    localStorage.setItem("mySuppliesSavedList", JSON.stringify(mySuppliesArray));
-    console.log("Saved to Local Storage")
-}
-
 function capitalizeFirstLetter(string) {
     try {
        return string.charAt(0).toUpperCase() + string.slice(1); 
@@ -227,7 +222,6 @@ function removeItemFromArray(array, item) {
         };
     };
 };
-
 
 
 // API CALLS
