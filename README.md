@@ -195,6 +195,8 @@ Below is a diagram to better illustrate this structure.
 
 Wireframes were created using Figma to aid in the design process. Some design elements have changed during the building process to improve the user experience and functionality of the site
 
+After designing these wireframes, I decided to add a Home and Contact buttons to the NavBar as I added a new contact page, however I removed these at the Tablet break point to make the bar less cluttered. To maintain this functionality, I added a contact page link to the footer, which is easily accessible on all pages, and the logo will also act as a home button, as it does on all pages.
+
 index.html:
 ![index.html wireframes](assets/readme-assets/index-wireframes-min.png)
 
@@ -217,15 +219,16 @@ Modal Design:
 
 **Colour Scheme**
 
-The main colours used throughout the website _____________________.
-I used the original colour of Blue Green (#5C93AE) with the [Color Scheme Designer](http://colorschemedesigner.com/csd-3.5/) to select complimentary colours for this project.
+The main colours used throughout the website are Black, White and Grey (#c4c4c4) using a bright Green (#1EC820) to highlight. 
 
-The chosen colour scheme is to give the website a modern, clean and sleek feel that will appeal to the demographic.
+These colours were chosen as they compliment the website's background image and give the site a clean, modern and professional feel without being too bright and flashy which will appeal to the demographic.
 
 **Typography**
 
-This project uses the font Special Elite for headings and _______ for body text.
+This project uses the font Special Elite for headings and Open Sans for body text. This allows the headings to be themed while having clear text to make it easier to read which imporves the user experience.
 
 **Imagery**
 
-The images used are all appropriate to the style of the website and are vibrant and engaging. 
+The background image used is appropriate to the style of the website.
+
+All recipe images are provided by the API.
