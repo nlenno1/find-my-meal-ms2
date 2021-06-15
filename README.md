@@ -178,6 +178,19 @@ About Modal
 
 ### Structure
 
+The website has been designed around a **Tree** structure hierarchy. This reduces the overall complexity of the site which allows users to navigate it easier.
+
+Below is a diagram to better illustrate this structure.
+
+![Website Structure Flow Diagram](assets/readme-assets/findmymeal-website-structure-diagram.png)
+
+- From index.html you can select which recipe finder service you want and you can transition from one service to another.
+- Once you make a search using a service the "Search Results" will display on the page that is currently viewed. If you perform another search then these results will be replaces by the new ones.
+- When a Search result is selected, recipe-display.html will be called and loaded with the requested information.
+- If the user tries to move horizontally on the graph after displaying "Search Results" or loading recipe-display.html then they will lose all retrieved data from the API.
+
+[Back to Contents](#contents)
+
 ### Skeleton
 
 #### Design
