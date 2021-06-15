@@ -193,6 +193,26 @@ Below is a diagram to better illustrate this structure.
 
 ### Skeleton
 
+Wireframes were created using Figma to aid in the design process. Some design elements have changed during the building process to improve the user experience and functionality of the site
+
+index.html:
+![index.html wireframes](assets/readme-assets/index-wireframes-min.png)
+
+lucky-dip.html:
+![lucky-dip.html wireframes](assets/readme-assets/lucky-dip-wireframes-min.png)
+
+zero-waste.html:
+![zero-waste.html wireframes](assets/readme-assets/zero-waste-wireframes-min.png)
+
+specific-needs.html:
+![specific-needs.html wireframes](assets/readme-assets/specific-needs-wireframes-min.png)
+
+recipe-display.html:
+![recipe-display wireframes](assets/readme-assets/recipe-display-wireframes-min.png)
+
+Modal Design:
+![modal design wireframes](assets/readme-assets/modal-wireframes-min.png)
+
 #### Design
 
 **Colour Scheme**
