@@ -2,27 +2,28 @@
 
 // defining all global variables 
 const regex = new RegExp(/^[a-zA-Z ]+$/);
-let zeroWasteIngredientsArray = []
-let dietArray = []
-let intolerancesArray = []
-let searchResults = []
+let zeroWasteIngredientsArray = [];
+let dietArray = [];
+let intolerancesArray = [];
+let searchResults = [];
+let mySuppliesArray;
 
 $(window).ready (function() {
     // open array saved in local storage and display messages on console
     mySuppliesArray = JSON.parse(localStorage.getItem("mySuppliesSavedList"));
-    console.log(mySuppliesArray == undefined || null ? "No instance of My Supplies Array Exists" : "My Supplies Array Exists")
+    console.log(mySuppliesArray == undefined || null ? "No instance of My Supplies Array Exists" : "My Supplies Array Exists");
     console.log("My Supplies Array opened from Local Storage : " + (mySuppliesArray == "" ? "No items to load!" : mySuppliesArray));
     // avoid error with null value
     mySuppliesArray = (mySuppliesArray == null)? []: mySuppliesArray;
     //developer feedback
-    console.log("My Supplies : " + mySuppliesArray)
+    console.log("My Supplies : " + mySuppliesArray);
 
     // turn item in the array into html elements
-    for (item of mySuppliesArray) {
-        let screenName = removeHyphens(item)
+    for (let item of mySuppliesArray) {
+        let screenName = removeHyphens(item);
         createIngredientObject (screenName, item, $("#my-supplies-display"), "mySuppliesArray");
         removeObjectMethod(item, $("#my-supplies-display"), mySuppliesArray, "My Supplies", "mySuppliesArray");
-    };
+    }
     
     // ADD BUTTON AND ENTER KEY EVENTS
     // my supplies input add button 
@@ -69,9 +70,9 @@ $("#intolerances-add-button").click(function() {
 
 $(".back-to-results-button").click(function() {
     if (loadFromLocalStorage ("backToResultsPageToLoad") == "zero-waste") {
-        window.location.href = "../../zero-waste.html"
+        window.location.href = "../../zero-waste.html";
     } else if (loadFromLocalStorage ("backToResultsPageToLoad") == "specific-needs") {
-        window.location.href = "../../specific-needs.html"
+        window.location.href = "../../specific-needs.html";
     }
 });
 
@@ -83,7 +84,7 @@ function addSelectItemToDisplay(itemCompName, itemScreenName, targetArea, inputA
         alert(capitalizeFirstLetter(itemScreenName) + " has already been added to " + arrayName);
     } else if (itemCompName == null) {
         // conditional for no selection made - original values given item value of null
-        alert("Please select an option from the dropdown menus")
+        alert("Please select an option from the dropdown menus");
     } else {
         // create Ingredient Object
         createIngredientObject (itemScreenName, itemCompName, targetArea, compArrayName);
@@ -93,7 +94,7 @@ function addSelectItemToDisplay(itemCompName, itemScreenName, targetArea, inputA
         arrayToAction.push(itemCompName);
         $(inputArea).val($(inputArea + " option:first").val());
         // show completion of task on log
-        console.log(itemCompName + ' added to ' + arrayName)
+        console.log(itemCompName + ' added to ' + arrayName);
         console.log(arrayName + " : " + arrayToAction); 
     }
 }
@@ -113,7 +114,7 @@ function addItemToDisplay (ingredient, targetArea, inputArea, arrayToAction, arr
         focusAndClear(inputArea);
         alert(capitalizeFirstLetter(ingredient) + " has already been added to " + arrayName);
     } else {
-        ingredientCompName = addHyphens(ingredient);
+        let ingredientCompName = addHyphens(ingredient);
         // create Ingredient Object
         createIngredientObject (ingredient, ingredientCompName, targetArea, compArrayName);
         // remove item functionality 
@@ -122,25 +123,25 @@ function addItemToDisplay (ingredient, targetArea, inputArea, arrayToAction, arr
         arrayToAction.push(ingredientCompName);
         // save mySupplies to local storage for access later
         if (arrayToAction == mySuppliesArray) {
-            saveToLocalStorage (mySuppliesArray, "mySuppliesSavedList")
+            saveToLocalStorage (mySuppliesArray, "mySuppliesSavedList");
         } 
         // show completion of task on log
-        console.log(ingredient + ' added to ' + arrayName)
+        console.log(ingredient + ' added to ' + arrayName);
         console.log(arrayName + " : " + arrayToAction);
     }
-};
+}
 
 function addHyphens(ingredient) {
     if (ingredient.includes(" ")) {
         ingredient = ingredient.replace(" ", "-");
-    };
+    }
     return ingredient;
 }
 
 function removeHyphens(ingredient) {
     if (ingredient.includes("-")) {
         ingredient = ingredient.replace("-", " ");
-    };
+    }
     return ingredient;
 }
 
@@ -161,12 +162,12 @@ function createIngredientObject (ingredient, ingredientCompName, targetArea, com
     // object animations when created
     $(`#${ingredientCompName}-in-${compArrayName}`).hide();
     $(`#${ingredientCompName}-in-${compArrayName}`).slideDown();
-};
+}
 //create click event listener for the remove button
 function removeObjectMethod(ingredientCompName, targetArea, arrayToAction, arrayName, compArrayName) {
     $(`#${ingredientCompName}-in-${compArrayName}-remove-button`).click(function () {
         //store parent of clicked element as variable
-        item = $(this).parent();
+        let item = $(this).parent();
         // call function to remove the item from the array it is in
         removeItemFromArray(arrayToAction, item.attr("value"));
         //developer feedback
@@ -174,7 +175,7 @@ function removeObjectMethod(ingredientCompName, targetArea, arrayToAction, array
         console.log(arrayName + " : " + arrayToAction);
         //save mySupplies array to local storage if changed
         if (arrayToAction == mySuppliesArray) {
-            saveToLocalStorage (mySuppliesArray, "mySuppliesSavedList")
+            saveToLocalStorage (mySuppliesArray, "mySuppliesSavedList");
         } 
         //remove element from html with animation
         item.fadeOut(function () {
@@ -188,21 +189,21 @@ function removeObjectMethod(ingredientCompName, targetArea, arrayToAction, array
 function focusAndClear(targetInput) {
     $(targetInput).val("");
     $(targetInput).focus();
-};
+}
 
 function clearLocalStorge() {
     if (mySuppliesArray.length == 0 ) {
-        alert("My Supplies List is already empty")
+        alert("My Supplies List is already empty");
     } else {
-        for (name of mySuppliesArray) {
-            item = $(`#${name}-in-mySuppliesArray`)
+        for (let name of mySuppliesArray) {
+            let item = $(`#${name}-in-mySuppliesArray`);
             item.fadeOut(function () {
                 item.remove();
             });
         }
         localStorage.setItem("mySuppliesSavedList", JSON.stringify([]));
-        mySuppliesArray = []
-        console.log("Local Storage array cleared", "My Supplies : " + mySuppliesArray) 
+        mySuppliesArray = [];
+        console.log("Local Storage array cleared", "My Supplies : " + mySuppliesArray) ;
     }
 }
 
@@ -211,7 +212,7 @@ function capitalizeFirstLetter(string) {
        return string.charAt(0).toUpperCase() + string.slice(1); 
     } catch (err) {
         console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
-        return string
+        return string;
     }
 }
 
@@ -219,9 +220,9 @@ function removeItemFromArray(array, item) {
     for (let i = 0; i < array.length; i++) {
         if (array[i] == item) {
             array.splice(i, 1);
-        };
-    };
-};
+        }
+    }
+}
 
 
 // API CALLS
@@ -235,9 +236,9 @@ $("#zero-waste-find-my-meal-button").click(function() {
             mySuppliesArray == "" ? alert("My Supplies list is empty. Please add some ingredients and try again") : makeApiCall (compileApiRequirements (mySuppliesArray, "zero-waste"), "zero-waste"); 
         } catch (err) {
             // User error feedback with instructions on how to fix 
-            alert('You need to add some ingredients to "My Supplies"')
+            alert('You need to add some ingredients to "My Supplies"');
             // developer feedback
-            console.log(err.message)
+            console.log(err.message);
         }
     } else {
         // check if zeroWasteIngredientsArrayis empty and if not run compiler and make API call
@@ -249,43 +250,43 @@ $("#zero-waste-find-my-meal-button").click(function() {
 $("#specific-needs-find-my-meal-button").click(function() {
     // check if user wants to use My Supplies list
     if (intolerancesArray == "" && dietArray == "") {
-        alert("Please choose come Dietary Requirements or Intolerances from the drop down menus to search for recipes!")
+        alert("Please choose come Dietary Requirements or Intolerances from the drop down menus to search for recipes!");
     } else {
-        makeApiCall (compileApiRequirements (dietArray, "specific-needs", intolerancesArray), "specific-needs")
+        makeApiCall (compileApiRequirements (dietArray, "specific-needs", intolerancesArray), "specific-needs");
     }
     
 });
 
 function compileApiRequirements (firstList, searchType, secondList) {
     if (searchType === "zero-waste") {
-        let baseUrl = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=c4a7c11521de4bae8f06ba9fd8e9ac17&ingredients="
+        let baseUrl = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=c4a7c11521de4bae8f06ba9fd8e9ac17&ingredients=";
         console.log ("baseURL : " + baseUrl);
-        let compiledList = `${firstList[0]}`
-        for (i = 1; i<firstList.length; i++) {
-            compiledList = `${compiledList},${firstList[i]}`
+        let compiledList = `${firstList[0]}`;
+        for (let i = 1; i<firstList.length; i++) {
+            compiledList = `${compiledList},${firstList[i]}`;
         }
-        url = `${baseUrl}${compiledList}&number=4&limitLicense=true&ranking=1&ignorePantry=true`
-        console.log (url)
-        return(url)
+        let url = `${baseUrl}${compiledList}&number=4&limitLicense=true&ranking=1&ignorePantry=true`;
+        console.log (url);
+        return(url);
     } else if (searchType === "specific-needs") {
-        let baseUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=c4a7c11521de4bae8f06ba9fd8e9ac17&addRecipeInformation=true"
+        let baseUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=c4a7c11521de4bae8f06ba9fd8e9ac17&addRecipeInformation=true";
         console.log ("baseURL : " + baseUrl);
-        let compiledDietList = `${firstList[0]}`
-        for (i = 1; i<firstList.length; i++) {
-            compiledDietList = `${compiledDietList},${firstList[i]}`
+        let compiledDietList = `${firstList[0]}`;
+        for (let i = 1; i<firstList.length; i++) {
+            compiledDietList = `${compiledDietList},${firstList[i]}`;
         }
-        let compiledIntoleranceList = `${secondList[0]}`
-        for (i = 1; i<secondList.length; i++) {
-            compiledIntoleranceList = `${compiledIntoleranceList},${secondList[i]}`
+        let compiledIntoleranceList = `${secondList[0]}`;
+        for (let i = 1; i<secondList.length; i++) {
+            compiledIntoleranceList = `${compiledIntoleranceList},${secondList[i]}`;
         }
-        url = `${baseUrl}&diet=${compiledDietList}&intolerances=${compiledIntoleranceList}&number=4&limitLicense=true&ranking=1&ignorePantry=true`
-        return (url)
+        let url = `${baseUrl}&diet=${compiledDietList}&intolerances=${compiledIntoleranceList}&number=4&limitLicense=true&ranking=1&ignorePantry=true`;
+        return (url);
     }
 }
 
 function makeApiCall (searchUrl, searchType) {
     $("#find-my-meal-button").val("Searching For Recipes ...");
-    $("#loading").html('<img class="loading-gif" src="assets/images/loading.gif">')
+    $("#loading").html('<img class="loading-gif" src="assets/images/loading.gif">');
     let settings = {
         "url": searchUrl,
         "method": "GET",
@@ -294,12 +295,12 @@ function makeApiCall (searchUrl, searchType) {
     $.ajax(settings).done(function (response) {
         console.log(response);
         if (searchType !== "single-recipe-to-display") {
-            saveToLocalStorage(response, "latestSearchResults")
-            console.log("Response saved to local storage under tag latestSearchResults")
+            saveToLocalStorage(response, "latestSearchResults");
+            console.log("Response saved to local storage under tag latestSearchResults");
         }
-        let searchResults = response
+        let searchResults = response;
         displaySearchResults(searchResults, searchType);
-        $("#loading").html('')
+        $("#loading").html('');
         $("#find-my-meal-button").val("Find My Meal");
     });
 }
@@ -308,7 +309,7 @@ function displaySearchResults(searchResults, searchType) {
     if (searchType === "zero-waste" && searchResults[0].title !== "") {
         $("#result-cards-header").html("Recipies Found:");
         $("#zero-waste-results-cards-display").html("");
-        for (i = 0; i < searchResults.length; i++) {
+        for (let i = 0; i < searchResults.length; i++) {
             let missedIngredientsList = convertResponseArrayItemNamesToList(searchResults[i].missedIngredients);
             let usedIngredientsList = convertResponseArrayItemNamesToList(searchResults[i].usedIngredients);
             $("#zero-waste-results-cards-display").append(
@@ -367,17 +368,17 @@ function displaySearchResults(searchResults, searchType) {
         // VIEW RECIPE BUTTON
         createViewRecipeButtons(searchType);
     } else if (searchType === "single-recipe-to-display") {
+        let searchResult;
         try {
-            searchResult = searchResults.recipes[0]
+            searchResult = searchResults.recipes[0];
         } catch (err) {
-            console.log("This is only 1 recipe being loaded")
-            searchResult = searchResults
+            console.log("This is only 1 recipe being loaded");
+            searchResult = searchResults;
         }
-        
-        console.log(searchResult)
+        console.log(searchResult);
         $(".recipe-display h1").html(
             `${searchResult.title}`
-        )
+        );
         $(".recipe-display-image-summary-container").html(
             `<div class="row g-0">
                 <div class="col-12 col-md-4">
@@ -387,11 +388,11 @@ function displaySearchResults(searchResults, searchType) {
                     <p>${searchResult.summary}</p>
                 </div>
             </div>`
-        )
+        );
         $(".recipe-display-ingredients").html(
             `<h3 class="text-center">Ingredients</h3>
             <p>${convertExtendedIngredientsToOrderedList(searchResult.extendedIngredients)}</p>`
-        )
+        );
         $(".recipe-general-info").html(
             `<h3 class="text-center">General Information</h3>
             <ul>
@@ -404,23 +405,24 @@ function displaySearchResults(searchResults, searchType) {
                 <li>Price Per Serving: ${checkIfHasValue(searchResult.pricePerServing)}</li>
                 <li>Spoonacular Score: ${checkIfHasValue(searchResult.spoonacularScore)}</li>
             </ul>`
-        )
+        );
+        let recipeInstructionsForDisplay;
         if (searchResult.analyzedInstructions == "" && searchResult.analyzedInstructions == "") {
-            recipeInstructionsForDisplay = "There are no instructions provided"
+            recipeInstructionsForDisplay = "There are no instructions provided";
         } else if (searchResult.analyzedInstructions == "") {
-            recipeInstructionsForDisplay = `<p>${searchResult.instructions}</p>`
+            recipeInstructionsForDisplay = `<p>${searchResult.instructions}</p>`;
         } else {
-            recipeInstructionsForDisplay = convertAnalyzedInstructionsToOrderedList(searchResult.analyzedInstructions[0].steps)
+            recipeInstructionsForDisplay = convertAnalyzedInstructionsToOrderedList(searchResult.analyzedInstructions[0].steps);
         }
         $(".recipe-display-instructions").html(
             `<h3 class="text-center">Instructions</h3>
             ${recipeInstructionsForDisplay}`
-        )
+        );
         $(".credits").html(
             `<p>Recipe credit: ${checkIfHasValue(searchResult.sourceName)}</p>
             <a href="${checkIfHasValue(searchResult.sourceUrl)}" target="_blank">Link to Original Recipe</a>`
-        )
-        createBackToResultsButton ()
+        );
+        createBackToResultsButton ();
     } else {
         $("#result-cards-header").html('<i class="fas fa-exclamation-circle"></i> Unfortunatly Something Went Wron and No Recipies Were Found! <i class="fas fa-exclamation-circle"></i>');
     }
@@ -440,7 +442,7 @@ function convertResponseArrayToList(resultArray) {
             newString = newString + ", " + capitalizeFirstLetter(resultArray[j]);
         }
     }
-    return newString
+    return newString;
 }
 
 function convertResponseArrayItemNamesToList(resultArray) {
@@ -457,78 +459,78 @@ function convertResponseArrayItemNamesToList(resultArray) {
             newString = newString + ", " + capitalizeFirstLetter(resultArray[j].name);
         }
     }
-    return newString
+    return newString;
 }
 
 function convertExtendedIngredientsToOrderedList(resultArray) {
     let newString = "";
     try {
         newString =`<ol> 
-                        <li>${capitalizeFirstLetter(resultArray[0].originalString)}</li>` 
+                        <li>${capitalizeFirstLetter(resultArray[0].originalString)}</li>` ;
     }
     catch (err) {
         console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
         newString = "&nbsp;";
     }
     for (let j = 1; j < resultArray.length; j++) {
-        newString = `${newString}<li>${capitalizeFirstLetter(resultArray[j].originalString)}</li>`
+        newString = `${newString}<li>${capitalizeFirstLetter(resultArray[j].originalString)}</li>`;
     }
-    newString = `${newString}</ol>`
-    return newString
+    newString = `${newString}</ol>`;
+    return newString;
 }
 
 function titleToCompName (title) {
-    let newString = ""
-    for (item of title) {
+    let newString = "";
+    for (let item of title) {
         if (item == " ") {
-            newString = newString + "-"
+            newString = newString + "-";
         } else {
-            newString = newString + item.toLowerCase()
+            newString = newString + item.toLowerCase();
         }
     }
-    return newString
+    return newString;
 }
 
 function convertAnalyzedInstructionsToOrderedList(resultArray) {
     let newString = "";
     try {
         newString =`<ol> 
-                        <li>${resultArray[0].step}</li>` 
+                        <li>${resultArray[0].step}</li>`;
     }
     catch (err) {
         console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
         newString = "&nbsp;";
     }
     for (let j = 1; j < resultArray.length; j++) {
-        newString = `${newString}<li>${resultArray[j].step}</li>`
+        newString = `${newString}<li>${resultArray[j].step}</li>`;
     }
-    newString = `${newString}</ol>`
-    return newString
+    newString = `${newString}</ol>`;
+    return newString;
 }
 
 
 function createViewRecipeButtons(searchType) {
-    $(".view-recipe-button").click(function (event) {
+    $(".view-recipe-button").click(function () {
         console.log("button clicked");
         console.log(this.id);
         saveToLocalStorage(this.id, "idToLoad");
         if (searchType == "zero-waste") {
-            saveToLocalStorage("zero-waste", "backToResultsPageToLoad")
+            saveToLocalStorage("zero-waste", "backToResultsPageToLoad");
         } else if (searchType == "specific-needs") {
-            saveToLocalStorage("specific-needs", "backToResultsPageToLoad")
+            saveToLocalStorage("specific-needs", "backToResultsPageToLoad");
         }
-        window.location.href = "../../recipe-display.html"
+        window.location.href = "../../recipe-display.html";
     });
 }
 
 function createBackToResultsButton () {
     $("#back-to-results-button").click(function () {
         if (loadFromLocalStorage ("backToResultsPageToLoad") == "zero-waste") {
-            window.location.href = "../../zero-waste.html"
+            window.location.href = "../../zero-waste.html";
         } else if (loadFromLocalStorage ("backToResultsPageToLoad") == "specific-needs") {
-            window.location.href = "specific-needs.html"
+            window.location.href = "specific-needs.html";
         }
-        saveToLocalStorage (true, "reloadResults")
+        saveToLocalStorage (true, "reloadResults");
     });
 }
     
@@ -541,13 +543,13 @@ function loadStoredResults() {
         saveToLocalStorage("", "backToResultsPageToLoad");
         disableLoadStoredResults();
     } else {
-        console.log("No previous results to load")
+        console.log("No previous results to load");
     }
 }
 
 function disableLoadStoredResults () {
     saveToLocalStorage(false, "reloadResults");
-    console.log("loadStoredResults() disabled")
+    console.log("loadStoredResults() disabled");
 }
 
 
@@ -556,13 +558,13 @@ function saveToLocalStorage (itemToSave, tagName) {
 }
 
 function loadFromLocalStorage (tagName) {
-    loadedItem = JSON.parse(localStorage.getItem(tagName));
-    return loadedItem
+    let loadedItem = JSON.parse(localStorage.getItem(tagName));
+    return loadedItem;
 }
 
 function checkIfHasValue(value){
     if (value == "" || value == undefined || value == null){
-        value = "Unknown"
+        value = "Unknown";
     }
-    return value
+    return value;
 }
