@@ -175,7 +175,6 @@ About Modal
 [Back to Contents](#contents)
 #
 
-
 ### Structure
 
 The website has been designed around a **Tree** structure hierarchy. This reduces the overall complexity of the site which allows users to navigate it easier.
@@ -215,6 +214,8 @@ recipe-display.html:
 Modal Design:
 ![modal design wireframes](assets/readme-assets/modal-wireframes-min.png)
 
+[Back to Contents](#contents)
+
 #### Design
 
 **Colour Scheme**
@@ -233,12 +234,32 @@ The background image used is appropriate to the style of the website.
 
 All recipe images are provided by the API.
 
+[Back to Contents](#contents)
 
-### Features
+# Features
 
-### Technologies Used
+[Back to Contents](#contents)
 
-### Search Engine Optimization (SEO)
+# Technologies Used
+
+- HTML5 - Programming Language
+- CSS3 - Programming Language
+- JavaScript - Programming Language
+- [Spoonacular API](https://spoonacular.com/food-api) - API functionality
+- [Bootstrap v4.3.1](https://getbootstrap.com/) - Library Import
+- [Google Fonts](https://fonts.google.com/) - Typography Import
+- [Git Pod](https://gitpod.io/) - IDE (Integrated Development Environment)
+- [Git](https://git-scm.com/) - Version Control Tool
+- [Github](https://github.com/) - Cloud based hosting service to manager my Git Repositories
+- [Code Institute GitPod Template](https://github.com/Code-Institute-Org/gitpod-full-template) - Provides GitPod extensions to help with code production
+- [Google Chrome Development Tools](https://developer.chrome.com/docs/devtools/) - Development Tools
+- [Compress PNG](https://compresspng.com/) - Image Compressor
+- [Tiny JPG](https://tinyjpg.com/) - JPG and PNG Image Compressor
+- [Figma](https://www.figma.com/) - Wireframe designer software
+- [HTML Formatter](https://www.freeformatter.com/html-formatter.html#ad-output) - Formatting HTML Code
+- [CSS Beautifier](https://www.freeformatter.com/css-beautifier.html) - Beautifying CSS Code
+
+[Back to Contents](#contents)
 
 ### Bugs and Issues
 
