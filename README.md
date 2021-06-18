@@ -1,5 +1,5 @@
 # Find My Meal
-![Live Project](URL)
+![Live Project](assets/readme-assets/fmm-pesentation-image.jpg)
 
 [Link to Live Project](https://nlenno1.github.io/find-my-meal-ms2/)
 #
