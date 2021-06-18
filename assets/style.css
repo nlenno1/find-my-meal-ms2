@@ -9,7 +9,7 @@ nav, footer, .modal-body {
 }
 
 .background-image {
-    background-image: url("images/choppingboard-background.png");
+    background-image: url("images/choppingboard-background.jpg");
     background-repeat: no-repeat;
     background-position: top;
     background-size: 100% auto;
@@ -106,7 +106,7 @@ nav, footer, .modal-body {
     position: relative;
     z-index: 0;
     height: 100%;
-    background-image: url("images/choppingboard-footer-background.png");
+    background-image: url("images/choppingboard-footer-background.jpg");
     background-color: #c4c4c4;
     background-repeat: no-repeat;
     background-position: bottom;
