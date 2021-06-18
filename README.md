@@ -232,3 +232,26 @@ This project uses the font Special Elite for headings and Open Sans for body tex
 The background image used is appropriate to the style of the website.
 
 All recipe images are provided by the API.
+
+
+### Features
+
+### Technologies Used
+
+### Search Engine Optimization (SEO)
+
+### Bugs and Issues
+
+### Testing
+#### Device Testing
+#### Peer Review Testing
+#### Browser Testing
+#### User Stories Testing
+
+### Validation
+
+### Deployment
+
+### Credits
+#### Content
+#### Acknowledgments
