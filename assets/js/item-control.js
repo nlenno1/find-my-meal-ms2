@@ -479,18 +479,6 @@ function convertExtendedIngredientsToOrderedList(resultArray) {
     return newString;
 }
 
-function titleToCompName (title) {
-    let newString = "";
-    for (let item of title) {
-        if (item == " ") {
-            newString = newString + "-";
-        } else {
-            newString = newString + item.toLowerCase();
-        }
-    }
-    return newString;
-}
-
 function convertAnalyzedInstructionsToOrderedList(resultArray) {
     let newString = "";
     try {
@@ -532,19 +520,6 @@ function createBackToResultsButton () {
         }
         saveToLocalStorage (true, "reloadResults");
     });
-}
-    
-function loadStoredResults() {
-    if (loadFromLocalStorage("reloadResults") == true) {
-        console.log("Reloading results");
-        searchResults = loadFromLocalStorage("latestSearchResults");
-        console.log(searchResults);
-        displaySearchResults(searchResults, loadFromLocalStorage("backToResultsPageToLoad"));
-        saveToLocalStorage("", "backToResultsPageToLoad");
-        disableLoadStoredResults();
-    } else {
-        console.log("No previous results to load");
-    }
 }
 
 function disableLoadStoredResults () {
