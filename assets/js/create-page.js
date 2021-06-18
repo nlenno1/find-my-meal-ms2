@@ -218,7 +218,7 @@ function makePageFooter () {
             <!--column with credit link to the API provider-->
             <div class="col-4 powered-by-info">
                 <p class="logo-label">Powered by</p>
-                <a href="https://spoonacular.com/food-api" target="_blank"><img class="spoonacular-logo"
+                <a href="https://spoonacular.com/food-api" target="_blank" rel="noopener"><img class="spoonacular-logo"
                         src="assets/images/spoonacular-logo.svg" alt="Spoonacular's Logo"></a>
             </div>
         </div>`

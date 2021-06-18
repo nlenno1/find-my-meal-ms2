@@ -420,7 +420,7 @@ function displaySearchResults(searchResults, searchType) {
         );
         $(".credits").html(
             `<p>Recipe credit: ${checkIfHasValue(searchResult.sourceName)}</p>
-            <a href="${checkIfHasValue(searchResult.sourceUrl)}" target="_blank">Link to Original Recipe</a>`
+            <a href="${checkIfHasValue(searchResult.sourceUrl)}" target="_blank" rel="noopener">Link to Original Recipe</a>`
         );
         createBackToResultsButton ();
     } else {
