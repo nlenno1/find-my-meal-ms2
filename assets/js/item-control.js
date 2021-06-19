@@ -514,7 +514,7 @@ function createViewRecipeButtons(searchType) {
 function createBackToResultsButton () {
     $("#back-to-results-button").click(function () {
         if (loadFromLocalStorage ("backToResultsPageToLoad") == "zero-waste") {
-            window.location.href = "../../zero-waste.html";
+            window.location.href = "zero-waste.html";
         } else if (loadFromLocalStorage ("backToResultsPageToLoad") == "specific-needs") {
             window.location.href = "specific-needs.html";
         }
