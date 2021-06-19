@@ -262,6 +262,36 @@ All recipe images are provided by the API.
 [Back to Contents](#contents)
 
 ### Bugs and Issues
+- When first building the site, I created a background mask to get the diagonal cut across the background image while allowing the background to be responsively designed. This caused a few bugs: 
+    - I tried to achieve the effect I wanted with a single mask but the angle and height required was pushing down the page past the footer so I added a second element and staggered the angles of the 2 elements to cover the required area.
+    - Initially the masks were sitting on top of the footer which I corrected by changing the z-index values on the footer, background and mask elements.
+    - After fixing the masks to the bottom of page, I realised that on pages with more content pushed the masks off of the background image so I edited the background image to have an angled bottom. 
+    - When testing the responsive design at larger breakpoints, the masks became too thin and didn't cover all the way to the footer or there was a gap between them so I increased the height of the individual masks.
+- The background image was reacting to the dropdown menu from the navbar, at the mobile breakpoint. To stop this from happening, I set the background-position attribute to top and changed the background-size attribute to fill 100% of the screen height, with the width at auto to fill that too.
+- 
+
+- After condensing my html code but creating a js function to create the navbar, footer and modal elements of the pages, the jquery click events were creating errors
+- There was some x-axis overflow on the body width, being caused by the .nav-item elements in the navbar as I had made their width attribute too large, including the addition padding. To fix this I could have used the box-sizing: border-box; css attribute which would have made the item the width specified but I decided to reduce the .nav-item width to compensate for the padding and margins manually.
+- I added function called checkIfHasValue to help manage empty or invalid values. When writing this function I used "undefined" as a operand in the conditional statement however, when the function didn't respond as expected when presented with an undefined value, I realised that I had asked the conditional to compare the functions arguement with a string of the word undefined rather than the value of it.
+- After adding the accordian section to the About modal, there was y axis overflow created when an accordian section was expanded. This overflow lead to the modal resizing which was very jarring for the user. To remove this issue I added the attribute overflow: auto; to the modal so the scroll bar, which was causing the resizing, would be inside the modal rather than on the edge of the entire page. 
+- When adding conditional statements to the displaySearchResults function to manage an empty or inalid response, the empty specific-needs response conditional threw an undefined error due to the fact that the results of that search are structured differently to the zero-waste call. To clear this error I used dot notation to referanced the first item in the response array.
+
+| Bug      | Cause/Reason | Fix |
+| ----------- | ----------- | ----------- | 
+|Background mask pushing down past the footer|Mask height and askew angle too large|Reduced element height, added a second mask element and staggered the angles of the two elements to cover the required area|
+|Background masks on top of footer |Footer z-index was lower than the mask which was given a higher z-index to put it on top of the background |Raised the z-index of the footer to equal the background|
+|Background image not covered by masks on larger pages|Mask pushed lower down the page by content|Edited the background image to have an angled bottom|
+|Gaps inbetween the two background masks|Larger screenwidths caused the askew elements to become thinner|Increased element height and set it using a screen width measurement (vw) so it increases relative to the screen width|
+|Navbar Dropdown Menu moving background image|Image reacting to page height change when the dropdown was added to the page and the navbar was above the background image element on the page|Set the background image in its own div behind the navbar, set background-position to top and background-size attribute to 100% auto|
+|Jquery Click Event Element Undefined Errors|Moved navbar element creation to JS file so the click event was refering to an element that didn't exist yet|Added $(window).ready to the Jquery click events so they are called when the element exists| 
+| | | |
+| | | |
+| | | |
+| | | |
+| | | |
+| | | |
+| | | |
+| | | |
 
 ### Testing
 #### Device Testing
