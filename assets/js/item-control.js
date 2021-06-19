@@ -424,7 +424,7 @@ function displaySearchResults(searchResults, searchType) {
         );
         createBackToResultsButton ();
     } else {
-        $("#result-cards-header").html('<i class="fas fa-exclamation-circle"></i> Unfortunatly Something Went Wron and No Recipies Were Found! <i class="fas fa-exclamation-circle"></i>');
+        $("#result-cards-header").html('<i class="fas fa-exclamation-circle"></i> Unfortunatly Something Went Wrong and No Recipies Were Found! <i class="fas fa-exclamation-circle"></i>');
     }
 }
 
@@ -507,7 +507,7 @@ function createViewRecipeButtons(searchType) {
         } else if (searchType == "specific-needs") {
             saveToLocalStorage("specific-needs", "backToResultsPageToLoad");
         }
-        window.location.href = "../../recipe-display.html";
+        window.location.href = "recipe-display.html";
     });
 }
 
