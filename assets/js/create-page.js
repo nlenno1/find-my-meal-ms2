@@ -76,6 +76,7 @@ function makePageModals() {
                         <li><strong>Specific Needs</strong> - Need your recipies to fit a specific diet or allergy. No problem! Just let us know and we will find something for you!</li>
                     </ul>
                     <p>To learn more about a topic just click on it! </p>
+                    <!-- Accordian template taken from Bootstrap 5 example code and heavily modified -->
                     <div class="accordion accordion-flush" id="accordionFlushExample">
                     <div class="accordion-item text-start">
                         <h2 class="accordion-header" id="flush-headingOne">
