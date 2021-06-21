@@ -8,70 +8,70 @@ let intolerancesArray = [];
 let searchResults = [];
 let mySuppliesArray;
 
-$(window).ready (function() {
+$(window).ready(function () {
     // open array saved in local storage and display messages on console
     mySuppliesArray = JSON.parse(localStorage.getItem("mySuppliesSavedList"));
     console.log(mySuppliesArray == undefined || null ? "No instance of My Supplies Array Exists" : "My Supplies Array Exists");
     console.log("My Supplies Array opened from Local Storage : " + (mySuppliesArray == "" ? "No items to load!" : mySuppliesArray));
     // avoid error with null value
-    mySuppliesArray = (mySuppliesArray == null)? []: mySuppliesArray;
+    mySuppliesArray = (mySuppliesArray == null) ? [] : mySuppliesArray;
     //developer feedback
     console.log("My Supplies : " + mySuppliesArray);
 
     // turn item in the array into html elements
     for (let item of mySuppliesArray) {
         let screenName = removeHyphens(item);
-        createIngredientObject (screenName, item, $("#my-supplies-display"), "mySuppliesArray");
+        createIngredientObject(screenName, item, $("#my-supplies-display"), "mySuppliesArray");
         removeObjectMethod(item, $("#my-supplies-display"), mySuppliesArray, "My Supplies", "mySuppliesArray");
     }
-    
+
     // ADD BUTTON AND ENTER KEY EVENTS
     // my supplies input add button 
-    $("#supplies-add-button").click(function() {
+    $("#supplies-add-button").click(function () {
         addItemToDisplay($("#ingredient-name").val().toLowerCase(), "#my-supplies-display", "#ingredient-name", mySuppliesArray, "My Supplies", "mySuppliesArray");
     });
 
     // my supplies input enter key event 
-    $("#ingredient-name").keypress(function(event) {
+    $("#ingredient-name").keypress(function (event) {
         let key = event.keyCode;
         if (key == "13") {
-            addItemToDisplay ($("#ingredient-name").val().toLowerCase(), "#my-supplies-display", "#ingredient-name", mySuppliesArray, "My Supplies", "mySuppliesArray");
+            addItemToDisplay($("#ingredient-name").val().toLowerCase(), "#my-supplies-display", "#ingredient-name", mySuppliesArray, "My Supplies", "mySuppliesArray");
         }
     });
 
     // clear My Supplies click event
-    $("#clear-my-supplies-button").click(function() {
+    $("#clear-my-supplies-button").click(function () {
         clearLocalStorge();
     });
 });
 
 // zero-waste input add button 
-$("#zero-waste-add-button").click(function() {
+$("#zero-waste-add-button").click(function () {
     addItemToDisplay($("#zero-waste-ingredient-name").val().toLowerCase(), "#zero-waste-ingredients-display", "#zero-waste-ingredient-name", zeroWasteIngredientsArray, "Zero-Waste Ingredients", "zeroWasteIngredientsArray");
 });
 
 // zero-waste input enter key event 
-$("#zero-waste-ingredient-name").keypress(function(event) {
+$("#zero-waste-ingredient-name").keypress(function (event) {
     let key = event.keyCode;
     if (key == "13") {
-        addItemToDisplay ($("#zero-waste-ingredient-name").val().toLowerCase(), "#zero-waste-ingredients-display", "#zero-waste-ingredient-name", zeroWasteIngredientsArray, "Zero-Waste Ingredients", "zeroWasteIngredientsArray");
+        addItemToDisplay($("#zero-waste-ingredient-name").val().toLowerCase(), "#zero-waste-ingredients-display", "#zero-waste-ingredient-name", zeroWasteIngredientsArray, "Zero-Waste Ingredients", "zeroWasteIngredientsArray");
     }
 });
 
 // diet add button 
-$("#diet-add-button").click(function() {
+$("#diet-add-button").click(function () {
     addSelectItemToDisplay($("#diet-requirements-select").val(), $("#diet-requirements-select option:selected").text(), "#specific-needs-items-display", "#diet-requirements-select", dietArray, "Diet Array", "dietArray");
 });
 
 // intolerances add button 
-$("#intolerances-add-button").click(function() {
+$("#intolerances-add-button").click(function () {
     addSelectItemToDisplay($("#intolerances-select").val(), $("#intolerances-select option:selected").text(), "#specific-needs-items-display", "#intolerances-select", intolerancesArray, "intolerances Array", "intolerancesArray");
 });
 
-$(".back-to-results-button").click(function() {
-    if (loadFromLocalStorage ("backToResultsPageToLoad") == "zero-waste") {
+$(".back-to-results-button").click(function () {
+    if (loadFromLocalStorage("backToResultsPageToLoad") == "zero-waste") {
         window.location.href = "../../zero-waste.html";
-    } else if (loadFromLocalStorage ("backToResultsPageToLoad") == "specific-needs") {
+    } else if (loadFromLocalStorage("backToResultsPageToLoad") == "specific-needs") {
         window.location.href = "../../specific-needs.html";
     }
 });
@@ -87,7 +87,7 @@ function addSelectItemToDisplay(itemCompName, itemScreenName, targetArea, inputA
         alert("Please select an option from the dropdown menus");
     } else {
         // create Ingredient Object
-        createIngredientObject (itemScreenName, itemCompName, targetArea, compArrayName);
+        createIngredientObject(itemScreenName, itemCompName, targetArea, compArrayName);
         // remove item functionality 
         removeObjectMethod(itemCompName, targetArea, arrayToAction, arrayName, compArrayName);
         // add user input to supplies array 
@@ -95,11 +95,11 @@ function addSelectItemToDisplay(itemCompName, itemScreenName, targetArea, inputA
         $(inputArea).val($(inputArea + " option:first").val());
         // show completion of task on log
         console.log(itemCompName + ' added to ' + arrayName);
-        console.log(arrayName + " : " + arrayToAction); 
+        console.log(arrayName + " : " + arrayToAction);
     }
 }
 
-function addItemToDisplay (ingredient, targetArea, inputArea, arrayToAction, arrayName, compArrayName) {
+function addItemToDisplay(ingredient, targetArea, inputArea, arrayToAction, arrayName, compArrayName) {
     // clear input value for next ingredient and keep focus on input box 
     focusAndClear(inputArea);
     // control conditional to avoid adding a empty value 
@@ -116,15 +116,15 @@ function addItemToDisplay (ingredient, targetArea, inputArea, arrayToAction, arr
     } else {
         let ingredientCompName = addHyphens(ingredient);
         // create Ingredient Object
-        createIngredientObject (ingredient, ingredientCompName, targetArea, compArrayName);
+        createIngredientObject(ingredient, ingredientCompName, targetArea, compArrayName);
         // remove item functionality 
         removeObjectMethod(ingredientCompName, targetArea, arrayToAction, arrayName, compArrayName);
         // add user input to supplies array 
         arrayToAction.push(ingredientCompName);
         // save mySupplies to local storage for access later
         if (arrayToAction == mySuppliesArray) {
-            saveToLocalStorage (mySuppliesArray, "mySuppliesSavedList");
-        } 
+            saveToLocalStorage(mySuppliesArray, "mySuppliesSavedList");
+        }
         // show completion of task on log
         console.log(ingredient + ' added to ' + arrayName);
         console.log(arrayName + " : " + arrayToAction);
@@ -145,7 +145,7 @@ function removeHyphens(ingredient) {
     return ingredient;
 }
 
-function createIngredientObject (ingredient, ingredientCompName, targetArea, compArrayName) {
+function createIngredientObject(ingredient, ingredientCompName, targetArea, compArrayName) {
     // add new element to designated display area 
     $(targetArea).append(
         `<div class="ingredient-added" id="${ingredientCompName}-in-${compArrayName}" value="${ingredientCompName}"> 
@@ -175,8 +175,8 @@ function removeObjectMethod(ingredientCompName, targetArea, arrayToAction, array
         console.log(arrayName + " : " + arrayToAction);
         //save mySupplies array to local storage if changed
         if (arrayToAction == mySuppliesArray) {
-            saveToLocalStorage (mySuppliesArray, "mySuppliesSavedList");
-        } 
+            saveToLocalStorage(mySuppliesArray, "mySuppliesSavedList");
+        }
         //remove element from html with animation
         item.fadeOut(function () {
             item.remove();
@@ -192,7 +192,7 @@ function focusAndClear(targetInput) {
 }
 
 function clearLocalStorge() {
-    if (mySuppliesArray.length == 0 ) {
+    if (mySuppliesArray.length == 0) {
         alert("My Supplies List is already empty");
     } else {
         for (let name of mySuppliesArray) {
@@ -203,13 +203,13 @@ function clearLocalStorge() {
         }
         localStorage.setItem("mySuppliesSavedList", JSON.stringify([]));
         mySuppliesArray = [];
-        console.log("Local Storage array cleared", "My Supplies : " + mySuppliesArray) ;
+        console.log("Local Storage array cleared", "My Supplies : " + mySuppliesArray);
     }
 }
 
 function capitalizeFirstLetter(string) {
     try {
-       return string.charAt(0).toUpperCase() + string.slice(1); 
+        return string.charAt(0).toUpperCase() + string.slice(1);
     } catch (err) {
         console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
         return string;
@@ -224,16 +224,15 @@ function removeItemFromArray(array, item) {
     }
 }
 
-
 // API CALLS
 // Zero-Waste recipe search call
-$("#zero-waste-find-my-meal-button").click(function() {
+$("#zero-waste-find-my-meal-button").click(function () {
     // check if user wants to use My Supplies list
-    if ($('input[type=checkbox]'). prop('checked')) {
+    if ($('input[type=checkbox]').prop('checked')) {
         // try block to remove chance of error if no instance of mySuppliesArray exists in local storage
         try {
             // inline conditional to check if list exists but is empty. If not API is called using list
-            mySuppliesArray == "" ? alert("My Supplies list is empty. Please add some ingredients and try again") : makeApiCall (compileApiRequirements (mySuppliesArray, "zero-waste"), "zero-waste"); 
+            mySuppliesArray == "" ? alert("My Supplies list is empty. Please add some ingredients and try again") : makeApiCall(compileApiRequirements(mySuppliesArray, "zero-waste"), "zero-waste");
         } catch (err) {
             // User error feedback with instructions on how to fix 
             alert('You need to add some ingredients to "My Supplies"');
@@ -242,41 +241,41 @@ $("#zero-waste-find-my-meal-button").click(function() {
         }
     } else {
         // check if zeroWasteIngredientsArrayis empty and if not run compiler and make API call
-        zeroWasteIngredientsArray == "" ? alert("Zero Waste Ingredients List is empty. Please add some ingredients and try again") : makeApiCall (compileApiRequirements (zeroWasteIngredientsArray, "zero-waste"), "zero-waste");
+        zeroWasteIngredientsArray == "" ? alert("Zero Waste Ingredients List is empty. Please add some ingredients and try again") : makeApiCall(compileApiRequirements(zeroWasteIngredientsArray, "zero-waste"), "zero-waste");
     }
 });
 
 // Specific Needs recipe search call
-$("#specific-needs-find-my-meal-button").click(function() {
+$("#specific-needs-find-my-meal-button").click(function () {
     // check if user wants to use My Supplies list
     if (intolerancesArray == "" && dietArray == "") {
         alert("Please choose come Dietary Requirements or Intolerances from the drop down menus to search for recipes!");
     } else {
-        makeApiCall (compileApiRequirements (dietArray, "specific-needs", intolerancesArray), "specific-needs");
+        makeApiCall(compileApiRequirements(dietArray, "specific-needs", intolerancesArray), "specific-needs");
     }
-    
+
 });
 
-function compileApiRequirements (firstList, searchType, secondList) {
+function compileApiRequirements(firstList, searchType, secondList) {
     if (searchType === "zero-waste") {
         let baseUrl = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=c4a7c11521de4bae8f06ba9fd8e9ac17&ingredients=";
-        console.log ("baseURL : " + baseUrl);
+        console.log("baseURL : " + baseUrl);
         let compiledList = `${firstList[0]}`;
-        for (let i = 1; i<firstList.length; i++) {
+        for (let i = 1; i < firstList.length; i++) {
             compiledList = `${compiledList},${firstList[i]}`;
         }
         let url = `${baseUrl}${compiledList}&number=4&limitLicense=true&ranking=1&ignorePantry=true`;
-        console.log (url);
-        return(url);
+        console.log(url);
+        return (url);
     } else if (searchType === "specific-needs") {
         let baseUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=c4a7c11521de4bae8f06ba9fd8e9ac17&addRecipeInformation=true";
-        console.log ("baseURL : " + baseUrl);
+        console.log("baseURL : " + baseUrl);
         let compiledDietList = `${firstList[0]}`;
-        for (let i = 1; i<firstList.length; i++) {
+        for (let i = 1; i < firstList.length; i++) {
             compiledDietList = `${compiledDietList},${firstList[i]}`;
         }
         let compiledIntoleranceList = `${secondList[0]}`;
-        for (let i = 1; i<secondList.length; i++) {
+        for (let i = 1; i < secondList.length; i++) {
             compiledIntoleranceList = `${compiledIntoleranceList},${secondList[i]}`;
         }
         let url = `${baseUrl}&diet=${compiledDietList}&intolerances=${compiledIntoleranceList}&number=4&limitLicense=true&ranking=1&ignorePantry=true`;
@@ -284,7 +283,7 @@ function compileApiRequirements (firstList, searchType, secondList) {
     }
 }
 
-function makeApiCall (searchUrl, searchType) {
+function makeApiCall(searchUrl, searchType) {
     $("#find-my-meal-button").val("Searching For Recipes ...");
     $("#loading").html('<img class="loading-gif" src="assets/images/loading.gif">');
     let settings = {
@@ -298,7 +297,7 @@ function makeApiCall (searchUrl, searchType) {
             saveToLocalStorage(response, "latestSearchResults");
             console.log("Response saved to local storage under tag latestSearchResults");
         }
-        let searchResults = response;
+        searchResults = response;
         displaySearchResults(searchResults, searchType);
         $("#loading").html('');
         $("#find-my-meal-button").val("Find My Meal");
@@ -332,7 +331,7 @@ function displaySearchResults(searchResults, searchType) {
                     </div>
                 </div>`
             );
-        } 
+        }
         window.scrollTo(0, 680);
         // VIEW RECIPE BUTTON
         createViewRecipeButtons(searchType);
@@ -363,7 +362,7 @@ function displaySearchResults(searchResults, searchType) {
                     </div>
                 </div>`
             );
-        } 
+        }
         window.scrollTo(0, 680);
         // VIEW RECIPE BUTTON
         createViewRecipeButtons(searchType);
@@ -422,7 +421,7 @@ function displaySearchResults(searchResults, searchType) {
             `<p>Recipe credit: ${checkIfHasValue(searchResult.sourceName)}</p>
             <a href="${checkIfHasValue(searchResult.sourceUrl)}" target="_blank" rel="noopener">Link to Original Recipe</a>`
         );
-        createBackToResultsButton ();
+        createBackToResultsButton();
     } else {
         $("#result-cards-header").html('<i class="fas fa-exclamation-circle"></i> Unfortunatly Something Went Wrong and No Recipies Were Found! <i class="fas fa-exclamation-circle"></i>');
     }
@@ -432,8 +431,7 @@ function convertResponseArrayToList(resultArray) {
     let newString = "";
     try {
         newString = capitalizeFirstLetter(resultArray[0]);
-    }
-    catch (err) {
+    } catch (err) {
         console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
         newString = "&nbsp;";
     }
@@ -449,8 +447,7 @@ function convertResponseArrayItemNamesToList(resultArray) {
     let newString = "";
     try {
         newString = capitalizeFirstLetter(resultArray[0].name);
-    }
-    catch (err) {
+    } catch (err) {
         console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
         newString = "&nbsp;";
     }
@@ -465,10 +462,9 @@ function convertResponseArrayItemNamesToList(resultArray) {
 function convertExtendedIngredientsToOrderedList(resultArray) {
     let newString = "";
     try {
-        newString =`<ol> 
-                        <li>${capitalizeFirstLetter(resultArray[0].originalString)}</li>` ;
-    }
-    catch (err) {
+        newString = `<ol> 
+                        <li>${capitalizeFirstLetter(resultArray[0].originalString)}</li>`;
+    } catch (err) {
         console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
         newString = "&nbsp;";
     }
@@ -482,10 +478,9 @@ function convertExtendedIngredientsToOrderedList(resultArray) {
 function convertAnalyzedInstructionsToOrderedList(resultArray) {
     let newString = "";
     try {
-        newString =`<ol> 
+        newString = `<ol> 
                         <li>${resultArray[0].step}</li>`;
-    }
-    catch (err) {
+    } catch (err) {
         console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
         newString = "&nbsp;";
     }
@@ -511,34 +506,34 @@ function createViewRecipeButtons(searchType) {
     });
 }
 
-function createBackToResultsButton () {
+function createBackToResultsButton() {
     $("#back-to-results-button").click(function () {
-        if (loadFromLocalStorage ("backToResultsPageToLoad") == "zero-waste") {
+        if (loadFromLocalStorage("backToResultsPageToLoad") == "zero-waste") {
             window.location.href = "zero-waste.html";
-        } else if (loadFromLocalStorage ("backToResultsPageToLoad") == "specific-needs") {
+        } else if (loadFromLocalStorage("backToResultsPageToLoad") == "specific-needs") {
             window.location.href = "specific-needs.html";
         }
-        saveToLocalStorage (true, "reloadResults");
+        saveToLocalStorage(true, "reloadResults");
     });
 }
 
-function disableLoadStoredResults () {
+function disableLoadStoredResults() {
     saveToLocalStorage(false, "reloadResults");
     console.log("loadStoredResults() disabled");
 }
 
 
-function saveToLocalStorage (itemToSave, tagName) {
+function saveToLocalStorage(itemToSave, tagName) {
     localStorage.setItem(tagName, JSON.stringify(itemToSave));
 }
 
-function loadFromLocalStorage (tagName) {
+function loadFromLocalStorage(tagName) {
     let loadedItem = JSON.parse(localStorage.getItem(tagName));
     return loadedItem;
 }
 
-function checkIfHasValue(value){
-    if (value == "" || value == undefined || value == null){
+function checkIfHasValue(value) {
+    if (value == "" || value == undefined || value == null) {
         value = "Unknown";
     }
     return value;
