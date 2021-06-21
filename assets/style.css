@@ -167,7 +167,6 @@ footer a:hover{
 .logo-label {
     float: left;
     text-align: start;
-    margin-left: -15px;
 }
 
 @media(min-width:350px) {
