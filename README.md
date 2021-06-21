@@ -273,14 +273,14 @@ All recipe images are provided by the API.
 |10 |My Supplies load createIngredientObject() returning error|When adding to createIngredientObject() I rearranged the required arguement order which I did not change in the My Supplies load function and when taking the item names from the localStorage array, they contained hyphens which I did not want displayed|Double checked what the required arguements were and rearraged them to match the edited function before creating removeHyphens() to turn the saved item name into a screenName to display|
 |11 |createViewRecipeButtons() returning error|Function was called before the element for click event was created|Added function to displaySearchResults() after element creation|
 |12 |Recipe-display-button click event no sending the correct data to the API call therefore not getting a response|Typographical error lead to an extra " in each button element when being created by displaySearchResults()|Removed the extre character|
-|13 |Specific-needs API call returning undefined results when called with displaySearchResults()|The data structure returned by the API is different for each search type therefore the function was trying to acces data that wasn't there|Using dot notation, I referanced the first item in the response array|
+|13 |Specific-needs API call returning "searchResults[0] is undefined" error when called with displaySearchResults()|The data structure returned by the API is different for each search type therefore the function was trying to acces data that wasn't there|Using dot notation, I referanced the first item in the response array|
 |14 |Modal resizing on page y-axis overflow|Accordian section expanding past the height of the page added the scroll bar to the page which resized the modal|I added overflow: auto; to the modal so the scroll bar would be inside the modal rather than on the edge of the entire page|
 |15 |checkIfHasValue function missing undefined values|I used the string "undefined" as a operand for the conditional statement in the function when it should have been the value of undefined|Removed the "" to make the aperand value undefined|
 |16 |404 Page not found error for recipe-display.html |Using an absolute url path in createBackToResultsButton() |Changed path to a relative url path |
-|17 Footer not at the bottom of the page on larger devices |Page content not big enought to push footer to the bottom of the screen |Set the min-height attribute of .main-body, using calc() vh and the height of the footer, to keep the footer at the bottom of the page  |
-|18| JS Validator Error - "Expected an assignment or function call and instead saw an expression" | Used a ternary expression to call functions depending on a variable value | Restructured the ternary expression into a traditional if/else conditional statement |
+|17 |Footer not at the bottom of the page on larger devices |Page content not big enought to push footer to the bottom of the screen |Set the min-height attribute of .main-body, using calc() vh and the height of the footer, to keep the footer at the bottom of the page  |
+|18 | JS Validator Error - "Expected an assignment or function call and instead saw an expression" | Used a ternary expression to call functions depending on a variable value | Restructured the ternary expression into a traditional if/else conditional statement |
 
-### Testing
+# Testing
 
 Throughout the building of this project, I tested the responsive design and functionality using [Google Chrome Developer Tools](https://developer.chrome.com/docs/devtools/). The console and elements feature helped me de-bug any issues and the adaptable display helped visualise each page at different screen widths.
 
@@ -321,10 +321,69 @@ This is the functionality check list that I used when testing my project
 | |Data from API is presented appropriatly and zero or impossible values are managed effeciently  |
 | |Back to results button functions as expected and directs to the correct page  |
 
-#### Device Testing
-#### Peer Review Testing
-#### Browser Testing
-#### User Stories Testing
+## Device Testing
+
+### Mobile
+To test the website at the **Mobile breakpoint**, I focused on using the **Iphone 5/SE (320px)** for the **smaller phones** and the **Iphone 6/7/8 Plus (414px)** for the **larger phones**.
+All other mobile breakpoints fit into this range of screen sizes, apart from the Galaxy Fold, therefore felt it was a good range to work with.
+As this project was designed using the mobile first principle, there were very few bugs as the were removed as the site was built.
+
+I used my own **Samsung Galaxy S10 (360px)** for the mobile device real world testing, as this is roughly the median of the range I tested on Dev Tools, to check that all elements were as expected.
+
+### Tablet
+
+To test the project on a tablet, I used the **Ipad (768px)** breakpoint on Google Chrome Dev Tools as it is a very generic size and has the tablet shroud on it to help with scaling the elements.
+Throughout this testing, I discovered some spacing issues which were corrected with **Media Queries** at the specific breakpoints.
+
+I used my **Samsung Galaxy Tab 4 (800px)** for physical user testing.
+
+### Desktop
+
+During development, I tested the Desktop breakpoint by either using my **default screen size (1024px)** or the 1440px breakpoint in Google Chrome Dev Tools. This was to enable users who have bigger screens than myself to still have the best UI and UX possible.
+There were some spacing issues at the larger screen size so again I used **Media Queries** at **min-width:1200px**to solve these issues.
+
+For real world testing, I used an external 1440px monitor to make sure the display was as expected and used some peer review testing for ultrawide monitors (1980 px).
+
+## Peer Review Testing
+
+I asked a selection of my peers (family, collegues and friends) using resources like **Slack** to access, test and review my project at several different points in the projects development.
+Their comments I recieved from this was generally good however I did impliment a few changes from this feedback.
+
+|Feedback |Action to improve| Feedback contributer|
+| -------- | -------- | -------- |
+|Intolerances inccorrectly spelt |Spell check implimented on all visable text |Lola (Slack) |
+|404 error when trying to view the full recipes |Corrected href referancing error (see **16** in [Bugs](#bugs) for more details) |Nat Kate and Daniel Steyn |
+|searchResults[0] is undefined |Modified the conditional statement (see **13** in [Bugs](#bugs) for more details) |Sean Young |
+
+## Browser Testing
+
+Using [Lambda Test](https://www.lambdatest.com/), a cloud based browser platform, I tested the project on the latest version of the following browsers;
+- Chrome
+- Firefox 
+- Edge 
+- Safari
+- Opera 
+
+All the tests rendered similar to expected UI results and no compatability bugs.
+
+## User Stories Testing
+As an **enthusiastic cook** looking for new recipe ideas;
+- I can used either of the 3 options on index.html to find some new recipies, ither randomly selected, specific to the ingredients I have or specific to dietary requirements/allergies.
+- If I am confused by what is supported or what I need to do to use the service, the About button is always there on the Navbar to help.
+- If I want to save the ingredients I regularly have to cook with then I can add them to "My Supplies".
+
+As a newly diagnosed **gluten intolerent**;
+- I can use the Specific Needs recipe selector and choose gluten from the drop down menus to see recipes without gluten.
+- If I am confused by what is supported or what I need to do to use the service, the About button is always there on the Navbar to help with details of what intolerances are supported by the service
+
+As someone cooking for a friend who has **specific dietary needs**;
+- I can use the  Specific Needs recipe selector and enter the specific dietary requirements they have.
+- If I need help using the service or finding out what the options mean, there is a full description in the About modal, the link to which is in the Navbar at all times.
+- If their specific dietary requirement is missing then the contact page can be accessed through the footer or navbar to allow me to get in touch and suggest the item to add to the service.
+
+As an enviromentalist, worried about the amount of **food waste produced**;
+- I can use the Zero Waste recipe selector and enter the specific ingredients that I have to use the last of.
+- If I regularly have the same items to use then I can put them in My Supplies to use in later searches
 
 # Validation
 
@@ -356,7 +415,6 @@ The only issues raised by the validators after final testing are:
 |*Function Name* is not defined | When this error occurs, it is because the function has been defined in a different js file as it is used in multiple pages |
 |'sendMail' is defined but never used | This is a function that is called by a form submit click event and therefore doe not need to be called in the JS file |
 |Functions declared with in loops referancing an outer scoped variable may lead to confusing semantics | This is just a warning however in this case the semantic are simple so it is not confusing |
-
 
 ### Deployment
 
