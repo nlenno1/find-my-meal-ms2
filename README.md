@@ -90,7 +90,6 @@ I performed an Importance Viability analysis on the **USER** goals and these wer
 | A      | Allergy/Intolerances Search       | 5       | 5       |
 | B   | Diet Search        | 5       | 5       |
 | C    | Random Search        | 4       | 5       |
-| D    | Encourage social media engagement        | 4       | 5       |
 
 
 ![Importance Viability Graph](assets/readme-assets/importance-viability-graph.png)
@@ -416,7 +415,42 @@ The only issues raised by the validators after final testing are:
 |'sendMail' is defined but never used | This is a function that is called by a form submit click event and therefore doe not need to be called in the JS file |
 |Functions declared with in loops referancing an outer scoped variable may lead to confusing semantics | This is just a warning however in this case the semantic are simple so it is not confusing |
 
-### Deployment
+# Deployment
+
+All my code was written using [Gitpod](https://www.gitpod.io/), an online IDE, and then pushed to a repository which was stored on my [Gitpod account](https://github.com/nlenno1/).
+
+This project is deployed on GitHub Pages. 
+This is the process I used to deploy my project:
+
+1. In my Github Repository I selected the settings tab and scrolled down to the GitHub Pages section.
+2. In the source section, for the branch drop down menu, I selected "Master" and then clicked the save button.
+3. Once this process had been completed the website URL was displayed above the GitHub Pages section.
+
+This code can be cloned or forked from the [GitHub repository](https://github.com/nlenno1/find-my-meal-ms2).
+
+## Forking the Repository
+When you fork the repository you create a copy of the original repository on your own GitHub account to view and edit without effect the original.
+To Fork something you need to:
+
+1. Log into your GitHub account or create one.
+2. Open the [repository](https://github.com/nlenno1/find-my-meal-ms2).
+3. Click the "Fork" button which is located on the right-hand side of the screen just below your user icon.
+4. The fork should load and save to your GitHub account.
+
+## Cloning the Repository using GitPod
+To clone the repository, you first need to:
+
+1. Install the GitPod Browser Extension for Chrome (including restarting the browser).
+2. Log into your GitHub or create an account.
+3. Find the GitHub Repository that you want to clone.
+4. Click the green "GitPod" button in the top right corner of the repository. This will trigger a new GitPod workspace to be created.
+
+## Cloning the Repository using Git
+
+1. Open the [repository](https://github.com/nlenno1/find-my-meal-ms2), click the  code button, which is located on the right above all the repo file names.
+2. Select HTTPS and copy the clone URL.
+3. In your command line type "git clone" and then paste the URL that you just copied.
+4. Press enter to create your local clone
 
 ### Credits
 #### Content
