@@ -45,6 +45,7 @@ $(window).ready(function () {
     });
 });
 
+//   ------------------------ CLICK EVENTS ------------------------
 // zero-waste input add button 
 $("#zero-waste-add-button").click(function () {
     addItemToDisplay($("#zero-waste-ingredient-name").val().toLowerCase(), "#zero-waste-ingredients-display", "#zero-waste-ingredient-name", zeroWasteIngredientsArray, "Zero-Waste Ingredients", "zeroWasteIngredientsArray");
@@ -76,8 +77,8 @@ $(".back-to-results-button").click(function () {
     }
 });
 
-// BIG CUSTOM FUNCTIONS
-//Create Item From A Add Button click event on a select menu
+// ------------ LARGE FUNCTIONS ------------
+//Check date entered from a SELECT menu before processing
 function addSelectItemToDisplay(itemCompName, itemScreenName, targetArea, inputArea, arrayToAction, arrayName, compArrayName) {
     if (arrayToAction.includes(itemCompName)) {
         // duplicate value user feedback 
@@ -98,7 +99,7 @@ function addSelectItemToDisplay(itemCompName, itemScreenName, targetArea, inputA
         console.log(arrayName + " : " + arrayToAction);
     }
 }
-
+//Check date entered from a INPUT box before processing
 function addItemToDisplay(ingredient, targetArea, inputArea, arrayToAction, arrayName, compArrayName) {
     // clear input value for next ingredient and keep focus on input box 
     focusAndClear(inputArea);
@@ -106,14 +107,20 @@ function addItemToDisplay(ingredient, targetArea, inputArea, arrayToAction, arra
     if (ingredient.length == 0) {
         // empty value user feedback 
         alert("Please enter an ingredient name");
+        // control conditional to make sure input doesn't contain forbidden characters
     } else if (!regex.test(ingredient)) {
+        // clear input box and focus on it
         focusAndClear(inputArea);
+        //error user feedback
         alert("Please only use letters in the ingredient name");
+        // control conditional to avoid duplicate values entered
     } else if (arrayToAction.includes(ingredient)) {
-        // duplicate value user feedback 
+        // clear input box and focus on it
         focusAndClear(inputArea);
+        // duplicate value user feedback 
         alert(capitalizeFirstLetter(ingredient) + " has already been added to " + arrayName);
     } else {
+        //replaces spaces with hypens so name can be used by js
         let ingredientCompName = addHyphens(ingredient);
         // create Ingredient Object
         createIngredientObject(ingredient, ingredientCompName, targetArea, compArrayName);
@@ -130,21 +137,7 @@ function addItemToDisplay(ingredient, targetArea, inputArea, arrayToAction, arra
         console.log(arrayName + " : " + arrayToAction);
     }
 }
-
-function addHyphens(ingredient) {
-    if (ingredient.includes(" ")) {
-        ingredient = ingredient.replace(" ", "-");
-    }
-    return ingredient;
-}
-
-function removeHyphens(ingredient) {
-    if (ingredient.includes("-")) {
-        ingredient = ingredient.replace("-", " ");
-    }
-    return ingredient;
-}
-
+//Create ingredient element in the selected display area
 function createIngredientObject(ingredient, ingredientCompName, targetArea, compArrayName) {
     // add new element to designated display area 
     $(targetArea).append(
@@ -184,29 +177,52 @@ function removeObjectMethod(ingredientCompName, targetArea, arrayToAction, array
     });
 }
 
-// SMALL CUSTOM FUNCTIONS
+// ------------ SMALL FUNCTIONS ------------
+// Replace spaces in a string with hyphens
+function addHyphens(ingredient) {
+    if (ingredient.includes(" ")) {
+        ingredient = ingredient.replace(" ", "-");
+    }
+    return ingredient;
+}
+// Replace hyphens in a string with spaces
+function removeHyphens(ingredient) {
+    if (ingredient.includes("-")) {
+        ingredient = ingredient.replace("-", " ");
+    }
+    return ingredient;
+}
 //focus on selected area and clear the input box
 function focusAndClear(targetInput) {
     $(targetInput).val("");
     $(targetInput).focus();
 }
-
+//remove all items created from local storage  
 function clearLocalStorge() {
+    //contron conditional to check if list is empty
     if (mySuppliesArray.length == 0) {
+        //user feedback
         alert("My Supplies List is already empty");
     } else {
+        //for loop to cycle through all the names in the array
         for (let name of mySuppliesArray) {
+            // initializing item variable to be the elements id
             let item = $(`#${name}-in-mySuppliesArray`);
+            //fading the element
             item.fadeOut(function () {
+                //removing the element after the fade has completed
                 item.remove();
             });
         }
+        //access local storage and set saved array to an empty array
         localStorage.setItem("mySuppliesSavedList", JSON.stringify([]));
+        //set the current array to an empty array
         mySuppliesArray = [];
+        //developer feedback
         console.log("Local Storage array cleared", "My Supplies : " + mySuppliesArray);
     }
 }
-
+//capitalize the first letter of a string
 function capitalizeFirstLetter(string) {
     try {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -215,16 +231,19 @@ function capitalizeFirstLetter(string) {
         return string;
     }
 }
-
+//remove a specific string from an array
 function removeItemFromArray(array, item) {
+    //for loop to cycle through selected array
     for (let i = 0; i < array.length; i++) {
+        //conditional to check array item value
         if (array[i] == item) {
+            //remove the item
             array.splice(i, 1);
         }
     }
 }
 
-// API CALLS
+// ------------ API CALLS ------------
 // Zero-Waste recipe search call
 $("#zero-waste-find-my-meal-button").click(function () {
     // check if user wants to use My Supplies list
@@ -236,7 +255,7 @@ $("#zero-waste-find-my-meal-button").click(function () {
                 alert("My Supplies list is empty. Please add some ingredients and try again");
             } else {
                 makeApiCall(compileApiRequirements(mySuppliesArray, "zero-waste"), "zero-waste");
-            } 
+            }
         } catch (err) {
             // User error feedback with instructions on how to fix 
             alert('You need to add some ingredients to "My Supplies"');
@@ -252,61 +271,85 @@ $("#zero-waste-find-my-meal-button").click(function () {
         }
     }
 });
-
 // Specific Needs recipe search call
 $("#specific-needs-find-my-meal-button").click(function () {
-    // check if user wants to use My Supplies list
+    // check if user wants to use My Supplies list else make API call
     if (intolerancesArray == "" && dietArray == "") {
         alert("Please choose come Dietary Requirements or Intolerances from the drop down menus to search for recipes!");
     } else {
         makeApiCall(compileApiRequirements(dietArray, "specific-needs", intolerancesArray), "specific-needs");
     }
-
 });
-
+//Prepare the requirements for the different API calls
 function compileApiRequirements(firstList, searchType, secondList) {
+    //conditional to determine what API search type is going to happen
     if (searchType === "zero-waste") {
+        //initialize the base url
         let baseUrl = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=c4a7c11521de4bae8f06ba9fd8e9ac17&ingredients=";
+        //developer feedback
         console.log("baseURL : " + baseUrl);
+        // add first item in array to new variable
         let compiledList = `${firstList[0]}`;
+        //loop to add the rest of the list seperated by a comma
         for (let i = 1; i < firstList.length; i++) {
             compiledList = `${compiledList},${firstList[i]}`;
         }
+        //combine the previously created elements to produce the url needed
         let url = `${baseUrl}${compiledList}&number=4&limitLicense=true&ranking=1&ignorePantry=true`;
+        //developer feedback
         console.log(url);
         return (url);
+    //conditional to determine what API search type is going to happen
     } else if (searchType === "specific-needs") {
+        //initialize the base url
         let baseUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=c4a7c11521de4bae8f06ba9fd8e9ac17&addRecipeInformation=true";
+        //developer feedback
         console.log("baseURL : " + baseUrl);
+        // add first item in array to new variable
         let compiledDietList = `${firstList[0]}`;
+        //loop to add the rest of the list seperated by a comma
         for (let i = 1; i < firstList.length; i++) {
             compiledDietList = `${compiledDietList},${firstList[i]}`;
         }
+        // add first item in array to new variable
         let compiledIntoleranceList = `${secondList[0]}`;
+        //loop to add the rest of the list seperated by a comma
         for (let i = 1; i < secondList.length; i++) {
             compiledIntoleranceList = `${compiledIntoleranceList},${secondList[i]}`;
         }
+        //combine the previously created elements to produce the url needed
         let url = `${baseUrl}&diet=${compiledDietList}&intolerances=${compiledIntoleranceList}&number=4&limitLicense=true&ranking=1&ignorePantry=true`;
         return (url);
     }
 }
-
+//Perform the API call
 function makeApiCall(searchUrl, searchType) {
+    // change the label on the find-my-meal-button as user feedback
     $("#find-my-meal-button").val("Searching For Recipes ...");
+    // add loader gif as user feedback
     $("#loading").html('<img class="loading-gif" src="assets/images/loading.gif">');
+    // initialize setting variable containing all required settings for API call
     let settings = {
         "url": searchUrl,
         "method": "GET",
         "timeout": 0,
     };
+    //request data using ajax
     $.ajax(settings).done(function (response) {
+        //developer feedback
         console.log(response);
+        //search type conditional to see if the search is for a multi result display
         if (searchType !== "single-recipe-to-display") {
+            //store the respose in local storage in case of needing to reload it for "Back to results" button
             saveToLocalStorage(response, "latestSearchResults");
+            //developer feedback
             console.log("Response saved to local storage under tag latestSearchResults");
         }
+        //store response in a variable
         searchResults = response;
+        //display search results        
         displaySearchResults(searchResults, searchType);
+        // reset user feedback values
         $("#loading").html('');
         $("#find-my-meal-button").val("Find My Meal");
     });
