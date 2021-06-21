@@ -170,7 +170,6 @@ About Modal
 - Quick response times from the API
 - Pagenation when appropriate
 
-
 [Back to Contents](#contents)
 #
 
@@ -253,6 +252,8 @@ All recipe images are provided by the API.
 - [Figma](https://www.figma.com/) - Wireframe designer software
 - [HTML Formatter](https://www.freeformatter.com/html-formatter.html#ad-output) - Formatting HTML Code
 - [CSS Beautifier](https://www.freeformatter.com/css-beautifier.html) - Beautifying CSS Code
+- [Java Script Validator](https://beautifytools.com/javascript-validator.php) - Validating JS code
+- [GIMP](https://www.gimp.org/) - Image editor
 
 [Back to Contents](#contents)
 
@@ -278,6 +279,8 @@ All recipe images are provided by the API.
 |16 |404 Page not found error for recipe-display.html |Using an absolute url path in createBackToResultsButton() |Changed path to a relative url path |
 |17 |Footer not at the bottom of the page on larger devices |Page content not big enought to push footer to the bottom of the screen |Set the min-height attribute of .main-body, using calc() vh and the height of the footer, to keep the footer at the bottom of the page  |
 |18 | JS Validator Error - "Expected an assignment or function call and instead saw an expression" | Used a ternary expression to call functions depending on a variable value | Restructured the ternary expression into a traditional if/else conditional statement |
+
+[Back to Contents](#contents)
 
 # Testing
 
@@ -384,6 +387,8 @@ As an enviromentalist, worried about the amount of **food waste produced**;
 - I can use the Zero Waste recipe selector and enter the specific ingredients that I have to use the last of.
 - If I regularly have the same items to use then I can put them in My Supplies to use in later searches
 
+[Back to Contents](#contents)
+
 # Validation
 
 To view all Validation Result Files [Click here](assets/readme-assets/validation-files.md){:target="_blank"}.
@@ -414,6 +419,8 @@ The only issues raised by the validators after final testing are:
 |*Function Name* is not defined | When this error occurs, it is because the function has been defined in a different js file as it is used in multiple pages |
 |'sendMail' is defined but never used | This is a function that is called by a form submit click event and therefore doe not need to be called in the JS file |
 |Functions declared with in loops referancing an outer scoped variable may lead to confusing semantics | This is just a warning however in this case the semantic are simple so it is not confusing |
+
+[Back to Contents](#contents)
 
 # Deployment
 
@@ -452,6 +459,34 @@ To clone the repository, you first need to:
 3. In your command line type "git clone" and then paste the URL that you just copied.
 4. Press enter to create your local clone
 
-### Credits
-#### Content
-#### Acknowledgments
+[Back to Contents](#contents)
+
+# Credits
+
+Code snippets
+NavBar, Modal and Accordian template taken from [Bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navbar/) to be heavily modified and customized.
+
+Resources
+- [Code Institute Course Content](https://courses.codeinstitute.net/) - Code fundamental learning platform
+- Code Institute Slack Community and Tutor network
+- [W3 Schools](https://www.w3schools.com/) - Learning resource
+- [CSS-Tricks](https://css-tricks.com/) - Learning and bug fixing resource
+- [Stack Overflow](https://stackoverflow.com/) - Bug fixing research
+
+## Content
+
+All text content is original to this site unless provided by [Spoonacular API](https://spoonacular.com/food-api) and displayed with expected accreditation 
+
+## Media 
+
+Recipe images are provided by [Spoonacular API](https://spoonacular.com/food-api)
+
+[Background image](https://pixabay.com/photos/wood-table-breakfast-lunch-dinner-2142217/) downloaded from Pixabay, and heavily edited using [GIMP](https://www.gimp.org/)
+
+## Acknowledgments
+
+README template used to produce this documentation is from [Code Institute README Template](https://github.com/Code-Institute-Solutions/readme-template)
+
+A big thank you to my **CI mentor** and the **CI Slack Community** who have offered support and encouragement throughout the building of this project.
+
+[Back to Contents](#contents)
