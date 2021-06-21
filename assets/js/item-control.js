@@ -232,7 +232,11 @@ $("#zero-waste-find-my-meal-button").click(function () {
         // try block to remove chance of error if no instance of mySuppliesArray exists in local storage
         try {
             // inline conditional to check if list exists but is empty. If not API is called using list
-            mySuppliesArray == "" ? alert("My Supplies list is empty. Please add some ingredients and try again") : makeApiCall(compileApiRequirements(mySuppliesArray, "zero-waste"), "zero-waste");
+            if (mySuppliesArray == "") {
+                alert("My Supplies list is empty. Please add some ingredients and try again");
+            } else {
+                makeApiCall(compileApiRequirements(mySuppliesArray, "zero-waste"), "zero-waste");
+            } 
         } catch (err) {
             // User error feedback with instructions on how to fix 
             alert('You need to add some ingredients to "My Supplies"');
@@ -240,8 +244,12 @@ $("#zero-waste-find-my-meal-button").click(function () {
             console.log(err.message);
         }
     } else {
-        // check if zeroWasteIngredientsArrayis empty and if not run compiler and make API call
-        zeroWasteIngredientsArray == "" ? alert("Zero Waste Ingredients List is empty. Please add some ingredients and try again") : makeApiCall(compileApiRequirements(zeroWasteIngredientsArray, "zero-waste"), "zero-waste");
+        // conditional to check if zeroWasteIngredientsArrayis empty and if not run API Requirements compiler and make API call
+        if (zeroWasteIngredientsArray == "") {
+            alert("Zero Waste Ingredients List is empty. Please add some ingredients and try again");
+        } else {
+            makeApiCall(compileApiRequirements(zeroWasteIngredientsArray, "zero-waste"), "zero-waste");
+        }
     }
 });
 
