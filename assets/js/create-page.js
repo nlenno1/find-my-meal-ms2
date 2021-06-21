@@ -5,7 +5,7 @@ $(window).ready (function() {
     makePageModals();
     makePageFooter();
     //developer feedback
-    console.log("Page elements created")
+    console.log("Page elements created");
 });
 
 function makePageNavbar() {
@@ -51,7 +51,7 @@ function makePageNavbar() {
                     </li>
                 </ul>
             </div>`
-    )
+    );
 }
 
 function makePageModals() {
@@ -197,7 +197,7 @@ function makePageModals() {
                 </div>
             </div>
         </div>`
-    )
+    );
 }
 
 function makePageFooter () {
@@ -222,5 +222,5 @@ function makePageFooter () {
                         src="assets/images/spoonacular-logo.svg" alt="Spoonacular's Logo"></a>
             </div>
         </div>`
-    )
+    );
 }
