@@ -280,6 +280,9 @@ All recipe images are provided by the API.
 |13 |Specific-needs API call returning undefined results when called with displaySearchResults()|The data structure returned by the API is different for each search type therefore the function was trying to acces data that wasn't there|Using dot notation, I referanced the first item in the response array|
 |14 |Modal resizing on page y-axis overflow|Accordian section expanding past the height of the page added the scroll bar to the page which resized the modal|I added overflow: auto; to the modal so the scroll bar would be inside the modal rather than on the edge of the entire page|
 |15 |checkIfHasValue function missing undefined values|I used the string "undefined" as a operand for the conditional statement in the function when it should have been the value of undefined|Removed the "" to make the aperand value undefined|
+|16 |404 Page not found error for recipe-display.html |Using an absolute url path in createBackToResultsButton() |Changed path to a relative url path |
+|17 Footer not at the bottom of the page on larger devices |Page content not big enought to push footer to the bottom of the screen |Set the min-height attribute of .main-body, using calc() vh and the height of the footer, to keep the footer at the bottom of the page  |
+|18| JS Validator Error - "Expected an assignment or function call and instead saw an expression" | Used a ternary expression to call functions depending on a variable value | Restructured the ternary expression into a traditional if/else conditional statement |
 
 ### Testing
 #### Device Testing
