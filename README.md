@@ -236,10 +236,6 @@ All recipe images are provided by the API.
 
 [Back to Contents](#contents)
 
-# Features
-
-[Back to Contents](#contents)
-
 # Technologies Used
 
 - HTML5 - Programming Language
