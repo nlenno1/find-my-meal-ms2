@@ -285,6 +285,46 @@ All recipe images are provided by the API.
 |18| JS Validator Error - "Expected an assignment or function call and instead saw an expression" | Used a ternary expression to call functions depending on a variable value | Restructured the ternary expression into a traditional if/else conditional statement |
 
 ### Testing
+
+Throughout the building of this project, I tested the responsive design and functionality using [Google Chrome Developer Tools](https://developer.chrome.com/docs/devtools/). The console and elements feature helped me de-bug any issues and the adaptable display helped visualise each page at different screen widths.
+
+This is the functionality check list that I used when testing my project
+
+|Element/Section |Feature to Test |
+| -------- | -------- |
+|**Navbar** *(on all pages)*  |.nav-link have a hover effect are directing to the intended pages |
+| |Modals open and close correctly and display relevant content  |
+| |Dropdown menu work with hover effects |
+| |Element stays at the top of the page |
+| |Logo link directs to index.html |
+|**Footer** *(on all pages)* |Contact the developer link has hover effect and directs to the contact page |
+| |Spoonacular image link opens correct page  in a new tab |
+|**My Supplies Modal** |Input field functions as expected |
+| |Appropriate user feedback if impossible data values are entered |
+| |Add button functions as expected |
+| |On loading, any null or undefined values in local storage are handled |
+| |Created elements are formatted correctly and can be removed via the close/delete button |
+| |"Clear My Supplies" button removes all created elements while also removing the item names from mySuplliesArray and local storage |
+|**About Modal** |All information displays correctly |
+| |Accordian section functions as expected |
+|**index.html**  |Recipe-selector-buttons have the correct href and has the enlarging hover effect  |
+|**contact.html**  |All input fields work as expected, validate the data that is entered and are required before submitting  |
+| |User feedback provides suitable information/responses during and after sending any message, including if there was an error  |
+| |The emailJS API call responds as expected |
+|**lucky-dip.html** & **zero-waste.html**|Input/select fields function as expected |
+| |Appropriate user feedback if impossible data values are entered |
+| |Add button functions as expected and elements are created correctly |
+| |"Use My Supplies" check box with click input functions as expected *(zero-waste.html only)* |
+| |"Find My Meal" button click event functions as expected and makes the correct API call |
+| |User feedback provides suitable information/responses during and after API call, including if there is an error   |
+| |API call responds as expected |
+| |Data from API is presented appropriatly and zero or impossible values are managed effeciently  |
+| |View recipe button functions as expected and passed on the correct data to local storage |
+| | On loading, pages display the correct information when expected|
+|**recipe-display.html** |API call responds as expected |
+| |Data from API is presented appropriatly and zero or impossible values are managed effeciently  |
+| |Back to results button functions as expected and directs to the correct page  |
+
 #### Device Testing
 #### Peer Review Testing
 #### Browser Testing
