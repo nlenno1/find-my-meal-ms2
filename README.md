@@ -287,8 +287,19 @@ All recipe images are provided by the API.
 #### Browser Testing
 #### User Stories Testing
 
-### Validation
+# Validation
 
+To view all Validation Result Files, [Click here](assets/readme-assets/validation-files.md).
+
+To validate my project, I used the following validators:
+- HTML - [W3C Validator Service](https://validator.w3.org/)
+- CSS - [CSS Validator Service](http://jigsaw.w3.org/css-validator/)
+- Java Script - [Beautify Tools JS Validator](https://beautifytools.com/javascript-validator.php)
+- Color Tester - [A11y](https://color.a11y.com/)
+- Mobile Compatability Tester - [Google Mobile-Friendly Test ](https://search.google.com/test/mobile-friendly)
+- General Performance - [Google Lighthouse](https://developers.google.com/web/tools/lighthouse)
+
+### Results and Outcomes of Validation
 
 ### Deployment
 
