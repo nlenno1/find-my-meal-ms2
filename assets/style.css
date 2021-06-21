@@ -25,7 +25,7 @@ nav, footer, .modal-body {
 
 .navbar {
     padding: 0.5rem 1.5rem;
-    background-color: rgba(256, 256, 256, 0.8);
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .nav-link:focus {
@@ -67,7 +67,7 @@ nav, footer, .modal-body {
 
 @media (min-width:575px) {
     #navbar {
-    background-color: rgba(256, 256, 256, 0);
+    background-color: rgba(255, 255, 255, 0);
     margin-top: 0;
     margin-bottom: 0;
     border-radius: 0;
@@ -86,7 +86,7 @@ nav, footer, .modal-body {
         margin: 7px 0 0 0;   
     }
     .navbar-collapse{
-        display: space-evenly;
+        justify-content: space-evenly;
     }
 }
 
