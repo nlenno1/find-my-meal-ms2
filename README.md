@@ -292,7 +292,7 @@ All recipe images are provided by the API.
 
 # Validation
 
-To view all Validation Result Files [Click here](assets/readme-assets/validation-files.md).
+To view all Validation Result Files [Click here](assets/readme-assets/validation-files.md){:target="_blank"}.
 
 To validate my project, I used the following validators:
 - HTML - [W3C Validator Service](https://validator.w3.org/)
