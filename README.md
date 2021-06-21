@@ -289,7 +289,7 @@ All recipe images are provided by the API.
 
 # Validation
 
-To view all Validation Result Files, [Click here](assets/readme-assets/validation-files.md).
+To view all Validation Result Files [Click here](assets/readme-assets/validation-files.md).
 
 To validate my project, I used the following validators:
 - HTML - [W3C Validator Service](https://validator.w3.org/)
@@ -300,6 +300,24 @@ To validate my project, I used the following validators:
 - General Performance - [Google Lighthouse](https://developers.google.com/web/tools/lighthouse)
 
 ### Results and Outcomes of Validation
+
+The only issues raised by the validators after final testing are:
+
+#### HTML
+
+| Error | Reason |
+| -------- | -------- |
+|Section lack heading | This only occurs where there is an image which acts as the header |
+|Empty heading | This heading is acting as a placeholder to have data loaded into it and doesn't need to be seen until the information is loaded |
+
+#### JS
+
+| Error | Reason |
+| -------- | -------- |
+|*Function Name* is not defined | When this error occurs, it is because the function has been defined in a different js file as it is used in multiple pages |
+|'sendMail' is defined but never used | This is a function that is called by a form submit click event and therefore doe not need to be called in the JS file |
+|Functions declared with in loops referancing an outer scoped variable may lead to confusing semantics | This is just a warning however in this case the semantic are simple so it is not confusing |
+
 
 ### Deployment
 
