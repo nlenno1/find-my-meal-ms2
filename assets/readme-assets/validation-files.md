@@ -20,7 +20,12 @@
 
 ### Java Script Validation Results
 
-![JS Validatior Results]()
+![Contact](validation-screenshots/contact-js-validator-results.jpg)
+![Create Page](validation-screenshots/createpage-js-validator-results.jpg)
+![Item Control](validation-screenshots/itemcontrol-js-validator-results.jpg)
+![Load Results](validation-screenshots/loadresults-js-validator-results.jpg)
+![Lucky Dip](validation-screenshots/luckydip-js-validator-results.jpg)
+![Recipe Display](validation-screenshots/recipedisplay-js-validator-results.jpg)
 
 ### Color Validation Results
 
