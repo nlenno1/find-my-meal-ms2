@@ -6,7 +6,7 @@ $(window).ready (function() {
 function loadStoredResults() {
     if (loadFromLocalStorage("reloadResults") == true) {
         console.log("Reloading results");
-        searchResults = loadFromLocalStorage("latestSearchResults");
+        let searchResults = loadFromLocalStorage("latestSearchResults");
         console.log(searchResults);
         displaySearchResults(searchResults, loadFromLocalStorage("backToResultsPageToLoad"));
         saveToLocalStorage("", "backToResultsPageToLoad");
