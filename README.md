@@ -3,28 +3,6 @@
 
 [Link to Live Project](https://nlenno1.github.io/find-my-meal-ms2/)
 #
-## Contents
-1. [Introduction](#introduction)
-3. [Development Planes](#development-planes)
-    - [Strategy](#strategy)
-    - [Scope](#scope)
-    - [Structure](#structure)
-    - [Skeleton](#skeleton)
-4. [Design](#design)
-5. [Features](#features)
-6. [Technologies Used](#technologies-used)
-7. [Search Engine Optimization (SEO)](#search-engine-optimization)
-8. [Bugs and Issues](#bugs-and-issues)
-9. [Testing](#testing)
-    - [Device Testing](#device-testing)
-    - [Peer Review Testing](#peer-review-testing)
-    - [Browser Testing](#browser-testing)
-    - [User Stories Testing](#user-stories-testing)
-10. [Validation](#validation)
-11. [Deployment](#deployment)
-12. [Credits](#credits)
-    - [Content](#content)
-    - [Acknowledgments](#acknowledgments)
 
 ***
 ## Introduction
@@ -37,7 +15,7 @@ I also have friends and family members who either have changed their diet or hav
 
 This is the second of four Milestone Projects that make up the Full Stack Web Development Program at The Code Institute. The main requirements of this project are to create a responsive website using primarily **HTML5**, **CSS3** and **JavaScript**.
 
-[Back to Contents](#contents)
+[Back to Top](#find-my-meal)
 #
 
 ## Development Planes
@@ -94,7 +72,7 @@ I performed an Importance Viability analysis on the **USER** goals and these wer
 
 ![Importance Viability Graph](assets/readme-assets/importance-viability-graph.png)
 
-[Back to Contents](#contents)
+[Back to Top](#find-my-meal)
 #
 ### Scope 
 In line with the results from the Importance Viability analysis, these are the feature that will be implimented on the first production release.
@@ -170,7 +148,7 @@ About Modal
 - Quick response times from the API
 - Pagenation when appropriate
 
-[Back to Contents](#contents)
+[Back to Top](#find-my-meal)
 #
 
 ### Structure
@@ -186,7 +164,7 @@ Below is a diagram to better illustrate this structure.
 - When a Search result is selected, recipe-display.html will be called and loaded with the requested information.
 - If the user tries to move horizontally on the graph after displaying "Search Results" or loading recipe-display.html then they will lose all retrieved data from the API.
 
-[Back to Contents](#contents)
+[Back to Top](#find-my-meal)
 
 ### Skeleton
 
@@ -212,7 +190,7 @@ recipe-display.html:
 Modal Design:
 ![modal design wireframes](assets/readme-assets/modal-wireframes-min.png)
 
-[Back to Contents](#contents)
+[Back to Top](#find-my-meal)
 
 #### Design
 
@@ -232,7 +210,7 @@ The background image used is appropriate to the style of the website.
 
 All recipe images are provided by the API.
 
-[Back to Contents](#contents)
+[Back to Top](#find-my-meal)
 
 # Technologies Used
 
@@ -255,7 +233,7 @@ All recipe images are provided by the API.
 - [Java Script Validator](https://beautifytools.com/javascript-validator.php) - Validating JS code
 - [GIMP](https://www.gimp.org/) - Image editor
 
-[Back to Contents](#contents)
+[Back to Top](#find-my-meal)
 
 ### Bugs and Issues
 
@@ -280,7 +258,7 @@ All recipe images are provided by the API.
 |17 |Footer not at the bottom of the page on larger devices |Page content not big enought to push footer to the bottom of the screen |Set the min-height attribute of .main-body, using calc() vh and the height of the footer, to keep the footer at the bottom of the page  |
 |18 | JS Validator Error - "Expected an assignment or function call and instead saw an expression" | Used a ternary expression to call functions depending on a variable value | Restructured the ternary expression into a traditional if/else conditional statement |
 
-[Back to Contents](#contents)
+[Back to Top](#find-my-meal)
 
 # Testing
 
@@ -387,7 +365,7 @@ As an enviromentalist, worried about the amount of **food waste produced**;
 - I can use the Zero Waste recipe selector and enter the specific ingredients that I have to use the last of.
 - If I regularly have the same items to use then I can put them in My Supplies to use in later searches
 
-[Back to Contents](#contents)
+[Back to Top](#find-my-meal)
 
 # Validation
 
@@ -420,7 +398,7 @@ The only issues raised by the validators after final testing are:
 |'sendMail' is defined but never used | This is a function that is called by a form submit click event and therefore doe not need to be called in the JS file |
 |Functions declared with in loops referancing an outer scoped variable may lead to confusing semantics | This is just a warning however in this case the semantic are simple so it is not confusing |
 
-[Back to Contents](#contents)
+[Back to Top](#find-my-meal)
 
 # Deployment
 
@@ -459,7 +437,7 @@ To clone the repository, you first need to:
 3. In your command line type "git clone" and then paste the URL that you just copied.
 4. Press enter to create your local clone
 
-[Back to Contents](#contents)
+[Back to Top](#find-my-meal)
 
 # Credits
 
@@ -489,4 +467,4 @@ README template used to produce this documentation is from [Code Institute READM
 
 A big thank you to my **CI mentor** and the **CI Slack Community** who have offered support and encouragement throughout the building of this project.
 
-[Back to Contents](#contents)
+[Back to Top](#find-my-meal)
