@@ -46,19 +46,20 @@ The target demographics for this website are:
 The website needs to enable the **USER** to:
  
 - Search for recipes based on:
-    - Allergies/Intolerances (nut, gluten intolerances etc)
+    - Allergies/Intolerances (nut allergies, gluten intolerances etc)
     - Diet (Vegan, Vegitarian etc)
     - What items they have to reduce their waste
-- Search for random recipes to help them get inspiration for new recipes
-- Discover the companies social media accounts to recieve notifications about updates, new features and deals.
+- Search for random recipes to help inspire them
+- Get in touch with suggestions to improve the service or to report bugs
 
 The website needs to enable the **BUSNINESS** to:
 
 - Develop a fully interactive and engaging platform that users enjoy
 - Accredit use of the recipies and APIs as directed in the API documentation
-- Create revenue from:
+- Potentially revenue from:
     - Selling access to premium features on the app/website,
     - Linking with supermarkets and stores to help users find the products they need to buy
+    - Advertising specific stores or products targeted at users depending on what ingredients or searches they use
 - Attract new users by making the UI easy to understand and use
 
 ### Strategy Table
@@ -67,10 +68,13 @@ I performed an Importance Viability analysis on the **USER** goals and these wer
 | ----------- | ----------- | ----------- | ----------- |
 | A      | Allergy/Intolerances Search       | 5       | 5       |
 | B   | Diet Search        | 5       | 5       |
-| C    | Random Search        | 4       | 5       |
-
+| C    | Zero Waste Search        | 5      | 5       |
+| D | Random Search        | 4       | 5       |
+| E | Encouraging user to contact developer | 4  | 5  |
 
 ![Importance Viability Graph](assets/readme-assets/importance-viability-graph.png)
+
+As you can see all the stated features have a high Importance and Viability score so will be included in the project.
 
 [Back to Top](#find-my-meal)
 #
