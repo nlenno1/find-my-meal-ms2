@@ -17,40 +17,48 @@
 </head>
 
 <body>
+    <!--Background image container-->
     <div class="background-image">
         <!--Navbar template taken from Bootstrap 5 example code and heavily modified - filled by create-page.js-->
         <nav class="navbar navbar-expand-sm navbar-light sticky-top">
             <img src="assets/images/loading.gif" alt="loading gif">
         </nav>
-
         <!--Modals container - Modal template taken from Bootstrap 5 example code and heavily modified - filled by create-page.js-->
         <div id="modals-container">
         </div>
-
+        <!--Page content container-->
         <section class="container-fluid main-body">
             <div class="row">
                 <div class="col-12" id="introduction">
+                    <!--logo image with link-->
                     <a href="index.html">
                         <img class="logo" src="assets/images/find-my-meal-logo.png" alt="Find My Meal Logo">
                     </a>
+                    <!--Page/Service introduction-->
                     <div class="intro-text">
                         <p>Looking for new recipes, you have come to the right place!!</p>
                         <p>Choose one of the options from below and get started on your journey of recipe discovery</p>
                     </div>
                 </div>
             </div>
-
+            <!--Recipe selector buttons - choosing the recipe search that you want-->
             <div class="row" id="recipe-selector-buttons-container">
                 <div class="col-12 col-lg-4 recipe-selector-button-container">
+                    <!--Lucky Dip Button-->
                     <a href="lucky-dip.html" class="recipe-selector-button">Lucky Dip</a>
+                    <!--Brief search description-->
                     <p>Picks random recipes. Best for inspiration</p>
                 </div>
                 <div class="col-12 col-lg-4 recipe-selector-button-container">
+                    <!--Zero Waste Button-->
                     <a href="zero-waste.html" class="recipe-selector-button">Zero-Waste</a>
+                    <!--Brief search description-->
                     <p>Use what you have! Best for the enviroment</p>
                 </div>
                 <div class="col-12 col-lg-4 recipe-selector-button-container">
+                    <!--Zero Waste Button-->
                     <a href="specific-needs.html" class="recipe-selector-button">Specific Needs</a>
+                    <!--Brief search description-->
                     <p>Say what you need! Tailored for you.</p>
                 </div>
             </div>
@@ -61,12 +69,13 @@
     <footer>
         <img src="assets/images/loading.gif" alt="loading gif">
     </footer>
-
+    <!--Scripts-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <!--Local Scripts-->
     <script src="assets/js/create-page.js"></script>
     <script src="assets/js/item-control.js"></script>
     <script src="assets/js/index.js"></script>

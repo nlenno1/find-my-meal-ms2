@@ -17,32 +17,39 @@
 </head>
 
 <body>
+    <!--Background image container-->
     <div class="background-image">
         <!--Navbar template taken from Bootstrap 5 example code and heavily modified - filled by create-page.js-->
         <nav class="navbar navbar-expand-sm navbar-light d-sm-sticky-top">
             <img src="assets/images/loading.gif" alt="loading gif">
         </nav>
-
         <!--Modals container - Modal template taken from Bootstrap 5 example code and heavily modified - filled by create-page.js-->
         <div id="modals-container">
         </div>
-
+        <!--Page content container-->
         <section class="container-fluid main-body">
             <div class="row">
                 <div class="col-12 text-center">
+                    <!--logo image with link (not visable at mobile breakpoint)-->
                     <a href="index.html" class="d-none d-sm-block">
                         <img class="recipe-search-pages-logo" src="assets/images/find-my-meal-logo.png"
                             alt="Find My Meal Logo">
                     </a>
+                    <!--Page Title-->
                     <h1>Specific Needs</h1>
+                    <!--Recipe Search Options Container-->
                     <div class="selection-options-container">
+                        <!--User Instructions-->
                         <p class="text-center">Please select which options apply to you from the dropdown options below
                         </p>
                         <div class="row g-0 specific-needs-dropdown-menus">
                             <div class="col-12 col-sm-10">
+                                <!--Dropdown Menu for Dietary Requirements-->
                                 <select name="diet-requirements" id="diet-requirements-select"
                                     class="specific-needs-select">
+                                    <!--Initial selected value hidden from list-->
                                     <option value="none" disabled hidden selected>Dietary Requirements</option>
+                                    <!--Selectable Items-->
                                     <option value="gluten-free">Gluten Free</option>
                                     <option value="ketogenic">Ketogenic</option>
                                     <option value="vegetarian">Vegetarian</option>
@@ -56,11 +63,15 @@
                                 </select>
                             </div>
                             <div class="col-12 col-sm-2">
+                                <!--Add button for the Dietary Requirements Dropdown Menu-->
                                 <button id="diet-add-button" class="add-button">Add</button>
                             </div>
                             <div class="col-12 col-sm-10">
+                                <!--Dropdown Menu for Dietary Requirements-->
                                 <select name="intolerances" id="intolerances-select" class="intolerances-select">
+                                    <!--Initial selected value hidden from list-->
                                     <option value="none" disabled hidden selected>Intolerances</option>
+                                    <!--Selectable Items-->
                                     <option value="dairy">Dairy</option>
                                     <option value="egg">Egg</option>
                                     <option value="gluten">Gluten</option>
@@ -76,10 +87,12 @@
                                 </select>
                             </div>
                             <div class="col-12 col-sm-2">
+                                <!--Add button for the Intolerances Dropdown Menu-->
                                 <button id="intolerances-add-button" class="add-button">Add</button>
                             </div>
                         </div>
                         <div class="row g-0">
+                            <!--Display container for created elements from selecting options and clicking the add button-->
                             <div class="col my-supplies-display-container">
                                 <div id="specific-needs-items-display" class="my-supplies-display">
                                 </div>
@@ -87,37 +100,44 @@
                         </div>
                     </div>
                     <div class="row g-0">
+                        <!--.col element for submit button spacing-->
                         <div class="col-1 col-md-2"></div>
                         <div class="col-10 col-md-8">
+                            <!--Find My Meal button to make API call using user values entered-->
                             <button type="submit" class="find-my-meal-button"
                                 id="specific-needs-find-my-meal-button">Find My Meal!</button>
                         </div>
+                        <!--Container for user feedback when loading-->
                         <div class="col-1 col-md-2" id="loading"></div>
                     </div>
                 </div>
             </div>
         </section>
+        <!--/Page content container-->
     </div>
     <!--/Background Image-->
-
+    <!--Footer masks to cover background image at smaller screen heights-->
     <div class="footer-mask"></div>
     <div class="footer-mask-2"></div>
-
+    <!--Recipe Search Results content container (all content will be updated/replaced by item-control.js.
+    This section will not be wisable until content API call response is loaded into it-->
     <section class="recipe-search-results">
         <h2 id="result-cards-header"></h2>
         <div id="specific-needs-results-cards-display" class="recipe-list">
         </div>
     </section>
-
+    <!--/Recipe Search Results content container-->
+    <!--footer - filled by create-page.js-->
     <footer>
         <img src="assets/images/loading.gif" alt="loading gif">
     </footer>
-
+    <!--Scripts-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <!--Local Scripts-->
     <script src="assets/js/create-page.js"></script>
     <script src="assets/js/item-control.js"></script>
     <script src="assets/js/load-results.js"></script>
