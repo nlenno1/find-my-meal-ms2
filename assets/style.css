@@ -195,6 +195,24 @@ footer a:hover{
     }
 }
 
+@media(min-width:1200px) {
+    .footer-mask {
+        height: 140px;
+    }
+}
+
+@media(min-width:1600px) {
+    .footer-mask {
+        height: 180px;
+        margin-top: -90px;
+        margin-bottom: -45px;
+    }
+    .footer-mask-2 {
+        height: 120px;
+        margin-bottom: -48px;
+    }
+}
+
 /* ---------------------------------------- About Modal/My Supplies Modal */
 
 .modal-header {
