@@ -53,11 +53,30 @@
                 </div>
             </div>
         </section>
+        <!--/Page content container-->
     </div>
-
-    <!-- footer - filled by create-page.js-->
+    <!--/Background Image-->
+    <!--footer-->
     <footer>
-        <img src="assets/images/loading.gif" alt="loading gif">
+        <!--Footer masks to cover background image at smaller screen heights-->
+        <div class="footer-mask"></div>
+        <div class="footer-mask-2"></div>
+        <!--footer creator with background-->
+        <div class="row g-0 footer-background sticky-bottom">
+            <!--spacer column-->
+            <div class="col-3 col-sm-4"></div>
+            <!--center column with copyright and contact-->
+            <div class="col-5 col-sm-4 copyright-info">
+                <a href="contact.html">Contact the developer</a>
+                <p>© Nicholas Lennon</p>
+            </div>
+            <!--column with credit link to the API provider-->
+            <div class="col-4 powered-by-info">
+                <p class="logo-label">Powered by</p>
+                <a href="https://spoonacular.com/food-api" target="_blank" rel="noopener"><img class="spoonacular-logo"
+                        src="assets/images/spoonacular-logo.svg" alt="Spoonacular's Logo"></a>
+            </div>
+        </div>
     </footer>
     <!--Scripts-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
