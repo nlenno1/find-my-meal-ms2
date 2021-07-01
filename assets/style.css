@@ -316,7 +316,6 @@ footer a:hover{
 /* ---------------------------------------- Introduction */
 
 .main-body {
-    margin-bottom: -50px;
     min-height: 75vh;
     position: relative;
     z-index: 1;
@@ -484,6 +483,9 @@ h1 {
 }
 
 @media(min-width:1200px) {
+    .main-body{
+        margin-bottom: -50px;
+    }
     .recipe-search-pages-logo {
     height: 140px;
     margin-left: 6vw;
