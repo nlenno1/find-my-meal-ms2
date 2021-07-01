@@ -354,19 +354,31 @@ function makeApiCall(searchUrl, searchType) {
         $("#find-my-meal-button").val("Find My Meal");
     });
 }
-
+//function to determine what data is being passed as an arguement and how to display it
 function displaySearchResults(searchResults, searchType) {
+    //conditional to determine the search type and to check for a null value response from API call
     if (searchType === "zero-waste" && searchResults[0].title !== "") {
+        //user feedback - display title for results
         $("#result-cards-header").html("Recipies Found:");
+        //empty search results display area on zero-waste.html
         $("#zero-waste-results-cards-display").html("");
+        //for loop to perform tasks on all results in response data
         for (let i = 0; i < searchResults.length; i++) {
+            //initialize missedIngredientsList and usedIngredientsList ofter converting response array into a string
             let missedIngredientsList = convertResponseArrayItemNamesToList(searchResults[i].missedIngredients);
             let usedIngredientsList = convertResponseArrayItemNamesToList(searchResults[i].usedIngredients);
+            //add this html to the zero-waste-results-cards-display section of the page
             $("#zero-waste-results-cards-display").append(
+                //template literal of new element to be created and added to display section
+                //template literal used to make code easier to read and understand
+                //checkIfHasValue used for every value to avoid empty values being displayed or causing errors - the recipe image is the only exception to this as it have the alt value to fall back on
+                //the recipe id number is stored in the .view-recipe-button id value to be used when the view-recipe-button is clicked 
                 `<div class="recipe-card">
+                    <!--Recipe Title-->
                     <h3 class="text-center">${checkIfHasValue(searchResults[i].title)}</h3>
                     <div class="row g-0">
                         <div class="col-12 col-lg-5">
+                            <!--Recipe Image-->
                             <img class="recipe-image" src=${searchResults[i].image} alt="Image of ${checkIfHasValue(searchResults[i].title)}">
                         </div>
                         <div class="col-12 col-lg-7">
@@ -383,16 +395,27 @@ function displaySearchResults(searchResults, searchType) {
                 </div>`
             );
         }
+        //scroll to the top of the results
         window.scrollTo(0, 680);
-        // VIEW RECIPE BUTTON
+        //initialize click event listeners for all .view-recipe-button elements
         createViewRecipeButtons(searchType);
+    //conditional to determine the search type and to check for a null value response from API call
     } else if (searchType === "specific-needs" && searchResults.results[0].title !== "") {
+        //user feedback - display title for results
         $("#result-cards-header").html("Recipies Found:");
+        //empty search results display area on specific-needs.html
         $("#specific-needs-results-cards-display").html("");
+        //reassign search results to access the correct data sets in API response
         searchResults = searchResults.results;
+        //for loop to perform tasks on all results in response data
         for (let i = 0; i < searchResults.length; i++) {
+            //initialize dishTypes and diets variables - to simplify the code and make it easier to read/manipulate I defined the variables before they are needed but I could have passed this code where the variable names are in the template literal
             let dishTypes = convertResponseArrayToList(searchResults[i].dishTypes);
             let diets = convertResponseArrayToList(searchResults[i].diets);
+            //template literal of new element to be created and added to display section
+            //template literal used to make code easier to read and understand
+            //checkIfHasValue used for every value to avoid empty values being displayed or causing errors - the recipe image is the only exception to this as it have the alt value to fall back on
+            //the recipe id number is stored in the .view-recipe-button id value to be used when the view-recipe-button is clicked 
             $("#specific-needs-results-cards-display").append(
                 `<div class="recipe-card">
                     <h3 class="text-center">${checkIfHasValue(searchResults[i].title)}</h3>
