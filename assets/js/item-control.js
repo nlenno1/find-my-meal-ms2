@@ -362,6 +362,8 @@ function displaySearchResults(searchResults, searchType) {
         $("#result-cards-header").html("Recipies Found:");
         //empty search results display area on zero-waste.html
         $("#zero-waste-results-cards-display").html("");
+        //add padding to search results display section
+        $(".recipe-search-results").css("padding", "30px 15px")
         //for loop to perform tasks on all results in response data
         for (let i = 0; i < searchResults.length; i++) {
             //initialize missedIngredientsList and usedIngredientsList ofter converting response array into a string
@@ -405,6 +407,8 @@ function displaySearchResults(searchResults, searchType) {
         $("#result-cards-header").html("Recipies Found:");
         //empty search results display area on specific-needs.html
         $("#specific-needs-results-cards-display").html("");
+        //add padding to search results display section
+        $(".recipe-search-results").css("padding", "30px 15px")
         //reassign search results to access the correct data sets in API response
         searchResults = searchResults.results;
         //for loop to perform tasks on all results in response data
@@ -437,11 +441,12 @@ function displaySearchResults(searchResults, searchType) {
                 </div>`
             );
         }
+        //scroll to the top of the results
         window.scrollTo(0, 680);
-        // VIEW RECIPE BUTTON
+        //initialize click event listeners for all .view-recipe-button elements
         createViewRecipeButtons(searchType);
+    //conditional to determine the search type and to check for a null value response from API call
     } else if (searchType === "single-recipe-to-display") {
-        let searchResult;
         try {
             searchResult = searchResults.recipes[0];
         } catch (err) {
