@@ -230,10 +230,10 @@ About Modal
 |6 |Jquery Click Event Element Undefined Errors|Moved navbar element creation to JS file so the click event was refering to an element that didn't exist yet|Added $(window).ready to the Jquery click events so they are called when the element exists| 
 |7 |X axis page overflow|.nav-item elements in the navbar being too wide after adding padding and margins|I could have used the box-sizing: border-box; css attribute to negate the margin/padding but I decided to reduce the .nav-item width to compensate for the padding/margins manually|
 |8 |createIngredientObject() broken|Passed "My Supplies" as the array name which cause errors when assigned as the variable name as it contained a space|Altered the array name from "My Supplies" to "MySuppliesArray"|
-|9 |Current My Supplies array not empty after calling clearLocalStorage()|When writing the function, I cleared the localStorage array but not the array assigned to the variable mySuppliesArray|I added the assigner mySuppliesArray = [] to empty the array|
+|9 |Current My Supplies array not empty after calling clearLocalStorage()|When writing the function, I cleared the local storage array but not the session storage mySuppliesArray|I added the assigner mySuppliesArray = [] to empty the session array|
 |10 |My Supplies load createIngredientObject() returning error|When adding to createIngredientObject() I rearranged the required arguement order which I did not change in the My Supplies load function and when taking the item names from the localStorage array, they contained hyphens which I did not want displayed|Double checked what the required arguements were and rearraged them to match the edited function before creating removeHyphens() to turn the saved item name into a screenName to display|
 |11 |createViewRecipeButtons() returning error|Function was called before the element for click event was created|Added function to displaySearchResults() after element creation|
-|12 |Recipe-display-button click event no sending the correct data to the API call therefore not getting a response|Typographical error lead to an extra " in each button element when being created by displaySearchResults()|Removed the extre character|
+|12 |Recipe-display-button click event no sending the correct data to the API call therefore not getting a response|Typographical error lead to an extra " in each button element when being created by displaySearchResults()|Removed the extra character|
 |13 |Specific-needs API call returning "searchResults[0] is undefined" error when called with displaySearchResults()|The data structure returned by the API is different for each search type therefore the function was trying to acces data that wasn't there|Using dot notation, I referanced the first item in the response array|
 |14 |Modal resizing on page y-axis overflow|Accordian section expanding past the height of the page added the scroll bar to the page which resized the modal|I added overflow: auto; to the modal so the scroll bar would be inside the modal rather than on the edge of the entire page|
 |15 |checkIfHasValue function missing undefined values|I used the string "undefined" as a operand for the conditional statement in the function when it should have been the value of undefined|Removed the "" to make the aperand value undefined|
@@ -286,7 +286,7 @@ This is the functionality check list that I used when testing my project
 | |Add button functions as expected |
 | |On loading, any null or undefined values in local storage are handled |
 | |Created elements are formatted correctly and can be removed via the close/delete button |
-| |"Clear My Supplies" button removes all created elements while also removing the item names from mySuplliesArray and local storage |
+| |"Clear My Supplies" button removes all created elements while also removing the item names from session and local storage |
 |**About Modal** |All information displays correctly |
 | |Accordian section functions as expected |
 |**index.html**  |Recipe-selector-buttons have the correct href and has the enlarging hover effect  |
