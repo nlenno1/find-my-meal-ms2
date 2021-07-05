@@ -488,7 +488,7 @@ function displaySearchResults(searchResults, searchType) {
                 <li>Suitable for: ${checkIfHasValue(convertResponseArrayToList(searchResult.diets))}</li>
                 <li>Cuisines: ${checkIfHasValue(convertResponseArrayToList(searchResult.cuisines))}</li>
                 <li>Health Score: ${checkIfHasValue(searchResult.healthScore)}</li>
-                <li>Price Per Serving: £${checkIfHasValue(searchResult.pricePerServing)}</li>
+                <li>Price Per Serving: ${checkIfHasValue(searchResult.pricePerServing)}¢</li>
                 <li>Spoonacular Score: ${checkIfHasValue(searchResult.spoonacularScore)}</li>
             </ul>`
         );
