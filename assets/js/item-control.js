@@ -161,7 +161,7 @@ function removeObjectMethod(ingredientCompName, targetArea, arrayToAction, array
     $(`#${ingredientCompName}-in-${compArrayName}-remove-button`).click(function () {
         //store parent of clicked element as variable
         let item = $(this).parent();
-        // call function to remove the item from the array it is in
+        // call function to remove the item from the session storage array it is in
         removeItemFromArray(arrayToAction, item.attr("value"));
         //developer feedback
         console.log(item.attr("value") + ' removed from ' + arrayName);
@@ -464,7 +464,8 @@ function displaySearchResults(searchResults, searchType) {
         $(".recipe-display h1").html(
             `${searchResult.title}`
         );
-        //add summary to recipe summary section
+        /* Add summary text, image and image alt value to recipe summary section
+        Summary text has all HTML removed from the source data using the removeHTMLElements function */
         $(".recipe-display-image-summary-container").html(
             `<div class="row g-0">
                 <div class="col-12 col-md-4">
@@ -475,10 +476,12 @@ function displaySearchResults(searchResults, searchType) {
                 </div>
             </div>`
         );
+        // Add Ingredients list to Ingredients section - Ingredients string converted into an ordered list using convertExtendedIngredientsToOrderedList function
         $(".recipe-display-ingredients").html(
             `<h3 class="text-center">Ingredients</h3>
             <p>${convertExtendedIngredientsToOrderedList(searchResult.extendedIngredients)}</p>`
         );
+        // Add general information to general information section. All values are checked to see if they are empty or invalid to avoid incorrect data presented to the user
         $(".recipe-general-info").html(
             `<h3 class="text-center">General Information</h3>
             <ul>
@@ -492,137 +495,184 @@ function displaySearchResults(searchResults, searchType) {
                 <li>Spoonacular Score: ${checkIfHasValue(searchResult.spoonacularScore)}</li>
             </ul>`
         );
+        //Define recipeInstructionsForDisplay variable which will contain the instructions text
         let recipeInstructionsForDisplay;
+        // conditional statements to check which instructions have been provided in the API response 
         if (searchResult.analyzedInstructions == "" && searchResult.analyzedInstructions == "") {
-            recipeInstructionsForDisplay = "There are no instructions provided";
+            //if no instructions are provided at all, an error message will display
+            recipeInstructionsForDisplay = "There are no instructions provided. Try the Original recipe link to find out more";
         } else if (searchResult.analyzedInstructions == "") {
+            //if the basic instructions are provided, store them in the variable
             recipeInstructionsForDisplay = `<p>${searchResult.instructions}</p>`;
         } else {
+            // if the analyzed instructions are provided then format them into an ordered list and store it in the variable
             recipeInstructionsForDisplay = convertAnalyzedInstructionsToOrderedList(searchResult.analyzedInstructions[0].steps);
         }
+        // display the recipe instructions in the instructions element
         $(".recipe-display-instructions").html(
             `<h3 class="text-center">Instructions</h3>
             ${recipeInstructionsForDisplay}`
         );
+        // display credits information in credits element
         $(".credits").html(
             `<p>Recipe credit: ${checkIfHasValue(searchResult.sourceName)}</p>
             <a href="${checkIfHasValue(searchResult.sourceUrl)}" target="_blank" rel="noopener">Link to Original Recipe</a>`
         );
+        //initialize click event listeners for .find-my-meal button to show the user another result
         createBackToResultsButton();
     } else {
+        //error response value if none of the conditional statement conditions are met
         $("#result-cards-header").html('<i class="fas fa-exclamation-circle"></i> Unfortunatly Something Went Wrong and No Recipies Were Found! <i class="fas fa-exclamation-circle"></i>');
     }
 }
-
+//function to convert an array into a list in string form
 function convertResponseArrayToList(resultArray) {
+    //initialize newString variable
     let newString = "";
+    //try catch block to remove error if value is null or undefined
     try {
+        // store the capitalised first instance of the list in the variable newString
         newString = capitalizeFirstLetter(resultArray[0]);
-    } catch (err) {
-        console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
-        newString = "&nbsp;";
-    }
-    for (let j = 1; j < resultArray.length; j++) {
-        if (!newString.includes(capitalizeFirstLetter(resultArray[j]))) {
-            newString = newString + ", " + capitalizeFirstLetter(resultArray[j]);
+        //loop through the rest of the array 
+        for (let j = 1; j < resultArray.length; j++) {
+            //conditional statement to avoid any duplicated values in the array entering the new string
+            if (!newString.includes(capitalizeFirstLetter(resultArray[j]))) {
+                //appending the next array instance to the string variable formatted correctly
+                newString = newString + ", " + capitalizeFirstLetter(resultArray[j]);
+            }
         }
+    } catch (err) {
+        //setting newString value to null which will get picked up and formatted by the checkIfHasValue function before display
+        newString = "";
     }
+    //return the value of newString
     return newString;
 }
-
+// function to convert item names in an array to a list in the form of a string
 function convertResponseArrayItemNamesToList(resultArray) {
+    //initialize newString variable
     let newString = "";
+    //try catch block to remove error if value is null or undefined
     try {
+        // store the capitalised first instance of the list in the variable newString
         newString = capitalizeFirstLetter(resultArray[0].name);
-    } catch (err) {
-        console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
-        newString = "&nbsp;";
-    }
-    for (let j = 1; j < resultArray.length; j++) {
-        if (!newString.includes(capitalizeFirstLetter(resultArray[j].name))) {
-            newString = newString + ", " + capitalizeFirstLetter(resultArray[j].name);
+        //loop through the rest of the array
+        for (let j = 1; j < resultArray.length; j++) {
+            //conditional statement to avoid any duplicated values in the array entering the new string
+            if (!newString.includes(capitalizeFirstLetter(resultArray[j].name))) {
+                newString = newString + ", " + capitalizeFirstLetter(resultArray[j].name);
+            }
         }
+    } catch (err) {
+        //setting newString value to null which will get picked up and formatted by the checkIfHasValue function before display
+        newString = "";
     }
+    //return the value of newString
     return newString;
 }
-
+/* function to covert extended ingredients in API response to an ordered list
+this functions used the originalString value as it contains the amount and name of the required ingredient */
 function convertExtendedIngredientsToOrderedList(resultArray) {
+    //initialize newString variable
     let newString = "";
+    //try catch block to remove error if value is null or undefined
     try {
-        newString = `<ol> 
-                        <li>${capitalizeFirstLetter(resultArray[0].originalString)}</li>`;
+        //add initial ordered list element tag 
+        newString = `<ol>`;
+        //loop through values in array and add to variable with list item tags
+        for (let j = 0; j < resultArray.length; j++) {
+            newString = `${newString}<li>${capitalizeFirstLetter(resultArray[j].originalString)}</li>`;
+        }
+        // add the closing tag for the ordered list
+        newString = `${newString}</ol>`;
     } catch (err) {
-        console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
-        newString = "&nbsp;";
+        // error message if there is no ingredient information
+        newString = `<p>Ingredients Information Not Avaliable</p>`;
     }
-    for (let j = 1; j < resultArray.length; j++) {
-        newString = `${newString}<li>${capitalizeFirstLetter(resultArray[j].originalString)}</li>`;
-    }
-    newString = `${newString}</ol>`;
+    //return the value of newString
     return newString;
 }
-
+// function to convert analyzed instructions in an array to an ordered list
 function convertAnalyzedInstructionsToOrderedList(resultArray) {
+    //initialize newString variable
     let newString = "";
+    //try catch block to remove error if value is null or undefined
     try {
-        newString = `<ol> 
-                        <li>${resultArray[0].step}</li>`;
+        //add initial ordered list element tag 
+        newString = `<ol>`;
+        //loop through values in array and add to variable with list item tags
+        for (let j = 0; j < resultArray.length; j++) {
+            newString = `${newString}<li>${resultArray[j].step}</li>`;
+        }
+        // add the closing tag for the ordered list
+        newString = `${newString}</ol>`;
     } catch (err) {
-        console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
-        newString = "&nbsp;";
+        // error message if there are no instructions
+        newString = "<p>There are no instructions provided. Click the link to the Original Recipe for more information</p>";
     }
-    for (let j = 1; j < resultArray.length; j++) {
-        newString = `${newString}<li>${resultArray[j].step}</li>`;
-    }
-    newString = `${newString}</ol>`;
+    //return the value of newString
     return newString;
 }
-
-
+//function to create .view-recipe-button listeners and functionality
 function createViewRecipeButtons(searchType) {
+    //initialize click event listener for all .view-recipe-button class buttons
     $(".view-recipe-button").click(function () {
         console.log("button clicked");
         console.log(this.id);
+        //store the recipe id number in local storage for use when loading recipe-display.html
         saveToLocalStorage(this.id, "idToLoad");
+        //conditional statement to store which page you should navigate back to if the back to results button is clicked on recipe-display.html
         if (searchType == "zero-waste") {
             saveToLocalStorage("zero-waste", "backToResultsPageToLoad");
         } else if (searchType == "specific-needs") {
             saveToLocalStorage("specific-needs", "backToResultsPageToLoad");
         }
+        //load recipe-display.html in the window
         window.location.href = "recipe-display.html";
     });
 }
-
+//function to create back-to-results-button listeners and functionality
 function createBackToResultsButton() {
+    //initialize click event listener for back to results button
     $("#back-to-results-button").click(function () {
+        //conditional statement to check the local storage value backToResultsPageToLoad
         if (loadFromLocalStorage("backToResultsPageToLoad") == "zero-waste") {
+            //if local storage value is zero-waste, load zero-waste.html in the window
             window.location.href = "zero-waste.html";
         } else if (loadFromLocalStorage("backToResultsPageToLoad") == "specific-needs") {
+            //if local storage value is specific-needs, load specific-needs.html in the window
             window.location.href = "specific-needs.html";
         }
+        //store true value under reloadResults tag in local storage to be used when specific-needs.html or zero-waste.html is loaded
         saveToLocalStorage(true, "reloadResults");
     });
 }
-
+//function to stop rsults being reloaded if you navigate away from them
 function disableLoadStoredResults() {
+    //store false value under reloadResults tag in local storage
     saveToLocalStorage(false, "reloadResults");
     console.log("loadStoredResults() disabled");
 }
-
-
+//function to save an item to local storage under a supplied tag name
 function saveToLocalStorage(itemToSave, tagName) {
+    //data formatted correctly and set on local storage
     localStorage.setItem(tagName, JSON.stringify(itemToSave));
 }
-
+//function to load an item from local storage which is stored under a specific tag name
 function loadFromLocalStorage(tagName) {
+    //data un-formatted to allow it to be used and stored in a variable
     let loadedItem = JSON.parse(localStorage.getItem(tagName));
+    //variable is returned
     return loadedItem;
 }
-
+//function to check if a given varible has a value
 function checkIfHasValue(value) {
+    //conditional statement to change value of variable if current is undesired
     if (value == "" || value == undefined || value == null) {
-        value = "Unknown";
+        //assigning new value to variable
+        value = "N/A";
     }
+    //variable is returned
     return value;
 }
 // function to remove all html elements from a string of text
@@ -652,5 +702,6 @@ function removeHTMLElements(string) {
     } else {
         newString = string
     }
+    //variable is returned
     return newString
 }
