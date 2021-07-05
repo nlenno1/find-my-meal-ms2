@@ -50,7 +50,6 @@ $(window).ready(function () {
 $("#zero-waste-add-button").click(function () {
     addItemToDisplay($("#zero-waste-ingredient-name").val().toLowerCase(), "#zero-waste-ingredients-display", "#zero-waste-ingredient-name", zeroWasteIngredientsArray, "Zero-Waste Ingredients", "zeroWasteIngredientsArray");
 });
-
 // zero-waste input enter key event 
 $("#zero-waste-ingredient-name").keypress(function (event) {
     let key = event.keyCode;
@@ -58,21 +57,22 @@ $("#zero-waste-ingredient-name").keypress(function (event) {
         addItemToDisplay($("#zero-waste-ingredient-name").val().toLowerCase(), "#zero-waste-ingredients-display", "#zero-waste-ingredient-name", zeroWasteIngredientsArray, "Zero-Waste Ingredients", "zeroWasteIngredientsArray");
     }
 });
-
 // diet add button 
 $("#diet-add-button").click(function () {
     addSelectItemToDisplay($("#diet-requirements-select").val(), $("#diet-requirements-select option:selected").text(), "#specific-needs-items-display", "#diet-requirements-select", dietArray, "Diet Array", "dietArray");
 });
-
 // intolerances add button 
 $("#intolerances-add-button").click(function () {
     addSelectItemToDisplay($("#intolerances-select").val(), $("#intolerances-select option:selected").text(), "#specific-needs-items-display", "#intolerances-select", intolerancesArray, "intolerances Array", "intolerancesArray");
 });
-
+// back to results button
 $(".back-to-results-button").click(function () {
+    //conditional to check the value of the local storage value backToResultsPageToLoad
     if (loadFromLocalStorage("backToResultsPageToLoad") == "zero-waste") {
+        //window load instructions to correct href
         window.location.href = "../../zero-waste.html";
     } else if (loadFromLocalStorage("backToResultsPageToLoad") == "specific-needs") {
+        //window load instructions to correct href
         window.location.href = "../../specific-needs.html";
     }
 });
@@ -371,10 +371,10 @@ function displaySearchResults(searchResults, searchType) {
             let usedIngredientsList = convertResponseArrayItemNamesToList(searchResults[i].usedIngredients);
             //add this html to the zero-waste-results-cards-display section of the page
             $("#zero-waste-results-cards-display").append(
-                //template literal of new element to be created and added to display section
-                //template literal used to make code easier to read and understand
-                //checkIfHasValue used for every value to avoid empty values being displayed or causing errors - the recipe image is the only exception to this as it have the alt value to fall back on
-                //the recipe id number is stored in the .view-recipe-button id value to be used when the view-recipe-button is clicked 
+                /* template literal of new element to be created and added to display section
+                template literal used to make code easier to read and understand
+                checkIfHasValue used for every value to avoid empty values being displayed or causing errors - the recipe image is the only exception to this as it have the alt value to fall back on
+                the recipe id number is stored in the .view-recipe-button id value to be used when the view-recipe-button is clicked */
                 `<div class="recipe-card">
                     <!--Recipe Title-->
                     <h3 class="text-center">${checkIfHasValue(searchResults[i].title)}</h3>
@@ -416,10 +416,10 @@ function displaySearchResults(searchResults, searchType) {
             //initialize dishTypes and diets variables - to simplify the code and make it easier to read/manipulate I defined the variables before they are needed but I could have passed this code where the variable names are in the template literal
             let dishTypes = convertResponseArrayToList(searchResults[i].dishTypes);
             let diets = convertResponseArrayToList(searchResults[i].diets);
-            //template literal of new element to be created and added to display section
-            //template literal used to make code easier to read and understand
-            //checkIfHasValue used for every value to avoid empty values being displayed or causing errors - the recipe image is the only exception to this as it have the alt value to fall back on
-            //the recipe id number is stored in the .view-recipe-button id value to be used when the view-recipe-button is clicked 
+            /* template literal of new element to be created and added to display section
+            template literal used to make code easier to read and understand
+            checkIfHasValue used for every value to avoid empty values being displayed or causing errors - the recipe image is the only exception to this as it have the alt value to fall back on
+            the recipe id number is stored in the .view-recipe-button id value to be used when the view-recipe-button is clicked */
             $("#specific-needs-results-cards-display").append(
                 `<div class="recipe-card">
                     <h3 class="text-center">${checkIfHasValue(searchResults[i].title)}</h3>
@@ -447,23 +447,31 @@ function displaySearchResults(searchResults, searchType) {
         createViewRecipeButtons(searchType);
     //conditional to determine the search type and to check for a null value response from API call
     } else if (searchType === "single-recipe-to-display") {
+        /* try catch statement to reassign searchResult variable to correct value to allow code to be reused for
+        lucky dip and specific-needs/zero-waste displays */
         try {
+            //assign variable if the data to be used is in an array to begin with
             searchResult = searchResults.recipes[0];
         } catch (err) {
+            //developer feedback
             console.log("This is only 1 recipe being loaded");
+            //assign variable from single result
             searchResult = searchResults;
         }
+        //developer feedback
         console.log(searchResult);
+        //set recipe title using response title value
         $(".recipe-display h1").html(
             `${searchResult.title}`
         );
+        //add summary to recipe summary section
         $(".recipe-display-image-summary-container").html(
             `<div class="row g-0">
                 <div class="col-12 col-md-4">
                     <img class="recipe-display-image" src=${searchResult.image} alt="Image of ${searchResult.title}">
                 </div>
                 <div class="d-none d-sm-block col-sm-12 col-md-8">
-                    <p>${searchResult.summary}</p>
+                    <p>${removeHTMLElements(searchResult.summary)}</p>
                 </div>
             </div>`
         );
@@ -616,4 +624,33 @@ function checkIfHasValue(value) {
         value = "Unknown";
     }
     return value;
+}
+// function to remove all html elements from a string of text
+function removeHTMLElements(string) {
+    //define variables needed 
+    let openingIndexes = []
+    let closingIndexes = []
+    let newString = ""
+    //loop through string and store opening and closing indexes to two seperate arrays
+    for (let i = 0; i < string.length; i++){
+        if (string[i] == "<") {
+            openingIndexes.push(i)
+        }
+        if (string[i] == ">") {
+            closingIndexes.push(i+1)
+        }
+    }
+    // conditional to check if indexes list is empty
+    if (closingIndexes.length > 0) {
+        //define newString with the first section of text 
+        newString = string.slice(0, openingIndexes[0])
+        //loop throught remaining indexes values and add those to the newString variable
+        for (let i = 0; i < closingIndexes.length; i++) {
+        newString += string.slice(closingIndexes[i], openingIndexes[i+1])
+        }
+    //if indexes list is empty assign newString as original string value
+    } else {
+        newString = string
+    }
+    return newString
 }
