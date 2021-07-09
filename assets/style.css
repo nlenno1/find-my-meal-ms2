@@ -502,12 +502,15 @@ h1 {
 
 .recipe-card {
     width: 100%;
-    height: 100%;
     background-color: #c4c4c4;
     border: 1px solid #000;
     border-radius: 5px;
     padding: 15px;
     margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .recipe-card-header {
@@ -545,7 +548,8 @@ h1 {
     .recipe-list {
     display: flex;
     justify-content: space-evenly;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    align-content: stretch;
     }
 
     .recipe-card {
