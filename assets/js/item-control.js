@@ -431,7 +431,7 @@ function displaySearchResults(searchResults, searchType) {
                             <p>Type of Dish: ${checkIfHasValue(dishTypes)}</p>
                             <p>Ready in: ${checkIfHasValue(searchResults[i].readyInMinutes)} mins</p>
                             <p>Servings: ${checkIfHasValue(searchResults[i].servings)}</p>
-                            <p>Health Score: ${checkIfHasValue(searchResults[i].healthScore)}</p>
+                            <p>Health Score: ${checkIfHasValue(searchResults[i].healthScore)}/100</p>
                             <p>Diets: ${checkIfHasValue(diets)}</p>
                         </div>
                     </div>
@@ -492,7 +492,7 @@ function displaySearchResults(searchResults, searchType) {
                 <li>Cuisines: ${checkIfHasValue(convertResponseArrayToList(searchResult.cuisines))}</li>
                 <li>Health Score: ${checkIfHasValue(searchResult.healthScore)}</li>
                 <li>Price Per Serving: ${checkIfHasValue(searchResult.pricePerServing)}¢</li>
-                <li>Spoonacular Score: ${checkIfHasValue(searchResult.spoonacularScore)}</li>
+                <li>Spoonacular Score: ${checkIfHasValue(searchResult.spoonacularScore)}/100</li>
             </ul>`
         );
         //Define recipeInstructionsForDisplay variable which will contain the instructions text
