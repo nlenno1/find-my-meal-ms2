@@ -120,7 +120,7 @@ nav, footer, .modal-body {
     height: 100px;
     width: 100%;
     background: #fff;
-    margin-top: -50px;
+    margin-top: -70px;
     margin-bottom: -32px;
     transform: skewY(4deg);
 }
@@ -190,6 +190,12 @@ footer a:hover{
     }
 }
 
+@media(min-width:575px) {
+    .footer-mask {
+        margin-top:-62px;
+    }
+}
+
 @media(min-width:992px) {
     .spoonacular-logo {
         margin-right: 5vw;
@@ -199,13 +205,14 @@ footer a:hover{
 @media(min-width:1200px) {
     .footer-mask {
         height: 140px;
+        margin-top: -102px;
     }
 }
 
 @media(min-width:1600px) {
     .footer-mask {
         height: 180px;
-        margin-top: -90px;
+        margin-top: -182px;
         margin-bottom: -45px;
     }
     .footer-mask-2 {
