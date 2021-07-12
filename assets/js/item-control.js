@@ -365,10 +365,10 @@ function displaySearchResults(searchResults, searchType) {
         //empty search results display area on zero-waste.html
         $("#zero-waste-results-cards-display").html("");
         //display and add padding to search results display section
-        $(".recipe-search-results").css("display", "block")
-        $(".recipe-search-results").css("padding", "30px 15px")
+        $(".recipe-search-results").css("display", "block");
+        $(".recipe-search-results").css("padding", "30px 15px");
         //set min-height attribute of .main-body to 0 to remove display error
-        $(".main-body").css("min-height", "0")
+        $(".main-body").css("min-height", "0");
         //for loop to perform tasks on all results in response data
         for (let i = 0; i < searchResults.length; i++) {
             //initialize missedIngredientsList and usedIngredientsList ofter converting response array into a string
@@ -415,10 +415,10 @@ function displaySearchResults(searchResults, searchType) {
         //empty search results display area on specific-needs.html
         $("#specific-needs-results-cards-display").html("");
         //display and add padding to search results display section
-        $(".recipe-search-results").css("display", "block")
-        $(".recipe-search-results").css("padding", "30px 15px")
+        $(".recipe-search-results").css("display", "block");
+        $(".recipe-search-results").css("padding", "30px 15px");
         //set min-height attribute of .main-body to 0 to remove display error
-        $(".main-body").css("min-height", "0")
+        $(".main-body").css("min-height", "0");
         //reassign search results to access the correct data sets in API response
         searchResults = searchResults.results;
         //for loop to perform tasks on all results in response data
@@ -457,6 +457,8 @@ function displaySearchResults(searchResults, searchType) {
         createViewRecipeButtons(searchType);
     //conditional to determine the search type and to check for a null value response from API call
     } else if (searchType === "single-recipe-to-display") {
+        // initialize variable searchResult
+        let searchResult;
         /* try catch statement to reassign searchResult variable to correct value to allow code to be reused for
         lucky dip and specific-needs/zero-waste displays */
         try {
@@ -688,30 +690,30 @@ function checkIfHasValue(value) {
 // function to remove all html elements from a string of text
 function removeHTMLElements(string) {
     //define variables needed 
-    let openingIndexes = []
-    let closingIndexes = []
-    let newString = ""
+    let openingIndexes = [];
+    let closingIndexes = [];
+    let newString = "";
     //loop through string and store opening and closing indexes to two seperate arrays
     for (let i = 0; i < string.length; i++){
         if (string[i] == "<") {
-            openingIndexes.push(i)
+            openingIndexes.push(i);
         }
         if (string[i] == ">") {
-            closingIndexes.push(i+1)
+            closingIndexes.push(i+1);
         }
     }
     // conditional to check if indexes list is empty
     if (closingIndexes.length > 0) {
         //define newString with the first section of text 
-        newString = string.slice(0, openingIndexes[0])
+        newString = string.slice(0, openingIndexes[0]);
         //loop throught remaining indexes values and add those to the newString variable
         for (let i = 0; i < closingIndexes.length; i++) {
-        newString += string.slice(closingIndexes[i], openingIndexes[i+1])
+        newString += string.slice(closingIndexes[i], openingIndexes[i+1]);
         }
     //if indexes list is empty assign newString as original string value
     } else {
-        newString = string
+        newString = string;
     }
     //variable is returned
-    return newString
+    return newString;
 }
