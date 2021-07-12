@@ -361,10 +361,11 @@ function displaySearchResults(searchResults, searchType) {
         //user feedback - display title for results
         $("#result-cards-header").html("Recipies Found:");
         //create additional masks for results to be loaded
-        $("#additional-masks").html('<div class="footer-mask"></div><div class="footer-mask-2"></div>');
+        $("#additional-masks").html('<div class="footer-mask"></div><div class="footer-mask-2"></div><div class="footer-mask-3"></div>');
         //empty search results display area on zero-waste.html
         $("#zero-waste-results-cards-display").html("");
-        //add padding to search results display section
+        //display and add padding to search results display section
+        $(".recipe-search-results").css("display", "block")
         $(".recipe-search-results").css("padding", "30px 15px")
         //set min-height attribute of .main-body to 0 to remove display error
         $(".main-body").css("min-height", "0")
@@ -410,10 +411,11 @@ function displaySearchResults(searchResults, searchType) {
         //user feedback - display title for results
         $("#result-cards-header").html("Recipies Found:");
         //create additional masks for results to be loaded
-        $("#additional-masks").html('<div class="footer-mask"></div><div class="footer-mask-2"></div>');
+        $("#additional-masks").html('<div class="footer-mask"></div><div class="footer-mask-2"></div><div class="footer-mask-3"></div>');
         //empty search results display area on specific-needs.html
         $("#specific-needs-results-cards-display").html("");
-        //add padding to search results display section
+        //display and add padding to search results display section
+        $(".recipe-search-results").css("display", "block")
         $(".recipe-search-results").css("padding", "30px 15px")
         //set min-height attribute of .main-body to 0 to remove display error
         $(".main-body").css("min-height", "0")
