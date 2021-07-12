@@ -113,14 +113,13 @@ nav, footer, .modal-body {
     background-size: cover;
     text-align: center;
     font-weight: 600;
-    margin-top: 40px;
 }
 
 .footer-mask {
     height: 100px;
     width: 100%;
     background: #fff;
-    margin-top: -70px;
+    margin-top: -72px;
     margin-bottom: -32px;
     transform: skewY(4deg);
 }
@@ -129,7 +128,7 @@ nav, footer, .modal-body {
     height: 90px;
     width: 100%;
     background-color: #fff;
-    margin-bottom: -70px;
+    margin-bottom: -30px;
     transform: skewY(2deg);
 }
 
@@ -177,6 +176,9 @@ footer a:hover{
     .spoonacular-logo {
         width: 40px;
     }
+    .footer-background{
+        height: 60px;
+    }
 }
 
 @media(min-width:450px) {
@@ -192,7 +194,10 @@ footer a:hover{
 
 @media(min-width:575px) {
     .footer-mask {
-        margin-top:-62px;
+        margin-top:-69px;
+    }
+    .footer-mask-2 {
+        margin-bottom: -35px;
     }
 }
 
@@ -204,20 +209,30 @@ footer a:hover{
 
 @media(min-width:1200px) {
     .footer-mask {
-        height: 140px;
-        margin-top: -102px;
+        height: 117px;
+        margin-top: -86px;
+    }
+    .footer-mask-3 {
+        background-color: #ffffff;
+        height: 40px;
+        margin-top: -15px;
     }
 }
 
 @media(min-width:1600px) {
     .footer-mask {
-        height: 180px;
-        margin-top: -182px;
-        margin-bottom: -45px;
+        height: 160px;
+        margin-top: -188px;
+        margin-bottom: -65px;
     }
     .footer-mask-2 {
         height: 120px;
-        margin-bottom: -48px;
+        margin-bottom: -50px;
+    }
+    .footer-mask-3 {
+        background-color: #fff;
+        height: 50px;
+        margin-top: -15px;
     }
 }
 
@@ -326,7 +341,7 @@ footer a:hover{
 .main-body {
     position: relative;
     z-index: 1;
-    min-height: calc(100vh - 182.95px);
+    min-height: calc(100vh - 182px);
 }
 
 #introduction {
@@ -391,6 +406,9 @@ footer a:hover{
     #introduction p:first-of-type{
         margin-right: 45px
     }
+    .main-body {
+        min-height: calc(100vh - 178px);
+    }
 }
 
 @media(min-width:992px) {
@@ -419,6 +437,18 @@ footer a:hover{
 
     #recipe-selector-buttons-container {
     padding: 1vw 8vw; 
+    }
+}
+
+@media(min-width: 1200px) {
+    .main-body {
+        min-height: calc(100vh - 218px);
+    }
+}
+
+@media(min-width: 1600px) {
+    .main-body {
+        min-height: calc(100vh - 151px);
     }
 }
 
@@ -455,7 +485,7 @@ h1 {
 
 .find-my-meal-button{
     width: 80%;
-    height: 45px;
+    height: 80%;
     max-width: 400px;
     margin: 15px auto;
     border: 1px solid #000;
@@ -486,12 +516,12 @@ h1 {
     .selection-options-container {
         width: 85%;
     }
+    .find-my-meal-button{
+        height: 45px;
+    }
 }
 
 @media(min-width:1200px) {
-    .main-body{
-        margin-bottom: -50px;
-    }
     .recipe-search-pages-logo {
     height: 140px;
     margin-left: 6vw;

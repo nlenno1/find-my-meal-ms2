@@ -360,10 +360,14 @@ function displaySearchResults(searchResults, searchType) {
     if (searchType === "zero-waste" && searchResults[0].title !== "") {
         //user feedback - display title for results
         $("#result-cards-header").html("Recipies Found:");
+        //create additional masks for results to be loaded
+        $("#additional-masks").html('<div class="footer-mask"></div><div class="footer-mask-2"></div>');
         //empty search results display area on zero-waste.html
         $("#zero-waste-results-cards-display").html("");
         //add padding to search results display section
         $(".recipe-search-results").css("padding", "30px 15px")
+        //set min-height attribute of .main-body to 0 to remove display error
+        $(".main-body").css("min-height", "0")
         //for loop to perform tasks on all results in response data
         for (let i = 0; i < searchResults.length; i++) {
             //initialize missedIngredientsList and usedIngredientsList ofter converting response array into a string
@@ -405,10 +409,14 @@ function displaySearchResults(searchResults, searchType) {
     } else if (searchType === "specific-needs" && searchResults.results[0].title !== "") {
         //user feedback - display title for results
         $("#result-cards-header").html("Recipies Found:");
+        //create additional masks for results to be loaded
+        $("#additional-masks").html('<div class="footer-mask"></div><div class="footer-mask-2"></div>');
         //empty search results display area on specific-needs.html
         $("#specific-needs-results-cards-display").html("");
         //add padding to search results display section
         $(".recipe-search-results").css("padding", "30px 15px")
+        //set min-height attribute of .main-body to 0 to remove display error
+        $(".main-body").css("min-height", "0")
         //reassign search results to access the correct data sets in API response
         searchResults = searchResults.results;
         //for loop to perform tasks on all results in response data
