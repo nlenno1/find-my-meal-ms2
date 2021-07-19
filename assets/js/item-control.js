@@ -275,7 +275,7 @@ function compileApiRequirements(firstList, searchType, secondList) {
             compiledList = `${compiledList},${firstList[i]}`;
         }
         //combine the previously created elements to produce the url needed
-        let url = `${baseUrl}${compiledList}&number=4&limitLicense=true&ranking=1&ignorePantry=true`;
+        let url = `${baseUrl}${compiledList}&number=20&limitLicense=true&ranking=1&ignorePantry=true`;
         return (url);
     //conditional to determine what API search type is going to happen
     } else if (searchType === "specific-needs") {
@@ -294,7 +294,7 @@ function compileApiRequirements(firstList, searchType, secondList) {
             compiledIntoleranceList = `${compiledIntoleranceList},${secondList[i]}`;
         }
         //combine the previously created elements to produce the url needed
-        let url = `${baseUrl}&diet=${compiledDietList}&intolerances=${compiledIntoleranceList}&number=4&limitLicense=true&ranking=1&ignorePantry=true`;
+        let url = `${baseUrl}&diet=${compiledDietList}&intolerances=${compiledIntoleranceList}&number=20&limitLicense=true&ranking=1&ignorePantry=true`;
         return (url);
     }
 }
