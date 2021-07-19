@@ -41,7 +41,7 @@ $(window).ready(function () {
     });
 });
 
-//   ------------------------ CLICK EVENTS ------------------------
+// ------------------------ CLICK EVENTS ------------------------
 // zero-waste input add button 
 $("#zero-waste-add-button").click(function () {
     addItemToDisplay($("#zero-waste-ingredient-name").val().toLowerCase(), "#zero-waste-ingredients-display", "#zero-waste-ingredient-name", zeroWasteIngredientsArray, "Zero-Waste Ingredients", "zeroWasteIngredientsArray");
@@ -73,98 +73,7 @@ $(".back-to-results-button").click(function () {
     }
 });
 
-// ------------ LARGE FUNCTIONS ------------
-//Check date entered from a SELECT menu before processing
-function addSelectItemToDisplay(itemCompName, itemScreenName, targetArea, inputArea, arrayToAction, arrayName, compArrayName) {
-    if (arrayToAction.includes(itemCompName)) {
-        // duplicate value user feedback 
-        alert(capitalizeFirstLetter(itemScreenName) + " has already been added to " + arrayName);
-    } else if (itemCompName == null) {
-        // conditional for no selection made - original values given item value of null
-        alert("Please select an option from the dropdown menus");
-    } else {
-        // create Ingredient Object
-        createIngredientObject(itemScreenName, itemCompName, targetArea, compArrayName);
-        // remove item functionality 
-        removeObjectMethod(itemCompName, targetArea, arrayToAction, arrayName, compArrayName);
-        // add user input to supplies array 
-        arrayToAction.push(itemCompName);
-        $(inputArea).val($(inputArea + " option:first").val());
-    }
-}
-//Check date entered from a INPUT box before processing
-function addItemToDisplay(ingredient, targetArea, inputArea, arrayToAction, arrayName, compArrayName) {
-    // clear input value for next ingredient and keep focus on input box 
-    focusAndClear(inputArea);
-    // control conditional to avoid adding a empty value 
-    if (ingredient.length == 0) {
-        // empty value user feedback 
-        alert("Please enter an ingredient name");
-        // control conditional to make sure input doesn't contain forbidden characters
-    } else if (!regex.test(ingredient)) {
-        // clear input box and focus on it
-        focusAndClear(inputArea);
-        //error user feedback
-        alert("Please only use letters in the ingredient name");
-        // control conditional to avoid duplicate values entered
-    } else if (arrayToAction.includes(ingredient)) {
-        // clear input box and focus on it
-        focusAndClear(inputArea);
-        // duplicate value user feedback 
-        alert(capitalizeFirstLetter(ingredient) + " has already been added to " + arrayName);
-    } else {
-        //replaces spaces with hypens so name can be used by js
-        let ingredientCompName = addHyphens(ingredient);
-        // create Ingredient Object
-        createIngredientObject(ingredient, ingredientCompName, targetArea, compArrayName);
-        // remove item functionality 
-        removeObjectMethod(ingredientCompName, targetArea, arrayToAction, arrayName, compArrayName);
-        // add user input to supplies array 
-        arrayToAction.push(ingredientCompName);
-        // save mySupplies to local storage for access later
-        if (arrayToAction == mySuppliesArray) {
-            saveToLocalStorage(mySuppliesArray, "mySuppliesSavedList");
-        }
-    }
-}
-//Create ingredient element in the selected display area
-function createIngredientObject(ingredient, ingredientCompName, targetArea, compArrayName) {
-    // add new element to designated display area 
-    $(targetArea).append(
-        `<div class="ingredient-added" id="${ingredientCompName}-in-${compArrayName}" value="${ingredientCompName}"> 
-            <p> ${capitalizeFirstLetter(ingredient)} </p>
-            <button type="button" id="${ingredientCompName}-in-${compArrayName}-remove-button" class="btn-close" aria-label="Remove Item"></button>
-        </div>`
-    );
-    //color change intolerance element backgrounds depending on what array they are in
-    if (compArrayName == "intolerancesArray") {
-        $(`#${ingredientCompName}-in-${compArrayName}`).css("background-color", "rgba(3, 144, 252, 0.4)");
-    } else if (compArrayName == "dietArray") {
-        $(`#${ingredientCompName}-in-${compArrayName}`).css("background-color", "rgba(252, 227, 3, 0.5)");
-    }
-    // object animations when created
-    $(`#${ingredientCompName}-in-${compArrayName}`).hide();
-    $(`#${ingredientCompName}-in-${compArrayName}`).slideDown();
-}
-//create click event listener for the remove button
-function removeObjectMethod(ingredientCompName, targetArea, arrayToAction, arrayName, compArrayName) {
-    $(`#${ingredientCompName}-in-${compArrayName}-remove-button`).click(function () {
-        //store parent of clicked element as variable
-        let item = $(this).parent();
-        // call function to remove the item from the session storage array it is in
-        removeItemFromArray(arrayToAction, item.attr("value"));
-        //save mySupplies array to local storage if changed
-        if (arrayToAction == mySuppliesArray) {
-            saveToLocalStorage(mySuppliesArray, "mySuppliesSavedList");
-        }
-        //remove element from html with animation
-        item.fadeOut(function () {
-            item.remove();
-        });
-    });
-}
-
-// ------------ SMALL FUNCTIONS ------------
+// ------------------------ SMALL FUNCTIONS ------------------------
 // Replace spaces in a string with hyphens
 function addHyphens(ingredient) {
     if (ingredient.includes(" ")) {
@@ -226,8 +135,185 @@ function removeItemFromArray(array, item) {
         }
     }
 }
+//function to convert an array into a list in string form
+function convertResponseArrayToList(resultArray) {
+    //initialize newString variable
+    let newString = "";
+    //try catch block to remove error if value is null or undefined
+    try {
+        // store the capitalised first instance of the list in the variable newString
+        newString = capitalizeFirstLetter(resultArray[0]);
+        //loop through the rest of the array 
+        for (let j = 1; j < resultArray.length; j++) {
+            //conditional statement to avoid any duplicated values in the array entering the new string
+            if (!newString.includes(capitalizeFirstLetter(resultArray[j]))) {
+                //appending the next array instance to the string variable formatted correctly
+                newString = newString + ", " + capitalizeFirstLetter(resultArray[j]);
+            }
+        }
+    } catch (err) {
+        //setting newString value to null which will get picked up and formatted by the checkIfHasValue function before display
+        newString = "";
+    }
+    //return the value of newString
+    return newString;
+}
+// function to convert item names in an array to a list in the form of a string
+function convertResponseArrayItemNamesToList(resultArray) {
+    //initialize newString variable
+    let newString = "";
+    //try catch block to remove error if value is null or undefined
+    try {
+        // store the capitalised first instance of the list in the variable newString
+        newString = capitalizeFirstLetter(resultArray[0].name);
+        //loop through the rest of the array
+        for (let j = 1; j < resultArray.length; j++) {
+            //conditional statement to avoid any duplicated values in the array entering the new string
+            if (!newString.includes(capitalizeFirstLetter(resultArray[j].name))) {
+                newString = newString + ", " + capitalizeFirstLetter(resultArray[j].name);
+            }
+        }
+    } catch (err) {
+        //setting newString value to null which will get picked up and formatted by the checkIfHasValue function before display
+        newString = "";
+    }
+    //return the value of newString
+    return newString;
+}
+/* function to covert extended ingredients in API response to an ordered list
+this functions used the originalString value as it contains the amount and name of the required ingredient */
+function convertExtendedIngredientsToOrderedList(resultArray) {
+    //initialize newString variable
+    let newString = "";
+    //try catch block to remove error if value is null or undefined
+    try {
+        //add initial ordered list element tag 
+        newString = `<ol>`;
+        //loop through values in array and add to variable with list item tags
+        for (let j = 0; j < resultArray.length; j++) {
+            newString = `${newString}<li>${capitalizeFirstLetter(resultArray[j].originalString)}</li>`;
+        }
+        // add the closing tag for the ordered list
+        newString = `${newString}</ol>`;
+    } catch (err) {
+        // error message if there is no ingredient information
+        newString = `<p>Ingredients Information Not Avaliable</p>`;
+    }
+    //return the value of newString
+    return newString;
+}
+// function to convert analyzed instructions in an array to an ordered list
+function convertAnalyzedInstructionsToOrderedList(resultArray) {
+    //initialize newString variable
+    let newString = "";
+    //try catch block to remove error if value is null or undefined
+    try {
+        //add initial ordered list element tag 
+        newString = `<ol>`;
+        //loop through values in array and add to variable with list item tags
+        for (let j = 0; j < resultArray.length; j++) {
+            newString = `${newString}<li>${resultArray[j].step}</li>`;
+        }
+        // add the closing tag for the ordered list
+        newString = `${newString}</ol>`;
+    } catch (err) {
+        // error message if there are no instructions
+        newString = "<p>There are no instructions provided. Click the link to the Original Recipe for more information</p>";
+    }
+    //return the value of newString
+    return newString;
+}
+//function to create .view-recipe-button listeners and functionality
+function createViewRecipeButtons(searchType) {
+    //initialize click event listener for all .view-recipe-button class buttons
+    $(".view-recipe-button").click(function () {
+        //store the recipe id number in local storage for use when loading recipe-display.html
+        saveToLocalStorage(this.id, "idToLoad");
+        //conditional statement to store which page you should navigate back to if the back to results button is clicked on recipe-display.html
+        if (searchType == "zero-waste") {
+            saveToLocalStorage("zero-waste", "backToResultsPageToLoad");
+        } else if (searchType == "specific-needs") {
+            saveToLocalStorage("specific-needs", "backToResultsPageToLoad");
+        }
+        //load recipe-display.html in the window
+        window.location.href = "recipe-display.html";
+    });
+}
+//function to create back-to-results-button listeners and functionality
+function createBackToResultsButton() {
+    //initialize click event listener for back to results button
+    $("#back-to-results-button").click(function () {
+        //conditional statement to check the local storage value backToResultsPageToLoad
+        if (loadFromLocalStorage("backToResultsPageToLoad") == "zero-waste") {
+            //if local storage value is zero-waste, load zero-waste.html in the window
+            window.location.href = "zero-waste.html";
+        } else if (loadFromLocalStorage("backToResultsPageToLoad") == "specific-needs") {
+            //if local storage value is specific-needs, load specific-needs.html in the window
+            window.location.href = "specific-needs.html";
+        }
+        //store true value under reloadResults tag in local storage to be used when specific-needs.html or zero-waste.html is loaded
+        saveToLocalStorage(true, "reloadResults");
+    });
+}
+//function to stop rsults being reloaded if you navigate away from them
+function disableLoadStoredResults() {
+    //store false value under reloadResults tag in local storage
+    saveToLocalStorage(false, "reloadResults");
+}
+//function to save an item to local storage under a supplied tag name
+function saveToLocalStorage(itemToSave, tagName) {
+    //data formatted correctly and set on local storage
+    localStorage.setItem(tagName, JSON.stringify(itemToSave));
+}
+//function to load an item from local storage which is stored under a specific tag name
+function loadFromLocalStorage(tagName) {
+    //data un-formatted to allow it to be used and stored in a variable
+    let loadedItem = JSON.parse(localStorage.getItem(tagName));
+    //variable is returned
+    return loadedItem;
+}
+//function to check if a given varible has a value
+function checkIfHasValue(value) {
+    //conditional statement to change value of variable if current is undesired
+    if (value == "" || value == undefined || value == null) {
+        //assigning new value to variable
+        value = "N/A";
+    }
+    //variable is returned
+    return value;
+}
+// function to remove all html elements from a string of text
+function removeHTMLElements(string) {
+    //define variables needed 
+    let openingIndexes = [];
+    let closingIndexes = [];
+    let newString = "";
+    //loop through string and store opening and closing indexes to two seperate arrays
+    for (let i = 0; i < string.length; i++){
+        if (string[i] == "<") {
+            openingIndexes.push(i);
+        }
+        if (string[i] == ">") {
+            closingIndexes.push(i+1);
+        }
+    }
+    // conditional to check if indexes list is empty
+    if (closingIndexes.length > 0) {
+        //define newString with the first section of text 
+        newString = string.slice(0, openingIndexes[0]);
+        //loop throught remaining indexes values and add those to the newString variable
+        for (let i = 0; i < closingIndexes.length; i++) {
+        newString += string.slice(closingIndexes[i], openingIndexes[i+1]);
+        }
+    //if indexes list is empty assign newString as original string value
+    } else {
+        newString = string;
+    }
+    //variable is returned
+    return newString;
+}
 
-// ------------ API CALLS ------------
+// ------------------------ API CALLS ------------------------
 // Zero-Waste recipe search call
 $("#zero-waste-find-my-meal-button").click(function () {
     // check if user wants to use My Supplies list
@@ -324,6 +410,97 @@ function makeApiCall(searchUrl, searchType) {
         // reset user feedback values
         $("#loading").html('');
         $("#find-my-meal-button").val("Find My Meal");
+    });
+}
+
+// ------------------------ LARGE FUNCTIONS ------------------------
+//Check date entered from a SELECT menu before processing
+function addSelectItemToDisplay(itemCompName, itemScreenName, targetArea, inputArea, arrayToAction, arrayName, compArrayName) {
+    if (arrayToAction.includes(itemCompName)) {
+        // duplicate value user feedback 
+        alert(capitalizeFirstLetter(itemScreenName) + " has already been added to " + arrayName);
+    } else if (itemCompName == null) {
+        // conditional for no selection made - original values given item value of null
+        alert("Please select an option from the dropdown menus");
+    } else {
+        // create Ingredient Object
+        createIngredientObject(itemScreenName, itemCompName, targetArea, compArrayName);
+        // remove item functionality 
+        removeObjectMethod(itemCompName, targetArea, arrayToAction, arrayName, compArrayName);
+        // add user input to supplies array 
+        arrayToAction.push(itemCompName);
+        $(inputArea).val($(inputArea + " option:first").val());
+    }
+}
+//Check date entered from a INPUT box before processing
+function addItemToDisplay(ingredient, targetArea, inputArea, arrayToAction, arrayName, compArrayName) {
+    // clear input value for next ingredient and keep focus on input box 
+    focusAndClear(inputArea);
+    // control conditional to avoid adding a empty value 
+    if (ingredient.length == 0) {
+        // empty value user feedback 
+        alert("Please enter an ingredient name");
+        // control conditional to make sure input doesn't contain forbidden characters
+    } else if (!regex.test(ingredient)) {
+        // clear input box and focus on it
+        focusAndClear(inputArea);
+        //error user feedback
+        alert("Please only use letters in the ingredient name");
+        // control conditional to avoid duplicate values entered
+    } else if (arrayToAction.includes(ingredient)) {
+        // clear input box and focus on it
+        focusAndClear(inputArea);
+        // duplicate value user feedback 
+        alert(capitalizeFirstLetter(ingredient) + " has already been added to " + arrayName);
+    } else {
+        //replaces spaces with hypens so name can be used by js
+        let ingredientCompName = addHyphens(ingredient);
+        // create Ingredient Object
+        createIngredientObject(ingredient, ingredientCompName, targetArea, compArrayName);
+        // remove item functionality 
+        removeObjectMethod(ingredientCompName, targetArea, arrayToAction, arrayName, compArrayName);
+        // add user input to supplies array 
+        arrayToAction.push(ingredientCompName);
+        // save mySupplies to local storage for access later
+        if (arrayToAction == mySuppliesArray) {
+            saveToLocalStorage(mySuppliesArray, "mySuppliesSavedList");
+        }
+    }
+}
+//Create ingredient element in the selected display area
+function createIngredientObject(ingredient, ingredientCompName, targetArea, compArrayName) {
+    // add new element to designated display area 
+    $(targetArea).append(
+        `<div class="ingredient-added" id="${ingredientCompName}-in-${compArrayName}" value="${ingredientCompName}"> 
+            <p> ${capitalizeFirstLetter(ingredient)} </p>
+            <button type="button" id="${ingredientCompName}-in-${compArrayName}-remove-button" class="btn-close" aria-label="Remove Item"></button>
+        </div>`
+    );
+    //color change intolerance element backgrounds depending on what array they are in
+    if (compArrayName == "intolerancesArray") {
+        $(`#${ingredientCompName}-in-${compArrayName}`).css("background-color", "rgba(3, 144, 252, 0.4)");
+    } else if (compArrayName == "dietArray") {
+        $(`#${ingredientCompName}-in-${compArrayName}`).css("background-color", "rgba(252, 227, 3, 0.5)");
+    }
+    // object animations when created
+    $(`#${ingredientCompName}-in-${compArrayName}`).hide();
+    $(`#${ingredientCompName}-in-${compArrayName}`).slideDown();
+}
+//create click event listener for the remove button
+function removeObjectMethod(ingredientCompName, targetArea, arrayToAction, arrayName, compArrayName) {
+    $(`#${ingredientCompName}-in-${compArrayName}-remove-button`).click(function () {
+        //store parent of clicked element as variable
+        let item = $(this).parent();
+        // call function to remove the item from the session storage array it is in
+        removeItemFromArray(arrayToAction, item.attr("value"));
+        //save mySupplies array to local storage if changed
+        if (arrayToAction == mySuppliesArray) {
+            saveToLocalStorage(mySuppliesArray, "mySuppliesSavedList");
+        }
+        //remove element from html with animation
+        item.fadeOut(function () {
+            item.remove();
+        });
     });
 }
 //function to determine what data is being passed as an arguement and how to display it
@@ -520,181 +697,4 @@ function displaySearchResults(searchResults, searchType) {
         //error response value if none of the conditional statement conditions are met
         $("#result-cards-header").html('<i class="fas fa-exclamation-circle"></i> Unfortunatly Something Went Wrong and No Recipies Were Found! <i class="fas fa-exclamation-circle"></i> <hr> Please check your input and try again. If this problem persists, please get in touch to report it!');
     }
-}
-//function to convert an array into a list in string form
-function convertResponseArrayToList(resultArray) {
-    //initialize newString variable
-    let newString = "";
-    //try catch block to remove error if value is null or undefined
-    try {
-        // store the capitalised first instance of the list in the variable newString
-        newString = capitalizeFirstLetter(resultArray[0]);
-        //loop through the rest of the array 
-        for (let j = 1; j < resultArray.length; j++) {
-            //conditional statement to avoid any duplicated values in the array entering the new string
-            if (!newString.includes(capitalizeFirstLetter(resultArray[j]))) {
-                //appending the next array instance to the string variable formatted correctly
-                newString = newString + ", " + capitalizeFirstLetter(resultArray[j]);
-            }
-        }
-    } catch (err) {
-        //setting newString value to null which will get picked up and formatted by the checkIfHasValue function before display
-        newString = "";
-    }
-    //return the value of newString
-    return newString;
-}
-// function to convert item names in an array to a list in the form of a string
-function convertResponseArrayItemNamesToList(resultArray) {
-    //initialize newString variable
-    let newString = "";
-    //try catch block to remove error if value is null or undefined
-    try {
-        // store the capitalised first instance of the list in the variable newString
-        newString = capitalizeFirstLetter(resultArray[0].name);
-        //loop through the rest of the array
-        for (let j = 1; j < resultArray.length; j++) {
-            //conditional statement to avoid any duplicated values in the array entering the new string
-            if (!newString.includes(capitalizeFirstLetter(resultArray[j].name))) {
-                newString = newString + ", " + capitalizeFirstLetter(resultArray[j].name);
-            }
-        }
-    } catch (err) {
-        //setting newString value to null which will get picked up and formatted by the checkIfHasValue function before display
-        newString = "";
-    }
-    //return the value of newString
-    return newString;
-}
-/* function to covert extended ingredients in API response to an ordered list
-this functions used the originalString value as it contains the amount and name of the required ingredient */
-function convertExtendedIngredientsToOrderedList(resultArray) {
-    //initialize newString variable
-    let newString = "";
-    //try catch block to remove error if value is null or undefined
-    try {
-        //add initial ordered list element tag 
-        newString = `<ol>`;
-        //loop through values in array and add to variable with list item tags
-        for (let j = 0; j < resultArray.length; j++) {
-            newString = `${newString}<li>${capitalizeFirstLetter(resultArray[j].originalString)}</li>`;
-        }
-        // add the closing tag for the ordered list
-        newString = `${newString}</ol>`;
-    } catch (err) {
-        // error message if there is no ingredient information
-        newString = `<p>Ingredients Information Not Avaliable</p>`;
-    }
-    //return the value of newString
-    return newString;
-}
-// function to convert analyzed instructions in an array to an ordered list
-function convertAnalyzedInstructionsToOrderedList(resultArray) {
-    //initialize newString variable
-    let newString = "";
-    //try catch block to remove error if value is null or undefined
-    try {
-        //add initial ordered list element tag 
-        newString = `<ol>`;
-        //loop through values in array and add to variable with list item tags
-        for (let j = 0; j < resultArray.length; j++) {
-            newString = `${newString}<li>${resultArray[j].step}</li>`;
-        }
-        // add the closing tag for the ordered list
-        newString = `${newString}</ol>`;
-    } catch (err) {
-        // error message if there are no instructions
-        newString = "<p>There are no instructions provided. Click the link to the Original Recipe for more information</p>";
-    }
-    //return the value of newString
-    return newString;
-}
-//function to create .view-recipe-button listeners and functionality
-function createViewRecipeButtons(searchType) {
-    //initialize click event listener for all .view-recipe-button class buttons
-    $(".view-recipe-button").click(function () {
-        //store the recipe id number in local storage for use when loading recipe-display.html
-        saveToLocalStorage(this.id, "idToLoad");
-        //conditional statement to store which page you should navigate back to if the back to results button is clicked on recipe-display.html
-        if (searchType == "zero-waste") {
-            saveToLocalStorage("zero-waste", "backToResultsPageToLoad");
-        } else if (searchType == "specific-needs") {
-            saveToLocalStorage("specific-needs", "backToResultsPageToLoad");
-        }
-        //load recipe-display.html in the window
-        window.location.href = "recipe-display.html";
-    });
-}
-//function to create back-to-results-button listeners and functionality
-function createBackToResultsButton() {
-    //initialize click event listener for back to results button
-    $("#back-to-results-button").click(function () {
-        //conditional statement to check the local storage value backToResultsPageToLoad
-        if (loadFromLocalStorage("backToResultsPageToLoad") == "zero-waste") {
-            //if local storage value is zero-waste, load zero-waste.html in the window
-            window.location.href = "zero-waste.html";
-        } else if (loadFromLocalStorage("backToResultsPageToLoad") == "specific-needs") {
-            //if local storage value is specific-needs, load specific-needs.html in the window
-            window.location.href = "specific-needs.html";
-        }
-        //store true value under reloadResults tag in local storage to be used when specific-needs.html or zero-waste.html is loaded
-        saveToLocalStorage(true, "reloadResults");
-    });
-}
-//function to stop rsults being reloaded if you navigate away from them
-function disableLoadStoredResults() {
-    //store false value under reloadResults tag in local storage
-    saveToLocalStorage(false, "reloadResults");
-}
-//function to save an item to local storage under a supplied tag name
-function saveToLocalStorage(itemToSave, tagName) {
-    //data formatted correctly and set on local storage
-    localStorage.setItem(tagName, JSON.stringify(itemToSave));
-}
-//function to load an item from local storage which is stored under a specific tag name
-function loadFromLocalStorage(tagName) {
-    //data un-formatted to allow it to be used and stored in a variable
-    let loadedItem = JSON.parse(localStorage.getItem(tagName));
-    //variable is returned
-    return loadedItem;
-}
-//function to check if a given varible has a value
-function checkIfHasValue(value) {
-    //conditional statement to change value of variable if current is undesired
-    if (value == "" || value == undefined || value == null) {
-        //assigning new value to variable
-        value = "N/A";
-    }
-    //variable is returned
-    return value;
-}
-// function to remove all html elements from a string of text
-function removeHTMLElements(string) {
-    //define variables needed 
-    let openingIndexes = [];
-    let closingIndexes = [];
-    let newString = "";
-    //loop through string and store opening and closing indexes to two seperate arrays
-    for (let i = 0; i < string.length; i++){
-        if (string[i] == "<") {
-            openingIndexes.push(i);
-        }
-        if (string[i] == ">") {
-            closingIndexes.push(i+1);
-        }
-    }
-    // conditional to check if indexes list is empty
-    if (closingIndexes.length > 0) {
-        //define newString with the first section of text 
-        newString = string.slice(0, openingIndexes[0]);
-        //loop throught remaining indexes values and add those to the newString variable
-        for (let i = 0; i < closingIndexes.length; i++) {
-        newString += string.slice(closingIndexes[i], openingIndexes[i+1]);
-        }
-    //if indexes list is empty assign newString as original string value
-    } else {
-        newString = string;
-    }
-    //variable is returned
-    return newString;
 }
