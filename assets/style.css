@@ -1,3 +1,6 @@
+/* Media queries have been put underneath their respective sections to make code more readable and enable easier editing/develpment in the future */
+
+/* ---------------------------------------- Global */
 body {
     font-family: 'Special Elite', cursive;
     color: #000;
@@ -262,7 +265,7 @@ footer a:hover {
     }
 }
 
-/* ---------------------------------------- About Modal/My Supplies Modal */
+/* ---------------------------------------- About & My Supplies Modal */
 
 .modal-header {
     padding: 1rem 2rem;
@@ -366,7 +369,6 @@ footer a:hover {
 }
 
 /* -------------------------------------------------------------- index.html */
-/* ---------------------------------------- Introduction */
 
 .main-body {
     position: relative;
@@ -690,7 +692,7 @@ h1 {
     }
 }
 
-/* -------------------------------------------------------------- Recipe Display */
+/* -------------------------------------------------------------- Recipe Display (also used in lucky-dip.html) */
 
 .recipe-display {
     margin-top: 40px;
