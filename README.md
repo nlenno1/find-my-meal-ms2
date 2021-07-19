@@ -465,6 +465,8 @@ All text content is original to this site unless provided by [Spoonacular API](h
 
 Recipe images are provided by [Spoonacular API](https://spoonacular.com/food-api)
 
+Loader Gif sourced from [AJAX Load](http://www.ajaxload.info/)
+
 [Background image](https://pixabay.com/photos/wood-table-breakfast-lunch-dinner-2142217/) downloaded from Pixabay, and heavily edited using [GIMP](https://www.gimp.org/)
 
 ## Acknowledgments
