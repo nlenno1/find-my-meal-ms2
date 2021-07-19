@@ -9,14 +9,10 @@ let searchResults = [];
 let mySuppliesArray;
 
 $(window).ready(function () {
-    // open array saved in local storage and display messages on console
+    // open array saved in local storage
     mySuppliesArray = JSON.parse(localStorage.getItem("mySuppliesSavedList"));
-    console.log(mySuppliesArray == undefined || null ? "No instance of My Supplies Array Exists" : "My Supplies Array Exists");
-    console.log("My Supplies Array opened from Local Storage : " + (mySuppliesArray == "" ? "No items to load!" : mySuppliesArray));
     // avoid error with null value
     mySuppliesArray = (mySuppliesArray == null) ? [] : mySuppliesArray;
-    //developer feedback
-    console.log("My Supplies : " + mySuppliesArray);
 
     // turn item in the array into html elements
     for (let item of mySuppliesArray) {
@@ -59,11 +55,11 @@ $("#zero-waste-ingredient-name").keypress(function (event) {
 });
 // diet add button 
 $("#diet-add-button").click(function () {
-    addSelectItemToDisplay($("#diet-requirements-select").val(), $("#diet-requirements-select option:selected").text(), "#specific-needs-items-display", "#diet-requirements-select", dietArray, "Diet Array", "dietArray");
+    addSelectItemToDisplay($("#diet-requirements-select").val(), $("#diet-requirements-select option:selected").text(), "#specific-needs-items-display", "#diet-requirements-select", dietArray, "Diet List", "dietArray");
 });
 // intolerances add button 
 $("#intolerances-add-button").click(function () {
-    addSelectItemToDisplay($("#intolerances-select").val(), $("#intolerances-select option:selected").text(), "#specific-needs-items-display", "#intolerances-select", intolerancesArray, "intolerances Array", "intolerancesArray");
+    addSelectItemToDisplay($("#intolerances-select").val(), $("#intolerances-select option:selected").text(), "#specific-needs-items-display", "#intolerances-select", intolerancesArray, "Intolerances List", "intolerancesArray");
 });
 // back to results button
 $(".back-to-results-button").click(function () {
@@ -94,9 +90,6 @@ function addSelectItemToDisplay(itemCompName, itemScreenName, targetArea, inputA
         // add user input to supplies array 
         arrayToAction.push(itemCompName);
         $(inputArea).val($(inputArea + " option:first").val());
-        // show completion of task on log
-        console.log(itemCompName + ' added to ' + arrayName);
-        console.log(arrayName + " : " + arrayToAction);
     }
 }
 //Check date entered from a INPUT box before processing
@@ -132,9 +125,6 @@ function addItemToDisplay(ingredient, targetArea, inputArea, arrayToAction, arra
         if (arrayToAction == mySuppliesArray) {
             saveToLocalStorage(mySuppliesArray, "mySuppliesSavedList");
         }
-        // show completion of task on log
-        console.log(ingredient + ' added to ' + arrayName);
-        console.log(arrayName + " : " + arrayToAction);
     }
 }
 //Create ingredient element in the selected display area
@@ -163,9 +153,6 @@ function removeObjectMethod(ingredientCompName, targetArea, arrayToAction, array
         let item = $(this).parent();
         // call function to remove the item from the session storage array it is in
         removeItemFromArray(arrayToAction, item.attr("value"));
-        //developer feedback
-        console.log(item.attr("value") + ' removed from ' + arrayName);
-        console.log(arrayName + " : " + arrayToAction);
         //save mySupplies array to local storage if changed
         if (arrayToAction == mySuppliesArray) {
             saveToLocalStorage(mySuppliesArray, "mySuppliesSavedList");
@@ -218,8 +205,6 @@ function clearLocalStorge() {
         localStorage.setItem("mySuppliesSavedList", JSON.stringify([]));
         //set the current array to an empty array
         mySuppliesArray = [];
-        //developer feedback
-        console.log("Local Storage array cleared", "My Supplies : " + mySuppliesArray);
     }
 }
 //capitalize the first letter of a string
@@ -227,7 +212,6 @@ function capitalizeFirstLetter(string) {
     try {
         return string.charAt(0).toUpperCase() + string.slice(1);
     } catch (err) {
-        console.log("ERROR CAUGHT! ERROR MESSAGE: " + err.message);
         return string;
     }
 }
@@ -259,8 +243,6 @@ $("#zero-waste-find-my-meal-button").click(function () {
         } catch (err) {
             // User error feedback with instructions on how to fix 
             alert('You need to add some ingredients to "My Supplies"');
-            // developer feedback
-            console.log(err.message);
         }
     } else {
         // conditional to check if zeroWasteIngredientsArrayis empty and if not run API Requirements compiler and make API call
@@ -286,8 +268,6 @@ function compileApiRequirements(firstList, searchType, secondList) {
     if (searchType === "zero-waste") {
         //initialize the base url
         let baseUrl = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=c4a7c11521de4bae8f06ba9fd8e9ac17&ingredients=";
-        //developer feedback
-        console.log("baseURL : " + baseUrl);
         // add first item in array to new variable
         let compiledList = `${firstList[0]}`;
         //loop to add the rest of the list seperated by a comma
@@ -296,15 +276,11 @@ function compileApiRequirements(firstList, searchType, secondList) {
         }
         //combine the previously created elements to produce the url needed
         let url = `${baseUrl}${compiledList}&number=4&limitLicense=true&ranking=1&ignorePantry=true`;
-        //developer feedback
-        console.log(url);
         return (url);
     //conditional to determine what API search type is going to happen
     } else if (searchType === "specific-needs") {
         //initialize the base url
         let baseUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=c4a7c11521de4bae8f06ba9fd8e9ac17&addRecipeInformation=true";
-        //developer feedback
-        console.log("baseURL : " + baseUrl);
         // add first item in array to new variable
         let compiledDietList = `${firstList[0]}`;
         //loop to add the rest of the list seperated by a comma
@@ -336,14 +312,10 @@ function makeApiCall(searchUrl, searchType) {
     };
     //request data using ajax
     $.ajax(settings).done(function (response) {
-        //developer feedback
-        console.log(response);
         //search type conditional to see if the search is for a multi result display
         if (searchType !== "single-recipe-to-display") {
             //store the respose in local storage in case of needing to reload it for "Back to results" button
             saveToLocalStorage(response, "latestSearchResults");
-            //developer feedback
-            console.log("Response saved to local storage under tag latestSearchResults");
         }
         //store response in a variable
         searchResults = response;
@@ -465,13 +437,9 @@ function displaySearchResults(searchResults, searchType) {
             //assign variable if the data to be used is in an array to begin with
             searchResult = searchResults.recipes[0];
         } catch (err) {
-            //developer feedback
-            console.log("This is only 1 recipe being loaded");
             //assign variable from single result
             searchResult = searchResults;
         }
-        //developer feedback
-        console.log(searchResult);
         //set recipe title using response title value
         $(".recipe-display h1").html(
             `${searchResult.title}`
@@ -645,8 +613,6 @@ function convertAnalyzedInstructionsToOrderedList(resultArray) {
 function createViewRecipeButtons(searchType) {
     //initialize click event listener for all .view-recipe-button class buttons
     $(".view-recipe-button").click(function () {
-        console.log("button clicked");
-        console.log(this.id);
         //store the recipe id number in local storage for use when loading recipe-display.html
         saveToLocalStorage(this.id, "idToLoad");
         //conditional statement to store which page you should navigate back to if the back to results button is clicked on recipe-display.html
@@ -679,7 +645,6 @@ function createBackToResultsButton() {
 function disableLoadStoredResults() {
     //store false value under reloadResults tag in local storage
     saveToLocalStorage(false, "reloadResults");
-    console.log("loadStoredResults() disabled");
 }
 //function to save an item to local storage under a supplied tag name
 function saveToLocalStorage(itemToSave, tagName) {
