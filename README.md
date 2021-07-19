@@ -17,13 +17,14 @@ This is the second of four Milestone Projects that make up the Full Stack Web De
 [Back to Top](#find-my-meal)
 #
 
-# Development Planes
+# UI & UI Development Planes
 ## Strategy
 
 ### Project Goals
-- To help **USERS** find inspiration for new recipes no matter what their preferences or allergies,
+- To help **USERS** find inspiration for new recipes no matter what their preferences, allergies or ingredients,
 - To make it easy for **USERS** to understand, navigate and access all the information they want,
-- To present the required data in an easy to read and use format,
+- To present the required data in an easy to read and use format and handle any errors in a way to help the **USER** understand the problem,
+-  Design, develop and implement a dynamic front-end web application using HTML5, CSS3 and JavaScript,
 
 ### User Demographic
 The target demographics for this website are:
@@ -40,8 +41,8 @@ The target demographics for this website are:
 - Example User 1 - I am an **enthusiastic cook** looking for new recipe ideas
 - Example User 2 - I a newly diagnosed as **gluten intolerent** and I need to find some new recipes
 - Example User 3 - I am cooking for a friend who has **specific dietary needs** and I need to find a recipe
-- Example User 4 - I am worried about the amount of **food waste produced** and want use up my leftovers in a Meal
-- Example User 5 - I want to reduce my **enviromental impact** by changing my diet and adding some vegan meals to my diet  
+- Example User 4 - I am worried about the amount of **food waste produced** and want use up my leftovers from previous meals
+- Example User 5 - I want to reduce my **enviromental impact** by changing my diet and adding some vegan meals to my meal routine
 
 The website needs to enable the **USER** to:
  
@@ -79,21 +80,22 @@ As you can see all the stated features have a high Importance and Viability scor
 [Back to Top](#find-my-meal)
 #
 ## Scope 
-In line with the results from the Importance Viability analysis, these are the feature that will be implimented on the first production release.
+In line with the results from the Importance Viability analysis, all the previously mentioned features will be implimented on the first production release.
 
 ### Functionality Requirements
 
+- Clean and themed presentation of information
 - Easy navigation to the required information
 - Quick loading of the website
 - Quick response times from the API
-- Pagenation when appropriate
+- Contact the developer for and feedback or bug reports
 
 [Back to Top](#find-my-meal)
 #
 
 ## Structure
 
-The website has been designed around a **Tree** structure hierarchy. This reduces the overall complexity of the site which allows users to navigate it easier.
+The website has been designed around a **Tree** structured hierarchy. This reduces the overall complexity of the site which allows users to navigate it easier.
 
 Below is a diagram to better illustrate this structure.
 
@@ -108,7 +110,7 @@ Below is a diagram to better illustrate this structure.
 
 ## Skeleton
 
-Wireframes were created using Figma to aid in the design process. Some design elements have changed during the building process to improve the user experience and functionality of the site
+Wireframes were created using [Figma](https://www.figma.com/) to aid in the design process. Some design elements have changed during the building process to improve the user experience and functionality of the site
 
 After designing these wireframes, I decided to add a Home and Contact buttons to the NavBar as I added a new contact page, however I removed these at the Tablet break point to make the bar less cluttered. To maintain this functionality, I added a contact page link to the footer, which is easily accessible on all pages, and the logo will also act as a home button, as it does on all pages.
 
@@ -136,59 +138,84 @@ Modal Design:
 
 **Colour Scheme**
 
-The main colours used throughout the website are Black, White and Grey (#c4c4c4) using a bright Green (#1EC820) to highlight. 
+The main colours used throughout the website are Black (#000), White (#fff), Off White (#fafafa) and Grey/Silver (#c4c4c4) using a bright Green (#1EC820) to highlight. 
+
+![Find My Meal Colour Scheme](assets/images/fmm-color-scheme.png)
 
 These colours were chosen as they compliment the website's background image and give the site a clean, modern and professional feel without being too bright and flashy which will appeal to the demographic.
 
 **Typography**
 
-This project uses the font Special Elite for headings and Open Sans for body text. This allows the headings to be themed while having clear text to make it easier to read which imporves the user experience.
+This project uses the font [Special Elite](https://fonts.google.com/specimen/Special+Elite?query=special+el) for headings and [Open Sans](https://fonts.google.com/specimen/Open+Sans?query=open+sans) for body text. This allows the headings to be themed while having clear text to make it easier to read which imporves the user experience.
 
 **Imagery**
 
-The background image used is appropriate to the style of the website.
+The [background image](assets/images/choppingboard-background.jpg) used is appropriate to the style of the website.
 
-All recipe images are provided by the API.
+All recipe images are supplied and formatted by the [API](https://spoonacular.com/food-api).
 
 [Back to Top](#find-my-meal)
 
 # Features
 navbar
-- About - Link to a modal with instructions on how to use the service and background information
-- Recipe finder - A drop down menu to the 3 recipe finders,
-- My Supplies - Link to a modal containing a list of the supplies the user has,
-    - In this modal the user will be able to add and remove items to use later on,
+- Logo - to give clear business identity and act as a link to index.html
+- Home Button - link to index.html (not visable at tablet breakpoint)
+- About Button - Link to a modal with instructions on how to use the service and background information
+- Recipe finder Button - A drop down menu to the 3 recipe finders
+- My Supplies Button - Link to a modal containing a list of the supplies the user has
+    - In this modal the user will be able to add and remove items to use later on
+- Contact Button - link to contact.html which allows users to contact the developer (not visable at tablet breakpoint)
 
 footer
-- Accreditation to Spoonacular API,
-- Links to social media accounts,
-- Copyright information
+- Accreditation to Spoonacular API as layed out in the usage terms and conditions,
+- Links to contact page (contact.html) to help users get in touch at all breakpoints,
+- Copyright information,
 
 index.html
-- Logo - to give clear business identity
-- Introduction - A breif description on the form of questions of the service provided and how to get started
-- Recipe Finder Buttons - 3 buttons to the different recipe finders
+- Introduction - A brief description of the service provided by the website and how to get started
+- Recipe Finder Buttons - 3 buttons which link to the different recipe search options which animate on hover 
 
 lucky-dip.html
 - Page title to confirm which service the user has selected
-- Random Recipe selected displayed as in recipe.html
+- Random Recipe selected displayed as in recipe.html (see below)
 
 zero-waste.html
 - Page title to confirm which service the user has selected
 - Indredient selector to allow users to add ingredients that they want to search with
-- "Use ingredients in My Supplies" check box option for ingredient selector
-- Results cards displayed after searching containing Recipe title, the amount of likes the recipe has, the ingreients used from the ingredient selector and the ingredients that are needed to make the recipe
+    - Ingredient input box allows user to input a custom ingredient name
+    - Add button to create ingredient element with remove item button
+    - Remove button on ingredient allows user to remove the item from the screen and the selected list
+    - Ingredients display to allow users to see ingredients already added
+- "Use ingredients in My Supplies" check box option for ingredient selector which uses previously added ingredients to the My Supplies array only in the recipe search
+- Results title to confirm that results have been found or if an error has occured during the API call and display process
+- Results cards displayed after searching containing;
+    - Recipe title
+    - Amount of likes the recipe has
+    - Ingreients used from the ingredient selector
+    - Ingredients that are needed to make the recipe
+    - "View Recipe" button to take the user to the full details of that recipe
 
 specific-needs.html
 - Page title to confirm which service the user has selected
-- Dietary Requirements, Intolerances and Allergies drop down menu selectors to allow users to select multiple items
-- Results cards displayed after searching containing recipe title and nutritional information
+- Dietary Requirement/Intolerances Selector to allow users to select supported Diets or Intolerances to use in their recipe search;
+    - Dietary Requirements, Intolerances and Allergies drop down menu selectors to allow users to select a supported item
+    - Add button to create item element with remove item button
+    - Remove button on the item allows user to remove the item from the screen and the selected list
+    - Item display to allow users to see items already added
+- Results cards displayed after searching containing;
+    - Recipe title
+    - Dish type
+    - Preperation time
+    - Servings
+    - Health score (out of 100)
+    - Compatable Diets
+    - "View Recipe" button to take the user to the full details of that recipe
 
 recipe.html
 - Displays recipe with:
-    - Image 
-    - Ingredients list
-    - General information:
+    - Recipe Image 
+    - A numbered Ingredients list
+    - General information (displayed with bullet points) containing:
         - Servings
         - Preparation time
         - Dish type
@@ -197,26 +224,34 @@ recipe.html
         - Health Score
         - Price Per Serving
         - Spoonacular Score
-    - Instructions 
+    - Numbered Instructions 
     - Credits  
         - Original recipe author
-        - Link to the original recipe
+        - Link to the original recipe to allow the user to find further information on the recipe if it is needed
 
 My Supplies modal
-- Indredient selector to allow users to add ingredients to their supplies
-- Display ingredients added to view or allow user to remove
+- Indredient selector to allow users to add ingredients to their supplies containing;
+    - Ingredient input box allows user to input a custom ingredient name
+    - Add button to create ingredient element with remove item button
+    - Remove button on ingredient allows user to remove the item from the screen and the selected list
+    - Ingredients display to allow users to see ingredients already added
+- "Clear My Supplies" Button to remove all ingredients from the display, session storage and local storage
+- Close buttons to close modal
 
 About Modal
-- Instructions on how to use the service
-- Background information
+- A brief introduction and instructions on how to use this service
+- Accordion section to allow users to find more information quickly about specific topics (when accordian expands past the bottom of the screen, scroll bar is added to modal for better UX)
+- Close buttons to close modal
 
 ## Features for future releases
 
-- Email recipe link to yourself usign EmailJS API
-- Add calender event using Google Calender API with a link to the recipe
-- Links to supermarkets to display and compare live item prices 
+- Email recipe link to the user using EmailJS API
+- Add calender event using Google Calender API with a link to the recipe to arrange to use that recipe on a specific date and time
+- Links to supermarkets to display and compare live ingredients prices and assist in the online purchasing of the ingredients
 - Automatically generated shopping lists made up of the items you are missing from "My Supplies" 
 - Arrange results by different qualifiers (eg. name, ingredients needed etc)
+- Change the amount of results presented after search
+- Add custom pagenation for the search results
 
 # Bugs and Issues
 
@@ -248,6 +283,7 @@ About Modal
 - HTML5 - Programming Language
 - CSS3 - Programming Language
 - JavaScript - Programming Language
+- [jQuery](https://jquery.com/) - JavaScript Library
 - [Spoonacular API](https://spoonacular.com/food-api) - API functionality
 - [Bootstrap v4.3.1](https://getbootstrap.com/) - Library Import
 - [Google Fonts](https://fonts.google.com/) - Typography Import
@@ -263,6 +299,8 @@ About Modal
 - [CSS Beautifier](https://www.freeformatter.com/css-beautifier.html) - Beautifying CSS Code
 - [Java Script Validator](https://beautifytools.com/javascript-validator.php) - Validating JS code
 - [GIMP](https://www.gimp.org/) - Image editor
+- [Coolors](https://coolors.co/) - Colour scheme generator
+- [Font Awesome](https://fontawesome.com/) - Icon provider
 
 [Back to Top](#find-my-meal)
 
@@ -337,7 +375,7 @@ Their comments I recieved from this was generally good however I did impliment a
 
 |Feedback |Action to improve| Feedback contributer|
 | -------- | -------- | -------- |
-|Intolerances inccorrectly spelt |Spell check implimented on all visable text |Lola (Slack) |
+|Intolerances incorrectly spelt |Spell check implimented on all visable text |Lola (Slack) |
 |404 error when trying to view the full recipes |Corrected href referancing error (see **16** in [Bugs](#bugs) for more details) |Nat Kate and Daniel Steyn |
 |searchResults[0] is undefined |Modified the conditional statement (see **13** in [Bugs](#bugs) for more details) |Sean Young |
 
