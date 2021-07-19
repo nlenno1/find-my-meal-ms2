@@ -357,7 +357,7 @@ function makeApiCall(searchUrl, searchType) {
 //function to determine what data is being passed as an arguement and how to display it
 function displaySearchResults(searchResults, searchType) {
     //conditional to determine the search type and to check for a null value response from API call
-    if (searchType === "zero-waste" && searchResults[0].title !== "") {
+    if (searchType === "zero-waste" && searchResults[0] != undefined) {
         //user feedback - display title for results
         $("#result-cards-header").html("Recipies Found:");
         //create additional masks for results to be loaded
@@ -403,11 +403,11 @@ function displaySearchResults(searchResults, searchType) {
             );
         }
         //scroll to the top of the results
-        window.scrollTo(0, 680);
+        window.scrollTo(0, 750);
         //initialize click event listeners for all .view-recipe-button elements
         createViewRecipeButtons(searchType);
     //conditional to determine the search type and to check for a null value response from API call
-    } else if (searchType === "specific-needs" && searchResults.results[0].title !== "") {
+    } else if (searchType === "specific-needs" && searchResults.results[0] != undefined) {
         //user feedback - display title for results
         $("#result-cards-header").html("Recipies Found:");
         //create additional masks for results to be loaded
@@ -452,7 +452,7 @@ function displaySearchResults(searchResults, searchType) {
             );
         }
         //scroll to the top of the results
-        window.scrollTo(0, 680);
+        window.scrollTo(0, 750);
         //initialize click event listeners for all .view-recipe-button elements
         createViewRecipeButtons(searchType);
     //conditional to determine the search type and to check for a null value response from API call
@@ -533,8 +533,24 @@ function displaySearchResults(searchResults, searchType) {
         //initialize click event listeners for .find-my-meal button to show the user another result
         createBackToResultsButton();
     } else {
+        //create additional masks for results to be loaded
+        $("#additional-masks").html('<div class="footer-mask"></div><div class="footer-mask-2"></div><div class="footer-mask-3"></div>');
+        //empty search results display area on specific-needs.html
+        $("#specific-needs-results-cards-display").html("");
+        //display and add padding to search results display section
+        $(".recipe-search-results").css("display", "block");
+        $(".recipe-search-results").css("padding", "30px 15px");
+        //set min-height attribute of .main-body to 0 to remove display error
+        $(".main-body").css("min-height", "0");
+        if (searchType === "specific-needs") {
+            //empty search results display area on specific-needs.html
+            $("#specific-needs-results-cards-display").html("");
+        } else if (searchType === "zero-waste") {
+            //empty search results display area on specific-needs.html
+            $("#zero-waste-results-cards-display").html("");
+        }
         //error response value if none of the conditional statement conditions are met
-        $("#result-cards-header").html('<i class="fas fa-exclamation-circle"></i> Unfortunatly Something Went Wrong and No Recipies Were Found! <i class="fas fa-exclamation-circle"></i>');
+        $("#result-cards-header").html('<i class="fas fa-exclamation-circle"></i> Unfortunatly Something Went Wrong and No Recipies Were Found! <i class="fas fa-exclamation-circle"></i> <hr> Please check your input and try again. If this problem persists, please get in touch to report it!');
     }
 }
 //function to convert an array into a list in string form
