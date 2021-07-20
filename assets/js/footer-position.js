@@ -9,6 +9,6 @@ $(window).resize (function() {
 
 function footerPosition() {
     console.log(($(window).width()));
-    console.log($( window ).height());
-    $(".background-image").css("min-height", `calc(${$( window ).innerHeight()} - 184px)`);
+    console.log($( window ).outerHeight());
+    $(".background-image").css("min-height", `calc(${$( window ).outerHeight()} - 184px)`);
 };
