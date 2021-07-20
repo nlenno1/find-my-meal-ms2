@@ -14,6 +14,10 @@ footer,
 }
 
 .background-image {
+    -webkit-transform: skewY(-4deg);
+    -moz-transform: skewY(-4deg);
+    -ms-transform: skewY(-4deg);
+    -o-transform: skewY(-4deg);
     transform: skewY(-4deg);
     margin-bottom: 122px;
     min-height: calc(100vh - 184px)
@@ -24,6 +28,10 @@ footer,
     background-repeat: no-repeat;
     background-position: top;
     background-size: 100% auto;
+    -webkit-transform: skewY(4deg);
+    -moz-transform: skewY(4deg);
+    -ms-transform: skewY(4deg);
+    -o-transform: skewY(4deg);
     transform: skewY(4deg);
     margin-top: -4vw;
     padding-top: 4vw;
