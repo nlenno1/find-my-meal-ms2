@@ -13,10 +13,10 @@ $(window).scroll (function() {
 // defining footerPosition function to change the footer position depending on screen height
 function footerPosition() {
     // conditional statement to check height of background image and footer against the window height
-    if ($(".background-image-container").outerHeight() + $("footer").outerHeight() < $( window ).height()) {
+    if ($(".main-body").outerHeight() + $("footer").outerHeight() + $("nav").outerHeight() < $( window ).height()) {
         // change footer css to fix the footer to the bottom of the window
         $("footer").css("position", "fixed")
-    } else if  ($(".background-image-container").outerHeight() + $("footer").outerHeight() > $( window ).height()) {
+    } else if  ($(".main-body").outerHeight() + $("footer").outerHeight() + $("nav").outerHeight() > $( window ).height()) {
         //change footer css to have it after all the other page elements
         $("footer").css("position", "relative")
     }
