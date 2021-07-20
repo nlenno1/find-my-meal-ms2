@@ -19,8 +19,8 @@ footer,
     -ms-transform: skewY(-4deg);
     -o-transform: skewY(-4deg);
     transform: skewY(-4deg);
-    margin-bottom: 122px;
-    min-height: calc(100vh - 184px)
+    margin-bottom: 4vw;
+    min-height: calc(100vh - (4vw + 70px))
 }
 
 .background-image-container {
@@ -35,6 +35,7 @@ footer,
     transform: skewY(4deg);
     margin-top: -4vw;
     padding-top: 4vw;
+    /* padding-bottom: 4vw*/
 }
 
 /* ---------------------------------------- Navbar */
@@ -140,9 +141,9 @@ footer,
 /* ---------------------------------------- Footer */
 
 footer {
-    position: relative;
-    width: 100%;
+    position: fixed;
     bottom: 0;
+    width: 100%;
     z-index: 1;
 }
 
