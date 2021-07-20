@@ -5,12 +5,12 @@
 
 ***
 # Introduction
-This website  is designed using APIs to enable users to find new recipes depending on their circumstances. These can either be for diet, health or enviromental reasons.
+This website  is designed using APIs to enable users to find new recipes depending on their circumstances. These can either be for diet, health or environmental reasons.
 
 To be able to provide this I will use Spoonacular's API.
 
-I decided to build this project as I have an interest in helping others be more enviromentally aware and helping the planet by reducing the amount of food waste that we create and cutting down on meat consumption by trying Vegan alternatives.
-I also have friends and family members who either have changed their diet or have allegies/intolerances and this tool would help me cook for them.
+I decided to build this project as I have an interest in helping others be more environmentally aware and helping the planet by reducing the amount of food waste that we create and cutting down on meat consumption by trying Vegan alternatives.
+I also have friends and family members who either have changed their diet or have allergies/intolerances and this tool would help me cook for them.
 
 This is the second of four Milestone Projects that make up the Full Stack Web Development Program at The Code Institute. The main requirements of this project are to create a responsive website using primarily **HTML5**, **CSS3** and **JavaScript**.
 
@@ -33,13 +33,13 @@ The target demographics for this website are:
 - Both genders
 - May have specific dietary or allergy requirements
 - Interested in cooking
-- Wanting to trying new things
-- Open to being more enviromental
+- Wanting to try new things
+- Open to being more environmental
 
 ### User Stories
 
 - Example User 1 - I am an **enthusiastic cook** looking for new recipe ideas
-- Example User 2 - I a newly diagnosed as **gluten intolerent** and I need to find some new recipes
+- Example User 2 - I a newly diagnosed as **gluten intolerant** and I need to find some new recipes
 - Example User 3 - I am cooking for a friend who has **specific dietary needs** and I need to find a recipe
 - Example User 4 - I am worried about the amount of **food waste produced** and want use up my leftovers from previous meals
 - Example User 5 - I want to reduce my **enviromental impact** by changing my diet and adding some vegan meals to my meal routine
@@ -48,15 +48,15 @@ The website needs to enable the **USER** to:
  
 - Search for recipes based on:
     - Allergies/Intolerances (nut allergies, gluten intolerances etc)
-    - Diet (Vegan, Vegitarian etc)
+    - Diet (Vegan, Vegetarian etc)
     - What items they have to reduce their waste
 - Search for random recipes to help inspire them
 - Get in touch with suggestions to improve the service or to report bugs
 
-The website needs to enable the **BUSNINESS** to:
+The website needs to enable the **BUSINESS** to:
 
 - Develop a fully interactive and engaging platform that users enjoy
-- Accredit use of the recipies and APIs as directed in the API documentation
+- Accredit use of the recipes and APIs as directed in the API documentation
 - Potentially revenue from:
     - Selling access to premium features on the app/website,
     - Linking with supermarkets and stores to help users find the products they need to buy
@@ -80,7 +80,7 @@ As you can see all the stated features have a high Importance and Viability scor
 [Back to Top](#find-my-meal)
 #
 ## Scope 
-In line with the results from the Importance Viability analysis, all the previously mentioned features will be implimented on the first production release.
+In line with the results from the Importance Viability analysis, all the previously mentioned features will be implemented on the first production release.
 
 ### Functionality Requirements
 
@@ -102,9 +102,9 @@ Below is a diagram to better illustrate this structure.
 ![Website Structure Flow Diagram](assets/readme-assets/findmymeal-website-structure-diagram.png)
 
 - From index.html you can select which recipe finder service you want and you can transition from one service to another.
-- Once you make a search using a service the "Search Results" will display on the page that is currently viewed. If you perform another search then these results will be replaces by the new ones.
+- Once the user makes a search using a service the "Search Results" will display on the page that is currently viewed. If the user performs another search then these results will be replaced by the new ones.
 - When a Search result is selected, recipe-display.html will be called and loaded with the requested information.
-- If the user tries to move horizontally on the graph after displaying "Search Results" or loading recipe-display.html then they will lose all retrieved data from the API.
+- If the user tries to move horizontally on the hierarchy tree after displaying "Search Results" or loading recipe-display.html then they will lose all retrieved data from the API.
 
 [Back to Top](#find-my-meal)
 
@@ -146,7 +146,7 @@ These colours were chosen as they compliment the website's background image and 
 
 **Typography**
 
-This project uses the font [Special Elite](https://fonts.google.com/specimen/Special+Elite?query=special+el) for headings and [Open Sans](https://fonts.google.com/specimen/Open+Sans?query=open+sans) for body text. This allows the headings to be themed while having clear text to make it easier to read which imporves the user experience.
+This project uses the font [Special Elite](https://fonts.google.com/specimen/Special+Elite?query=special+el) for headings and [Open Sans](https://fonts.google.com/specimen/Open+Sans?query=open+sans) for body text. This allows the headings to be themed while having clear text to make it easier to read which improves the user experience.
 
 **Imagery**
 
@@ -159,12 +159,12 @@ All recipe images are supplied and formatted by the [API](https://spoonacular.co
 # Features
 navbar
 - Logo - to give clear business identity and act as a link to index.html
-- Home Button - link to index.html (not visable at tablet breakpoint)
+- Home Button - link to index.html (not visible at tablet breakpoint)
 - About Button - Link to a modal with instructions on how to use the service and background information
 - Recipe finder Button - A drop down menu to the 3 recipe finders
 - My Supplies Button - Link to a modal containing a list of the supplies the user has
     - In this modal the user will be able to add and remove items to use later on
-- Contact Button - link to contact.html which allows users to contact the developer (not visable at tablet breakpoint)
+- Contact Button - link to contact.html which allows users to contact the developer (not visible at tablet breakpoint)
 
 footer
 - Accreditation to Spoonacular API as layed out in the usage terms and conditions,
@@ -181,17 +181,17 @@ lucky-dip.html
 
 zero-waste.html
 - Page title to confirm which service the user has selected
-- Indredient selector to allow users to add ingredients that they want to search with
+- Ingredient selector to allow users to add ingredients that they want to search with
     - Ingredient input box allows user to input a custom ingredient name
     - Add button to create ingredient element with remove item button
     - Remove button on ingredient allows user to remove the item from the screen and the selected list
     - Ingredients display to allow users to see ingredients already added
-- "Use ingredients in My Supplies" check box option for ingredient selector which uses previously added ingredients to the My Supplies array only in the recipe search
-- Results title to confirm that results have been found or if an error has occured during the API call and display process
+- "Use ingredients in My Supplies" check box option for ingredient selector which uses previously added ingredients to the"My Supplies" array only in the recipe search
+- Results title to confirm that results have been found or if an error has occurred during the API call and display process
 - Results cards displayed after searching containing;
     - Recipe title
     - Amount of likes the recipe has
-    - Ingreients used from the ingredient selector
+    - Ingredients used from the ingredient selector
     - Ingredients that are needed to make the recipe
     - "View Recipe" button to take the user to the full details of that recipe
 
@@ -202,18 +202,20 @@ specific-needs.html
     - Add button to create item element with remove item button
     - Remove button on the item allows user to remove the item from the screen and the selected list
     - Item display to allow users to see items already added
+- Results title to confirm that results have been found or if an error has occurred during the API call and display process
 - Results cards displayed after searching containing;
     - Recipe title
     - Dish type
-    - Preperation time
+    - Preparation time
     - Servings
     - Health score (out of 100)
-    - Compatable Diets
+    - Compatible Diets
     - "View Recipe" button to take the user to the full details of that recipe
 
 recipe.html
 - Displays recipe with:
     - Recipe Image 
+    - A general description of the recipe which has all links and formatting removed from it 
     - A numbered Ingredients list
     - General information (displayed with bullet points) containing:
         - Servings
@@ -230,8 +232,8 @@ recipe.html
         - Link to the original recipe to allow the user to find further information on the recipe if it is needed
 
 My Supplies modal
-- Indredient selector to allow users to add ingredients to their supplies containing;
-    - Ingredient input box allows user to input a custom ingredient name
+- Ingredient selector to allow users to add ingredients to their supplies containing;
+    - Ingredient  input box allows user to input a custom ingredient name
     - Add button to create ingredient element with remove item button
     - Remove button on ingredient allows user to remove the item from the screen and the selected list
     - Ingredients display to allow users to see ingredients already added
@@ -240,18 +242,18 @@ My Supplies modal
 
 About Modal
 - A brief introduction and instructions on how to use this service
-- Accordion section to allow users to find more information quickly about specific topics (when accordian expands past the bottom of the screen, scroll bar is added to modal for better UX)
+- Accordion section to allow users to find more information quickly about specific topics (when Accordion expands past the bottom of the screen, scroll bar is added to modal for better UX)
 - Close buttons to close modal
 
 ## Features for future releases
 
 - Email recipe link to the user using EmailJS API
-- Add calender event using Google Calender API with a link to the recipe to arrange to use that recipe on a specific date and time
+- Add calendar event using Google Calender API with a link to the recipe to arrange to use that recipe on a specific date and time
 - Links to supermarkets to display and compare live ingredients prices and assist in the online purchasing of the ingredients
 - Automatically generated shopping lists made up of the items you are missing from "My Supplies" 
 - Arrange results by different qualifiers (eg. name, ingredients needed etc)
 - Change the amount of results presented after search
-- Add custom pagenation for the search results
+- Add custom pagination for the search results
 
 # Bugs and Issues
 
@@ -260,20 +262,20 @@ About Modal
 |1 |Background mask pushing down past the footer|Mask height and askew angle too large|Reduced element height, added a second mask element and staggered the angles of the two elements to cover the required area|
 |2 |Background masks on top of footer |Footer z-index was lower than the mask which was given a higher z-index to put it on top of the background |Raised the z-index of the footer to equal the background|
 |3 |Background image not covered by masks on larger pages|Mask pushed lower down the page by content|Edited the background image to have an angled bottom|
-|4 |Gaps inbetween the two background masks|Larger screenwidths caused the askew elements to become thinner|Increased element height and set it using a screen width measurement (vw) so it increases relative to the screen width|
+|4 |Gaps in between the two background masks|Larger screen widths caused the askew elements to become thinner|Increased element height and set it using a screen width measurement (vw) so it increases relative to the screen width|
 |5 |Navbar Dropdown Menu moving background image|Image reacting to page height change when the dropdown was added to the page and the navbar was above the background image element on the page|Set the background image in its own div behind the navbar, set background-position to top and background-size attribute to 100% auto|
 |6 |Jquery Click Event Element Undefined Errors|Moved navbar element creation to JS file so the click event was refering to an element that didn't exist yet|Added $(window).ready to the Jquery click events so they are called when the element exists| 
 |7 |X axis page overflow|.nav-item elements in the navbar being too wide after adding padding and margins|I could have used the box-sizing: border-box; css attribute to negate the margin/padding but I decided to reduce the .nav-item width to compensate for the padding/margins manually|
 |8 |createIngredientObject() broken|Passed "My Supplies" as the array name which cause errors when assigned as the variable name as it contained a space|Altered the array name from "My Supplies" to "MySuppliesArray"|
 |9 |Current My Supplies array not empty after calling clearLocalStorage()|When writing the function, I cleared the local storage array but not the session storage mySuppliesArray|I added the assigner mySuppliesArray = [] to empty the session array|
-|10 |My Supplies load createIngredientObject() returning error|When adding to createIngredientObject() I rearranged the required arguement order which I did not change in the My Supplies load function and when taking the item names from the localStorage array, they contained hyphens which I did not want displayed|Double checked what the required arguements were and rearraged them to match the edited function before creating removeHyphens() to turn the saved item name into a screenName to display|
+|10 |My Supplies load createIngredientObject() returning error|When adding to createIngredientObject() I rearranged the required argument order which I did not change in the "My Supplies" load function and when taking the item names from the localStorage array, they contained hyphens which I did not want displayed|Double checked what the required arguments were and rearraged them to match the edited function before creating removeHyphens() to turn the saved item name into a screenName to display|
 |11 |createViewRecipeButtons() returning error|Function was called before the element for click event was created|Added function to displaySearchResults() after element creation|
 |12 |Recipe-display-button click event no sending the correct data to the API call therefore not getting a response|Typographical error lead to an extra " in each button element when being created by displaySearchResults()|Removed the extra character|
-|13 |Specific-needs API call returning "searchResults[0] is undefined" error when called with displaySearchResults()|The data structure returned by the API is different for each search type therefore the function was trying to acces data that wasn't there|Using dot notation, I referanced the first item in the response array|
-|14 |Modal resizing on page y-axis overflow|Accordian section expanding past the height of the page added the scroll bar to the page which resized the modal|I added overflow: auto; to the modal so the scroll bar would be inside the modal rather than on the edge of the entire page|
-|15 |checkIfHasValue function missing undefined values|I used the string "undefined" as a operand for the conditional statement in the function when it should have been the value of undefined|Removed the "" to make the aperand value undefined|
+|13 |Specific-needs API call returning "searchResults[0] is undefined" error when called with displaySearchResults()|The data structure returned by the API is different for each search type therefore the function was trying to access data that wasn't there|Using dot notation, I referenced the first item in the response array|
+|14 |Modal resizing on page y-axis overflow|Accordion section expanding past the height of the page added the scroll bar to the page which resized the modal|I added overflow: auto; to the modal so the scroll bar would be inside the modal rather than on the edge of the entire page|
+|15 |checkIfHasValue function missing undefined values|I used the string "undefined" as a operand for the conditional statement in the function when it should have been the value of undefined|Removed the "" to make the operand value undefined|
 |16 |404 Page not found error for recipe-display.html |Using an absolute url path in createBackToResultsButton() |Changed path to a relative url path |
-|17 |Footer not at the bottom of the page on larger devices |Page content not big enought to push footer to the bottom of the screen |Set the min-height attribute of .main-body, using calc() vh and the height of the footer, to keep the footer at the bottom of the page  |
+|17 |Footer not at the bottom of the page on larger devices |Page content not big enough to push footer to the bottom of the screen |Set the min-height attribute of .main-body, using calc() vh and the height of the footer, to keep the footer at the bottom of the page  |
 |18 | JS Validator Error - "Expected an assignment or function call and instead saw an expression" | Used a ternary expression to call functions depending on a variable value | Restructured the ternary expression into a traditional if/else conditional statement |
 
 [Back to Top](#find-my-meal)
@@ -306,13 +308,13 @@ About Modal
 
 # Testing
 
-Throughout the building of this project, I tested the responsive design and functionality using [Google Chrome Developer Tools](https://developer.chrome.com/docs/devtools/). The console and elements feature helped me de-bug any issues and the adaptable display helped visualise each page at different screen widths.
+Throughout the building of this project, I tested the responsive design and functionality using [Google Chrome Developer Tools](https://developer.chrome.com/docs/devtools/). The console and elements feature helped me debug any issues and the adaptable display helped visualize each page at different screen widths.
 
-This is the functionality check list that I used when testing my project
+This is the functionality check list that I used when testing my project.
 
 |Element/Section |Feature to Test |
 | -------- | -------- |
-|**Navbar** *(on all pages)*  |.nav-link have a hover effect are directing to the intended pages |
+|**Navbar** *(on all pages)*  |.nav-link has a hover effect are directing to the intended pages |
 | |Modals open and close correctly and display relevant content  |
 | |Dropdown menu work with hover effects |
 | |Element stays at the top of the page |
@@ -326,7 +328,7 @@ This is the functionality check list that I used when testing my project
 | |Created elements are formatted correctly and can be removed via the close/delete button |
 | |"Clear My Supplies" button removes all created elements while also removing the item names from session and local storage |
 |**About Modal** |All information displays correctly |
-| |Accordian section functions as expected |
+| |Accordion section functions as expected |
 |**index.html**  |Recipe-selector-buttons have the correct href and has the enlarging hover effect  |
 |**contact.html**  |All input fields work as expected, validate the data that is entered and are required before submitting  |
 | |User feedback provides suitable information/responses during and after sending any message, including if there was an error  |
@@ -338,11 +340,11 @@ This is the functionality check list that I used when testing my project
 | |"Find My Meal" button click event functions as expected and makes the correct API call |
 | |User feedback provides suitable information/responses during and after API call, including if there is an error   |
 | |API call responds as expected |
-| |Data from API is presented appropriatly and zero or impossible values are managed effeciently  |
+| |Data from API is presented appropriately and zero or impossible values are managed efficiently  |
 | |View recipe button functions as expected and passed on the correct data to local storage |
 | | On loading, pages display the correct information when expected|
 |**recipe-display.html** |API call responds as expected |
-| |Data from API is presented appropriatly and zero or impossible values are managed effeciently  |
+| |Data from API is presented appropriately and zero or impossible values are managed efficiently   |
 | |Back to results button functions as expected and directs to the correct page  |
 
 ## Device Testing
@@ -352,11 +354,11 @@ To test the website at the **Mobile breakpoint**, I focused on using the **Iphon
 All other mobile breakpoints fit into this range of screen sizes, apart from the Galaxy Fold, therefore felt it was a good range to work with.
 As this project was designed using the mobile first principle, there were very few bugs as the were removed as the site was built.
 
-I used my own **Samsung Galaxy S10 (360px)** for the mobile device real world testing, as this is roughly the median of the range I tested on Dev Tools, to check that all elements were as expected.
+I used my own **Samsung Galaxy S10 (360px)** for the mobile device real world testing, as this is roughly the median of the range I tested on Google Chrome Developer Tools, to check that all elements were as expected.
 
 ### Tablet
 
-To test the project on a tablet, I used the **Ipad (768px)** breakpoint on Google Chrome Dev Tools as it is a very generic size and has the tablet shroud on it to help with scaling the elements.
+To test the project on a tablet, I used the **Ipad (768px)** breakpoint on Google Chrome Developer Tools as it is a very generic size and has the tablet shroud on it to help with scaling the elements.
 Throughout this testing, I discovered some spacing issues which were corrected with **Media Queries** at the specific breakpoints.
 
 I used my **Samsung Galaxy Tab 4 (800px)** for physical user testing.
@@ -366,17 +368,17 @@ I used my **Samsung Galaxy Tab 4 (800px)** for physical user testing.
 During development, I tested the Desktop breakpoint by either using my **default screen size (1024px)** or the 1440px breakpoint in Google Chrome Dev Tools. This was to enable users who have bigger screens than myself to still have the best UI and UX possible.
 There were some spacing issues at the larger screen size so again I used **Media Queries** at **min-width:1200px**to solve these issues.
 
-For real world testing, I used an external 1440px monitor to make sure the display was as expected and used some peer review testing for ultrawide monitors (1980 px).
+For real world testing, I used an external 1440px monitor to make sure the display was as expected and used some peer review testing for ultra wide monitors (1980 px).
 
 ## Peer Review Testing
 
-I asked a selection of my peers (family, collegues and friends) using resources like **Slack** to access, test and review my project at several different points in the projects development.
-Their comments I recieved from this was generally good however I did impliment a few changes from this feedback.
+I asked a selection of my peers (family, collegues and friends) using resources like **Slack** to access, test and review my project at several different points in the developement of the project.
+All comments were good however I did implement a few changes from this feedback.
 
-|Feedback |Action to improve| Feedback contributer|
+|Feedback |Action to improve| Feedback/Contributor|
 | -------- | -------- | -------- |
-|Intolerances incorrectly spelt |Spell check implimented on all visable text |Lola (Slack) |
-|404 error when trying to view the full recipes |Corrected href referancing error (see **16** in [Bugs](#bugs) for more details) |Nat Kate and Daniel Steyn |
+|Intolerances incorrectly spelt |Spell check implemented on all visible text |Lola (Slack) |
+|404 error when trying to view the full recipes |Corrected href referencing error (see **16** in [Bugs](#bugs) for more details) |Nat Kate and Daniel Steyn |
 |searchResults[0] is undefined |Modified the conditional statement (see **13** in [Bugs](#bugs) for more details) |Sean Young |
 
 ## Browser Testing
@@ -388,15 +390,15 @@ Using [Lambda Test](https://www.lambdatest.com/), a cloud based browser platform
 - Safari
 - Opera 
 
-All the tests rendered similar to expected UI results and no compatability bugs.
+All the tests rendered similar to expected UI results and no compatibility bugs.
 
 ## User Stories Testing
 As an **enthusiastic cook** looking for new recipe ideas;
-- I can used either of the 3 options on index.html to find some new recipies, ither randomly selected, specific to the ingredients I have or specific to dietary requirements/allergies.
+- I can use either of the 3 options on index.html, or on the navbar, to find some new recipes, either randomly selected, using specific ingredients I have or depending on selected supported dietary requirements or allergies.
 - If I am confused by what is supported or what I need to do to use the service, the About button is always there on the Navbar to help.
 - If I want to save the ingredients I regularly have to cook with then I can add them to "My Supplies".
 
-As a newly diagnosed **gluten intolerent**;
+As a newly diagnosed **gluten intolerant**;
 - I can use the Specific Needs recipe selector and choose gluten from the drop down menus to see recipes without gluten.
 - If I am confused by what is supported or what I need to do to use the service, the About button is always there on the Navbar to help with details of what intolerances are supported by the service
 
@@ -405,7 +407,7 @@ As someone cooking for a friend who has **specific dietary needs**;
 - If I need help using the service or finding out what the options mean, there is a full description in the About modal, the link to which is in the Navbar at all times.
 - If their specific dietary requirement is missing then the contact page can be accessed through the footer or navbar to allow me to get in touch and suggest the item to add to the service.
 
-As an enviromentalist, worried about the amount of **food waste produced**;
+As an environmentalist, worried about the amount of **food waste produced**;
 - I can use the Zero Waste recipe selector and enter the specific ingredients that I have to use the last of.
 - If I regularly have the same items to use then I can put them in My Supplies to use in later searches
 
@@ -420,7 +422,7 @@ To validate my project, I used the following validators:
 - CSS - [CSS Validator Service](http://jigsaw.w3.org/css-validator/)
 - Java Script - [Beautify Tools JS Validator](https://beautifytools.com/javascript-validator.php)
 - Color Tester - [A11y](https://color.a11y.com/)
-- Mobile Compatability Tester - [Google Mobile-Friendly Test ](https://search.google.com/test/mobile-friendly)
+- Mobile Compatibility Tester - [Google Mobile-Friendly Test ](https://search.google.com/test/mobile-friendly)
 - General Performance - [Google Lighthouse](https://developers.google.com/web/tools/lighthouse)
 
 ## Results and Outcomes of Validation
@@ -440,7 +442,7 @@ The only issues raised by the validators after final testing are:
 | -------- | -------- |
 |*Function Name* is not defined | When this error occurs, it is because the function has been defined in a different js file as it is used in multiple pages |
 |'sendMail' is defined but never used | This is a function that is called by a form submit click event and therefore doe not need to be called in the JS file |
-|Functions declared with in loops referancing an outer scoped variable may lead to confusing semantics | This is just a warning however in this case the semantic are simple so it is not confusing |
+|Functions declared with in loops referencing an outer scoped variable may lead to confusing semantics | This is just a warning however in this case the semantic are simple so it is not confusing |
 
 [Back to Top](#find-my-meal)
 
@@ -476,7 +478,7 @@ To clone the repository, you first need to:
 
 ## Cloning the Repository using Git
 
-1. Open the [repository](https://github.com/nlenno1/find-my-meal-ms2), click the  code button, which is located on the right above all the repo file names.
+1. Open the [repository](https://github.com/nlenno1/find-my-meal-ms2), click the  code button, which is located on the right above all the repository file names.
 2. Select HTTPS and copy the clone URL.
 3. In your command line type "git clone" and then paste the URL that you just copied.
 4. Press enter to create your local clone
@@ -486,7 +488,7 @@ To clone the repository, you first need to:
 # Credits
 
 Code snippets
-NavBar, Modal and Accordian template taken from [Bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navbar/) to be heavily modified and customized.
+NavBar, Modal and Accordion template taken from [Bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navbar/) to be heavily modified and customized.
 
 Resources
 - [Code Institute Course Content](https://courses.codeinstitute.net/) - Code fundamental learning platform
