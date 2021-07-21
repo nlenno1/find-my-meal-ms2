@@ -18,129 +18,127 @@
 </head>
 
 <body>
-    <!--Background image container-->
-    <div class="background-image">
-        <!--Navbar template taken from Bootstrap 5 example code and heavily modified - filled by create-page.js-->
-        <nav class="navbar navbar-expand-sm navbar-light sticky-top">
-            <!-- Find my meal logo (not displayed at phone breakpoint) - index.html link -->
-            <a class="navbar-brand d-sm-none" href="index.html"><img class="navbar-logo" src="assets/images/find-my-meal-logo.png" alt="Find My Meal Logo"></a>
-            <!-- navbar toggler button -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- nav items either displayed as dropdown when collapsed or in navbar -->
-            <div class="collapse navbar-collapse" id="navbar">
-                <ul class="navbar-nav justify-content-center">
-                    <li class="nav-item d-sm-none d-lg-block">
-                        <!--index.html link-->
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <!--About Modal Link-->
-                        <button type="button" class="nav-link navbar-modal-button" data-bs-toggle="modal"
-                            data-bs-target="#about-modal">About</button>
-                    </li>
-                    <!--Dropdown button for Recipe finder selector-->
-                    <li class="nav-item dropdown">
-                        <button type="button" class="nav-link navbar-modal-button dropdown-toggle" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Recipe Finders
-                    </button>
-                        <!--Dropdown Recipe Search Page Link list-->
-                        <div class="nav-item dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="lucky-dip.html">Lucky Dip</a>
-                            <a class="dropdown-item" href="zero-waste.html">Zero-Waste</a>
-                            <a class="dropdown-item" href="specific-needs.html">Specific Needs</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <!--My Supplies Modal Link-->
-                        <button type="button" class="nav-link navbar-modal-button" data-bs-toggle="modal"
-                            data-bs-target="#my-supplies-modal">My Supplies</button>
-                    </li>
-                    <li class="nav-item d-sm-none d-lg-block">
-                        <!--contact.html-->
-                        <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                </ul>
+    <!-- Container for the background image -->
+    <div class="background-image-container">
+        <!--Background image container-->
+        <div class="background-image">
+            <!--Navbar template taken from Bootstrap 5 example code and heavily modified - filled by create-page.js-->
+            <nav class="navbar navbar-expand-sm navbar-light sticky-top">
+                <!-- Find my meal logo (not displayed at phone breakpoint) - index.html link -->
+                <a class="navbar-brand d-sm-none" href="index.html"><img class="navbar-logo" src="assets/images/find-my-meal-logo.png" alt="Find My Meal Logo"></a>
+                <!-- navbar toggler button -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- nav items either displayed as dropdown when collapsed or in navbar -->
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="navbar-nav justify-content-center">
+                        <li class="nav-item d-sm-none d-lg-block">
+                            <!--index.html link-->
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <!--About Modal Link-->
+                            <button type="button" class="nav-link navbar-modal-button" data-bs-toggle="modal"
+                                data-bs-target="#about-modal">About</button>
+                        </li>
+                        <!--Dropdown button for Recipe finder selector-->
+                        <li class="nav-item dropdown">
+                            <button type="button" class="nav-link navbar-modal-button dropdown-toggle" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Recipe Finders
+                        </button>
+                            <!--Dropdown Recipe Search Page Link list-->
+                            <div class="nav-item dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="lucky-dip.html">Lucky Dip</a>
+                                <a class="dropdown-item" href="zero-waste.html">Zero-Waste</a>
+                                <a class="dropdown-item" href="specific-needs.html">Specific Needs</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <!--My Supplies Modal Link-->
+                            <button type="button" class="nav-link navbar-modal-button" data-bs-toggle="modal"
+                                data-bs-target="#my-supplies-modal">My Supplies</button>
+                        </li>
+                        <li class="nav-item d-sm-none d-lg-block">
+                            <!--contact.html-->
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!--Modals container - Modal template taken from Bootstrap 5 example code and heavily modified - filled by create-page.js-->
+            <div id="modals-container">
             </div>
-        </nav>
-        <!--Modals container - Modal template taken from Bootstrap 5 example code and heavily modified - filled by create-page.js-->
-        <div id="modals-container">
-        </div>
-        <!--Page content container-->
-        <section class="container-fluid main-body">
-            <div class="row">
-                <div class="col-12">
-                    <!--Recipe Display content container (all content will be updated/replaced by item-control.js using the displaySearchResults function.
-                    Default content in this section is to give the page shape and to improve UX incase of a slow API response or load speed-->
-                    <div class="recipe-display">
-                        <div class="row">
-                            <div class="col-12">
-                                <!--logo image with link (not visable at mobile breakpoint)-->
-                                <a href="index.html" class="d-none d-sm-block">
-                                    <img class="recipe-search-pages-logo" src="assets/images/find-my-meal-logo.png"
-                                        alt="Find My Meal Logo">
-                                </a>
-                                <!--Recipe Title (with default loading gif)-->
-                                <h1 class="text-center mb-4"><img src="assets/images/loading.gif" alt="loading gif">
-                                </h1>
+            <!--Page content container-->
+            <section class="container-fluid main-body">
+                <div class="row">
+                    <div class="col-12">
+                        <!--Recipe Display content container (all content will be updated/replaced by item-control.js using the displaySearchResults function.
+                        Default content in this section is to give the page shape and to improve UX incase of a slow API response or load speed-->
+                        <div class="recipe-display">
+                            <div class="row">
+                                <div class="col-12">
+                                    <!--logo image with link (not visable at mobile breakpoint)-->
+                                    <a href="index.html" class="d-none d-sm-block">
+                                        <img class="recipe-search-pages-logo" src="assets/images/find-my-meal-logo.png"
+                                            alt="Find My Meal Logo">
+                                    </a>
+                                    <!--Recipe Title (with default loading gif)-->
+                                    <h1 class="text-center mb-4"><img src="assets/images/loading.gif" alt="loading gif">
+                                    </h1>
+                                </div>
                             </div>
-                        </div>
-                        <!--Recipe Information Container-->
-                        <div class="recipe-info">
-                            <!--Recipe Summary Container (used as target for displaySearchResults function)(with default loading gif)-->
-                            <div class="recipe-display-image-summary-container text-center"><img
-                                    src="assets/images/loading.gif" alt="loading gif"></div>
-                            <!--Recipe Ingredients Container (used as target for displaySearchResults function)(with default loading gif)-->
-                            <div class="recipe-display-ingredients">
-                                <!--Ingredients title-->
-                                <h3 class="text-center">Ingredients</h3>
-                                <img src="assets/images/loading.gif" alt="loading gif">
+                            <!--Recipe Information Container-->
+                            <div class="recipe-info">
+                                <!--Recipe Summary Container (used as target for displaySearchResults function)(with default loading gif)-->
+                                <div class="recipe-display-image-summary-container text-center"><img
+                                        src="assets/images/loading.gif" alt="loading gif"></div>
+                                <!--Recipe Ingredients Container (used as target for displaySearchResults function)(with default loading gif)-->
+                                <div class="recipe-display-ingredients">
+                                    <!--Ingredients title-->
+                                    <h3 class="text-center">Ingredients</h3>
+                                    <img src="assets/images/loading.gif" alt="loading gif">
+                                </div>
+                                <!--General Information Container (used as target for displaySearchResults function)(with default loading gif)-->
+                                <div class="recipe-general-info">
+                                    <!--General Information Title-->
+                                    <h3 class="text-center">General Information</h3>
+                                    <img src="assets/images/loading.gif" alt="loading gif">
+                                </div>
                             </div>
-                            <!--General Information Container (used as target for displaySearchResults function)(with default loading gif)-->
-                            <div class="recipe-general-info">
-                                <!--General Information Title-->
-                                <h3 class="text-center">General Information</h3>
-                                <img src="assets/images/loading.gif" alt="loading gif">
+                            <div class="row g-0">
+                                <!--Recipe Instructions Container (used as target for displaySearchResults function)(with default loading gif)-->
+                                <div class="col-12 recipe-display-instructions">
+                                    <!--Recipe Instructions Title-->
+                                    <h3 class="text-center">Instructions</h3>
+                                    <img src="assets/images/loading.gif" alt="loading gif">
+                                </div>
                             </div>
-                        </div>
-                        <div class="row g-0">
-                            <!--Recipe Instructions Container (used as target for displaySearchResults function)(with default loading gif)-->
-                            <div class="col-12 recipe-display-instructions">
-                                <!--Recipe Instructions Title-->
-                                <h3 class="text-center">Instructions</h3>
-                                <img src="assets/images/loading.gif" alt="loading gif">
+                            <div class="row g-0">
+                                <!--Recipe credits container (used as target for displaySearchResults function)-->
+                                <div class="col-12 credits">
+                                    <!--Recipe Author Credit-->
+                                    <p>Recipe credit: <img src="assets/images/loading.gif" alt="loading gif"></p>
+                                    <!--Original Recipe Link-->
+                                    <a href="#" target="_blank" rel="noopener">Link to Original Recipe</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row g-0">
-                            <!--Recipe credits container (used as target for displaySearchResults function)-->
-                            <div class="col-12 credits">
-                                <!--Recipe Author Credit-->
-                                <p>Recipe credit: <img src="assets/images/loading.gif" alt="loading gif"></p>
-                                <!--Original Recipe Link-->
-                                <a href="#" target="_blank" rel="noopener">Link to Original Recipe</a>
-                            </div>
-                        </div>
-                        <div class="row g-0">
-                            <div class="col-12 text-center">
-                                <!--Return to results button to reload the search page the user came from-->
-                                <button id="back-to-results-button" class="find-my-meal-button">Back To Results</button>
+                            <div class="row g-0">
+                                <div class="col-12 text-center">
+                                    <!--Return to results button to reload the search page the user came from-->
+                                    <button id="back-to-results-button" class="find-my-meal-button">Back To Results</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <!--/Page content container-->
-    </div>
-    <!--/Background Image-->
-    <!--Footer masks to cover background image at smaller screen heights-->
-    <div class="footer-masks">
-        <div class="footer-mask"></div>
-        <div class="footer-mask-2"></div>
-        <div class="footer-mask-3"></div>
+            </section>
+            <!--/Page content container-->
+        <!--/Background Image-->
+        </div>
+    <!-- /Container for the background image -->
     </div>
     <!--footer-->
     <footer>
@@ -171,6 +169,7 @@
     <script src="assets/js/create-page.js"></script>
     <script src="assets/js/item-control.js"></script>
     <script src="assets/js/recipe-display.js"></script>
+    <script src="assets/js/footer-position.js"></script>
 </body>
 
 </html>
