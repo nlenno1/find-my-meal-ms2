@@ -35,7 +35,6 @@ footer,
     transform: skewY(4deg);
     margin-top: -4vw;
     padding-top: 4vw;
-    /* padding-bottom: 4vw*/
 }
 
 /* ---------------------------------------- Navbar */
@@ -463,10 +462,6 @@ footer a:hover {
     #introduction p:first-of-type {
         margin-right: 45px
     }
-
-    /* .main-body {
-        min-height: calc(100vh - 178px);
-    } */
 }
 
 @media(min-width:992px) {
@@ -496,18 +491,6 @@ footer a:hover {
     #recipe-selector-buttons-container {
         padding: 1vw 8vw;
     }
-}
-
-@media(min-width: 1200px) {
-    /* .main-body {
-        min-height: calc(100vh - 218px);
-    } */
-}
-
-@media(min-width: 1600px) {
-    /* .main-body {
-        min-height: calc(100vh - 152px);
-    } */
 }
 
 /* -------------------------------------------------------------- zero-waste.html */
