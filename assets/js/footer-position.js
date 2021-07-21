@@ -18,10 +18,10 @@ function footerPosition() {
         // setFooterAttributes function call passing extra page elements as arguments
         setFooterAttributes ($("nav").outerHeight() + $(".recipe-search-results").outerHeight());
     } else if ($("nav").outerHeight() > 0) {
-        // setFooterAttributes function call passing extra page element as arguement
+        // setFooterAttributes function call passing extra page element as argument
         setFooterAttributes ($("nav").outerHeight());
     } else {
-        // setFooterAttributes function call passing null as arguement as there are no extra page elements
+        // setFooterAttributes function call passing null as argument as there are no extra page elements
         setFooterAttributes (null);
     }
     // defining function to change the footer attributes

@@ -503,7 +503,7 @@ function removeObjectMethod(ingredientCompName, targetArea, arrayToAction, array
         });
     });
 }
-//function to determine what data is being passed as an arguement and how to display it
+//function to determine what data is being passed as an argument and how to display it
 function displaySearchResults(searchResults, searchType) {
     //conditional to determine the search type and to check for a null value response from API call
     if (searchType === "zero-waste" && searchResults[0] != undefined) {
