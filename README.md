@@ -140,7 +140,7 @@ Modal Design:
 
 The main colours used throughout the website are Black (#000), White (#fff), Off White (#fafafa) and Grey/Silver (#c4c4c4) using a bright Green (#1EC820) to highlight. 
 
-![Find My Meal Colour Scheme](assets/images/fmm-color-scheme.png)
+![Find My Meal Colour Scheme](assets/readme-assets/fmm-color-scheme.png)
 
 These colours were chosen as they compliment the website's background image and give the site a clean, modern and professional feel without being too bright and flashy which will appeal to the demographic.
 
