@@ -23,7 +23,7 @@
         <!--Background image container-->
         <div class="background-image">
             <!--Navbar template taken from Bootstrap 5 example code and heavily modified - filled by create-page.js-->
-            <nav class="navbar navbar-expand-sm navbar-light d-sm-sticky-top">
+            <nav class="navbar navbar-expand-sm navbar-light sticky-top">
                 <!-- Find my meal logo (not displayed at phone breakpoint) - index.html link -->
                 <a class="navbar-brand d-sm-none" href="index.html"><img class="navbar-logo" src="assets/images/find-my-meal-logo.png" alt="Find My Meal Logo"></a>
                 <!-- navbar toggler button -->
@@ -154,20 +154,21 @@
                         </div>
                     </div>
                 </div>
+                <!--Recipe Search Results content container (all content will be updated/replaced by item-control.js.
+                This section will not be wisable until content API call response is loaded into it-->
+                <section class="recipe-search-results">
+                    <h2 id="result-cards-header"></h2>
+                    <div id="specific-needs-results-cards-display" class="recipe-list">
+                    </div>
+                <!--/Recipe Search Results content container-->
+                </section>
             <!--/Page content container-->
             </section>
-            <!--/Page content container-->
-        </div>
         <!--/Background Image-->
-    </div>
-    <!--Recipe Search Results content container (all content will be updated/replaced by item-control.js.
-    This section will not be wisable until content API call response is loaded into it-->
-    <section class="recipe-search-results">
-        <h2 id="result-cards-header"></h2>
-        <div id="specific-needs-results-cards-display" class="recipe-list">
         </div>
-    <!--/Recipe Search Results content container-->
-    </section>
+    <!--/Background Image Container-->
+    </div>
+    
     <!--footer-->
     <footer>
         <!--footer creator with background-->
