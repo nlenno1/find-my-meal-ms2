@@ -17,50 +17,51 @@
 </head>
 
 <body>
-    <!--Background image container-->
-    <div class="background-image">
-        <!--Page content container-->
-        <section class="container-fluid main-body">
-            <div class="row">
-                <div class="col-12 col-md-4 col-lg-5 col-xl-4" id="introduction">
-                    <!--logo image with link-->
-                    <a href="index.html">
-                        <img class="logo" src="assets/images/find-my-meal-logo.png" alt="Find My Meal Logo">
-                    </a>
+    <!-- Container for the background image -->
+    <div class="background-image-container">
+        <!--Background image container-->
+        <div class="background-image">
+            <!--Page content container-->
+            <section class="container-fluid main-body">
+                <div class="row">
+                    <div class="col-12 col-md-4 col-lg-5 col-xl-4" id="introduction">
+                        <!--logo image with link-->
+                        <a href="index.html">
+                            <img class="logo" src="assets/images/find-my-meal-logo.png" alt="Find My Meal Logo">
+                        </a>
+                    </div>
+                    <!--404 error message-->
+                    <div class="col-12 col-md-4">
+                        <h1 class="text-center header-404">Oooops!</h1>
+                        <h1 class="text-center">Something went wrong...</h1>
+                    </div>
                 </div>
-                <!--404 error message-->
-                <div class="col-12 col-md-4">
-                    <h1 class="text-center header-404">Oooops!</h1>
-                    <h1 class="text-center">Something went wrong...</h1>
+                <!--User interaction advice-->
+                <div class="row">
+                    <div class="col-10 offset-1 col-md-8 offset-md-2">
+                        <h5 class="text-center">If you have seen this page before, please get in touch so we can solve any
+                            problems there are</h5>
+                    </div>
                 </div>
-            </div>
-            <!--User interaction advice-->
-            <div class="row">
-                <div class="col-10 offset-1 col-md-8 offset-md-2">
-                    <h5 class="text-center">If you have seen this page before, please get in touch so we can solve any
-                        problems there are</h5>
+                <!--404 Navigational Buttons-->
+                <div class="row" id="recipe-selector-buttons-container">
+                    <div class="col-12 col-lg-6 recipe-selector-button-container">
+                        <a href="index.html" class="recipe-selector-button">Home</a>
+                        <p>Head back to our homepage</p>
+                    </div>
+                    <div class="col-12 col-lg-6 recipe-selector-button-container">
+                        <a href="contact.html" class="recipe-selector-button">Contact</a>
+                        <p>Get in touch if this has happened before</p>
+                    </div>
                 </div>
-            </div>
-            <!--404 Navigational Buttons-->
-            <div class="row" id="recipe-selector-buttons-container">
-                <div class="col-12 col-lg-6 recipe-selector-button-container">
-                    <a href="index.html" class="recipe-selector-button">Home</a>
-                    <p>Head back to our homepage</p>
-                </div>
-                <div class="col-12 col-lg-6 recipe-selector-button-container">
-                    <a href="contact.html" class="recipe-selector-button">Contact</a>
-                    <p>Get in touch if this has happened before</p>
-                </div>
-            </div>
-        </section>
-        <!--/Page content container-->
+            <!--/Page content container-->    
+            </section>   
+        <!--/Background Image-->    
+        </div> 
+    <!-- /Container for the background image -->
     </div>
-    <!--/Background Image-->
     <!--footer-->
     <footer>
-        <!--Footer masks to cover background image at smaller screen heights-->
-        <div class="footer-mask"></div>
-        <div class="footer-mask-2"></div>
         <!--footer creator with background-->
         <div class="row g-0 footer-background sticky-bottom">
             <!--spacer column-->
@@ -86,6 +87,7 @@
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <!--Local Scripts-->
     <script src="assets/js/create-page.js"></script>
+    <script src="assets/js/footer-position.js"></script>
 </body>
 
 </html>
