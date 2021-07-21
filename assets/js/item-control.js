@@ -509,8 +509,6 @@ function displaySearchResults(searchResults, searchType) {
     if (searchType === "zero-waste" && searchResults[0] != undefined) {
         //user feedback - display title for results
         $("#result-cards-header").html("Recipies Found:");
-        //create additional masks for results to be loaded
-        $("#additional-masks").html('<div class="footer-mask"></div><div class="footer-mask-2"></div><div class="footer-mask-3"></div>');
         //empty search results display area on zero-waste.html
         $("#zero-waste-results-cards-display").html("");
         //display and add padding to search results display section
@@ -552,15 +550,13 @@ function displaySearchResults(searchResults, searchType) {
             );
         }
         //scroll to the top of the results
-        window.scrollTo(0, 750);
+        window.scrollTo(0, 720);
         //initialize click event listeners for all .view-recipe-button elements
         createViewRecipeButtons(searchType);
     //conditional to determine the search type and to check for a null value response from API call
     } else if (searchType === "specific-needs" && searchResults.results[0] != undefined) {
         //user feedback - display title for results
         $("#result-cards-header").html("Recipies Found:");
-        //create additional masks for results to be loaded
-        $("#additional-masks").html('<div class="footer-mask"></div><div class="footer-mask-2"></div><div class="footer-mask-3"></div>');
         //empty search results display area on specific-needs.html
         $("#specific-needs-results-cards-display").html("");
         //display and add padding to search results display section
@@ -601,7 +597,7 @@ function displaySearchResults(searchResults, searchType) {
             );
         }
         //scroll to the top of the results
-        window.scrollTo(0, 750);
+        window.scrollTo(0, 720);
         //initialize click event listeners for all .view-recipe-button elements
         createViewRecipeButtons(searchType);
     //conditional to determine the search type and to check for a null value response from API call
