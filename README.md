@@ -277,6 +277,7 @@ About Modal
 |16 |404 Page not found error for recipe-display.html |Using an absolute url path in createBackToResultsButton() |Changed path to a relative url path |
 |17 |Footer not at the bottom of the page on larger devices |Page content not big enough to push footer to the bottom of the screen |Set the min-height attribute of .main-body, using calc() vh and the height of the footer, to keep the footer at the bottom of the page  |
 |18 | JS Validator Error - "Expected an assignment or function call and instead saw an expression" | Used a ternary expression to call functions depending on a variable value | Restructured the ternary expression into a traditional if/else conditional statement |
+|19 | Footer being pushed down past the bottom of the screen when viewed on a tablet | Page was using viewport height (vh) to set a minimum height value when there was a lack of content to push the footer past the bottom of the screen however, the vh does not include the browser interface on mobile devices so was pushing the footer down too far | Added footer-position.js to set the footer to the bottom of the window when there isn't enough content but doesn't keep it at the bottom when there is content to push it past the bottom of the window |
 
 [Back to Top](#find-my-meal)
 
