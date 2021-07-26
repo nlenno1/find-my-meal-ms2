@@ -19,13 +19,22 @@
 ![CSS Validatior Results](validation-screenshots/css-validator-results.jpg)
 
 ### Java Script Validation Results
-
-![Contact](validation-screenshots/contact-js-validator-results.jpg)
-![Create Page](validation-screenshots/createpage-js-validator-results.jpg)
-![Item Control](validation-screenshots/itemcontrol-js-validator-results.jpg)
-![Load Results](validation-screenshots/loadresults-js-validator-results.jpg)
-![Lucky Dip](validation-screenshots/luckydip-js-validator-results.jpg)
-![Recipe Display](validation-screenshots/recipedisplay-js-validator-results.jpg)
+create-page.js
+![Create Page](validation-screenshots/create-page-js-validator-results.jpg)
+footer-position.js
+![Footer Position](validation-screenshots/footer-position-js-validator-results.jpg)
+index.js
+![Index](validation-screenshots/index-js-validator-results.jpg)
+item-control.js
+![Item Control](validation-screenshots/item-control-js-validator-results.jpg)
+load-results.js
+![Load Results](validation-screenshots/load-results-js-validator-results.jpg)
+lucky-dip.js
+![Lucky Dip](validation-screenshots/lucky-dip-js-validator-results.jpg)
+recipe-display.js
+![Recipe Display](validation-screenshots/recipe-display-js-validator-results.jpg)
+send-email.js
+![Send Email](validation-screenshots/send-email-js-validator-results.jpg)
 
 ### Color Validation Results
 
