@@ -318,20 +318,26 @@ $("#zero-waste-find-my-meal-button").click(function () {
     if ($('input[type=checkbox]').prop('checked')) {
         // try block to remove chance of error if no instance of mySuppliesArray exists in local storage
         try {
-            // inline conditional to check if list exists but is empty. If not API is called using list
-            if (mySuppliesArray == "") {
-                alert("My Supplies list is empty. Please add some ingredients and try again");
+            //conditional statements to check if both lists exist but are empty. If not the API is called after concatenating the lists
+            if (mySuppliesArray == "" && zeroWasteIngredientsArray == "") {
+                //user feedback to help user understand error and correct the issue
+                alert("My Supplies list and Zero Waste Ingredients List are empty. Please add some ingredients to either and try again");
             } else {
-                makeApiCall(compileApiRequirements(mySuppliesArray, "zero-waste"), "zero-waste");
+                //user feedback to inform them if they have selected "Use My Supplies" but that list is empty 
+                if (mySuppliesArray == "") {
+                    alert ('There are no ingredients in "My Supplies" to search with. Searching with just your Zero Waste Ingredients List')
+                }
+                //Concatenating the two lists, compiling the API requirements and making the API call
+                makeApiCall(compileApiRequirements(mySuppliesArray.concat(zeroWasteIngredientsArray), "zero-waste"), "zero-waste");
             }
         } catch (err) {
             // User error feedback with instructions on how to fix 
-            alert('You need to add some ingredients to "My Supplies"');
+            alert(`There has been an error. ${err.message}. If this problem continues please get in touch`);
         }
     } else {
         // conditional to check if zeroWasteIngredientsArrayis empty and if not run API Requirements compiler and make API call
         if (zeroWasteIngredientsArray == "") {
-            alert("Zero Waste Ingredients List is empty. Please add some ingredients and try again");
+            alert('Zero Waste Ingredients List is empty. Please add some ingredients or check "Use My Supplies" and try again');
         } else {
             makeApiCall(compileApiRequirements(zeroWasteIngredientsArray, "zero-waste"), "zero-waste");
         }
