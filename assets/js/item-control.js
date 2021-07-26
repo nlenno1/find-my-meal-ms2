@@ -325,7 +325,7 @@ $("#zero-waste-find-my-meal-button").click(function () {
             } else {
                 //user feedback to inform them if they have selected "Use My Supplies" but that list is empty 
                 if (mySuppliesArray == "") {
-                    alert ('There are no ingredients in "My Supplies" to search with. Searching with just your Zero Waste Ingredients List')
+                    alert ('There are no ingredients in "My Supplies" to search with. Searching with just your Zero Waste Ingredients List');
                 }
                 //Concatenating the two lists, compiling the API requirements and making the API call
                 makeApiCall(compileApiRequirements(mySuppliesArray.concat(zeroWasteIngredientsArray), "zero-waste"), "zero-waste");
