@@ -300,7 +300,7 @@ About Modal
 - [Figma](https://www.figma.com/) - Wireframe designer software
 - [HTML Formatter](https://www.freeformatter.com/html-formatter.html#ad-output) - Formatting HTML Code
 - [CSS Beautifier](https://www.freeformatter.com/css-beautifier.html) - Beautifying CSS Code
-- [Java Script Validator](https://beautifytools.com/javascript-validator.php) - Validating JS code
+- [JavaScript Validator](https://beautifytools.com/javascript-validator.php) - Validating JS code
 - [GIMP](https://www.gimp.org/) - Image editor
 - [Coolors](https://coolors.co/) - Colour scheme generator
 - [Font Awesome](https://fontawesome.com/) - Icon provider
@@ -416,7 +416,7 @@ As an environmentalist, worried about the amount of **food waste produced**;
 
 # Validation
 
-To view all Validation Result Files [Click here](assets/readme-assets/validation-files.md){:target="_blank"}.
+To view all Validation Result Files [Click here](assets/readme-assets/validation-files.md)
 
 To validate my project, I used the following validators:
 - HTML - [W3C Validator Service](https://validator.w3.org/)
