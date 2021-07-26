@@ -1,5 +1,5 @@
 // Window ready function to load sections of the page
-$(window).ready(function() {
+$(window).ready(function () {
     //function call to build modals
     makePageModals();
 });

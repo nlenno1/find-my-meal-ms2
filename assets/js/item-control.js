@@ -287,12 +287,12 @@ function removeHTMLElements(string) {
     let closingIndexes = [];
     let newString = "";
     //loop through string and store opening and closing indexes to two seperate arrays
-    for (let i = 0; i < string.length; i++){
+    for (let i = 0; i < string.length; i++) {
         if (string[i] == "<") {
             openingIndexes.push(i);
         }
         if (string[i] == ">") {
-            closingIndexes.push(i+1);
+            closingIndexes.push(i + 1);
         }
     }
     // conditional to check if indexes list is empty
@@ -301,9 +301,9 @@ function removeHTMLElements(string) {
         newString = string.slice(0, openingIndexes[0]);
         //loop throught remaining indexes values and add those to the newString variable
         for (let i = 0; i < closingIndexes.length; i++) {
-        newString += string.slice(closingIndexes[i], openingIndexes[i+1]);
+            newString += string.slice(closingIndexes[i], openingIndexes[i + 1]);
         }
-    //if indexes list is empty assign newString as original string value
+        //if indexes list is empty assign newString as original string value
     } else {
         newString = string;
     }
@@ -361,7 +361,7 @@ function compileApiRequirements(firstList, searchType, secondList) {
         //combine the previously created elements to produce the url needed
         let url = `${baseUrl}${compiledList}&number=20&limitLicense=true&ranking=1&ignorePantry=true`;
         return (url);
-    //conditional to determine what API search type is going to happen
+        //conditional to determine what API search type is going to happen
     } else if (searchType === "specific-needs") {
         //initialize the base url
         let baseUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=c4a7c11521de4bae8f06ba9fd8e9ac17&addRecipeInformation=true";
@@ -551,7 +551,7 @@ function displaySearchResults(searchResults, searchType) {
         window.scrollTo(0, 720);
         //initialize click event listeners for all .view-recipe-button elements
         createViewRecipeButtons(searchType);
-    //conditional to determine the search type and to check for a null value response from API call
+        //conditional to determine the search type and to check for a null value response from API call
     } else if (searchType === "specific-needs" && searchResults.results[0] != undefined) {
         //user feedback - display title for results
         $("#result-cards-header").html("Recipies Found:");
@@ -598,7 +598,7 @@ function displaySearchResults(searchResults, searchType) {
         window.scrollTo(0, 720);
         //initialize click event listeners for all .view-recipe-button elements
         createViewRecipeButtons(searchType);
-    //conditional to determine the search type and to check for a null value response from API call
+        //conditional to determine the search type and to check for a null value response from API call
     } else if (searchType === "single-recipe-to-display") {
         // initialize variable searchResult
         let searchResult;

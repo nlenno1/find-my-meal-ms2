@@ -25,10 +25,11 @@
             <!--Navbar template taken from Bootstrap 5 example code and heavily modified - filled by create-page.js-->
             <nav class="navbar navbar-expand-sm navbar-light sticky-top">
                 <!-- Find my meal logo (not displayed at phone breakpoint) - index.html link -->
-                <a class="navbar-brand d-sm-none" href="index.html"><img class="navbar-logo" src="assets/images/find-my-meal-logo.png" alt="Find My Meal Logo"></a>
+                <a class="navbar-brand d-sm-none" href="index.html"><img class="navbar-logo"
+                        src="assets/images/find-my-meal-logo.png" alt="Find My Meal Logo"></a>
                 <!-- navbar toggler button -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+                    aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <!-- nav items either displayed as dropdown when collapsed or in navbar -->
@@ -45,10 +46,11 @@
                         </li>
                         <!--Dropdown button for Recipe finder selector-->
                         <li class="nav-item dropdown">
-                            <button type="button" class="nav-link navbar-modal-button dropdown-toggle" id="navbarDropdown"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button type="button" class="nav-link navbar-modal-button dropdown-toggle"
+                                id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
                                 Recipe Finders
-                        </button>
+                            </button>
                             <!--Dropdown Recipe Search Page Link list-->
                             <div class="nav-item dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="lucky-dip.html">Lucky Dip</a>
@@ -82,7 +84,8 @@
                         <!--Recipe Search Options Container-->
                         <div class="selection-options-container">
                             <!--User Instrutions-->
-                            <p class="text-center">To make a meal with the items you have around, please enter them here or
+                            <p class="text-center">To make a meal with the items you have around, please enter them here
+                                or
                                 select "Use My Supplies" below</p>
                             <div class="row g-0 enter-ingredients">
                                 <div class="col-12 col-sm-8">
@@ -105,7 +108,8 @@
                                 <!--Use My Supplies option check box and label-->
                                 <div class="col-12 use-supplies-checkbox">
                                     <label for="use-supplies">Use My Supplies</label>
-                                    <input type="checkbox" id="use-supplies" name="use-supplies" value="yes-use-supplies">
+                                    <input type="checkbox" id="use-supplies" name="use-supplies"
+                                        value="yes-use-supplies">
                                 </div>
                             </div>
                         </div>
@@ -114,7 +118,8 @@
                             <div class="col-1 col-md-2"></div>
                             <div class="col-10 col-md-8">
                                 <!--Find My Meal button to make API call using user values entered-->
-                                <button type="submit" class="find-my-meal-button" id="zero-waste-find-my-meal-button">Find
+                                <button type="submit" class="find-my-meal-button"
+                                    id="zero-waste-find-my-meal-button">Find
                                     My Meal!</button>
                             </div>
                             <!--Container for user feedback when loading-->
@@ -128,13 +133,13 @@
                     <h2 id="result-cards-header"></h2>
                     <div id="zero-waste-results-cards-display" class="recipe-list">
                     </div>
-                <!--/Recipe Search Results content container-->
+                    <!--/Recipe Search Results content container-->
                 </section>
-            <!--/Page content container-->    
+                <!--/Page content container-->
             </section>
-        <!--/Background Image-->
+            <!--/Background Image-->
         </div>
-    <!-- /Container for the background image -->
+        <!-- /Container for the background image -->
     </div>
     <!--footer-->
     <footer>
