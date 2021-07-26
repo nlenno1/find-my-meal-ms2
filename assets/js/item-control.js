@@ -391,12 +391,16 @@ function compileApiRequirements(firstList, searchType, secondList) {
 //Perform the API call
 function makeApiCall(searchUrl, searchType) {
     // change the label on the find-my-meal-button as user feedback
-    $("#find-my-meal-button").val("Searching For Recipes ...");
+    $(".find-my-meal-button").html("Searching For Recipes ...");
     // add loader gif as user feedback
     $("#loading").html('<img class="loading-gif" src="assets/images/loading.gif">');
     // initialize setting variable containing all required settings for API call
     let settings = {
         "url": searchUrl,
+        "error": function(err) {
+            alert(`The search failed with a ${err.status} ${err.statusText}. \n${err.responseJSON.message} \nIf this problem continues then get in touch!`);
+            window.location.href = "index.html";
+        },
         "method": "GET",
         "timeout": 0,
     };
@@ -413,7 +417,7 @@ function makeApiCall(searchUrl, searchType) {
         displaySearchResults(searchResults, searchType);
         // reset user feedback values
         $("#loading").html('');
-        $("#find-my-meal-button").val("Find My Meal");
+        $(".find-my-meal-button").html("Find My Meal");
     });
 }
 
