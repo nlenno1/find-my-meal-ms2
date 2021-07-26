@@ -1,4 +1,4 @@
-$(window).ready (function() {
+$(window).ready(function() {
     //disble the loading process for the "Back to results" button.
     disableLoadStoredResults();
 });
@@ -16,7 +16,7 @@ function sendMail(contactForm) {
     })
     //wait for response from API
     .then(
-        function (response) {
+        function(response) {
             //user loading feedback - alert message
             alert("Your message has been sent");
             //clear all input values and set button text back to original text

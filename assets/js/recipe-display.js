@@ -1,4 +1,4 @@
-$(window).ready (function() {
+$(window).ready(function() {
     //storing the id saved to local storage from the "view-results" button click event as a variable
     let id = loadFromLocalStorage("idToLoad");
     //storing url as viriable with id variable included

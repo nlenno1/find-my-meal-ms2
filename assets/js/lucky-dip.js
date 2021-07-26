@@ -1,5 +1,5 @@
 // Window ready function to diable the loading process for the "Back to results" button and to make the API call
-$(window).ready (function() {
+$(window).ready(function() {
     luckyDipApiCall();
     disableLoadStoredResults();
 });

@@ -1,13 +1,13 @@
 // Window ready function to call function when window is loaded
-$(window).ready (function() {
+$(window).ready(function() {
     footerPosition();
 });
 // Window resize listener to call function when the window is resized
-$(window).resize (function() {
+$(window).resize(function() {
     footerPosition();
 });
 // Window scroll event listener to call function when window is scrolled
-$(window).scroll (function() {
+$(window).scroll(function() {
     footerPosition();
 });
 

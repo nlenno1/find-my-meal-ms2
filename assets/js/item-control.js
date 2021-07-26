@@ -1,5 +1,3 @@
-// My Supplies Modal Control 
-
 // defining all global variables 
 const regex = new RegExp(/^[a-zA-Z ]+$/);
 let zeroWasteIngredientsArray = [];
