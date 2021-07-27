@@ -75,14 +75,24 @@ $(".back-to-results-button").click(function () {
 // Replace spaces in a string with hyphens
 function addHyphens(ingredient) {
     if (ingredient.includes(" ")) {
-        ingredient = ingredient.replace(" ", "-");
+        //replace any multiple spaces with just one space
+        ingredient = ingredient.replace(/\s+/g, " ");
+        //replace any spaces with a -
+        ingredient = ingredient.replace(/ /g, "-");
+        console.log(ingredient);
+    }
+    //if the last character is a -, remove it
+    if (ingredient[ingredient.length - 1] == "-") {
+        ingredient = ingredient.slice(0, ingredient.length - 1);
+        console.log(ingredient);
     }
     return ingredient;
 }
 // Replace hyphens in a string with spaces
 function removeHyphens(ingredient) {
     if (ingredient.includes("-")) {
-        ingredient = ingredient.replace("-", " ");
+        ingredient = ingredient.replace(/-/g, " ");
+        console.log(ingredient);
     }
     return ingredient;
 }
@@ -442,7 +452,7 @@ function addSelectItemToDisplay(itemCompName, itemScreenName, targetArea, inputA
         $(inputArea).val($(inputArea + " option:first").val());
     }
 }
-//Check date entered from a INPUT box before processing
+//Check data entered in an INPUT boxe before processing
 function addItemToDisplay(ingredient, targetArea, inputArea, arrayToAction, arrayName, compArrayName) {
     // clear input value for next ingredient and keep focus on input box 
     focusAndClear(inputArea);
@@ -457,11 +467,11 @@ function addItemToDisplay(ingredient, targetArea, inputArea, arrayToAction, arra
         //error user feedback
         alert("Please only use letters in the ingredient name");
         // control conditional to avoid duplicate values entered
-    } else if (arrayToAction.includes(ingredient)) {
+    } else if (arrayToAction.includes(addHyphens(ingredient))) {
         // clear input box and focus on it
         focusAndClear(inputArea);
         // duplicate value user feedback 
-        alert(capitalizeFirstLetter(ingredient) + " has already been added to " + arrayName);
+        alert(capitalizeFirstLetter(removeHyphens(addHyphens(ingredient))) + " has already been added to " + arrayName);
     } else {
         //replaces spaces with hypens so name can be used by js
         let ingredientCompName = addHyphens(ingredient);
