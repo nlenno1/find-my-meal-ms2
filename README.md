@@ -508,7 +508,7 @@ To clone the repository, you first need to:
 # Credits
 
 Code snippets
-NavBar, Modal and Accordion template taken from [Bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navbar/) to be heavily modified and customized.
+NavBar, Modal and Accordion template taken from [Bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navbar/) and heavily modified and customized.
 
 Resources
 - [Code Institute Course Content](https://courses.codeinstitute.net/) - Code fundamental learning platform
