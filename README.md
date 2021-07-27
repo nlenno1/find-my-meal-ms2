@@ -186,8 +186,9 @@ zero-waste.html
     - Add button to create ingredient element with remove item button
     - Remove button on ingredient allows user to remove the item from the screen and the selected list
     - Ingredients display to allow users to see ingredients already added
-- "Use ingredients in My Supplies" check box option for ingredient selector which uses previously added ingredients to the"My Supplies" array only in the recipe search
+- "Use ingredients in My Supplies" check box option for ingredient selector which uses previously added ingredients to the "My Supplies" array combined with the extra added ingredients in the recipe search
 - Results title to confirm that results have been found or if an error has occurred during the API call and display process
+- User feedback is provided if the search button is clicked and either both lists are empty, the custom list is empty and "Use ingredients in My Supplies" is not selected or "Use ingredients in My Supplies" check box is selected but the list is empty.
 - Results cards displayed after searching containing;
     - Recipe title
     - Amount of likes the recipe has
@@ -202,6 +203,7 @@ specific-needs.html
     - Add button to create item element with remove item button
     - Remove button on the item allows user to remove the item from the screen and the selected list
     - Item display to allow users to see items already added
+- User feedback is provided if the search button is clicked and both lists are empty
 - Results title to confirm that results have been found or if an error has occurred during the API call and display process
 - Results cards displayed after searching containing;
     - Recipe title

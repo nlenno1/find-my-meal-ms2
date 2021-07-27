@@ -325,7 +325,7 @@ $("#zero-waste-find-my-meal-button").click(function () {
             } else {
                 //user feedback to inform them if they have selected "Use My Supplies" but that list is empty 
                 if (mySuppliesArray == "") {
-                    alert ('There are no ingredients in "My Supplies" to search with. Searching with just your Zero Waste Ingredients List');
+                    alert('There are no ingredients in "My Supplies" to search with. Searching with just your Zero Waste Ingredients List');
                 }
                 //Concatenating the two lists, compiling the API requirements and making the API call
                 makeApiCall(compileApiRequirements(mySuppliesArray.concat(zeroWasteIngredientsArray), "zero-waste"), "zero-waste");
@@ -347,7 +347,7 @@ $("#zero-waste-find-my-meal-button").click(function () {
 $("#specific-needs-find-my-meal-button").click(function () {
     // check if user wants to use My Supplies list else make API call
     if (intolerancesArray == "" && dietArray == "") {
-        alert("Please choose come Dietary Requirements or Intolerances from the drop down menus to search for recipes!");
+        alert("Please choose the appropriate Dietary Requirements or Intolerances from the drop down menus to search for recipes!");
     } else {
         makeApiCall(compileApiRequirements(dietArray, "specific-needs", intolerancesArray), "specific-needs");
     }
@@ -398,7 +398,7 @@ function makeApiCall(searchUrl, searchType) {
     // initialize setting variable containing all required settings for API call
     let settings = {
         "url": searchUrl,
-        "error": function(err) {
+        "error": function (err) {
             alert(`The search failed with a ${err.status} ${err.statusText}. \n${err.responseJSON.message} \nIf this problem continues then get in touch!`);
             window.location.href = "index.html";
         },
