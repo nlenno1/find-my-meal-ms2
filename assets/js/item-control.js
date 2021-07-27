@@ -453,8 +453,8 @@ function addSelectItemToDisplay(itemCompName, itemScreenName, targetArea, inputA
 function addItemToDisplay(ingredient, targetArea, inputArea, arrayToAction, arrayName, compArrayName) {
     // clear input value for next ingredient and keep focus on input box 
     focusAndClear(inputArea);
-    // control conditional to avoid adding a empty value 
-    if (ingredient.length == 0) {
+    // control conditional to avoid adding a empty value or a value with just blank spaces
+    if (ingredient.length === 0 || addHyphens(ingredient) == "") {
         // empty value user feedback 
         alert("Please enter an ingredient name");
         // control conditional to make sure input doesn't contain forbidden characters
