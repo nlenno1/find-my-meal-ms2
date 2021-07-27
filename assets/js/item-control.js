@@ -578,7 +578,7 @@ function displaySearchResults(searchResults, searchType) {
         //scroll to the top of the results
         $("html").animate({
             scrollTop: $(".find-my-meal-button").offset().top
-        }, );
+        });
         //initialize click event listeners for all .view-recipe-button elements
         createViewRecipeButtons(searchType);
         //conditional to determine the search type and to check for a null value response from API call
@@ -627,7 +627,7 @@ function displaySearchResults(searchResults, searchType) {
         //scroll to the top of the results
         $("html").animate({
             scrollTop: $(".find-my-meal-button").offset().top
-        }, );
+        });
         //initialize click event listeners for all .view-recipe-button elements
         createViewRecipeButtons(searchType);
         //conditional to determine the search type and to check for a null value response from API call
@@ -734,6 +734,6 @@ function displaySearchResults(searchResults, searchType) {
         //scroll to the top of the results
         $("html").animate({
             scrollTop: $(".find-my-meal-button").offset().top
-        }, );
+        });
     }
 }
