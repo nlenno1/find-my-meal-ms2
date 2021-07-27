@@ -324,7 +324,7 @@ This is the functionality check list that I used when testing my project.
 | |Logo link directs to index.html |
 |**Footer** *(on all pages)* |Contact the developer link has hover effect and directs to the contact page |
 | |Spoonacular image link opens correct page  in a new tab |
-|**My Supplies Modal** |Input field functions as expected |
+|**My Supplies Modal** |Input field functions as expected (including handling invalid characters and formatting input to remove excessive spaces) |
 | |Appropriate user feedback if impossible data values are entered |
 | |Add button functions as expected |
 | |On loading, any null or undefined values in local storage are handled |
@@ -336,7 +336,7 @@ This is the functionality check list that I used when testing my project.
 |**contact.html**  |All input fields work as expected, validate the data that is entered and are required before submitting  |
 | |User feedback provides suitable information/responses during and after sending any message, including if there was an error  |
 | |The emailJS API call responds as expected |
-|**lucky-dip.html** & **zero-waste.html**|Input/select fields function as expected |
+|**lucky-dip.html** & **zero-waste.html**|Input/select fields function as expected (including handling invalid characters and formatting input to remove excessive spaces)|
 | |Appropriate user feedback if impossible data values are entered |
 | |Add button functions as expected and elements are created correctly |
 | |"Use My Supplies" check box with click input functions as expected *(zero-waste.html only)* |
