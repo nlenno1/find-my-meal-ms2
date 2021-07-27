@@ -79,12 +79,10 @@ function addHyphens(ingredient) {
         ingredient = ingredient.replace(/\s+/g, " ");
         //replace any spaces with a -
         ingredient = ingredient.replace(/ /g, "-");
-        console.log(ingredient);
     }
     //if the last character is a -, remove it
     if (ingredient[ingredient.length - 1] == "-") {
         ingredient = ingredient.slice(0, ingredient.length - 1);
-        console.log(ingredient);
     }
     return ingredient;
 }
@@ -92,7 +90,6 @@ function addHyphens(ingredient) {
 function removeHyphens(ingredient) {
     if (ingredient.includes("-")) {
         ingredient = ingredient.replace(/-/g, " ");
-        console.log(ingredient);
     }
     return ingredient;
 }
