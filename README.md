@@ -398,21 +398,38 @@ All the tests rendered similar to expected UI results and no compatibility bugs.
 ## User Stories Testing
 As an **enthusiastic cook** looking for new recipe ideas;
 - I can use either of the 3 options on index.html, or on the navbar, to find some new recipes, either randomly selected, using specific ingredients I have or depending on selected supported dietary requirements or allergies.
+![Recipe Options Screenshot](assets/readme-assets/user-story-screenshots/recipe-options-screenshot.jpg)
 - If I am confused by what is supported or what I need to do to use the service, the About button is always there on the Navbar to help.
+![About Modal Screenshot](assets/readme-assets/user-story-screenshots/about-modal-screenshot.jpg)
 - If I want to save the ingredients I regularly have to cook with then I can add them to "My Supplies".
+![My Supplies Screenshot](assets/readme-assets/user-story-screenshots/my-supplies-screenshot.jpg)
 
 As a newly diagnosed **gluten intolerant**;
 - I can use the Specific Needs recipe selector and choose gluten from the drop down menus to see recipes without gluten.
+![Gluten Free Specific Needs](assets/readme-assets/user-story-screenshots/gluten-free-specific-needs-screenshot.png)
 - If I am confused by what is supported or what I need to do to use the service, the About button is always there on the Navbar to help with details of what intolerances are supported by the service
+![About Modal Screenshot](assets/readme-assets/user-story-screenshots/about-modal-screenshot.jpg)
 
 As someone cooking for a friend who has **specific dietary needs**;
 - I can use the  Specific Needs recipe selector and enter the specific dietary requirements they have.
+![Gluten Free Specific Needs](assets/readme-assets/user-story-screenshots/gluten-free-specific-needs-screenshot.png)
 - If I need help using the service or finding out what the options mean, there is a full description in the About modal, the link to which is in the Navbar at all times.
-- If their specific dietary requirement is missing then the contact page can be accessed through the footer or navbar to allow me to get in touch and suggest the item to add to the service.
+![About Modal Screenshot](assets/readme-assets/user-story-screenshots/about-modal-screenshot.jpg)
+- If their specific dietary requirement is missing then the contact page can be accessed through the footer or navbar to allow the user to get in touch and suggest an item to add to the service.
+![Contact Link Screenshot](assets/readme-assets/user-story-screenshots/contact-links-screenshot.jpg)
+
 
 As an environmentalist, worried about the amount of **food waste produced**;
 - I can use the Zero Waste recipe selector and enter the specific ingredients that I have to use the last of.
+![Screenshot](assets/readme-assets/user-story-screenshots/zero-waste-screenshot.jpg)
 - If I regularly have the same items to use then I can put them in My Supplies to use in later searches
+![My Supplies Screenshot](assets/readme-assets/user-story-screenshots/my-supplies-screenshot.jpg)
+
+As a enviromentalist wanting to **reduce my enviromental impact** by changing my diet and adding some vegan meals to my meal routine;
+- I can use the Specific Needs recipe selector and choose vegan from the Diet drop down menu to see some vegan recipes.
+![Vegan Specific Needs Selection](assets/readme-assets/user-story-screenshots/vegan-diet-screenshot.jpg)
+- If I am confused by what the different diets mean, the About button is always there on the Navbar to help with more details
+![About Modal Screenshot](assets/readme-assets/user-story-screenshots/about-modal-screenshot.jpg)
 
 [Back to Top](#find-my-meal)
 
