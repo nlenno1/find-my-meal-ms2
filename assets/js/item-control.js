@@ -575,16 +575,31 @@ function displaySearchResults(searchResults, searchType) {
                 </div>`
             );
         }
-        //scroll to the top of the results
-        $("html").animate({
-            scrollTop: $(".find-my-meal-button").offset().top
-        });
+        //scroll to the top of the results or previously clicked result
+        if (loadFromLocalStorage("reloadResults") == true) {
+            $("html, body").animate({
+                scrollTop: $(`#${loadFromLocalStorage("idToLoad")}`).parent().parent().offset().top - (($(`#${loadFromLocalStorage("idToLoad")}`).parent().parent().height()) / 2)
+            });
+        } else {
+            $("html").animate({
+                scrollTop: $(".find-my-meal-button").offset().top
+            });
+        }
         //initialize click event listeners for all .view-recipe-button elements
         createViewRecipeButtons(searchType);
         //conditional to determine the search type and to check for a null value response from API call
     } else if (searchType === "specific-needs" && searchResults.results[0] != undefined) {
         //user feedback - display title for results
         $("#result-cards-header").html("Recipies Found:");
+        // change the results-card-header css
+        $("#result-cards-header").css({
+            "margin": "0 8vw",
+            "background-color": "rgba(196,196,196,0.6)",
+            "padding": "15px",
+            "border": "2px ridge #000",
+            "border-radius": "3px",
+            "text-align": "center"
+        });
         //empty search results display area on specific-needs.html
         $("#specific-needs-results-cards-display").html("");
         //display and add padding to search results display section
@@ -624,10 +639,16 @@ function displaySearchResults(searchResults, searchType) {
                 </div>`
             );
         }
-        //scroll to the top of the results
-        $("html").animate({
-            scrollTop: $(".find-my-meal-button").offset().top
-        });
+        //scroll to the top of the results or previously clicked result
+        if (loadFromLocalStorage("reloadResults") == true) {
+            $("html, body").animate({
+                scrollTop: $(`#${loadFromLocalStorage("idToLoad")}`).parent().parent().offset().top - (($(`#${loadFromLocalStorage("idToLoad")}`).parent().parent().height()) / 2)
+            });
+        } else {
+            $("html").animate({
+                scrollTop: $(".find-my-meal-button").offset().top
+            });
+        }
         //initialize click event listeners for all .view-recipe-button elements
         createViewRecipeButtons(searchType);
         //conditional to determine the search type and to check for a null value response from API call
