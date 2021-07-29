@@ -578,7 +578,7 @@ function displaySearchResults(searchResults, searchType) {
         //scroll to the top of the results or previously clicked result
         if (loadFromLocalStorage("reloadResults") == true) {
             $("html, body").animate({
-                scrollTop: $(`#${loadFromLocalStorage("idToLoad")}`).parent().parent().offset().top - (($(`#${loadFromLocalStorage("idToLoad")}`).parent().parent().height()) / 2)
+                scrollTop: $(`#${loadFromLocalStorage("idToLoad")}`).parent().parent().offset().top - (($(`#${loadFromLocalStorage("idToLoad")}`).parent().parent().height()) * 0.5)
             });
         } else {
             $("html").animate({
@@ -642,7 +642,7 @@ function displaySearchResults(searchResults, searchType) {
         //scroll to the top of the results or previously clicked result
         if (loadFromLocalStorage("reloadResults") == true) {
             $("html, body").animate({
-                scrollTop: $(`#${loadFromLocalStorage("idToLoad")}`).parent().parent().offset().top - (($(`#${loadFromLocalStorage("idToLoad")}`).parent().parent().height()) / 2)
+                scrollTop: $(`#${loadFromLocalStorage("idToLoad")}`).parent().parent().offset().top - (($(`#${loadFromLocalStorage("idToLoad")}`).parent().parent().height()) * 0.5)
             });
         } else {
             $("html").animate({
