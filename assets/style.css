@@ -105,6 +105,11 @@ footer,
     -o-transition: all 0.2s ease-in-out;
 }
 
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #c4c4c4;
+    color: #1ec820;
+}
+
 .dropdown-menu {
     padding: 0;
 }
